@@ -8,6 +8,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const { neon } = require("@neondatabase/serverless");
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 
 const BASE_URL = "https://www.cnbeta.com.tw";
 const OUTPUT_DIR = path.join(process.cwd(), "content/news");
@@ -68,10 +69,14 @@ async function fetchArticleDetail(url) {
     const html = await fetchPage(url);
     const $ = cheerio.load(html);
 
-    const dateText =
-      $("time").attr("datetime") ||
-      $(".date, .time, [class*=date], [class*=time]").first().text().trim() ||
-      new Date().toISOString().split("T")[0];
+    // Extract date - cnbeta renders dates like "2026年04月17日 05:48"
+    const pageText = $.text();
+    const cnDateMatch = pageText.match(/(\d{4})年(\d{2})月(\d{2})日\s*(\d{2}):(\d{2})/);
+    const dateText = cnDateMatch
+      ? `${cnDateMatch[1]}-${cnDateMatch[2]}-${cnDateMatch[3]}T${cnDateMatch[4]}:${cnDateMatch[5]}:00`
+      : $("time").attr("datetime") ||
+        $(".date, .time, [class*=date], [class*=time]").first().text().trim() ||
+        new Date().toISOString().split("T")[0];
 
     const summary = $('meta[name=description]').attr("content") || "";
 
@@ -83,7 +88,7 @@ async function fetchArticleDetail(url) {
     let content = "";
     articleBody.find("p, h2, h3, h4").each((_, el) => {
       const tag = $(el).prop("tagName")?.toLowerCase();
-      const text = $(el).text().trim();
+      const text = decodeHtmlEntities($(el).text().trim());
       if (!text) return;
       if (tag === "h2") content += "## " + text + "\n\n";
       else if (tag === "h3") content += "### " + text + "\n\n";
@@ -91,12 +96,15 @@ async function fetchArticleDetail(url) {
     });
 
     // Get view/like from detail page too
-    const pageText = $.text();
     const viewMatch = pageText.match(/阅读\s*\(?\s*(\d+)\s*\)?/);
     const likeMatch = pageText.match(/点赞\s*\(?\s*(\d+)\s*\)?/);
 
-    const ogImage =
+    let ogImage =
       $('meta[property="og:image"]').attr("content") || "";
+    // Sanitize: only keep valid image URLs
+    if (ogImage && (!ogImage.startsWith("http") || ogImage.includes("<") || ogImage.includes("iframe") || ogImage.includes('"'))) {
+      ogImage = "";
+    }
 
     return {
       summary: summary.slice(0, 300),
@@ -112,8 +120,81 @@ async function fetchArticleDetail(url) {
   }
 }
 
+// ── R2 image upload ──────────────────────────────────────────────────────────
+
+const R2_ENDPOINT = process.env.R2_S3_CLIENT_ENDPOINT;
+const R2_KEY = process.env.R2_ACCESS_KEY_ID;
+const R2_SECRET = process.env.R2_ACCESS_KEY_SECRET;
+const R2_BUCKET = process.env.R2_BUCKET_NAME;
+const R2_PUBLIC = (process.env.R2_PUBLIC_URL || "").replace(/\/$/, "");
+
+function hasR2() {
+  return !!(R2_ENDPOINT && R2_KEY && R2_SECRET && R2_BUCKET && R2_PUBLIC);
+}
+
+let _s3 = null;
+function getS3() {
+  if (!_s3) {
+    _s3 = new S3Client({
+      region: "auto",
+      endpoint: R2_ENDPOINT,
+      credentials: { accessKeyId: R2_KEY, secretAccessKey: R2_SECRET },
+    });
+  }
+  return _s3;
+}
+
+const MIME_MAP = {
+  ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
+  ".png": "image/png", ".webp": "image/webp",
+  ".gif": "image/gif",
+};
+
+async function uploadImageToR2(imageUrl, articleId) {
+  if (!hasR2() || !imageUrl) return imageUrl;
+  try {
+    const ext = (path.extname(new URL(imageUrl).pathname) || ".jpg").toLowerCase();
+    const key = `images/${articleId}${ext}`;
+
+    const res = await fetch(imageUrl, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        "Referer": "https://www.cnbeta.com.tw/",
+      },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const buf = Buffer.from(await res.arrayBuffer());
+    await getS3().send(new PutObjectCommand({
+      Bucket: R2_BUCKET,
+      Key: key,
+      Body: buf,
+      ContentType: MIME_MAP[ext] || "image/jpeg",
+    }));
+
+    const r2Url = `${R2_PUBLIC}/${key}`;
+    console.log(`    R2: ${key} (${(buf.length / 1024).toFixed(0)} KB)`);
+    return r2Url;
+  } catch (err) {
+    console.log(`    R2 upload failed: ${err.message}, using original`);
+    return imageUrl;
+  }
+}
+
+function decodeHtmlEntities(s) {
+  return s
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;nbsp;/g, " ")
+    .replace(/\u00a0/g, " ");
+}
+
 function sanitize(s) {
-  return s.replace(/"/g, '\\"').replace(/\n/g, " ");
+  return decodeHtmlEntities(s).replace(/"/g, '\\"').replace(/\n/g, " ");
 }
 
 function makeSlug(id, title) {
@@ -159,7 +240,7 @@ async function main() {
 
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  const limit = Math.min(articles.length, 20);
+  const limit = Math.min(articles.length, 50);
   const statsToSeed = [];
 
   for (let i = 0; i < limit; i++) {
@@ -187,7 +268,11 @@ async function main() {
     const detail = await fetchArticleDetail(a.url);
     await new Promise((r) => setTimeout(r, 500));
 
-    const image = detail.image || a.image || "";
+    let image = detail.image || a.image || "";
+    // Upload image to R2
+    if (image) {
+      image = await uploadImageToR2(image, a.id);
+    }
     // Use higher count from list page vs detail page
     const views = Math.max(a.views, detail.views);
     const likes = Math.max(a.likes, detail.likes);

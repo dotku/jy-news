@@ -1,36 +1,37 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticleBySlug, getAllArticles } from "@/lib/articles";
+import { getDictionary, isValidLang, locales, type Lang } from "@/lib/i18n";
 import {
   ArticleLikeButton,
   ArticleViews,
   ViewTracker,
 } from "@/components/ArticleStats";
+import TimeAgo from "@/components/TimeAgo";
 
-const CATEGORY_LABELS: Record<string, string> = {
-  tech: "科技",
-  science: "科学",
-  game: "游戏",
-  movie: "影视",
-  soft: "软件",
-  comic: "动漫",
-  music: "音乐",
-  fun: "趣闻",
-};
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  const articles = getAllArticles();
-  return articles.map((article) => ({ slug: article.slug }));
+  const params: { lang: string; slug: string }[] = [];
+  for (const lang of locales) {
+    const articles = getAllArticles(lang);
+    for (const article of articles) {
+      params.push({ lang, slug: article.slug });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const article = getArticleBySlug(slug);
-  if (!article) return { title: "文章未找到 - JY Tech News" };
+  const { lang, slug: rawSlug } = await params;
+  if (!isValidLang(lang)) return {};
+  const slug = decodeURIComponent(rawSlug);
+  const article = getArticleBySlug(slug, lang);
+  if (!article) return { title: "Not Found - JY Tech News" };
 
   return {
     title: `${article.title} - JY Tech News`,
@@ -46,10 +47,14 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const { lang, slug: rawSlug } = await params;
+  if (!isValidLang(lang)) notFound();
+
+  const slug = decodeURIComponent(rawSlug);
+  const t = getDictionary(lang);
+  const article = getArticleBySlug(slug, lang);
 
   if (!article) {
     notFound();
@@ -60,7 +65,7 @@ export default async function ArticlePage({
       <ViewTracker slug={article.slug} />
 
       <Link
-        href="/"
+        href={`/${lang}`}
         className="mb-6 inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-green-700 dark:text-zinc-400"
       >
         <svg
@@ -76,18 +81,16 @@ export default async function ArticlePage({
             d="M15.75 19.5L8.25 12l7.5-7.5"
           />
         </svg>
-        返回列表
+        {t.backToList}
       </Link>
 
       <article>
         <header className="mb-8">
           <div className="mb-3 flex items-center gap-3">
             <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
-              {CATEGORY_LABELS[article.category] || article.category}
+              {t.categories[article.category] || article.category}
             </span>
-            {article.date && !article.date.includes("加载") && (
-              <time className="text-sm text-zinc-400">{article.date}</time>
-            )}
+            <TimeAgo date={article.date} lang={lang as Lang} />
             <ArticleViews slug={article.slug} />
           </div>
           <h1 className="text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-zinc-50">

@@ -1,18 +1,19 @@
 /**
  * Translate MDX articles from Chinese to English using OpenRouter free models.
- * Adds title_en, summary_en to frontmatter and appends English content.
+ * Writes English articles to content/news-en/ as separate files.
  * Usage: node scripts/translate-articles.js
  */
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-const CONTENT_DIR = path.join(process.cwd(), "content/news");
+const ZH_DIR = path.join(process.cwd(), "content/news");
+const EN_DIR = path.join(process.cwd(), "content/news-en");
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const API_KEY = process.env.OPENROUTER_API_KEY;
 const MODEL = "google/gemma-3-27b-it:free";
 const MAX_RETRIES = 3;
-const DELAY_MS = 10000; // 10s between requests to stay under 8 req/min
+const DELAY_MS = 10000;
 
 if (!API_KEY) {
   console.error("Missing OPENROUTER_API_KEY in environment");
@@ -45,7 +46,9 @@ async function translate(text) {
 
     if (res.status === 429) {
       const wait = attempt * 15000;
-      console.log(`    Rate limited, waiting ${wait / 1000}s (attempt ${attempt}/${MAX_RETRIES})...`);
+      console.log(
+        `    Rate limited, waiting ${wait / 1000}s (attempt ${attempt}/${MAX_RETRIES})...`
+      );
       await sleep(wait);
       continue;
     }
@@ -62,7 +65,6 @@ async function translate(text) {
 }
 
 async function translateArticle(title, summary, content) {
-  // Batch title + summary + content into one request to reduce API calls
   const prompt = [
     "Translate the following Chinese article to English. Return the result in this exact format:",
     "TITLE: (translated title)",
@@ -78,7 +80,6 @@ async function translateArticle(title, summary, content) {
 
   const result = await translate(prompt);
 
-  // Parse the structured response
   const titleMatch = result.match(/TITLE:\s*(.+)/);
   const summaryMatch = result.match(/SUMMARY:\s*(.+)/);
   const contentMatch = result.match(/CONTENT:\s*([\s\S]+)/);
@@ -91,19 +92,24 @@ async function translateArticle(title, summary, content) {
 }
 
 async function main() {
-  const files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith(".mdx"));
+  fs.mkdirSync(EN_DIR, { recursive: true });
+
+  const files = fs.readdirSync(ZH_DIR).filter((f) => f.endsWith(".mdx"));
   console.log(`Found ${files.length} articles (model: ${MODEL})\n`);
 
   let translated = 0;
   for (const file of files) {
-    const filePath = path.join(CONTENT_DIR, file);
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(raw);
+    const enPath = path.join(EN_DIR, file);
 
-    if (data.title_en) {
-      console.log(`[skip] ${file}`);
+    // Skip if English version already exists
+    if (fs.existsSync(enPath)) {
+      console.log(`[skip] ${file} (already translated)`);
       continue;
     }
+
+    const zhPath = path.join(ZH_DIR, file);
+    const raw = fs.readFileSync(zhPath, "utf-8");
+    const { data, content } = matter(raw);
 
     console.log(`[translating] ${data.title || file}`);
 
@@ -116,12 +122,27 @@ async function main() {
 
       console.log(`  -> ${titleEn}`);
 
+      // Write English MDX
+      const enData = {
+        title: titleEn,
+        date: data.date,
+        category: data.category,
+        source: data.source,
+        summary: summaryEn,
+        image: data.image || "",
+        slug: data.slug,
+        id: data.id,
+        lang: "en",
+        original_title: data.title,
+      };
+      const enMdx = matter.stringify(contentEn + "\n", enData);
+      fs.writeFileSync(enPath, enMdx, "utf-8");
+
+      // Also update zh frontmatter with title_en/summary_en
       data.title_en = titleEn;
       data.summary_en = summaryEn;
-
-      const combinedContent = content.trim() + "\n\n---\n\n" + contentEn + "\n";
-      const updated = matter.stringify(combinedContent, data);
-      fs.writeFileSync(filePath, updated, "utf-8");
+      const zhMdx = matter.stringify(content, data);
+      fs.writeFileSync(zhPath, zhMdx, "utf-8");
 
       translated++;
       console.log(`  Done! (${translated} translated)\n`);

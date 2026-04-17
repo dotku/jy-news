@@ -1,0 +1,39 @@
+---
+title: >-
+  IETF Releases IPv8 Draft: 1844 Trillion Addresses, 100% Downward Compatible
+  with IPv4, Supported by Old Routers
+date: '2026-04-17T13:02:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558528.htm'
+summary: >-
+  IPv8 is the true successor to IPv4. On April 14th, the IETF released the core
+  protocol draft for Internet Protocol Version 8 (IPv8), achieving 100% downward
+  compatibility with IPv4, and potentially solving the industry pain point of
+  slow IPv6 migration. Despite IPv6 being promoted for over twenty years, its
+  incompatibility with IPv4 has led to slower-than-expected global migration
+  progress.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558528.png'
+slug: 1558528-IETF公布IPv8草案-1844亿亿个地址-100-向下兼容IPv4-旧路由器也支持
+id: '1558528'
+lang: en
+original_title: IETF公布IPv8草案：1844亿亿个地址 100%向下兼容IPv4 旧路由器也支持
+---
+The most core design highlight of IPv8 is its 100% downward compatibility with IPv4. The draft clearly states that IPv4 is a true subset of IPv8. According to the draft definition, IPv8 adopts a 64-bit address space, formatted as r.r.r.r.n.n.n.n, consisting of a 32-bit ASN routing prefix and a 32-bit host address.
+
+When the routing prefix field (r.r.r.r) is set to 0.0.0.0, the address will be processed directly according to standard IPv4 rules. This means that existing IPv4 devices, applications, and underlying architectures can access the IPv8 network without any modifications or hardware replacements. IPv8 also does not set a mandatory transition deadline, supporting long-term smooth evolution, completely eliminating concerns about upgrade costs for enterprises.
+
+Address resources and routing architecture are significantly optimized. IPv8’s 64-bit address space theoretically provides 2^64 (approximately 1844.67 trillion) independent addresses, fundamentally solving the IPv4 address exhaustion problem.
+
+Each Autonomous System Number (ASN) holder can obtain 4.29 billion host addresses, sufficient to meet the scalability needs of various organizations, without relying on CGNAT technology. At the same time, the draft stipulates that BGP8 routing tables are bound by ASN units, combined with the /16 minimum prefix rule, effectively suppressing routing table expansion and significantly reducing the processing pressure on core routers.
+
+IPv8 reconstructs the network management and security system. The draft proposes a Zone Server (regional server) unified management platform, integrating DHCP8 address allocation, DNS8 domain name resolution, NTP8 time synchronization, OAuth2 JWT identity authentication, NetLog8 network telemetry, WHOIS8 routing verification, and other services, bidding farewell to the difficulties of traditional fragmented network service management.
+
+On the security level, IPv8 adopts a “presumed distrust” design logic. All data packets transmitted to the Internet must undergo dual verification of DNS8 resolution and WHOIS8 routing registration at the exit router, and devices must hold a valid authentication token to communicate normally.
+
+In addition, the draft introduces a Cost Factor (CF) routing algorithm, comprehensively considering latency, packet loss, geographical distance, and other dimensions. If the transmission speed exceeds the physical speed of light limit, the system will immediately mark the anomaly, preventing routing fraud and path spoofing from the source, effectively curbing zombie networks, DDoS attacks, and other security threats.
+
+The draft also defines upgraded routing protocols such as BGP8, OSPF8, and ICMPv8, supports 8to4 tunneling technology, and can realize the penetration deployment of IPv8 networks in IPv4-only networks, ensuring full-scene interoperability during the transition period.
+
+The draft clarifies that while IPv6 solves the address exhaustion problem, it does not solve fragmented management, and dual-stack deployment costs are high. IPv8 is not intended to replace IPv6, but to provide a more compatible upgrade solution.
+
+Currently, this IPv8 draft is only a technical proposal, not yet an official IETF standard, and has not reached a consensus in the industry. It will be open for discussion by the global industry for the next six months, and its actual application still needs further verification and improvement.
