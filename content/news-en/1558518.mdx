@@ -1,0 +1,33 @@
+---
+title: >-
+  Linux 7.1 to Introduce New NTFS File System Driver with Significantly Improved
+  Performance and Stability
+date: '2026-04-17T12:43:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558518.htm'
+summary: >-
+  A substantial change is attracting community attention in the upcoming Linux
+  7.1 merge window: a senior kernel developer has submitted a pull request for a
+  new NTFS file system driver, hoping to incorporate it into the mainline kernel
+  to replace the current NTFS3 driver contributed by Paragon Software, which has
+  seen limited functional progress in recent years, thereby significantly
+  improving the NTFS experience under Linux.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558518.webp'
+slug: 1558518-Linux-7-1拟引入全新NTFS文件系统驱动-性能与稳定性明显提升
+id: '1558518'
+lang: en
+original_title: Linux 7.1拟引入全新NTFS文件系统驱动 性能与稳定性明显提升
+---
+The new driver is being developed by senior Linux developer Namjae Jeon, who previously led projects such as the exFAT driver and KSMBD. As early as last year, he announced a new NTFS driver called “NTFSPLUS,” aiming to comprehensively surpass existing NTFS3 and other NTFS driver solutions in terms of performance and features. After several iterations, the project ultimately abandoned the name “NTFS PLUS” and was instead considered a modernization of the early Linux NTFS kernel driver.
+
+This development work has been ongoing for approximately four years and now supports full write access to the NTFS file system, with noticeable improvements in stability compared to NTFS3, and also achieves more favorable results in the XFStests test suite. At the same time, the new driver is also equipped with user-space tools for performing file system checks (FSCK) and other operations and maintenance tasks, further perfecting the overall solution.
+
+At the level of kernel technology stack integration, this new NTFS driver extensively embraces contemporary features of the Linux kernel, including mechanisms such as IOmap and folio, and its integration is even better than the current NTFS3 driver in the kernel, achieving an implementation path closer to the contemporary kernel architecture. Over the past two months, this new driver has entered the Linux-Next branch for wider testing and use, and has also received code review opinions from several key kernel maintainers and stakeholders.
+
+In terms of code size, this new/refactored NTFS driver brings over 36,000 lines of new code to the Linux kernel, reflecting the complexity and magnitude of the changes. Currently, Linus Torvalds has not publicly stated whether he will accept this driver within the Linux 7.1 merge window, and that merge window will end next weekend, so the relevant decision is still pending.
+
+It is worth noting that even if this pull request is approved, the existing NTFS3 driver will remain temporarily after the new NTFS driver is added to the kernel source tree, allowing users who still have needs or preferences to continue using the original solution, providing greater flexibility during the transition period.
+
+Developers and users interested in this new NTFS driver can learn more detailed technical details and discussion processes through the submitted pull request:
+
+https://lore.kernel.org/lkml/CAKYAXd-knEHqHPgz83+bOaLHAcA=f97f2-mnJxLmu0MiDkTgDA@mail.gmail.com/
