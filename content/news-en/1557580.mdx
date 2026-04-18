@@ -1,0 +1,166 @@
+---
+title: Claude Revives a Legendary Game from 30 Years Ago in Just One Weekend
+date: '2026-04-12T14:11:00'
+category: game
+source: 'https://www.cnbeta.com.tw/articles/game/1557580.htm'
+summary: >-
+  A post went viral on Reddit! Claude resurrected a legendary game from 30 years
+  ago with just a few clues. The post has garnered over a hundred comments, with
+  netizens agreeing it’s a legendary feat. The poster, Jon Radoff, CEO of game
+  developer Beamable, used Claude to revive his MUD (Multi-User Dungeon) game,
+  which he developed when he was 19 – and it only took a weekend.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1557580.webp'
+slug: 1557580-Claude复活30年前传奇游戏-仅用一个周末
+id: '1557580'
+lang: en
+original_title: Claude复活30年前传奇游戏 仅用一个周末
+---
+The game, called "Legends of Future Past," was developed in 1992 and had been "dead" for 27 years, with no source code available.
+
+Jon spent 6 months writing the code back then, using a custom scripting language he invented himself.
+
+Surprisingly, Claude Code reverse-engineered his 30-year-old custom scripting language. And with just a little information, it completely rebuilt the game world.
+
+Now the entire Reddit post is buzzing, turning into a grand nostalgia trip.
+
+Many netizens are sharing memories of MUD and BBS games, and some even remember playing this game.
+
+One netizen shared that they also used a similar method to revive their 90s DOS application.
+
+Requirements that the original team spent twenty years trying to achieve can now be demonstrated in just two hours with Claude.
+
+Claude Revives Legendary Game
+
+"Legends of Future Past," developed by Jon Radoff, was one of the earliest commercial massively multiplayer online role-playing games.
+
+It had no graphical interface, relying on text to depict scenes, characters, and plot, leaving a vast space for imagination.
+
+Players communicated with the server by entering specific commands, such as moving (n/s/e/w), fighting, and chatting.
+
+The game was initially released on CompuServe servers and later migrated to the public internet after commercial access opened in 1994.
+
+It won a Special Award for Artistic Excellence from Computer Gaming World in 1993 and was a precursor to MMO games like World of Warcraft and EverQuest.
+
+After 7 years of operation, "Legends of Future Past" shut down in 1999 and disappeared completely – no save files, no emulators, only memories.
+
+Looking back, Jon was 19 years old and developed the game on a 486 computer with 16MB of memory.
+
+He spent 6 months writing the code, and the game content was built over several years by a team – 
+
+but Claude revived it in just one weekend.
+
+[Image: Left: Replicated game; Right: Magazine advertisement from the 1990s]
+
+At the time, Jon only had the following materials:
+
+A complete script file – written in a custom scripting language he invented when he was 19, defining every room, monster, item, spell, and interactive event in the game world;
+
+A 1996 game recording, a 1998 first-generation GM script manual, and some player documentation.
+
+But there was no source code for the game engine.
+
+Jon fed these materials to Claude Code, asking it to figure out what the game was and rebuild it.
+
+Then he spent the entire weekend working closely with Claude Code: providing background information, guiding its decisions, correcting it when it went off track, and making technical judgments.
+
+Jon admitted:
+
+AI programming is not self-driving; it’s more like guiding a tireless, talented collaborator, and you need to pay attention to it at all times.
+
+Surprisingly, without the source code, Claude Code was able to recreate the core experience simply by observing the output and interactions of the original game:
+
+It reverse-engineered Jon’s invented custom scripting language, parsed DOS-era script files, and decoded combat formulas from game administrator documents;
+
+And it inferred monster behavior patterns from strategy fields (which encoded AI configurations as integer ranges);
+
+Then it built a complete game engine in Go, a React frontend, a WebSocket multiplayer layer, and a MongoDB persistence system.
+
+Finally, it was deployed on the Fly.io platform.
+
+Reverse Engineering a 30-Year-Old Scripting Language
+
+Jon’s scripting language at the time was, frankly, not very good.
+
+It was quite primitive, and he feels ashamed to look at it now.
+
+To fit the game into a computer with only 16MB of memory, he took various "memory-saving" shortcuts in the script.
+
+It used imperative syntax with conditional statements like IFVERB and IFVAR; it was case-insensitive and used DOS encoding.
+
+[Image: Original scripting language]
+
+Jon joked – “it was really terrible” and apologized to the game administrators who used it to write scripts back then.
+
+But this “bad code” actually worked back then – people with average technical skills could learn it to write complex storylines, puzzles, and events.
+
+What amazed Jon the most was that there were no formal specifications (no language manual), only a GM manual and a pile of example scripts.
+
+Claude Code completely reconstructed the language interpreter from these materials.
+
+The original script had several technical challenges:
+
+It used DOS encoding, and filenames were case-insensitive, which would immediately cause errors on case-sensitive file systems;
+
+Script blocks could terminate implicitly – this pattern required the parser to infer the structure rather than follow explicit delimiters;
+
+Variables existed in multiple namespaces (player attributes, item attributes, environment data) and had to be parsed at runtime based on context.
+
+But Claude managed to parse conditional logic, decode the definition system for nouns and adjectives, and figure out how room descriptions were divided.
+
+It also reconstructed the entire execution model of the script triggers – entry scripts, verb scripts, verb pre-validation, voice processors – 
+
+everything was there.
+
+Jon himself exclaimed:
+
+A language designed thirty years ago has been completely reconstructed by an AI that has never seen it before.
+
+[Image: Comparison of technology stacks in 1992 and 2026]
+
+The final remake includes:
+
+2273 rooms, 1990 items, 297 monsters, 88 spells, and 30 psychic disciplines.
+
+There’s also a complete crafting system (mining, smelting, forging, alchemy, weaving), 8 playable races, and a 12-month in-game calendar.
+
+After this experience, Jon felt that what happened this weekend completely overturned his imagination:
+
+If he had to go back to the 90s and develop a game like "Legends of Future Past," writing the game engine alone would take one person months;
+
+Plus a team spending years building the game world: writing a custom game engine in C, manually coding thousands of rooms and items, managing server infrastructure – 
+
+and the cost of this infrastructure was higher than a car.
+
+Now, people only need to provide game creative materials, and the AI can completely handle the engineering parts that used to require huge investment.
+
+Jon exclaimed:
+
+How many lost online worlds could be revived if all you needed was creative material and a weekend?
+
+How many games that only existed in people’s imaginations could become reality today?
+
+Who is Jon Radoff
+
+The protagonist who revived his own game, Jon Radoff, also has an impressive background.
+
+He is an entrepreneur, game designer, and CEO and co-founder of Beamable.
+
+Beamable is an online game service platform based on the Unity engine and was acquired by the game competition platform Skillz in January of this year.
+
+He started developing BBS games in high school and founded NovaLink in 1991, where he created the game "Legends of Future Past."
+
+After that, he founded Eprise, GamerDNA, Disruptor Beam, and other companies.
+
+His developed games include Final Frontier, Cyber Corp, True Pirates, Game of Thrones Ascent, and Star Trek Timelines.
+
+Currently, the Claude-remade game is online, with the address below, and the code repository is also completely open-sourced.
+
+Interested friends can take a look~
+
+Game address:
+
+lofp.metavert.io
+
+Code repository:
+
+https://github.com/jonradoff/lofp/tree/main/original/scripts
