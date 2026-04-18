@@ -1,0 +1,34 @@
+---
+title: >-
+  Loongson CPU Receives Further GNU C Optimization: Miss Rate Plummets 72%,
+  Performance Significantly Improved
+date: '2026-04-18T14:27:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558686.htm'
+summary: >-
+  As a representative of domestically produced, fully independent CPUs, Loongson
+  has continuously received optimizations from various software systems after
+  transitioning to the LoongArch architecture. A recently updated GNUC library,
+  glibc, has achieved significant performance improvements. A specific
+  optimization for the LoongArch architecture has been added to the Git code
+  repository, enabling transparent huge page (THP) aligned loading segments by
+  default for LoongArch64.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558686.png'
+slug: 1558686-国产自主CPU龙芯再获GNU-C优化-缺失率暴降72-性能显著提升
+id: '1558686'
+lang: en
+original_title: 国产自主CPU龙芯再获GNU C优化：缺失率暴降72% 性能显著提升
+---
+After optimization, the loading segments of ELF executables can be aligned with THP boundaries, reducing Translation Lookaside Buffer (TLB) pressure and improving instruction fetching efficiency, resulting in stable performance gains when running large binary programs.
+
+How have the performance changes been? When compiling the Rust-written Cargo tool on the Loongson 3A6000, the test results showed a dramatic 72% reduction in instruction TLB miss rate, a 4.7% reduction in CPU cycles, and a time saving of approximately 4.2% in actual running time (wall time). When compiling the Linux kernel using LLVM, the actual running time was shortened by approximately 12%.
+
+Therefore, the default THP aligned loading segment mechanism brought by this patch has brought significant performance improvements to the LoongArch architecture.
+
+Previously reported, the current Loongson has developed to the 6000 series, with the Loongson 3A/B desktop versions having 4-8 cores, and the server version Loongson 3C6000 series having 16 to 64 core architectures. Typical application scenarios have been implemented in 2025, including dedicated servers and computing servers. Loongson company stated that it hopes to achieve mass sales this year.
+
+Notably, for PC gamers, Loongson announced an 8-core desktop processor called Loongson B6600 last year. Compared to the 3A6000, the process remains unchanged, the structure is optimized, and it is upgraded to LA864, with a same-frequency performance that is about 30% higher than that of the Loongson 3A6000 based on the LA664 architecture.
+
+The main frequency is still expected to be 2.5GHz, but it will master single-core turbo boost technology, which can generally be increased by another 20%, striving to reach 3.0GHz.
+
+It is reported that the single-core and multi-core performance of Loongson 3B6600 can reach the mid-to-high level of Intel 12th/13th generation Core processors, which is comparable to the i5 and i7 series, exceeding 50% of the desktop CPUs currently on the market.

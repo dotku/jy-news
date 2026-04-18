@@ -1,0 +1,38 @@
+---
+title: 国产自主CPU龙芯再获GNU C优化：缺失率暴降72% 性能显著提升
+date: '2026-04-18T14:27:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558686.htm'
+summary: >-
+  作为国产全自主CPU的代表，龙芯在转向LoongArch架构之后也不断获得了各大软件系统的优化，日前更新的GNUC库glibc版就实现了性能显著提升。在日前合并的代码中，有一项针对LoongArch架构的特定优化就加入到了Git代码库中，该优化可以默认为LoongArch64启用透明大内存页（TransparentHugePages,THP）对齐的加载段。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558686.png'
+slug: 1558686-国产自主CPU龙芯再获GNU-C优化-缺失率暴降72-性能显著提升
+id: '1558686'
+title_en: >-
+  Loongson CPU Receives Further GNU C Optimization: Miss Rate Plummets 72%,
+  Performance Significantly Improved
+summary_en: >-
+  As a representative of domestically produced, fully independent CPUs, Loongson
+  has continuously received optimizations from various software systems after
+  transitioning to the LoongArch architecture. A recently updated GNUC library,
+  glibc, has achieved significant performance improvements. A specific
+  optimization for the LoongArch architecture has been added to the Git code
+  repository, enabling transparent huge page (THP) aligned loading segments by
+  default for LoongArch64.
+---
+
+优化之后，可将ELF可执行文件的加载段与THP边界对齐，能够通过减少快表（TLB）压力并提升指令获取效率，从而在运行大型二进制程序时带来稳定的性能提升。
+
+优化之后的性能变化如何？在龙芯 3A6000 上编译Rust编写的Cargo工具时，测试结果显示指令TLB缺失率暴降了72%，CPU周期减少了4.7%，实际运行时间（wall time）节省了约 4.2%，而在使用 LLVM编译Linux内核时，实际运行时间缩短了约12%。
+
+因此这项补丁带来的默认THP对齐加载段机制，为LoongArch架构带来了显著的性能提升。
+
+此前消息，当前的龙芯已经发展到了龙芯6000系列，其中龙芯3A/B桌面版有4-8核的，服务器版龙芯3C6000系列有16到64核架构，2025年已经有一些典型应用场景落地，包括专用服务器、算力服务器，龙芯公司表示希望今年能够实现批量销售。
+
+值得注意的是，对PC玩家来说，龙芯去年宣布了一款名为龙芯B6600的8核桌面处理器，与3A6000相比，工艺不变，结构优化，升级为LA864，同频性能相比LA664架构的龙芯3A6000大幅提升30％左右。
+
+主频预计仍然是2.5GHz，但是会掌握单核睿频技术，一般可以再提升20％，将争取达到3.0GHz。
+
+据悉，龙芯3B6600单核心、多核心性能都可以达到Intel 12/13代酷睿中高端水平，也就是能够媲美i5、i7系列，超过当时市场销售的50%以上桌面CPU。
+
+
