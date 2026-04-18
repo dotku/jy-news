@@ -1,0 +1,35 @@
+---
+title: Linux全新NTFS驱动已并入7.1版主线内核
+date: '2026-04-18T14:34:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558702.htm'
+summary: >-
+  在Linux7.1开发周期中，长期备受关注的NTFS文件系统支持迎来重要进展：一套经过多年重构的新NTFS内核驱动已正式合入主线，被LinusTorvalds形容为“ntfsresurrection”（NTFS复活）。这一驱动旨在弥补当前Paragon提交的NTFS3驱动以及更早只读NTFS驱动在功能和维护上的不足，为Linux提供更加现代、可写且维护积极的NTFS支持。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558702.webp'
+slug: 1558702-Linux全新NTFS驱动已并入7-1版主线内核
+id: '1558702'
+title_en: New Linux NTFS Driver Merged into Kernel 7.1 Mainline
+summary_en: >-
+  A long-awaited advancement in NTFS file system support has arrived with the
+  official merging of a newly restructured NTFS kernel driver into the Linux 7.1
+  mainline. Described by Linus Torvalds as “ntfsresurrection,” this driver aims
+  to address shortcomings in functionality and maintenance of the current
+  Paragon-submitted NTFS3 driver and earlier read-only drivers, providing more
+  modern, writable, and actively maintained NTFS support for Linux.
+---
+
+负责这一工作的 Linux 开发者 Namjae Jeon 在过去四年间对早期的 NTFS 内核驱动进行全面翻修，在保留更干净代码基础的同时，引入写入支持、更完善的协议兼容以及一系列现代特性，希望在可靠性、功能性和可维护性上全面超越当前的 NTFS3 实现。 相比几年前合入主线、但近年基本停滞的 NTFS3 驱动，这一新驱动被视作未来 Linux NTFS 支持的主要演进方向。
+
+在本周针对 Linux 7.1 的文件系统相关合入请求中，这套新 NTFS 驱动最初已经打包提交给 Linus Torvalds，但 Torvalds 在审阅过程中发现 Git 提交结构存在问题，随即将该合并回退，要求按其标准重新整理提交历史。 随后，Namjae Jeon 迅速调整并重新发送改进后的合并请求，满足了 Torvalds 对代码组织和提交质量的要求，使得新驱动最终顺利完成合并。
+
+截至当地时间 17 日晚间，新 NTFS 驱动已经正式进入主线内核代码库，相应合并提交在 kernel.org 上公开可查，开发者可以从中了解这套驱动在性能、功能和代码质量方面的具体改进细节。 根据 Linus Torvalds 在合并时的评论，他将本次合并称为 “ntfs resurrection”，凸显这一工作对长期停滞的 NTFS 支持所带来的“重生”意义。
+
+需要注意的是，至少在当前阶段，现有的 NTFS3 驱动仍将继续保留在内核源码树中，新旧两套实现会在一段时间内并存。 对希望尝鲜这一全新 NTFS 实现的用户和发行版维护者而言，可以通过内核配置中的 NTFS_FS Kconfig 选项启用这套新驱动，以便在实际环境中进行测试和验证。
+
+对于 Linux 存储子系统而言，这次 NTFS 驱动的“复活”意味着在主流 Windows 文件系统兼容层面又向前迈出一步，同时也体现出社区对于长期存在但维护滞后的子系统进行现代化重构的决心。 随着 Linux 7.1 开发进程推进，新 NTFS 驱动在真实场景下的表现以及后续演进情况，预计将成为各大发行版与服务器、桌面用户共同关注的焦点之一。
+
+了解更多：
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cdd4dc3aebeab43a72ce0bc2b5bab6f0a80b97a5
+
+

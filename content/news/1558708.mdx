@@ -1,0 +1,38 @@
+---
+title: Windows 11任务栏仍将迎来AI智能代理 正为推出做准备
+date: '2026-04-18T14:40:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558708.htm'
+summary: >-
+  微软近日澄清称，公司并未放弃在Windows11中打造“智能代理”（agentic）体验，任务栏级的AI代理功能仍在按计划推进。这意味着用户未来可以直接在任务栏调用各类AI代理，包括第三方代理，但相关功能将以可选形式提供，不会默认开启。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558708.png'
+slug: 1558708-Windows-11任务栏仍将迎来AI智能代理-正为推出做准备
+id: '1558708'
+title_en: 'Windows 11 Taskbar Still to Get AI Intelligent Agent, Preparing for Launch'
+summary_en: >-
+  Microsoft recently clarified that it has not abandoned the creation of an
+  “agentic” experience in Windows 11, and the taskbar-level AI agent function is
+  still progressing as planned. This means users will eventually be able to
+  directly call various AI agents, including third-party agents, from the
+  taskbar, but the function will be optional and not enabled by default.
+---
+
+此前，微软曾表示将削减 Windows 11 中的 Copilot 身影，只在“最有意义”的场景中引入 AI，一度引发外界对其“收缩 AI 战略”的解读。不过从最新动向来看，微软并不是要把 AI 从系统中全面撤出，而是改变整合方式，将更多精力放到任务栏代理等新形态上。目前，带有任务栏代理支持的 Windows 11 Build 26200.8313 已推送至 Windows Insider 计划的发布预览通道，更新还包括更快的文件资源管理器等改进，而“智能代理任务栏”则隐藏在更新日志的细节之中。
+
+据介绍，这些代理具备高度自主性，能够在较少人工干预的情况下自行规划、调研、推理并执行任务。在微软开始广泛推送相关集成后，用户将可以直接在任务栏触发诸如 Microsoft 365 Researcher 之类的代理，用于处理多步骤的研究和信息整理工作。要启用相关功能，用户需要通过任务栏上的 Microsoft 365 Copilot 图标进行操作，例如悬停以监控或控制代理任务的进度。
+
+从微软展示的界面来看，Microsoft 365 Researcher 可以在后台执行多步骤研究任务，其形态类似于 ChatGPT 或 Google Gemini 的深度研究（Deep Research），但又具有额外优势：它可直接访问用户存储在 OneDrive 或 Microsoft 365 中的历史文档和文件。依托这一能力，Researcher 能够生成更为完整、定制化的报告，而整个过程都围绕任务栏入口展开，让用户在不离开桌面主视图的情况下跟踪 AI 任务进展。需要强调的是，Microsoft 365 Researcher 属于 Microsoft 365 Copilot 套件的一部分，没有安装相关应用或没有订阅 Microsoft 365 的用户将无法使用这项功能。
+
+任务栏 AI 代理也是微软“Ask Copilot”计划的一环。未来一个可能推出的新体验是：在任务栏上的“Ask Copilot”搜索框中，用户可以使用“@”来点名并触发某个代理，例如“@Researcher”。输入“@”后，系统会自动列出当前设备上可用的所有代理，用户可以从列表中直接选择并调用。这一“代理化”体验背后依托的是 Model Context Protocol（MCP），它允许任意 AI 模型或代理连接现有应用和文件系统，包括操作系统本身。
+
+对开发者而言，MCP 提供了一条将自家代理接入 Windows 11 任务栏的新路径。开发者只需将代理接入 MCP，即可让其通过 Windows.UI.Shell.Tasks API 连接到 Windows 11 的外壳和任务栏界面，从而获得系统级入口。目前尚不清楚 Anthropic、OpenAI 等公司是否加入这一生态，但可以确认的是，Microsoft 365 应用已经成为首批“尝鲜者”之一。
+
+外界也关注，既然微软此前承诺要在 Windows 11 中“减少 AI”，为何又在加速推进任务栏代理？对此，从微软的公开表态可以看出，公司并非要在系统中“清零” AI，而是转向更为谨慎、聚焦实用场景的部署策略。微软强调不会强迫用户在任务栏上使用代理，相关功能完全由用户自主选择开启与否。系统也不会通过频繁弹窗等形式“催促”用户体验 Copilot 或任务栏 AI，包括 Microsoft 365 Researcher 在内都不会通过强制手段推送。
+
+在一份声明中，微软表示，将更加有针对性地思考 Copilot 在 Windows 中的整合方式，专注于“真正有用且打磨成熟”的体验。作为这一调整的一部分，公司正在削减一些被视为“并非刚需”的 Copilot 入口，首先便是截图工具（Snipping Tool）、照片（Photos）、小组件（Widgets）和记事本（Notepad）等应用中的嵌入点。从表述中也可以看出，微软减少的是 Copilot 品牌和入口，而非 AI 能力本身；即便 Copilot 的名称在部分场景淡出，AI 功能仍会继续以其他形式存在于 Windows 11 中。
+
+这也是为何一方面微软在从截图工具中移除 Copilot，并在 Windows 记事本中将 Copilot 重新命名为“写作工具”（Writing Tools），另一方面又在推进任务栏上的 AI 代理。未来数月，Windows 11 中的 AI 总体“存在感”将有所减弱，但“减少”并不意味着“归零”。有观察人士指出，AI 在隐藏个人信息（如截图中自动遮挡隐私内容）等方面仍有大量潜在用途，但当前微软更多将资源投向任务栏代理，而在这些细分场景上的投入暂时尚未显现。
+
+就作者个人观点而言，任务栏代理目前并未让人眼前一亮，但只要保持完全可选、不过度打扰用户，这样的尝试尚属可以接受。在微软的新策略下，Windows 11 中的 AI 将从“到处都是入口”转向“少而精”，任务栏代理则成为这一调整后的重要承载形态之一。
+
+

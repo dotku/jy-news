@@ -1,0 +1,31 @@
+---
+title: New Linux NTFS Driver Merged into Kernel 7.1 Mainline
+date: '2026-04-18T14:34:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558702.htm'
+summary: >-
+  A long-awaited advancement in NTFS file system support has arrived with the
+  official merging of a newly restructured NTFS kernel driver into the Linux 7.1
+  mainline. Described by Linus Torvalds as “ntfsresurrection,” this driver aims
+  to address shortcomings in functionality and maintenance of the current
+  Paragon-submitted NTFS3 driver and earlier read-only drivers, providing more
+  modern, writable, and actively maintained NTFS support for Linux.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558702.webp'
+slug: 1558702-Linux全新NTFS驱动已并入7-1版主线内核
+id: '1558702'
+lang: en
+original_title: Linux全新NTFS驱动已并入7.1版主线内核
+---
+Linux developer Namjae Jeon, responsible for this work, spent the past four years thoroughly overhauling the early NTFS kernel driver. He introduced write support, improved protocol compatibility, and a series of modern features while maintaining a cleaner codebase, aiming to comprehensively surpass the current NTFS3 implementation in terms of reliability, functionality, and maintainability. Compared to the NTFS3 driver, which was merged into the mainline years ago but has since seen minimal updates, this new driver is considered the primary direction for future Linux NTFS support.
+
+This week, as part of a file system-related merge request for Linux 7.1, the new NTFS driver was initially submitted to Linus Torvalds. However, Torvalds discovered issues with the Git commit structure during review and subsequently rolled back the merge, requesting a reorganization of the commit history according to his standards. Namjae Jeon quickly adjusted and resubmitted an improved merge request, meeting Torvalds’ requirements for code organization and commit quality, allowing the new driver to finally merge successfully.
+
+As of the evening of the 17th local time, the new NTFS driver has officially entered the mainline kernel codebase, and the corresponding merge commit is publicly available on kernel.org, where developers can learn about the specific improvements in performance, functionality, and code quality. Linus Torvalds’ comment during the merge, calling it “ntfs resurrection,” highlights the “rebirth” significance of this work for long-stagnant NTFS support.
+
+It is important to note that, at least in the current stage, the existing NTFS3 driver will remain in the kernel source tree, and the old and new implementations will coexist for a period of time. Users and distribution maintainers eager to try this new NTFS implementation can enable the new driver through the NTFS_FS Kconfig option in the kernel configuration for testing and validation in real-world environments.
+
+For the Linux storage subsystem, this “resurrection” of the NTFS driver represents a step forward in mainstream Windows file system compatibility and also demonstrates the community’s determination to modernize and restructure long-existing but poorly maintained subsystems. As the Linux 7.1 development progresses, the performance of the new NTFS driver in real-world scenarios and its subsequent evolution are expected to be a key focus for major distributions and server/desktop users.
+
+Learn more:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cdd4dc3aebeab43a72ce0bc2b5bab6f0a80b97a5
