@@ -1,0 +1,44 @@
+[
+  {
+    "handle": "ylecun",
+    "name": "Yann LeCun",
+    "title": "VP & Chief AI Scientist, Meta",
+    "category": "ai"
+  },
+  {
+    "handle": "sama",
+    "name": "Sam Altman",
+    "title": "CEO, OpenAI",
+    "category": "ai"
+  },
+  {
+    "handle": "karpathy",
+    "name": "Andrej Karpathy",
+    "title": "Founder, Eureka Labs",
+    "category": "ai"
+  },
+  {
+    "handle": "elonmusk",
+    "name": "Elon Musk",
+    "title": "CEO, Tesla & SpaceX",
+    "category": "tech"
+  },
+  {
+    "handle": "sundarpichai",
+    "name": "Sundar Pichai",
+    "title": "CEO, Google & Alphabet",
+    "category": "tech"
+  },
+  {
+    "handle": "satyanadella",
+    "name": "Satya Nadella",
+    "title": "CEO, Microsoft",
+    "category": "tech"
+  },
+  {
+    "handle": "lexfridman",
+    "name": "Lex Fridman",
+    "title": "Podcaster & AI Researcher",
+    "category": "ai"
+  }
+]

@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import type { Lang } from "@/lib/i18n";
 
 const labels = {
-  zh: { home: "首页", about: "关于" },
-  en: { home: "Home", about: "About" },
+  zh: { home: "首页", voices: "行业之声", about: "关于" },
+  en: { home: "Home", voices: "Voices", about: "About" },
 };
 
 export default function Navigator({ lang }: { lang: Lang }) {
@@ -16,6 +16,7 @@ export default function Navigator({ lang }: { lang: Lang }) {
 
   const navItems = [
     { name: t.home, path: `/${lang}` },
+    { name: t.voices, path: `/${lang}/voices` },
     { name: t.about, path: `/${lang}/about` },
   ];
 

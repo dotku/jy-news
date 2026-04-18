@@ -1,0 +1,67 @@
+---
+title: "New supply chain attack this time for npm axios, the most popular HTTP client library with 300M week"
+date: "2026-03-31T05:23:32.000Z"
+handle: "karpathy"
+name: "Andrej Karpathy"
+author_title: "Founder, Eureka Labs"
+category: "ai"
+is_rt: false
+original_author: "@karpathy"
+link: "https://x.com/karpathy/status/2038849654423798197"
+image: "https://pbs.twimg.com/card_img%2F2043965617594941440%2FmuueJuuy%3Fformat%3Djpg%26name%3D800x419"
+slug: "karpathy-2038849654423798197"
+---
+
+New supply chain attack this time for npm axios, the most popular HTTP client library with 300M weekly downloads.
+
+
+
+Scanning my system I found a use imported from googleworkspace/cli from a few days ago when I was experimenting with gmail/gcal cli. The installed version (luckily) resolved to an unaffected 1.13.5, but the project dependency is not pinned, meaning that if I did this earlier today the code would have resolved to latest and I'd be pwned.
+
+
+
+It's possible to personally defend against these to some extent with local settings e.g. release-age constraints, or containers or etc, but I think ultimately the defaults of package management projects (pip, npm etc) have to change so that a single infection (usually luckily fairly temporary in nature due to security scanning) does not spread through users at random and at scale via unpinned dependencies.
+
+
+
+More comprehensive article:
+
+https://www.stepsecurity.io/blog/axios-compromised-on-npm-malicious-versions-drop-remote-access-trojan
+
+
+
+Feross (@feross)
+
+🚨 CRITICAL: Active supply chain attack on axios -- one of npm's most depended-on packages.
+
+
+
+The latest axios@1.14.1 now pulls in plain-crypto-js@4.2.1, a package that did not exist before today. This is a live compromise.
+
+
+
+This is textbook supply chain installer malware. axios has 100M+ weekly downloads. Every npm install pulling the latest version is potentially compromised right now.
+
+
+
+Socket AI analysis confirms this is malware. plain-crypto-js is an obfuscated dropper/loader that:
+
+
+
+• Deobfuscates embedded payloads and operational strings at runtime
+
+• Dynamically loads fs, os, and execSync to evade static analysis
+
+• Executes decoded shell commands
+
+• Stages and copies payload files into OS temp and Windows ProgramData directories
+
+• Deletes and renames artifacts post-execution to destroy forensic evidence
+
+
+
+If you use axios, pin your version immediately and audit your lockfiles. Do not upgrade.
+
+
+
+— https://nitter.net/feross/status/2038807290422370479#m

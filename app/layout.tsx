@@ -15,9 +15,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JY Tech News - 杰圆科技新闻",
+  title: {
+    default: "JY Tech News - 杰圆科技新闻",
+    template: "%s | JY Tech News",
+  },
   description:
     "JY Tech News（杰圆科技新闻）— 精选全球科技新闻、AI、创业与行业洞察",
+  metadataBase: new URL("https://news.jytech.us"),
+  openGraph: {
+    type: "website",
+    siteName: "JY Tech News",
+    locale: "zh_CN",
+    alternateLocale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  alternates: {
+    languages: {
+      "zh-CN": "/zh",
+      "en-US": "/en",
+    },
+  },
 };
 
 export default function RootLayout({

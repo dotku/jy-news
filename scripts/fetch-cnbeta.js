@@ -1,13 +1,10 @@
 /**
  * Fetch news from cnBeta and save as MDX files.
- * Also captures view/like counts and seeds them into the database.
  * Usage: node scripts/fetch-cnbeta.js
  */
 const cheerio = require("cheerio");
 const fs = require("fs");
 const path = require("path");
-const matter = require("gray-matter");
-const { neon } = require("@neondatabase/serverless");
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 
 const BASE_URL = "https://www.cnbeta.com.tw";
@@ -27,7 +24,6 @@ async function fetchArticleList() {
   const html = await fetchPage(BASE_URL);
   const $ = cheerio.load(html);
   const articles = [];
-  const fullText = $.text();
 
   $('a[href*="/articles/"]').each((_, el) => {
     const href = $(el).attr("href");
@@ -43,21 +39,12 @@ async function fetchArticleList() {
     const img = parent.find("img").first();
     const image = img.attr("src") || img.attr("data-src") || "";
 
-    // Extract view and like counts from surrounding text
-    const parentText = parent.text();
-    const viewMatch = parentText.match(/阅读\s*(\d+)/);
-    const likeMatch = parentText.match(/点赞\s*(\d+)/);
-    const views = viewMatch ? parseInt(viewMatch[1], 10) : 0;
-    const likes = likeMatch ? parseInt(likeMatch[1], 10) : 0;
-
     articles.push({
       title,
       url: fullUrl,
       category: match[1],
       id: match[2],
       image,
-      views,
-      likes,
     });
   });
 
@@ -95,10 +82,6 @@ async function fetchArticleDetail(url) {
       else content += text + "\n\n";
     });
 
-    // Get view/like from detail page too
-    const viewMatch = pageText.match(/阅读\s*\(?\s*(\d+)\s*\)?/);
-    const likeMatch = pageText.match(/点赞\s*\(?\s*(\d+)\s*\)?/);
-
     let ogImage =
       $('meta[property="og:image"]').attr("content") || "";
     // Sanitize: only keep valid image URLs
@@ -111,12 +94,10 @@ async function fetchArticleDetail(url) {
       content: content || "",
       date: dateText,
       image: ogImage,
-      views: viewMatch ? parseInt(viewMatch[1], 10) : 0,
-      likes: likeMatch ? parseInt(likeMatch[1], 10) : 0,
     };
   } catch (err) {
     console.error(`  Failed to fetch detail: ${url}`, err.message);
-    return { summary: "", content: "", date: new Date().toISOString().split("T")[0], image: "", views: 0, likes: 0 };
+    return { summary: "", content: "", date: new Date().toISOString().split("T")[0], image: "" };
   }
 }
 
@@ -205,34 +186,6 @@ function makeSlug(id, title) {
   return id + "-" + titleSlug;
 }
 
-async function seedStats(statsArray) {
-  const dbUrl = process.env.DATABASE_URL;
-  if (!dbUrl) {
-    console.log("\n[skip] DATABASE_URL not set, skipping stats seeding");
-    return;
-  }
-
-  const sql = neon(dbUrl);
-  console.log(`\nSeeding ${statsArray.length} article stats to database...`);
-
-  for (const { slug, views, likes } of statsArray) {
-    if (views === 0 && likes === 0) continue;
-    try {
-      await sql`
-        INSERT INTO article_stats (slug, views, likes, created_at, updated_at)
-        VALUES (${slug}, ${views}, ${likes}, now(), now())
-        ON CONFLICT (slug) DO UPDATE SET
-          views = GREATEST(article_stats.views, ${views}),
-          likes = GREATEST(article_stats.likes, ${likes}),
-          updated_at = now()
-      `;
-      console.log(`  [db] ${slug}: ${views} views, ${likes} likes`);
-    } catch (err) {
-      console.error(`  [db error] ${slug}: ${err.message}`);
-    }
-  }
-}
-
 async function main() {
   console.log("Fetching article list...");
   const articles = await fetchArticleList();
@@ -241,26 +194,14 @@ async function main() {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
   const limit = Math.min(articles.length, 50);
-  const statsToSeed = [];
 
   for (let i = 0; i < limit; i++) {
     const a = articles[i];
     const slug = makeSlug(a.id, a.title);
     const filePath = path.join(OUTPUT_DIR, a.id + ".mdx");
 
-    // Check if already exists — still collect stats
     if (fs.existsSync(filePath)) {
-      // Read existing slug
-      const raw = fs.readFileSync(filePath, "utf-8");
-      const { data } = matter(raw);
-      const existingSlug = data.slug || a.id;
-      // Use higher of list-page vs existing stats
-      const views = Math.max(a.views, 0);
-      const likes = Math.max(a.likes, 0);
-      if (views > 0 || likes > 0) {
-        statsToSeed.push({ slug: existingSlug, views, likes });
-      }
-      console.log(`[skip] ${a.title} (exists) — ${views} views, ${likes} likes`);
+      console.log(`[skip] ${a.title} (exists)`);
       continue;
     }
 
@@ -269,13 +210,9 @@ async function main() {
     await new Promise((r) => setTimeout(r, 500));
 
     let image = detail.image || a.image || "";
-    // Upload image to R2
     if (image) {
       image = await uploadImageToR2(image, a.id);
     }
-    // Use higher count from list page vs detail page
-    const views = Math.max(a.views, detail.views);
-    const likes = Math.max(a.likes, detail.likes);
 
     const mdx =
       "---\n" +
@@ -292,13 +229,8 @@ async function main() {
       "\n";
 
     fs.writeFileSync(filePath, mdx, "utf-8");
-    console.log(`  Saved: ${a.id}.mdx — ${views} views, ${likes} likes`);
-
-    statsToSeed.push({ slug, views, likes });
+    console.log(`  Saved: ${a.id}.mdx`);
   }
-
-  // Seed stats to database
-  await seedStats(statsToSeed);
 
   console.log("\nDone!");
 }

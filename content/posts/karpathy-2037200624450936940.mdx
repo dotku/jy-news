@@ -1,0 +1,64 @@
+---
+title: "When I built menugen ~1 year ago, I observed that the hardest part by far was not the code itself, i"
+date: "2026-03-26T16:10:52.000Z"
+handle: "karpathy"
+name: "Andrej Karpathy"
+author_title: "Founder, Eureka Labs"
+category: "ai"
+is_rt: false
+original_author: "@karpathy"
+link: "https://x.com/karpathy/status/2037200624450936940"
+image: ""
+slug: "karpathy-2037200624450936940"
+---
+
+When I built menugen ~1 year ago, I observed that the hardest part by far was not the code itself, it was the plethora of services you have to assemble like IKEA furniture to make it real, the DevOps: services, payments, auth, database, security, domain names, etc...
+
+
+
+I am really looking forward to a day where I could simply tell my agent: "build menugen" (referencing the post) and it would just work. The whole thing up to the deployed web page. The agent would have to browse a number of services, read the docs, get all the api keys, make everything work, debug it in dev, and deploy to prod. This is the actually hard part, not the code itself. Or rather, the better way to think about it is that the entire DevOps lifecycle has to become code, in addition to the necessary sensors/actuators of the CLIs/APIs with agent-native ergonomics. And there should be no need to visit web pages, click buttons, or anything like that for the human. 
+
+
+
+It's easy to state, it's now just barely technically possible and expected to work maybe, but it definitely requires from-scratch re-design, work and thought. Very exciting direction!
+
+
+Patrick Collison (@patrickc)
+
+When https://nitter.net/karpathy built MenuGen (https://karpathy.bearblog.dev/vibe-coding-menugen/), he said:
+
+
+
+"Vibe coding menugen was exhilarating and fun escapade as a local demo, but a bit of a painful slog as a deployed, real app. Building a modern app is a bit like assembling IKEA future. There are all these services, docs, API keys, configurations, dev/prod deployments, team and security features, rate limits, pricing tiers."
+
+
+
+We've all run into this issue when building with agents: you have to scurry off to establish accounts, clicking things in the browser as though it's the antediluvian days of 2023, in order to unblock its superintelligent progress.
+
+
+
+So we decided to build Stripe Projects to help agents instantly provision services from the CLI.
+
+
+
+For example, simply run:
+
+
+
+$ stripe projects add posthog/analytics
+
+
+
+And it'll create a PostHog account, get an API key, and (as needed) set up billing.
+
+
+
+Projects is launching today as a developer preview. You can register for access (we'll make it available to everyone soon) at http://projects.dev. We're also rolling out support for many new providers over the coming weeks. (Get in touch if you'd like to make your service available.)
+
+
+
+https://projects.dev
+
+
+
+— https://nitter.net/patrickc/status/2037190688950161709#m

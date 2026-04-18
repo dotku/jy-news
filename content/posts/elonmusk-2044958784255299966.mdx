@@ -1,0 +1,62 @@
+---
+title: "People oddly assumed that I didn’t understand LiDAR, even though I oversaw the custom LiDAR developm"
+date: "2026-04-17T01:59:02.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: false
+original_author: "@elonmusk"
+link: "https://x.com/elonmusk/status/2044958784255299966"
+image: "https://pbs.twimg.com/media%2FHGCGoQ5XkAAPN0N.jpg"
+slug: "elonmusk-2044958784255299966"
+---
+
+People oddly assumed that I didn’t understand LiDAR, even though I oversaw the custom LiDAR development that Dragon uses to dock with the Space Station
+
+
+Brivael - FR (@brivael)
+
+Aujourd'hui grosse discussion avec mes ingés (chez Argil) sur pourquoi Elon a viré le LIDAR de ses voitures autonomes. Choix radical, moqué pendant des années, et comme d'hab il avait raison depuis le début.
+
+
+
+Le LIDAR c'est un laser qui balaye l'environnement et crache un nuage de points 3D. Sur le papier tu obtiens la géométrie exacte du monde. Dans la vraie vie c'est une verrue technologique collée sur le toit parce qu'on sait pas faire mieux avec la vision seule.
+
+
+
+Problème numéro un : ça rajoute une modalité dans le training du modèle. Ton réseau doit apprendre à fusionner vision + lidar + radar + ultrasons. Chaque capteur en plus c'est une source de désaccord à arbitrer, pas une source d'info supplémentaire. Sensor fusion artisanale = dette technique permanente.
+
+
+
+Problème numéro deux, la bitter lesson de Rich Sutton : scaler le compute sur une seule modalité bat systématiquement les architectures bricolées à la main. Tesla a dropé le radar, puis les ultrasons, est passé full end-to-end vision. Leur courbe sur les edge cases s'est accélérée APRÈS, pas avant. Waymo fait l'inverse et reste stuck en ops géofencée.
+
+
+
+Problème numéro trois, le plus fondamental : le LIDAR voit la géométrie, pas la sémantique. Il sait qu'il y a un truc, pas ce que c'est ni ce que ça va faire. Les derniers 9 de fiabilité sont des problèmes de cognition, pas de perception brute. Un capteur de plus résout rien, il ajoute du bruit.
+
+
+
+Sébastien Loeb balance une 208 T16 à 180 dans un chemin boueux corse sous la pluie avec zéro LIDAR. Deux yeux, un cerveau. L'évolution a donné des yeux aux prédateurs pendant 500 millions d'années, pas des lasers. Il y a une raison.
+
+
+
+Le LIDAR c'est l'équivalent du marxisme appliqué à l'économie. Une solution planifiée, centralisée, qui prétend modéliser explicitement ce qui doit émerger d'un système distribué et adaptatif. Tu remplaces l'intelligence par de la mesure, la compréhension par de la donnée, l'émergence par le contrôle. Ça rassure les ingénieurs qui veulent tout spécifier en amont, exactement comme la planif rassurait les économistes soviétiques. Et ça échoue pour les mêmes raisons : la réalité est trop riche pour être capturée par un capteur, comme elle est trop riche pour être capturée par un plan quinquennal.
+
+
+
+La vraie intelligence, celle de Hayek comme celle de Tesla, c'est de faire confiance à un système qui apprend de l'expérience plutôt que de tout pré-encoder. L'élégance d'une solution c'est son rapport signal sur complexité. Le LIDAR explose le dénominateur.
+
+
+
+Défendre le LIDAR en 2026 c'est préférer empiler des hacks plutôt que résoudre le vrai problème. C'est de la feignasserie intellectuelle maquillée en rigueur d'ingénieur. Les mêmes gens qui défendaient les systèmes experts en 2012 contre le deep learning. Ils finiront pareil.
+
+
+
+Never bet against end-to-end. Never bet against la simplicité. Never bet against Elon.
+
+
+
+
+
+— https://nitter.net/brivael/status/2044782315621024004#m
