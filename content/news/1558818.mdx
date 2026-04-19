@@ -1,0 +1,51 @@
+---
+title: IETF收到IPv8协议草案 提供1844亿个IP地址 100%向下兼容IPv4协议
+date: '2026-04-19T17:53:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558818.htm'
+summary: >-
+  针对IPv6推进缓慢的问题，日前有行业人士向互联网工程任务组(IETF)提交IPv8核心协议草案，该协议将100%向下兼容IPv4协议，所有现有设备都不需要更新即可无缝兼容IPv8协议。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558818.png'
+slug: 1558818-IETF收到IPv8协议草案-提供1844亿个IP地址-100-向下兼容IPv4协议
+id: '1558818'
+title_en: >-
+  IETF Receives IPv8 Protocol Draft, Providing 184.4 Billion IP Addresses and
+  100% Backward Compatibility with IPv4
+summary_en: >-
+  Addressing the slow progress of IPv6 adoption, industry experts have submitted
+  an IPv8 core protocol draft to the Internet Engineering Task Force (IETF).
+  This protocol is 100% backward compatible with IPv4, allowing all existing
+  devices to seamlessly support IPv8 without updates.
+---
+
+目前在很多新兴市场 IPv6 的覆盖速度已经明显提升，不过从 IPv6 发展历史来看，该协议的推进速度可以说是蜗牛：自 1992 年开始讨论、1996 年逐渐标准化，到 1998 年 12 月才正式发布。
+
+而直到现在 IPv6 的市场覆盖率刚刚突破 50%(以Google搜索数据参考)，全球互联网的发展受制于 IPv4 地址不足问题，IPv6 协议推进速度慢无法解决实际问题，所以当前很多网络都采用 CGNAT 技术进行 IP 共享。
+
+IPv8 协议的核心亮点就是向下兼容：
+
+IPv8 协议从设计就直接百分百向下兼容 IPv4 协议，草案也明确规定 IPv4 是 IPv8 的真子集，根据草案定义，IPv8 采用 64 位地址空间，格式为 r.r.r.r.n.n.n.n，这个格式由 32 位 ASN 路由前缀和 32 位主机地址组成。
+
+当 32 位 ASN 路由前缀字段 (r.r.r.r.) 为 0.0.0.0 时，这个地址就会直接按照标准 IPv4 规则处理，例如 0.0.0.0.192.168.1.1 等同于 192.168.1.1，因此现有的所有支持 IPv4 协议的设备都可以支持 IPv8。
+
+操作系统和应用程序也不需要进行大幅度改动即可直接从 IPv4 兼容到 IPv8，对整个行业来说这可以减少升级过程中的摩擦以及成本开支，让行业可以放心升级 IPv8 协议。
+
+IPv8 地址数量仅为 1844 亿个：
+
+与 IPv6 协议的让地球上的每一粒沙子都有自己的 IP 地址相比 (有 340 亿亿亿亿个地址)，IPv8 协议做不到这种情况，因为 IPv8 协议 64 位地址空间理论最大独立地址数量为 2^64 (约为 1，844 亿个)。
+
+每个自治系统 (ASN) 持有者可以获得大约 42.9 亿个主机地址，可以满足各类组织的规模化需求，也不需要依赖用于解决 IPv4 地址不足的 CGNAT 技术。
+
+IPv8 协议草案还规定，BGP8 路由表以 ASN 为单位进行绑定，结合 /16 最小化前缀原则可以有效抑制路由表膨胀，进而降低核心路由器的处理压力。
+
+安全与管理平台也是亮点：
+
+IPv8 协议重构网络管理与安全体系，通过区域服务器统一管理平台、整合 DHCP8 地址分配、DNS8 域名解析、NTP8 时间同步、OAuth2 JWT 身份认证、NetLog8 网络遥测、WHOIS8 路由验证等多项服务，解决传统网络服务碎片化的管理问题。
+
+IPv8 协议还采用预设不信任的逻辑，所有向互联网传输的数据包，在出口路由处必须经过 DNS8 解析和 WHOIS8 路由注册双重验证，设备必须持有合法的认证令牌才能正常通信。
+
+需要特别说明的是任何个人和组织都可以向 IETF 提交草案进行讨论，IETF 公布的草案不代表 IETF 官方、未获得 IETF 正式认可和采纳，IETF 发布草案后仅供行业进行讨论。
+
+IPv8 协议草案的讨论截止时间是 2026 年 10 月，草案全文：https://datatracker.ietf.org/doc/draft-thain-ipv8/
+
+
