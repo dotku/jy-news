@@ -1,0 +1,42 @@
+---
+title: 云开发平台Vercel遭到黑客攻击 部分客户的敏感信息可能已经泄露
+date: '2026-04-20T12:37:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558926.htm'
+summary: >-
+  以窃取信息并发起勒索为主要业务的黑客团队ShinyHunter日前拿下知名云开发平台Vercel，该平台被攻击后泄露部分内部敏感信息和客户信息，目前平台正在通知受影响的客户立即轮换各类凭证并检查活动日志。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558926.jpg'
+slug: 1558926-云开发平台Vercel遭到黑客攻击-部分客户的敏感信息可能已经泄露
+id: '1558926'
+title_en: >-
+  Vercel Cloud Development Platform Hacked, Sensitive Information of Some
+  Customers May Have Been Leaked
+summary_en: >-
+  The hacker group ShinyHunter, whose main business is information theft and
+  ransom, recently took down the well-known cloud development platform Vercel.
+  After the attack, some internal sensitive information and customer information
+  were leaked. The platform is currently notifying affected customers to
+  immediately rotate various credentials and check activity logs.
+---
+
+最初 Vercel 并未公布此次攻击的发生原因，当时就有坊间传闻称源头来自 AI 工具 Context.ai，随后 Vercel 更新安全事件页面证实这个说法，其员工使用 Context.AI 遭到入侵，黑客利用该工具的访问权限控制 Vercel Google Workspace 账户，再利用这个账户进入内部环境。
+
+截图显示 Vercel 已经通过 Telegram 联系黑客要求黑客不要公布任何数据，不过黑客勒索主要是为了钱，黑客要价 200 万美元以换取数据保密，现在还不清楚 Vercel 是否会提供赎金换取数据保密。
+
+Vercel 称仅少部分客户受影响：
+
+Vercel 在安全事件更新中强调此次安全事件仅造成少部分客户数据被窃取，目前已经私下联系这些客户加强安全措施并轮换各类凭证，同时 Vercel 也强调黑客窃取的内部信息并非机密，因为在 Vercel 内部被标记为敏感的信息都不允许被读取，所以黑客并未获得 Vercel 的敏感信息。
+
+如何判断自己是否已经被攻击也非常简单，登录Google或 Google Workspace 控制台，检查 OAuth 应用里是否有：110671459871-30f1spbu0hptbs60cb4vsmv79i7bbvqj.apps.googleusercontent.com (Google官方似乎已经删除该应用，不知道能否查看到授权历史)
+
+如果有这个 OAuth 授权应用说明用户已经遭到黑客攻击，此时用户应当立即轮换所有凭证，并检查各类服务是否有异常登录行为，因为黑客可能也已经通过凭证登录服务器安装其他持久化后门。
+
+Context.AI 尚未发布回应：
+
+Vercel 已经将此次安全事件通报给 Context.AI，不过后者暂时还未发布任何回应，蓝点网检查其博客发现 Context.AI 昨天夜里发布三篇博客介绍其他内容，但没有提到任何与安全相关的内容，所以完全搞不清楚黑客是怎么入侵 Context.AI 的。
+
+所以建议使用 Context.AI 的用户也立即检查轮换各类凭证并检查是否有异常登录行为，当然如果追求更高安全性的话，即便没有发现异常行为也应该直接轮换所有凭证。
+
+via Vercel
+
+

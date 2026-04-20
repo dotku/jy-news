@@ -1,0 +1,38 @@
+---
+title: >-
+  Vercel Cloud Development Platform Hacked, Sensitive Information of Some
+  Customers May Have Been Leaked
+date: '2026-04-20T12:37:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558926.htm'
+summary: >-
+  The hacker group ShinyHunter, whose main business is information theft and
+  ransom, recently took down the well-known cloud development platform Vercel.
+  After the attack, some internal sensitive information and customer information
+  were leaked. The platform is currently notifying affected customers to
+  immediately rotate various credentials and check activity logs.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558926.jpg'
+slug: 1558926-云开发平台Vercel遭到黑客攻击-部分客户的敏感信息可能已经泄露
+id: '1558926'
+lang: en
+original_title: 云开发平台Vercel遭到黑客攻击 部分客户的敏感信息可能已经泄露
+---
+Initially, Vercel did not disclose the cause of the attack. Rumors circulated that the source came from the AI tool Context.ai. Vercel later updated its security incident page to confirm this, stating that its employees were compromised through the use of Context.AI. Hackers used the tool's access to control Vercel's Google Workspace account, and then used this account to enter the internal environment.
+
+Screenshots show that Vercel has contacted the hackers via Telegram, asking them not to publish any data. However, the hackers are primarily motivated by money, demanding $2 million in exchange for data confidentiality. It is currently unclear whether Vercel will provide a ransom to maintain data confidentiality.
+
+Vercel claims that only a small number of customers were affected:
+
+In its security incident update, Vercel emphasized that the security incident resulted in the theft of data from only a small number of customers. It has privately contacted these customers to strengthen security measures and rotate various credentials. Vercel also emphasized that the internal information stolen by the hackers was not confidential, as information marked as sensitive within Vercel is not allowed to be read, so the hackers did not obtain Vercel's sensitive information.
+
+It is very simple to determine if you have been attacked: log in to the Google or Google Workspace console and check if the following is present in OAuth apps: 110671459871-30f1spbu0hptbs60cb4vsmv79i7bbvqj.apps.googleusercontent.com (Google officials seem to have deleted the app, it is unknown if you can view the authorization history).
+
+If this OAuth authorization app is present, it indicates that the user has been hacked. The user should immediately rotate all credentials and check for any abnormal login activity in various services, as hackers may have already logged into the server using credentials to install other persistent backdoors.
+
+Context.AI has not yet responded:
+
+Vercel has reported the security incident to Context.AI, but the latter has not yet released any response. Lan Dian Wang checked its blog and found that Context.AI published three blog posts introducing other content last night, but did not mention any security-related content, so it is completely unclear how the hackers infiltrated Context.AI.
+
+Therefore, it is recommended that users of Context.AI also immediately check and rotate various credentials and check for any abnormal login activity. Of course, if you pursue higher security, you should directly rotate all credentials even if no abnormal behavior is found.
+
+via Vercel
