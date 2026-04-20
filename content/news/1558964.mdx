@@ -1,0 +1,34 @@
+---
+title: LXQt 2.4 发布：Wayland 体验继续打磨 多项细节改进
+date: '2026-04-20T19:09:00'
+category: soft
+source: 'https://www.cnbeta.com.tw/articles/soft/1558964.htm'
+summary: >-
+  由LXQt项目开发的轻量级Qt桌面环境于2026年4月20日正式发布2.4版本，在Wayland适配、一致性体验以及终端与面板插件等多个方面带来了改进。这一版本也与近期发布的GNOME50、KDEPlasma6.6等一起，构成当前一批较新的开源桌面更新。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558964.webp'
+slug: 1558964-LXQt-2-4-发布-Wayland-体验继续打磨-多项细节改进
+id: '1558964'
+title_en: >-
+  LXQt 2.4 Released: Continued Wayland Experience Refinement and Multiple Detail
+  Improvements
+summary_en: >-
+  The lightweight Qt desktop environment developed by the LXQt project
+  officially released version 2.4 on April 20, 2026, bringing improvements in
+  Wayland adaptation, consistency experience, and terminal and panel plugins.
+  This version, along with recently released GNOME50 and KDE Plasma 6.6,
+  constitutes a recent batch of new open-source desktop updates.
+---
+
+在 Wayland 支持方面，LXQt 2.4 针对多屏桌面环境下的桌面图标显示进行了修正，使多显示器场景中桌面项目的可见性更加一致。同时，LXQt Sessions 现在将 X11 与 Wayland 会话的设置分离管理，方便用户分别调整不同会话环境下的配置。在 Wayland 下，LXQt 还支持通过在合成器设置中为“lxqt-qdbus openmenu”添加快捷方式来打开主菜单，为无传统“右键菜单”的使用习惯提供了新的调用方式。
+
+电源管理方面，LXQt 2.4 为接通电源（AC）与电池供电分别引入了独立的显示器熄屏超时时间设置，使笔记本等设备在不同供电状态下能够采用不同的节能策略。开发者同时清理了一批被认为“无用”的选项，以减少界面噪音并简化配置体验。
+
+LXQt 面板在本次更新中也得到增强，其音量插件现已支持水平布局，以便更好地融入常见的横向面板设计。这有助于在保持轻量化的同时提升面板组件的可用性和观感。
+
+终端模拟器 QTerminal 在 2.4 版本中获得多项改进，包括自定义标签页名称行为的优化，使重命名和管理标签页更加符合用户预期。界面主题新增了 “Nord” 主题，为偏好冷色调与高对比度界面的用户提供了新的视觉选择。搜索功能现在在查找时可以高亮显示所有匹配结果，配合改进后的高亮代码，使在长输出中的定位与阅读更加高效。
+
+在门户集成方面，xdg-desktop-portal-lxqt 新增了基于 org.freedesktop.impl.portal.Access 的访问门户，实现与桌面门户框架更紧密的配合，为沙盒应用请求权限等场景打下基础。除此之外，本次发布还包含若干小修小补和其他改进，详情可在项目发布公告与 GitHub 版本页面中查阅：
+
+https://github.com/lxqt/lxqt/releases/tag/2.4.0
+
+

@@ -1,0 +1,30 @@
+---
+title: >-
+  LXQt 2.4 Released: Continued Wayland Experience Refinement and Multiple Detail
+  Improvements
+date: '2026-04-20T19:09:00'
+category: soft
+source: 'https://www.cnbeta.com.tw/articles/soft/1558964.htm'
+summary: >-
+  The lightweight Qt desktop environment developed by the LXQt project
+  officially released version 2.4 on April 20, 2026, bringing improvements in
+  Wayland adaptation, consistency experience, and terminal and panel plugins.
+  This version, along with recently released GNOME50 and KDE Plasma 6.6,
+  constitutes a recent batch of new open-source desktop updates.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558964.webp'
+slug: 1558964-LXQt-2-4-发布-Wayland-体验继续打磨-多项细节改进
+id: '1558964'
+lang: en
+original_title: LXQt 2.4 发布：Wayland 体验继续打磨 多项细节改进
+---
+Regarding Wayland support, LXQt 2.4 has corrected the display of desktop icons in multi-screen desktop environments, making the visibility of desktop items more consistent in multi-monitor scenarios. At the same time, LXQt Sessions now separately manages the settings for X11 and Wayland sessions, allowing users to adjust configurations for different session environments independently. Under Wayland, LXQt also supports opening the main menu by adding a shortcut for “lxqt-qdbus openmenu” in the compositor settings, providing a new invocation method for users not accustomed to the traditional “right-click menu.”
+
+In terms of power management, LXQt 2.4 introduces independent display off timeout settings for AC power connection and battery power, allowing laptops and other devices to adopt different energy-saving strategies in different power states. Developers have also cleaned up a number of options considered “useless” to reduce interface noise and simplify the configuration experience.
+
+The LXQt panel has also been enhanced in this update, with its volume plugin now supporting horizontal layout to better integrate into common horizontal panel designs. This helps improve the usability and appearance of panel components while maintaining lightweightness.
+
+The terminal emulator QTerminal has received multiple improvements in version 2.4, including optimization of custom tab name behavior, making renaming and managing tabs more in line with user expectations. The interface theme has added a “Nord” theme, providing a new visual choice for users who prefer cool tones and high-contrast interfaces. The search function now highlights all matching results when searching, combined with improved highlighting code, making locating and reading in long outputs more efficient.
+
+In terms of portal integration, xdg-desktop-portal-lxqt has added an access portal based on org.freedesktop.impl.portal.Access, achieving closer cooperation with the desktop portal framework and laying the foundation for scenarios such as sandboxed applications requesting permissions. In addition, this release also includes several minor fixes and other improvements, details of which can be found in the project release announcement and GitHub version page:
+
+https://github.com/lxqt/lxqt/releases/tag/2.4.0
