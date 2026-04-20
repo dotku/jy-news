@@ -1,0 +1,33 @@
+---
+title: GPU-Z曝出严重安全漏洞 黑客可获取系统最高权限
+date: '2026-04-20T17:27:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558956.htm'
+summary: >-
+  安全研究员Impulsive披露，全球PC玩家广泛使用的硬件监控工具GPU-Z存在严重安全漏洞。其内置的TRIXX.sys驱动程序可在无需管理员权限的情况下，直接读写计算机物理内存，攻击者可借此获取系统最高访问权限。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558956.png'
+slug: 1558956-GPU-Z曝出严重安全漏洞-黑客可获取系统最高权限
+id: '1558956'
+title_en: >-
+  GPU-Z Exposes Serious Security Vulnerability: Hackers Can Obtain System-Level
+  Privileges
+summary_en: >-
+  Security researcher Impulsive has revealed a critical security vulnerability
+  in GPU-Z, a hardware monitoring tool widely used by PC gamers. Its built-in
+  TRIXX.sys driver can directly read and write computer physical memory without
+  administrator privileges, allowing attackers to gain system-level access.
+---
+
+漏洞的核心在于TRIXX.sys驱动程序中的控制码IOCTL 0x800060C4，该控制码原本用于读取显卡硬件信息，但权限门槛极低，系统中任何普通程序均可向该驱动发送指令。
+
+通过调用系统内核函数HalSetBusDataByOffset，攻击者可以重新定义PCI BAR（基址寄存器），从软件权限层级（Ring 3）直接跨越防御，读取或修改物理内存中的数据，包括密码、加密密钥以及操作系统核心保护机制。
+
+更棘手的是，该驱动程序持有合法的EV（Extended Validation）数码签名，有效期至2028年，Windows系统会将其视为完全可信的文件。
+
+这意味着黑客无需直接攻击已安装GPU-Z的用户，而是可以将这个有漏洞但合法签名的旧版驱动带入目标电脑，实施BYOVD攻击，绕过Windows的安全封锁。
+
+GPU-Z作者Wizzard承认部分技术细节具有参考价值，但反驳称在Windows环境下普通用户程序无法直接与驱动通信，必须具备管理员权限才能触发。
+
+目前Wizzard正在修补漏洞，在新版本推出前请谨慎使用，由于此漏洞需要本地执行，用户只要不执行可疑文件，黑客就无法利用电脑内的GPU-Z。
+
+

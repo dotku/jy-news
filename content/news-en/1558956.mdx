@@ -1,0 +1,29 @@
+---
+title: >-
+  GPU-Z Exposes Serious Security Vulnerability: Hackers Can Obtain System-Level
+  Privileges
+date: '2026-04-20T17:27:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1558956.htm'
+summary: >-
+  Security researcher Impulsive has revealed a critical security vulnerability
+  in GPU-Z, a hardware monitoring tool widely used by PC gamers. Its built-in
+  TRIXX.sys driver can directly read and write computer physical memory without
+  administrator privileges, allowing attackers to gain system-level access.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1558956.png'
+slug: 1558956-GPU-Z曝出严重安全漏洞-黑客可获取系统最高权限
+id: '1558956'
+lang: en
+original_title: GPU-Z曝出严重安全漏洞 黑客可获取系统最高权限
+---
+The core of the vulnerability lies in control code IOCTL 0x800060C4 within the TRIXX.sys driver. This control code was originally designed to read graphics card hardware information, but has extremely low permission requirements, allowing any ordinary program in the system to send commands to the driver.
+
+By calling the system kernel function HalSetBusDataByOffset, attackers can redefine PCI BARs (base address registers), bypassing defenses and directly reading or modifying data in physical memory from the software privilege level (Ring 3). This includes passwords, encryption keys, and the operating system's core protection mechanisms.
+
+More troublingly, the driver possesses a legitimate EV (Extended Validation) digital signature valid until 2028, causing Windows systems to treat it as a completely trusted file.
+
+This means hackers don't need to directly attack users with GPU-Z installed; instead, they can introduce the vulnerable but legitimately signed older version of the driver onto target computers, implement a BYOVD (Bring Your Own Vulnerable Driver) attack, and bypass Windows security safeguards.
+
+GPU-Z author Wizzard acknowledges that some of the technical details are valuable as a reference, but counters that under Windows, ordinary user programs cannot directly communicate with the driver and administrator privileges are required to trigger the vulnerability.
+
+Wizzard is currently patching the vulnerability. Exercise caution when using the tool until a new version is released. As this vulnerability requires local execution, hackers cannot exploit it if users do not execute suspicious files.
