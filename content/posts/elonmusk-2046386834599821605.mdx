@@ -1,0 +1,153 @@
+---
+title: "I hope this helps. If you need more help let me know:    Connecting OpenClaw to the X API is straigh"
+date: "2026-04-21T00:33:36.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: true
+original_author: "@BrianRoemmele"
+link: "https://x.com/BrianRoemmele/status/2046386834599821605"
+image: ""
+slug: "elonmusk-2046386834599821605"
+---
+
+I hope this helps. If you need more help let me know:
+
+
+
+Connecting OpenClaw to the X API is straightforward now thanks to X’s official native support... 
+
+
+
+The best and most direct method uses the official xurl CLI tool from X, which comes with a pre-built SKILL.md that OpenClaw recognizes automatically. This lets your local OpenClaw agent post tweets, search timelines, read posts, reply, manage follows, send DMs, upload media, and more all via natural language commands.
+
+
+
+Official Native Method: xurl CLI (Recommended for Direct X API Access)
+
+
+
+This uses X’s pay-per-use API pricing (very affordable now:  e.g., owned reads ~$0.001/request, basic posts ~$0.015). No third-party bridges required.
+
+
+
+1Get X API Credentials
+
+◦Go to the X Developer Portal.
+
+◦Create a new app (or project).
+
+◦In the app settings:
+
+▪Set the redirect URI to http://localhost:8080/callback.
+
+▪Move the app to the Pay-per-use package and Production environment (important — otherwise reads may fail with “client-forbidden”).
+
+◦Note your Client ID and Client Secret.
+
+2Install the xurl CLI (on your machine where OpenClaw runs) Run one of these (pick your OS/preference):
+
+◦macOS (Homebrew): brew install --cask xdevplatform/tap/xurl
+
+◦
+
+◦npm (any OS): npm install -g @xdevplatform/xurl
+
+◦
+
+◦One-liner shell script: curl -fsSL https://raw.githubusercontent.com/xdevplatform/xurl/main/install.sh | bash
+
+◦
+
+◦Or go install http://github.com/xdevplatform/xurl@latest.
+
+3Authenticate xurl (do this manually — never via the agent for security)
+
+◦Register your app: xurl auth apps add my-app --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET
+
+◦
+
+◦Start OAuth2 flow: xurl auth oauth2
+
+◦ (Follow the browser prompt; it opens automatically.)
+
+◦Check status: xurl auth status
+
+◦
+
+◦(Optional) Set default app/user: xurl auth default my-app or run the interactive picker with xurl auth default.
+
+4OpenClaw Integration
+
+◦Restart your OpenClaw gateway/agent if needed.
+
+◦The built-in xurl skill (in skills/xurl/SKILL.md) is already merged into OpenClaw — no extra install required.
+
+◦Your agent now understands commands like:
+
+▪xurl post "Hello from my OpenClaw agent using Grok!"
+
+▪xurl search "Grok 4.3" -n 10
+
+▪xurl timeline -n 20
+
+▪xurl reply 1234567890123456789 "Great point!"
+
+▪xurl whoami, xurl read [post URL], xurl follow https://nitter.net/handle, etc.
+
+◦Just talk to your agent naturally: “Post a tweet about the new Grok pricing” or “Search X for recent OpenClaw updates and summarize.”
+
+Security Notes (built into the skill):
+
+•Never paste tokens/secrets into chat or let the agent run auth commands with flags.
+
+•All credentials stay in ~/.xurl (YAML file) on your machine.
+
+•The agent calls the local xurl binary directly.
+
+Easier Alternative: http://OpenTweet.io Bridge (No X Developer Account Needed)
+
+If you want the simplest setup (great for quick testing or posting-only):
+
+1Sign up free at http://opentweet.io and connect your X account via OAuth (one click).
+
+2Generate an API key (starts with ot_) in Settings → API.
+
+3Install the official skill: clawhub install opentweet-x-poster
+
+
+
+Set the key: 
+
+export OPENTWEET_API_KEY="ot_your_key_here"
+
+ (Or add it to ~/.openclaw/openclaw.json under secrets.)
+
+
+
+Ask your agent: 
+
+
+
+“Post a tweet saying [text]” it just works.
+
+
+
+Tips for Your Setup
+
+
+
+•Use Grok as the backend (as Brian mentioned in the thread): It’s far cheaper than Claude for running OpenClaw agents long-term and has excellent reasoning for agent tasks.
+
+•Test with xurl whoami or xurl timeline in your terminal first.
+
+•Full command list and raw API access (xurl /2/tweets etc.) are in the skill docs.
+
+
+
+That’s it: once set up, your OpenClaw agent has full X superpowers running locally. If you hit any snags (e.g., auth errors), the most common fix is confirming your app is in Pay-per-use/Production in the developer portal. 
+
+
+
+🦞
