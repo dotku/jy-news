@@ -1,0 +1,30 @@
+---
+title: 升级Windows 11后注意跟进驱动 有用户的SSD性能暴跌75%
+date: '2026-04-21T16:47:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559150.htm'
+summary: >-
+  一位用户在从Windows10升级至Windows11后发现，其三星970EvoNVMeSSD的性能出现严重衰减，顺序读取速度暴跌至897MB/s，降幅达75%，顺序写入降至859MB/s。
+image: >-
+  https://img1.mydrivers.com/img/20260421/943a4674-36ba-492a-9df9-27d3248e9653.png
+slug: 1559150-升级Windows-11后注意跟进驱动-有用户的SSD性能暴跌75
+id: '1559150'
+title_en: >-
+  Pay Attention to Driver Updates After Upgrading to Windows 11: SSD Performance
+  Can Drop by 75% for Some Users
+summary_en: >-
+  A user discovered a severe performance decrease in their Samsung 970 Evo NVMe
+  SSD after upgrading from Windows 10 to Windows 11, with sequential read speeds
+  plummeting to 897MB/s, a 75% drop, and sequential write speeds dropping to
+  859MB/s.
+---
+
+该用户使用CrystalDiskMark进行基准测试后确认了这一异常，三星970 Evo的官方标称顺序读取速度3400 MB/s、写入2500 MB/s，升级后的实测数据仅为标称值的26%和34%。
+
+不过随机读写性能未出现明显变化，这可能与测试负载未充分触及SLC缓存有关。
+
+问题的根源在于驱动兼容性，该用户在安装新版NVMe驱动后，顺序读取速度恢复至4倍以上，顺序写入也提升了近3倍，基本回到正常水平。
+
+用户在分享这一发现时提醒道：“从Windows 10升级到Windows 11后，务必跑一次基准测试。970 Evo在Win10下不需要额外驱动，但升到Win11后必须手动安装才能恢复速度。”
+
+

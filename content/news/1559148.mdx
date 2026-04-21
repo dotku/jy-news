@@ -1,0 +1,32 @@
+---
+title: OpenAI推出Chronicle 为macOS Codex提供开发者记忆功能
+date: '2026-04-21T16:46:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559148.htm'
+summary: >-
+  OpenAI今日宣布推出一项名为Chronicle的新功能，作为其macOS版Codex应用的可选“研究预览”特性，旨在通过自动捕捉近期屏幕上下文来简化开发者的工作流程。与传统需要开发者反复解释当前项目背景的交互方式不同，Chronicle会基于用户最近在屏幕上的操作“构建记忆”，让Codex在后续对话中自动获取这些信息并加以利用。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559148.webp'
+slug: 1559148-OpenAI推出Chronicle-为macOS-Codex提供开发者记忆功能
+id: '1559148'
+title_en: 'OpenAI Launches Chronicle, Providing Developer Memory for macOS Codex'
+summary_en: >-
+  OpenAI today announced the launch of Chronicle, a new feature as an optional
+  "research preview" for its macOS Codex application, designed to simplify the
+  developer workflow by automatically capturing recent screen context. Unlike
+  traditional interactions that require developers to repeatedly explain the
+  current project background, Chronicle "builds memory" based on the user's
+  recent on-screen actions, allowing Codex to automatically acquire and utilize
+  this information in subsequent conversations.
+---
+
+从定位上看，Chronicle 与微软此前饱受争议的 Windows 11“Recall”功能颇为相似，后者会定期截取用户在电脑上的操作画面，并允许用户事后进行搜索查询。 不过，Recall 面向的是更广泛的 PC 普通用户，而 Chronicle 明确面向开发者和专业用户，目标是让 Codex 能通过屏幕活动更好理解用户的日常工作流和问题上下文。
+
+根据 OpenAI 在官方文档中的说明，Chronicle 实际上是对现有 Codex“记忆”能力的增强扩展。 借助 Chronicle，Codex 不仅可以识别当前屏幕上的内容，还能补全用户最近工作的缺失背景，并逐渐学习用户常用的工具和工作方式。 例如，当用户在屏幕上遇到错误信息时，无需再手动复制粘贴，Codex 可以直接基于 Chronicle 记录的屏幕记忆推断相关内容，从而作出更贴合当前情境的回应。
+
+要在 macOS 上启用 Chronicle，用户需先在 Codex 应用设置中打开“记忆”（Memories）功能，再在“个性化”（Personalization）选项下开启 Chronicle，同时授予应用 macOS 系统的屏幕录制与辅助功能访问权限。 OpenAI 开发者团队近日也通过社交平台 X 发布预告视频，展示了 Chronicle 如何结合“记忆”功能，在用户无需反复重述上下文的情况下，帮助 Codex持续跟进其正在开发的项目。
+
+不过，OpenAI 也在说明中坦言，Chronicle 并非完全没有代价和风险。 由于该功能依赖在本地运行的沙盒代理（sandboxed agents），对截取的屏幕图像进行分析并生成记忆，因此可能会较快消耗用户账户的调用额度（rate limit）。 此外，屏幕上展示的内容存在被用于提示注入（prompt injection）攻击的潜在风险，而 Chronicle 生成的记忆则会以未加密的 Markdown 文件形式存储在本地设备上。 虽然在 Chronicle 运行期间捕获的屏幕图像会在 6 小时后自动删除，但 OpenAI 仍提醒用户，这些画面可能包含敏感信息，应谨慎评估风险。
+
+目前，Chronicle 功能仅向使用 macOS 的 ChatGPT Pro 订阅用户开放，尚未在欧盟、英国和瑞士地区上线。 OpenAI 此前已多次对 Codex 进行扩展，包括增加更广泛的“记忆”、插件和“电脑使用”等能力，而此次引入 Chronicle，则进一步强化了其在本地工作流理解和持续上下文支持方面的探索。
+
+
