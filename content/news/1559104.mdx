@@ -1,0 +1,54 @@
+---
+title: DDR5 HUDIMM性能实测 砍半通道带宽暴跌近50%
+date: '2026-04-21T12:27:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559104.htm'
+summary: >-
+  为应对DDR5内存价格持续上涨，华擎联合Intel推出了一项名为HUDIMM（Half-UDIMM）的新内存标准，通过简化内存结构来降低DDR5的制造成本。HKEPC在华硕的协助下率先完成了HUDIMM的实际性能测试，结果不容乐观。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559104.png'
+slug: 1559104-DDR5-HUDIMM性能实测-砍半通道带宽暴跌近50
+id: '1559104'
+title_en: >-
+  DDR5 HUDIMM Performance Tested: Bandwidth Plummets Nearly 50% with Half
+  Channel
+summary_en: >-
+  To address the continued rise in DDR5 memory prices, ASRock, in collaboration
+  with Intel, has launched a new memory standard called HUDIMM (Half-UDIMM),
+  which simplifies the memory structure to reduce DDR5 manufacturing costs.
+  HKEPC, with assistance from ASUS, was the first to complete actual performance
+  testing of HUDIMM, and the results are not optimistic.
+---
+
+标准DDR5 UDIMM模组由两个32-bit子通道组成，HUDIMM顾名思义将其砍半，仅保留一个32-bit子通道。
+
+通道减半意味着模组上只需焊接一半数量的DRAM颗粒即可运作，物料成本和电路设计复杂度同步下降，好处就是能降低价格，但代价同样明显，内存带宽直接减半。
+
+HKEPC通过屏蔽正常DDR5的一组32-bit子通道，配合支持HUDIMM的BIOS模拟实际运行环境，AIDA64 Cache & Memory实测数据如下：
+
+【8GB - 1 x 32-bit单子通道】1DIMM 已屏蔽
+
+32,447 MB/s读取，25,195 MB/s写入，26,894 MB/s复制，87.7ns
+
+【16GB - 2 x 32-bit单通道】1DIMM 未屏蔽
+
+58,913 MB/s读取，48,800 MB/s写入，52,648 MB/s复制，85.7ns
+
+【16GB - 1 x 32-bit双通道】2DIMM 已屏蔽
+
+58,928 MB/s读取，48,461 MB/s写入，51,473 MB/s 复制，86.5ns
+
+【32GB - 2 x 32-bit双通道】2DIMM 未屏蔽
+
+106.02 GB/s读取，93,235 MB/s写入，97,522 MB/s复制，86.4ns
+
+可以看到8GB单通道HUDIMM的读取带宽仅32447 MB/s，写入25195 MB/s，复制26894 MB/s。
+
+而16GB正常DDR5的对应数据为58913 MB/s、48800 MB/s、52,648 MB/s，读取下降44.9%，写入下降48.4%，复制下降48.9%，延迟则基本持平（87.7ns vs 85.7ns）。
+
+性能腰斩的根源在于Bank Groups数量减半，正常DDR5模组拥有8个Bank Groups，HUDIMM仅保留4个，数据传输通道从8车道缩减为4车道，吞吐量自然直接砍半。
+
+另外两条HUDIMM组双通道的性能水平，与一条正常DDR5基本持平（读取58928 MB/s vs 58913 MB/s）。
+
+至于这个性能值不值得买，那就要看具体定价和自身需求了。
+
+

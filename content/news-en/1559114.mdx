@@ -1,0 +1,34 @@
+---
+title: Original Author Reveals Windows Task Manager CPU Usage Data Is Not Real-Time
+date: '2026-04-21T12:31:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559114.htm'
+summary: >-
+  Former Microsoft engineer and original developer of the Windows Task Manager,
+  Dave Plummer, revealed online that the CPU usage displayed in Windows Task
+  Manager is not real-time data, but a periodic average value refreshed at
+  intervals. Plummer participated in iconic projects such as Windows ZIP file
+  support and the Windows NT start menu, and personally created the initial
+  version of Task Manager.
+image: >-
+  https://img1.mydrivers.com/img/20260421/97ea93f8-8e56-48ab-b805-516f1a4254ae.png
+slug: 1559114-原作者自曝Windows任务管理器CPU占用数据并非实时统计
+id: '1559114'
+lang: en
+original_title: 原作者自曝Windows任务管理器CPU占用数据并非实时统计
+---
+To ensure the tool didn't waste system resources, he designed it to be extremely simple from a programming and engineering perspective, allowing it to run smoothly on computers in the 90s. However, this minimalist design laid the groundwork for inaccurate values.
+
+Plummer stated that the Task Manager's refresh is driven by a timer, which captures data at intervals, and it displays the statistics of the CPU within two refresh intervals, not the true instantaneous load.
+
+If you simply divide CPU usage time by the refresh interval, the result will be highly dependent on the accuracy of the graphical user interface timer.
+
+He used an analogy: it's like placing a metronome in the bed of a pickup truck and driving it on a bumpy dirt road – it's almost impossible to keep it absolutely stable.
+
+Therefore, he adopted a more rigorous algorithm: the Task Manager records the total running time of each process since startup (kernel time + user time), subtracts the total value from the last refresh, obtains the CPU consumption of the process during the interval, and then divides it by the total CPU consumption of all processes during that period.
+
+This method seems very complex, but it is much more accurate than direct division.
+
+However, the evolution of technology has made this algorithm inadequate. Modern CPUs support dynamic frequency scaling, Turbo Boost, temperature-controlled frequency reduction, and deep sleep, decoupling CPU time usage from actual workload. A simple percentage cannot fully reflect the processor's working state.
+
+Plummer pointed out that past CPU usage time could well reflect workload, but now the correlation between the two is very loose. He believes that the ideal CPU usage rate should measure the ratio of actual workload completed to the theoretical maximum workload that can be completed, but he has retired from Microsoft and cannot push for change.

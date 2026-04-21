@@ -1,0 +1,31 @@
+---
+title: >-
+  GitHub Pauses Copilot New User Registration, Forced to Scale Back Under Cost
+  Pressure
+date: '2026-04-21T12:34:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559118.htm'
+summary: >-
+  Microsoft's code hosting platform GitHub recently announced a series of
+  "impactful" adjustments to its Copilot subscription plan for individual users,
+  including pausing new user registration for certain plans and implementing
+  stricter limits on access and usage of high-performance AI models.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559118.webp'
+slug: 1559118-GitHub暂停Copilot-新用户注册-成本压力下被迫收缩调整
+id: '1559118'
+lang: en
+original_title: GitHub暂停Copilot 新用户注册 成本压力下被迫收缩调整
+---
+The official explanation states that as more and more developers adopt complex "agentic workflows," Copilot's usage intensity has increased significantly, leading to infrastructure costs that in some scenarios already exceed the subscription price itself, making the existing model unsustainable.
+
+In its announcement, GitHub pointed out that Copilot was initially intended to provide developers with simple code completion, but now many users are starting to use autonomous agents and subagents to handle large-scale, long-duration coding tasks. Under these new use cases, requests from a small number of users can consume an extremely considerable amount of computing power and token resources, putting enormous pressure on the platform's overall infrastructure. GitHub admits that it has become common for "just a few user requests to generate costs exceeding the monthly fee of the subscription plan," so it is necessary to adjust the service strategy to ensure more sustainable resource allocation.
+
+Specifically, GitHub has paused new user registration for Copilot Pro, Pro+, and student plans, with the official reason being to "serve existing customers more effectively." At the same time, Copilot's model lineup is also shrinking: the most powerful Opus series models have been partially removed from standard plans. Among them, Anthropic's high-performance Claude Opus 4.7 model will no longer be available to ordinary Copilot Pro users. To continue using the model, developers must upgrade to the more expensive Pro+ plan; Opus 4.5 and Opus 4.6 are also planned to be removed from Pro+.
+
+To curb the drag on overall service quality caused by a small number of "heavy users," GitHub has also significantly tightened usage limits and is trying to make quotas more transparent. In the latest adjustments, the VS Code integrated version and Copilot CLI (command-line tool) will clearly display the user's available quota, avoiding developers suddenly "hitting the limit" after frequent calls. GitHub says that introducing clearer quota displays is intended to give users more predictability when planning workflows, while reducing the uncertainty experience caused by triggering limits.
+
+From a mechanistic point of view, Copilot will now operate based on "dual limits": on the one hand, a session limit is set to control server load during peak periods; on the other hand, a weekly token limit is set to set a hard ceiling on total consumption within a seven-day cycle. Once a user reaches the weekly token limit, their access to high-end paid models will be temporarily cut off, and the system will automatically downgrade them to "Auto model selection" mode until the next billing cycle resets usage. This means that heavy users need to replan call frequency and task size to avoid losing access to high-performance models at critical stages.
+
+It is worth mentioning that GitHub Copilot has been controversial in the community recently. Last month, GitHub was widely criticized for inserting advertisements (the platform calls them "Tips") into developers' Pull Requests, with many users believing that this practice was equivalent to allowing AI to "secretly modify" code changes and add marketing copy without explicit authorization. Following strong opposition, GitHub has officially canceled Copilot's automatic permission to insert these promotional "Tips" and advertisements into PRs. Tim Rogers, the chief product manager responsible for Copilot, also publicly admitted that in retrospect, allowing an AI agent to automatically edit Pull Requests and append marketing text behind the scenes was a "wrong decision."
+
+Currently, GitHub has not provided a specific timeline for resuming open registration for Copilot Pro, Pro+, and student plans. For existing users, stricter quotas and model adjustments will directly affect daily development workflows in the short term, especially for teams and individuals who heavily rely on long-running, heavy agent tasks. Balancing the cost of generative AI services with commercial sustainability is becoming a real challenge that many manufacturers, including GitHub, must face.

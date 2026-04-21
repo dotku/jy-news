@@ -1,0 +1,38 @@
+---
+title: 原作者自曝Windows任务管理器CPU占用数据并非实时统计
+date: '2026-04-21T12:31:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559114.htm'
+summary: >-
+  前微软工程师、Windows原版任务管理器开发者DavePlummer在网上揭秘：Windows任务管理器显示的CPU占用率并非实时数据，而是定时刷新的周期平均值。Plummer曾参与WindowsZIP文件支持和WindowsNT开始菜单等标志性项目，他亲自打造了初版任务管理器。
+image: >-
+  https://img1.mydrivers.com/img/20260421/97ea93f8-8e56-48ab-b805-516f1a4254ae.png
+slug: 1559114-原作者自曝Windows任务管理器CPU占用数据并非实时统计
+id: '1559114'
+title_en: Original Author Reveals Windows Task Manager CPU Usage Data Is Not Real-Time
+summary_en: >-
+  Former Microsoft engineer and original developer of the Windows Task Manager,
+  Dave Plummer, revealed online that the CPU usage displayed in Windows Task
+  Manager is not real-time data, but a periodic average value refreshed at
+  intervals. Plummer participated in iconic projects such as Windows ZIP file
+  support and the Windows NT start menu, and personally created the initial
+  version of Task Manager.
+---
+
+为确保工具不浪费系统资源，他从编程和工程角度将这款工具设计得极为简洁，使其能在90年代的电脑上流畅运行。但正是这种极简设计，埋下了数值不准的伏笔。
+
+Plummer表示，任务管理器的刷新由计时器驱动，每隔一段时间抓取一次数据，它展示的是两次刷新间隔内CPU的统计情况，并非真实时刻的负载。
+
+如果单纯用CPU占用时间除以刷新间隔，结果会非常依赖图形用户界面计时器的精度。
+
+他打了个比方：这就像把节拍器放在皮卡车后斗里，在坑洼土路上行驶，想让它保持绝对稳定基本不可能。
+
+因此，他采用了更严谨的算法：让任务管理器记录每个进程自启动以来的总运行时间（内核时间+用户时间），用当前值减去上一次刷新时的总值，得到该进程在间隔期内的CPU消耗，再除以所有进程在该期间的总CPU耗时。
+
+这套方法看起来十分复杂，但比直接做除法精准得多。
+
+然而技术的演进让这套算法显得力不从心。现代CPU支持动态调频、睿频加速、温控降频和深度休眠，让CPU时间占用与实际完成工作量脱钩，单一百分比无法完整反映处理器工作状态。
+
+Plummer指出，过去的CPU使用时间能很好反映工作量，但现在两者关联已非常松散。他认为理想的CPU使用率应该衡量实际完成工作量与理论最大可完成工作量的比值，但自己已从微软退休，无法推动改变。
+
+

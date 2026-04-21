@@ -1,0 +1,35 @@
+---
+title: GitHub暂停Copilot 新用户注册 成本压力下被迫收缩调整
+date: '2026-04-21T12:34:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559118.htm'
+summary: >-
+  微软旗下代码托管平台GitHub近日宣布，将对面向个人用户的Copilot订阅计划进行一系列“具有冲击性”的调整，其中包括暂停部分计划的新用户注册，并对高性能AI模型的访问权限和使用额度实施更严格限制。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559118.webp'
+slug: 1559118-GitHub暂停Copilot-新用户注册-成本压力下被迫收缩调整
+id: '1559118'
+title_en: >-
+  GitHub Pauses Copilot New User Registration, Forced to Scale Back Under Cost
+  Pressure
+summary_en: >-
+  Microsoft's code hosting platform GitHub recently announced a series of
+  "impactful" adjustments to its Copilot subscription plan for individual users,
+  including pausing new user registration for certain plans and implementing
+  stricter limits on access and usage of high-performance AI models.
+---
+
+官方解释称，随着越来越多开发者采用复杂的“代理工作流”（agentic workflows），Copilot 的使用强度大幅攀升，导致基础设施成本在部分场景下已经超出订阅价格本身，现有模式已难以为继。
+
+GitHub 在公告中指出，最初 Copilot 的主要用途是为开发者提供简单的代码补全，但现在不少用户开始借助自主代理（agents）和子代理（subagents）处理规模庞大、持续时间很长的编码任务。在这些新型用法下，少量用户的请求就可能消耗极其可观的算力和令牌资源，使得平台整体基础设施承受巨大压力。GitHub 坦言，如今“仅仅几次用户请求就能产生超过订阅计划月费的成本”的情况已经变得常见，因此有必要对服务策略做出调整，以保证资源分配更加可持续。
+
+在具体措施上，GitHub 已暂停 Copilot Pro、Pro+ 以及学生计划的新用户注册，官方称此举旨在“更有效地服务现有客户”。与此同时，Copilot 提供的模型阵容也出现收缩：最强大的 Opus 系列模型被部分移出标准方案。其中，Anthropic 的高性能 Claude Opus 4.7 模型将不再对普通 Copilot Pro 用户开放，如需继续使用该模型，开发者必须升级至价格更高的 Pro+ 计划；而 Opus 4.5 和 Opus 4.6 也计划从 Pro+ 中移除。
+
+为了抑制极少数“大户”对整体服务质量造成的拖累，GitHub 还显著收紧了使用上限，并尝试让配额更加透明。在最新调整下，VS Code 集成版本和 Copilot CLI（命令行工具）都将明确显示用户可用额度，避免开发者在频繁调用后突然“踩线”。GitHub 表示，引入更清晰的配额展示，意在让用户在规划工作流时更有预期，同时降低因限额触发带来的不确定性体验。
+
+从机制上看，Copilot 今后将基于“双重限额”运作：一方面设置会话上限，用于在高峰期控制单次或短时间内的服务器负载；另一方面设置按周统计的令牌上限，在七天周期内为总消耗量划定硬性天花板。一旦用户触及周度令牌上限，其对高端付费模型的访问权限将被暂时切断，系统会自动将其降级为“自动模型选择”（Auto model selection）模式，直至下一个计费周期重置用量。这意味着重度用户需要重新规划调用频率和任务规模，以避免在关键阶段失去对高性能模型的访问。
+
+值得一提的是，GitHub Copilot 近期在社区中本就争议不断。上个月，GitHub 因在开发者的 Pull Request 中插入广告（平台称之为“提示”Tips）而遭到普遍批评，不少用户认为这种做法相当于让 AI 在未经明确授权的情况下“暗中修改”代码变更内容并附加营销文案。在外界强烈反对后，GitHub 已正式取消 Copilot 自动向 PR 插入这类推广“提示”和广告的权限。负责 Copilot 的首席产品经理 Tim Rogers 也公开承认，事后反思认为，允许一个 AI 代理在背后自动编辑 Pull Request 并追加市场营销文字，是“错误的决定”。
+
+当前，GitHub 并未给出恢复 Copilot Pro、Pro+ 和学生计划开放注册的具体时间表。对现有用户而言，更严格的配额和模型调整将在短期内直接影响日常开发工作流程，尤其是那些高度依赖长时间、重度代理任务的团队和个人。在生成式 AI 服务成本与商业可持续性之间如何平衡，正成为包括 GitHub 在内多家厂商不得不直面的现实难题。
+
+

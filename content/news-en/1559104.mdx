@@ -1,0 +1,50 @@
+---
+title: >-
+  DDR5 HUDIMM Performance Tested: Bandwidth Plummets Nearly 50% with Half
+  Channel
+date: '2026-04-21T12:27:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559104.htm'
+summary: >-
+  To address the continued rise in DDR5 memory prices, ASRock, in collaboration
+  with Intel, has launched a new memory standard called HUDIMM (Half-UDIMM),
+  which simplifies the memory structure to reduce DDR5 manufacturing costs.
+  HKEPC, with assistance from ASUS, was the first to complete actual performance
+  testing of HUDIMM, and the results are not optimistic.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559104.png'
+slug: 1559104-DDR5-HUDIMM性能实测-砍半通道带宽暴跌近50
+id: '1559104'
+lang: en
+original_title: DDR5 HUDIMM性能实测 砍半通道带宽暴跌近50%
+---
+Standard DDR5 UDIMM modules consist of two 32-bit sub-channels. As the name suggests, HUDIMM cuts this in half, retaining only one 32-bit sub-channel.
+
+Halving the channel means that only half the number of DRAM chips need to be soldered onto the module to operate, reducing material costs and circuit design complexity. The benefit is lower prices, but the cost is also obvious: memory bandwidth is directly halved.
+
+HKEPC simulated the actual operating environment by shielding one set of 32-bit sub-channels in normal DDR5 and using a BIOS that supports HUDIMM. The AIDA64 Cache & Memory test results are as follows:
+
+【8GB - 1 x 32-bit Single Sub-channel】1DIMM Shielded
+
+32,447 MB/s Read, 25,195 MB/s Write, 26,894 MB/s Copy, 87.7ns
+
+【16GB - 2 x 32-bit Single Channel】1DIMM Unshielded
+
+58,913 MB/s Read, 48,800 MB/s Write, 52,648 MB/s Copy, 85.7ns
+
+【16GB - 1 x 32-bit Dual Channel】2DIMM Shielded
+
+58,928 MB/s Read, 48,461 MB/s Write, 51,473 MB/s Copy, 86.5ns
+
+【32GB - 2 x 32-bit Dual Channel】2DIMM Unshielded
+
+106.02 GB/s Read, 93,235 MB/s Write, 97,522 MB/s Copy, 86.4ns
+
+As can be seen, the read bandwidth of 8GB single-channel HUDIMM is only 32447 MB/s, write is 25195 MB/s, and copy is 26894 MB/s.
+
+The corresponding data for 16GB normal DDR5 is 58913 MB/s, 48800 MB/s, and 52,648 MB/s, a decrease of 44.9% in read, 48.4% in write, and 48.9% in copy. Latency remains roughly the same (87.7ns vs 85.7ns).
+
+The root cause of the performance halving is the halving of the number of Bank Groups. Normal DDR5 modules have 8 Bank Groups, while HUDIMM retains only 4. The data transmission channel is reduced from 8 lanes to 4 lanes, and the throughput is naturally directly halved.
+
+The performance level of the other two HUDIMM groups in dual-channel mode is basically the same as that of one normal DDR5 (Read 58928 MB/s vs 58913 MB/s).
+
+Whether this performance is worth buying depends on the specific pricing and individual needs.
