@@ -1,0 +1,48 @@
+---
+title: 1.6MB的《老友记》表情包被用246173次 吃掉377GB 干崩Linux系统
+date: '2026-04-14T12:21:00'
+category: funny
+source: 'https://www.cnbeta.com.tw/articles/funny/1557916.htm'
+summary: >-
+  小小的表情包能惹多大祸？你肯定想不到。这个表情包来自经典美剧《老友记》(又名《六人行》)第九季第20集，詹妮弗·安妮斯顿扮演的瑞秋听说要在楼顶举办肥皂剧派对，当即欢呼雀跃。它的体积只有1.6MB，因为深受网友喜爱而在Discourse的一个社交平台上反复使用了246173次。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1557916.gif'
+slug: 1557916-1-6MB的-老友记-表情包被用246173次-吃掉377GB-干崩Linux系统
+id: '1557916'
+title_en: >-
+  1.6MB "Friends" Emoji Used 246,173 Times, Consuming 377GB and Crashing a Linux
+  System
+summary_en: >-
+  A small emoji from the classic American sitcom "Friends" caused a significant
+  issue. The emoji, originating from season 9 episode 20 where Jennifer
+  Aniston's character Rachel excitedly reacts to a soap opera party, is only
+  1.6MB in size. However, due to its popularity, it was used 246,173 times on a
+  Discourse social platform, leading to 377GB of redundant backups and over
+  240,000 hard links, ultimately exceeding the Linux file system's capacity and
+  causing the backup mechanism to fail.
+---
+
+每次使用，它都会被重复备份，最终形成了377GB的冗余备份和超过24万次硬链接，直接突破了Linux的文件系统容量限制，导致备份机制失效。
+
+Discourse作为开源软件项目，为超过2.2万个线上社区提供技术支持，其中实时聊天功能支持插入表情符号、GIF动图。
+
+但是，它有一个特殊的“安全上传”机制：当文件在不同安全场景间转移时，比如从私信转发到公开帖子，系统会生成一个带有随机SHA1加密值的新副本。虽然文件完全没变，但是Discourse会将其视作新文件。
+
+因此，如果一张热门图片、表情包在帖子、转发、私信中不断传播的时候，每次都会生成一个新的副本。
+
+其实，Discourse早就意识到了被重复文件挤爆的问题，最初的解决方案是通过文件Hash哈希值追踪原始文件，备份时按哈希值对上传文件分组，每组只下载第一个文件，重复的文件则创建硬链接。
+
+看起来不错，也很优雅，但是Discourse Linux系统使用的是最通用、最老牌的ext4文件系统，支持最大16TB单个文件、1EB文件系统，但是每个文件最多只允许65000个硬链接。
+
+因此，Discourse这一方案做不到24多万个重复文件只下载一次，在达到上限后，系统除了第一次下载，还额外进行了大约18.1万次备份下载。
+
+也就是说，干崩系统的，不是庞大的备份文件，而是疯狂的硬链接数量。
+
+值得庆幸的是，Discourse最终找到了完美的解决方案，思路还是创建硬链接，但是当文件系统给出“链接数过多”的EMLINK错误提示时，就改在本地复制一份相应的文件，并将新文件设为“主文件”，以它为基准继续创见硬链接，直至再次触及链接上限。
+
+Discourse颇为满意地表示，这项新措施适用于所有文件系统，无需额外配置。
+
+在无法更改文件系统的前提下，这么做完全是可以接受的。
+
+最后，Discourse还调侃说，现在才知道，詹妮弗·安妮斯顿还能测试服务器压力。
+
+

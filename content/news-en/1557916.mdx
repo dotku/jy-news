@@ -1,0 +1,44 @@
+---
+title: >-
+  1.6MB "Friends" Emoji Used 246,173 Times, Consuming 377GB and Crashing a Linux
+  System
+date: '2026-04-14T12:21:00'
+category: funny
+source: 'https://www.cnbeta.com.tw/articles/funny/1557916.htm'
+summary: >-
+  A small emoji from the classic American sitcom "Friends" caused a significant
+  issue. The emoji, originating from season 9 episode 20 where Jennifer
+  Aniston's character Rachel excitedly reacts to a soap opera party, is only
+  1.6MB in size. However, due to its popularity, it was used 246,173 times on a
+  Discourse social platform, leading to 377GB of redundant backups and over
+  240,000 hard links, ultimately exceeding the Linux file system's capacity and
+  causing the backup mechanism to fail.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1557916.gif'
+slug: 1557916-1-6MB的-老友记-表情包被用246173次-吃掉377GB-干崩Linux系统
+id: '1557916'
+lang: en
+original_title: 1.6MB的《老友记》表情包被用246173次 吃掉377GB 干崩Linux系统
+---
+Each use resulted in the emoji being repeatedly backed up, eventually creating 377GB of redundant backups and over 240,000 hard links. This directly exceeded the Linux file system's capacity limit, causing the backup mechanism to fail.
+
+Discourse, an open-source software project, provides technical support for over 22,000 online communities, with its real-time chat function supporting the insertion of emojis and GIFs.
+
+However, it has a special "safe upload" mechanism: when a file is transferred between different security contexts, such as forwarding from a private message to a public post, the system generates a new copy with a random SHA1 encryption value. Even though the file remains unchanged, Discourse treats it as a new file.
+
+Therefore, if a popular image or emoji is constantly shared in posts, forwards, and private messages, a new copy is generated each time.
+
+Discourse had long been aware of the problem of being overwhelmed by duplicate files. The initial solution was to track the original file using the file's Hash value, grouping uploaded files by hash value during backups, and downloading only the first file in each group, creating hard links for duplicate files.
+
+It seemed good and elegant, but the Discourse Linux system uses the most common and oldest ext4 file system, which supports a maximum of 16TB per file and 1EB per file system, but each file allows a maximum of only 65,000 hard links.
+
+Therefore, this Discourse solution couldn't download all 240,000+ duplicate files only once. After reaching the limit, the system performed approximately 181,000 additional backup downloads in addition to the first download.
+
+In other words, it wasn't the large backup file that crashed the system, but the insane number of hard links.
+
+Fortunately, Discourse eventually found a perfect solution: still creating hard links, but when the file system gives an "EMLINK" error message indicating "too many links," it switched to making a local copy of the corresponding file and setting the new file as the "master file," continuing to create hard links based on it until the link limit was reached again.
+
+Discourse expressed satisfaction, stating that this new measure applies to all file systems without requiring additional configuration.
+
+Given the inability to change the file system, this approach is perfectly acceptable.
+
+Finally, Discourse jokingly said that they now know Jennifer Aniston can also be used to test server stress.
