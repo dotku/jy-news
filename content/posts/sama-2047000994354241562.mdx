@@ -1,0 +1,56 @@
+---
+title: "Team is hard at work together with https://nitter.net/steipete to make OpenAI models and ecosystem b"
+date: "2026-04-22T17:14:03.000Z"
+handle: "sama"
+name: "Sam Altman"
+author_title: "CEO, OpenAI"
+category: "ai"
+is_rt: true
+original_author: "@thsottiaux"
+link: "https://x.com/thsottiaux/status/2047000994354241562"
+image: "https://pbs.twimg.com/media%2FHGhoZWtb0AEivZY.jpg"
+slug: "sama-2047000994354241562"
+---
+
+Team is hard at work together with https://nitter.net/steipete to make OpenAI models and ecosystem be the obvious way to to enjoy your claw. A lot more to come next week, but a reminder that you can use OpenClaw as part of your ChatGPT subscription today already.
+
+
+
+(also still having too much fun with ChatGPT Images 2.0 today)
+
+
+
+
+pash (@pashmerepat)
+
+I've embarked on a new sprint. My mission is to make OpenAI models feel magical in OpenClaw in the next few weeks. 
+
+
+
+Diving in today, I noticed a bug. When you configured OpenClaw to use the Codex harness with OpenAI models, auth was broken, and the system was silently falling back to the Pi harness. So nobody knew it was broken.
+
+
+
+Two PRs later (fix the auth bridge, stop the silent fallback), the Codex harness actually works. And the difference is night and day (pic related).
+
+
+
+Before: the agent didn't feel magical or proactive. It did the exact same shallow loop every heartbeat. Read the heartbeat file, check Discord, see nothing, say HEARTBEAT_OK. It ignored the rest of its instructions. Sometimes it would even reason about doing work and then just... not issue the tool calls.
+
+
+
+After: full agent loops. It reads its workspace context, interprets the entire checklist, inspects the repo, makes real edits, tries to verify them, and gives honest status reports when things are blocked. Later heartbeats show continuity, it doesn't repeat work, it picks up where it left off.
+
+
+
+I didn't change any prompting or scaffolding. Just swapped in the codex harness for pi. 
+
+
+
+Lesson here is use the codex harness if you're building with OAI models. A lot more to do but this is a strong start.
+
+
+
+
+
+— https://nitter.net/pashmerepat/status/2046865863979172039#m
