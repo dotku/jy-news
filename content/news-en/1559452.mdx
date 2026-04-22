@@ -1,0 +1,29 @@
+---
+title: Ubuntu Plans to Further Expand Snap-Based Devpack Scheme
+date: '2026-04-23T00:42:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559452.htm'
+summary: >-
+  Canonical, the company behind Ubuntu, recently outlined the evolution of its
+  toolchain from Ubuntu 24.04 LTS to the upcoming Ubuntu 26.04 LTS in a blog
+  post, and briefly demonstrated its future plans for developer toolchains.
+  While users familiar with changes between versions over the past two years are
+  already aware of these adjustments, the publicly released roadmap indicates
+  that Ubuntu is placing more emphasis on so-called "devpacks."
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559452.webp'
+slug: 1559452-Ubuntu计划在未来进一步扩大基于Snap的Devpack方案
+id: '1559452'
+lang: en
+original_title: Ubuntu计划在未来进一步扩大基于Snap的Devpack方案
+---
+Ubuntu Devpack is a type of Snap package that has gradually taken shape over the past year. It packages the tools required for specific development frameworks along with officially vetted default configurations, providing them to developers in the form of a stack. These Devpacks initially focused on technology stacks such as Java/Spring, .NET, and Golang, aiming to provide a one-click ready-to-use development environment for specific languages and frameworks using Ubuntu's Snap format. Canonical states that future version plans will further expand the coverage of Devpacks.
+
+In its outlook for the toolchain for Ubuntu 26.04 LTS, Canonical mentions that it is considering creating dedicated "dev stacks" and container images for GCC and LLVM, packaging compilers, linkers, debuggers, Sanitizer, and cross-compilation toolchains to allow C/C++ and system-level developers to enjoy a similar one-click environment setup experience as current Spring and .NET developers. For Rust, the planned direction includes making rustup a first-class development path on Ubuntu, providing curated Rust images, and strengthening integration with LLD, making Ubuntu a high-priority platform choice for modern system-level Rust projects.
+
+Canonical also mentioned that subsequent work on Devpacks may include providing dedicated Devpacks for more popular technology stacks, such as Conda-related frameworks in the Python ecosystem, Rust Web technology stacks, and various game engines. In addition, Ubuntu plans to establish closer links between Devpacks, Snapcraft plugins, and official documentation, so that every mainstream language and framework on Ubuntu has a clearly labeled "golden path." With the previously launched Spring Devpack, Go Devpack, .NET Snap package, and the continuously improving GCC/LLVM/Rust toolchain layout, Canonical says it is committed to building a solid, secure, and supported foundation platform that is suitable for both Linux developers and application developers.
+
+Reports indicate that if GCC and LLVM/Clang Devpacks are officially offered on Ubuntu in the future, it could not only accelerate the introduction of updated compiler toolchains for existing distributions, but also provide more tailored packaged environments for different purposes, such as game development and Rust Web development. However, as these Devpacks are distributed in Snap format, users who have long been reserved about the Snap ecosystem may still have acceptance issues.
+
+For developers who want to learn more details, Canonical has provided a more complete explanation of the toolchain evolution and planning on the official Ubuntu blog:
+
+https://ubuntu.com//blog/from-jammy-to-resolute-how-ubuntus-toolchains-have-evolved

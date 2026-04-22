@@ -1,0 +1,34 @@
+---
+title: FreeBSD to Advance Intel FRED Support and Optimize Laptop Experience
+date: '2026-04-23T00:44:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559456.htm'
+summary: >-
+  FreeBSD recently released its first quarter 2026 status report, systematically
+  outlining the latest progress in hardware support, desktop experience, and
+  management tools over the past three months. The report shows that FreeBSD
+  developers are focusing on improving the running experience on modern laptops
+  while accelerating adaptation to new generation processor features.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559456.webp'
+slug: 1559456-FreeBSD将推进-Intel-FRED-支持与笔记本体验优化
+id: '1559456'
+lang: en
+original_title: FreeBSD将推进 Intel FRED 支持与笔记本体验优化
+---
+Recently, one of FreeBSD's key areas of work has been the laptop support initiative, aiming to provide a more complete user experience on a wider range of mainstream mobile devices. Developers continue to optimize a Python application for collecting laptop compatibility information, improving the current compatibility matrix through actual testing of more models, and simultaneously updating relevant documentation. In the upcoming FreeBSD 15.1, the KDE installer is also planning to add the Ly display manager option, providing more choices for desktop environment boot login.
+
+For System76 brand laptops, new ACPI drivers have been added in the FreeBSD 16-CURRENT branch to control battery charging thresholds, keyboard backlight brightness, and other proprietary functions. In addition, suspend/resume capabilities remain a key focus of laptop support, with developers improving hibernation and wake-up behavior on multiple devices and continuing to optimize suspend-to-disk and related logic.
+
+In terms of compliance and security, FreeBSD launched work related to the Software Bill of Materials (SBOM) last year and continued to advance it this quarter. This direction is largely driven by the EU Cyber Resilience Act, which aims to make the system and its component sources more transparent and enhance security and compliance management capabilities.
+
+In terms of virtualization and system management tools, the Bhyvemgr project, as a graphical management interface for the Bhyve virtual machine manager, continues to evolve. Developed in FreePascal/Lazarus, the tool is constantly adding more virtual machine management features to allow users to perform routine operations on Bhyve through the graphical interface.
+
+For whole-machine clusters and unified operations and maintenance scenarios, the web-based modern system management platform Sylve has also made significant progress. Sylve improved cluster creation and management functions this quarter, introduced backup schemes, and added support for Jails snapshots, while also providing a web terminal entry based on Ghostty and a number of virtual machine function enhancements. Through these expansions, Sylve is gradually building more complete FreeBSD cluster and node unified management capabilities.
+
+In terms of underlying hardware new features, the FreeBSD Foundation is sponsoring work to bring Flexible Return and Event Delivery (FRED) support to FreeBSD. FRED will first appear on Intel Panther Lake processors and has already demonstrated considerable performance gains in related tests, and will also be applied to Diamond Rapids processors on the server side. AMD Zen 6 processors are also expected to support fRED, and the FreeBSD adaptation work around FRED is currently underway.
+
+In terms of software ecosystem, the FreeBSD ports tree updated several default component versions this quarter. New default versions include Go 1.25, OpenJDK Java 21, MySQL 8.4, and PostgreSQL 18, among other mainstream development and database environments. The package collection also introduced new versions of several important desktop and application software, such as Firefox 149, KDE Plasma 6.6.3, and Wine 11.0, providing desktop and development users with more cutting-edge application choices.
+
+The FreeBSD project stated that details on more development progress in the first quarter of 2026 can be found in the quarterly status report published on the FreeBSD official website:
+
+https://www.freebsd.org/status/report-2026-01-2026-03/

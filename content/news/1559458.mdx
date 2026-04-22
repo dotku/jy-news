@@ -1,0 +1,40 @@
+---
+title: GCC 16 编译器即将发布：引入 Zen 6、AVX10.2、APX 与 Algol 68 支持
+date: '2026-04-23T00:45:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559458.htm'
+summary: >-
+  开源GNU编译器集合（GCC）今年的重磅版本GCC16已进入最终发布冲刺阶段。GCC16.1作为该分支的首个稳定版本，预计将在未来数周内正式亮相，继续扮演Linux与开源生态中最重要的编译器之一。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559458.webp'
+slug: 1559458-GCC-16-编译器即将发布-引入-Zen-6-AVX10-2-APX-与-Algol-68-支持
+id: '1559458'
+title_en: >-
+  GCC 16 Compiler to Be Released Soon: Introducing Zen 6, AVX10.2, APX and Algol
+  68 Support
+summary_en: >-
+  The major GCC 16 version of the open-source GNU Compiler Collection (GCC) is
+  in the final release sprint this year. GCC 16.1, the first stable version of
+  this branch, is expected to be officially released in the coming weeks,
+  continuing to play a vital role as one of the most important compilers in the
+  Linux and open-source ecosystem.
+---
+
+了解更多：
+
+https://gcc.gnu.org/pipermail/gcc/2026-April/247980.html
+
+来自 Red Hat 的 GCC 发布工程团队成员 Jakub Jelinek 日前宣布，GCC 16 中所有剩余的 P1 级别回归问题（最高优先级缺陷）已全部清零，GCC 16 的发布分支 releases/gcc-16 已在 Git 仓库中创建。这意味着开发工作正式转向分支代码的进一步测试与最后阶段修复，同时主干已经开启下一个版本周期，GCC 17.0.0 现已在 Git 中开放开发。
+
+按照惯例，GNU 编译器集合每年的主力大版本通常会在 4 至 5 月间发布。今年的 GCC 16.1 也将遵循这一节奏，在完成分支代码的额外测试以及可能的临门一脚修补之后，对外发布稳定版。Phoronix 方面表示，将在 GCC 16 正式发布后陆续给出相关性能测试基准结果。
+
+作为今年的重要更新，GCC 16 带来了多项面向语言特性与硬件平台的改进。其中最引人关注的一项，是新增了对 Algol 68 编程语言的前端支持，使这一历史悠久的语言可以直接通过 GCC 工具链进行编译。此外，GCC 16 将 C++20 标准设定为默认标准，为现代 C++ 开发者提供更符合当下实践的语言环境。
+
+在处理器支持方面，GCC 16 增加了对 AMD Zen 6 架构的初步支持，对应的目标型号为 “znver6”，为未来基于 Zen 6 的处理器在开源软件生态中的优化打下基础。 对英特尔平台而言，GCC 16 已为即将到来的 Intel Nova Lake 处理器准备了 AVX10.2 与 APX 指令集支持，同时还加入了针对 Intel Wildcat Lake 的目标支持。
+
+除了架构特性，GCC 16 也在工具链性能与配置方面做出了调整。新版提高了 LTO（链接时优化）默认分区数量，以更好适配当前多核数量不断提升的处理器，在大规模工程编译场景中有望带来更佳的并行优化效果。同时，针对 ARM64 平台，函数多版本化（function multi-versioning）特性不再标记为实验性功能，意味着这一特性在 ARM64 生态中进入成熟可用阶段。
+
+在嵌入式领域，GCC 16 增加了对 Picolibc 嵌入式 C 库的支持，为资源受限设备和嵌入式系统开发者提供了新的标准库选项。 除上述亮点外，GCC 16 在整个编译器栈中还包含大量性能优化与细节改进，进一步巩固其在开源世界的主流编译基础设施地位。
+
+随着 GCC 16 发布分支的建立以及 GCC 17 开发周期的开启，GNU 编译器集合的演进步伐依旧紧凑而稳定。未来几周，随着 GCC 16.1 正式版落地，业界和社区也将通过各类基准测试，更直观地检验这一版本在性能与新硬件支持方面的实际表现。
+
+

@@ -1,0 +1,38 @@
+---
+title: FreeBSD将推进 Intel FRED 支持与笔记本体验优化
+date: '2026-04-23T00:44:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559456.htm'
+summary: >-
+  FreeBSD项目近日发布2026年第一季度状态报告，系统性梳理了过去三个月中社区在硬件支持、桌面体验以及管理工具等方面的最新进展。报告显示，FreeBSD开发者正集中力量改进在现代笔记本上的运行体验，同时加紧针对新一代处理器特性的适配工作。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559456.webp'
+slug: 1559456-FreeBSD将推进-Intel-FRED-支持与笔记本体验优化
+id: '1559456'
+title_en: FreeBSD to Advance Intel FRED Support and Optimize Laptop Experience
+summary_en: >-
+  FreeBSD recently released its first quarter 2026 status report, systematically
+  outlining the latest progress in hardware support, desktop experience, and
+  management tools over the past three months. The report shows that FreeBSD
+  developers are focusing on improving the running experience on modern laptops
+  while accelerating adaptation to new generation processor features.
+---
+
+近一段时间，FreeBSD 的重点工作之一是笔记本支持专项，目标是在更多主流移动设备上提供更完善的使用体验。 开发者持续优化一款用于收集笔记本兼容性信息的 Python 应用，通过实际测试更多机型来完善当前的兼容性矩阵，并同步更新相关文档。 在即将到来的 FreeBSD 15.1 中，KDE 安装器还计划增加 Ly 显示管理器选项，为桌面环境引导登录提供更多选择。
+
+针对 System76 品牌笔记本，FreeBSD 16-CURRENT 分支中已经加入新的 ACPI 驱动，用于控制电池充电阈值、键盘背光亮度以及其他专有功能。 此外，挂起/恢复能力仍是笔记本支持的重点之一，开发者在多款设备上改进了休眠与唤醒行为，并持续优化挂起到磁盘等相关逻辑。
+
+在合规与安全方面，FreeBSD 自去年起启动了软件物料清单（Software Bill of Materials，SBOM）相关工作，并在本季度继续推进。 这一方向在很大程度上受欧盟《网络韧性法案》（EU Cyber Resilience Act）的推动，旨在让系统及其组件来源更加透明，提升安全与合规管理能力。
+
+虚拟化与系统管理工具方面，Bhyvemgr 项目作为 Bhyve 虚拟机管理器的图形化管理界面，仍在持续演进。 该工具由 FreePascal/Lazarus 开发，正在不断增加更多虚拟机管理功能，以便用户通过图形界面完成对 Bhyve 的常规运维操作。
+
+面向整机集群与统一运维场景，基于 Web 的现代系统管理平台 Sylve 同样取得显著进展。 Sylve 在本季度改进了集群创建与管理功能，引入备份方案，并新增对 Jails 快照的支持，同时提供基于 Ghostty 的 Web 终端入口以及多项虚拟机功能增强。 通过这些扩展，Sylve 正逐步构建起更完整的 FreeBSD 集群与节点统一管理能力。
+
+在底层硬件新特性方面，FreeBSD 基金会正在赞助一项工作，为 FreeBSD 引入 Flexible Return and Event Delivery（FRED）支持。 FRED 首先会在 Intel Panther Lake 处理器上出现，并已在相关测试中展现出可观的性能收益，同时也将应用于服务器端的 Diamond Rapids 处理器。 预计 AMD Zen 6 处理器也会支持 fRED，而围绕 FRED 的 FreeBSD 适配工作当前仍在进行中。
+
+软件生态方面，FreeBSD ports 树在本季度更新了多项默认组件版本。 新的默认版本包括 Go 1.25、OpenJDK Java 21、MySQL 8.4 和 PostgreSQL 18 等主流开发与数据库环境。 包集合中也引入了多款重要桌面与应用软件的新版本，如 Firefox 149、KDE Plasma 6.6.3、Wine 11.0 等，为桌面和开发用户提供了更加前沿的应用选择。
+
+FreeBSD 项目表示，有关 2026 年第一季度更多开发进展的细节，可通过 FreeBSD 官方网站发布的季度状态报告获取：
+
+https://www.freebsd.org/status/report-2026-01-2026-03/
+
+

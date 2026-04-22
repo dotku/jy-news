@@ -1,0 +1,33 @@
+---
+title: Ubuntu计划在未来进一步扩大基于Snap的Devpack方案
+date: '2026-04-23T00:42:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559452.htm'
+summary: >-
+  Ubuntu背后的Canonical公司近日在一篇博客文章中，梳理了从Ubuntu24.04LTS到即将于明日发布的Ubuntu26.04LTS期间工具链的演进情况，并简要展示了未来在开发者工具链方向上的规划。尽管对两年间各版本间的变更有所关注的用户早已对相关调整不陌生，但此次公开的路线图表明，Ubuntu正在将更多重点放在所谓的“devpacks”（开发包）上。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559452.webp'
+slug: 1559452-Ubuntu计划在未来进一步扩大基于Snap的Devpack方案
+id: '1559452'
+title_en: Ubuntu Plans to Further Expand Snap-Based Devpack Scheme
+summary_en: >-
+  Canonical, the company behind Ubuntu, recently outlined the evolution of its
+  toolchain from Ubuntu 24.04 LTS to the upcoming Ubuntu 26.04 LTS in a blog
+  post, and briefly demonstrated its future plans for developer toolchains.
+  While users familiar with changes between versions over the past two years are
+  already aware of these adjustments, the publicly released roadmap indicates
+  that Ubuntu is placing more emphasis on so-called "devpacks."
+---
+
+据介绍，Ubuntu Devpack 是在过去一年里逐步成形的一类 Snap 软件包，它们将特定开发框架所需的工具与经过官方筛选的默认配置打包在一起，以 Stack 的形式提供给开发者使用。这类 Devpack 起初主要面向 Java/Spring、.NET、Golang 等技术栈，目的是借助 Ubuntu 的 Snap 格式，为特定语言与框架提供一键就绪的开发环境。Canonical 表示，在未来的版本规划中，将在此基础上进一步扩大 Devpack 覆盖面。
+
+在面向 Ubuntu 26.04 LTS 的工具链展望中，Canonical 提到，正在考虑为 GCC 和 LLVM 打造专门的 “dev stack” 与容器镜像，将编译器、链接器、调试器、Sanitizer 以及交叉工具链等打包提供，以便 C/C++ 和系统级开发者也能享受类似当前 Spring 和 .NET 开发者的一键环境搭建体验。对于 Rust，规划方向则包括将 rustup 作为 Ubuntu 上的“一等公民”开发路径，提供经过筛选的 Rust 镜像，并强化与 LLD 的集成，从而让 Ubuntu 成为现代系统级 Rust 项目的高优先级平台选择之一。
+
+Canonical 同时提到，Devpack 的后续工作可能包括：为更多流行技术栈提供专门 Devpack，例如 Python 生态中的 Conda 相关框架、Rust Web 技术栈以及各类游戏引擎等。此外，Ubuntu 还计划在 Devpack、Snapcraft 插件与官方文档之间建立更紧密的关联，使每一种主流语言和框架在 Ubuntu 上都拥有一条清晰标注的“黄金路径”（golden path）。借助此前推出的 Spring Devpack、Go Devpack、.NET Snap 包以及不断完善的 GCC/LLVM/Rust 工具链布局，Canonical 表示正致力于打造一个既适合 Linux 开发者、又适合应用开发者使用的、安全且受支持的稳固基础平台。
+
+报道指出，如果未来在 Ubuntu 上正式提供 GCC 和 LLVM/Clang 的 Devpack，不仅有望为现有发行版更快速地引入更新版本的编译器工具链，也能针对不同用途提供更契合场景的打包环境，例如游戏开发、Rust Web 开发等。不过，由于这些 Devpack 均以 Snap 形式分发，对于长期对 Snap 生态持保留态度的用户而言，仍可能存在接受度问题。
+
+对于希望了解更多细节的开发者，Canonical 已在 Ubuntu 官方博客中给出了更为完整的工具链演进和规划说明：
+
+https://ubuntu.com//blog/from-jammy-to-resolute-how-ubuntus-toolchains-have-evolved
+
+

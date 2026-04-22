@@ -1,0 +1,36 @@
+---
+title: >-
+  GCC 16 Compiler to Be Released Soon: Introducing Zen 6, AVX10.2, APX and Algol
+  68 Support
+date: '2026-04-23T00:45:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559458.htm'
+summary: >-
+  The major GCC 16 version of the open-source GNU Compiler Collection (GCC) is
+  in the final release sprint this year. GCC 16.1, the first stable version of
+  this branch, is expected to be officially released in the coming weeks,
+  continuing to play a vital role as one of the most important compilers in the
+  Linux and open-source ecosystem.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559458.webp'
+slug: 1559458-GCC-16-编译器即将发布-引入-Zen-6-AVX10-2-APX-与-Algol-68-支持
+id: '1559458'
+lang: en
+original_title: GCC 16 编译器即将发布：引入 Zen 6、AVX10.2、APX 与 Algol 68 支持
+---
+Learn more:
+
+https://gcc.gnu.org/pipermail/gcc/2026-April/247980.html
+
+Jakub Jelinek, a member of the GCC release engineering team at Red Hat, recently announced that all remaining P1-level regression issues (highest priority defects) in GCC 16 have been cleared, and the GCC 16 release branch releases/gcc-16 has been created in the Git repository. This means that development work has officially shifted to further testing and final-stage fixes of the branch code, while the main trunk has already begun the next version cycle, with GCC 17.0.0 now open for development in Git.
+
+As is customary, the main major version of the GNU Compiler Collection is usually released between April and May each year. This year's GCC 16.1 will also follow this rhythm, releasing a stable version after completing additional testing of the branch code and possible last-minute fixes. Phoronix said it will gradually provide relevant performance test benchmarks after the official release of GCC 16.
+
+As an important update this year, GCC 16 brings a number of improvements to language features and hardware platforms. Among the most noteworthy is the addition of front-end support for the Algol 68 programming language, allowing this historically significant language to be compiled directly through the GCC toolchain. In addition, GCC 16 sets the C++20 standard as the default standard, providing modern C++ developers with a language environment that is more in line with current practices.
+
+In terms of processor support, GCC 16 adds preliminary support for the AMD Zen 6 architecture, with the target model being "znver6," laying the foundation for optimization of future Zen 6-based processors in the open-source software ecosystem. For Intel platforms, GCC 16 is already preparing AVX10.2 and APX instruction set support for the upcoming Intel Nova Lake processor, and has also added target support for Intel Wildcat Lake.
+
+In addition to architectural features, GCC 16 has also made adjustments to toolchain performance and configuration. The new version increases the default number of partitions for LTO (link-time optimization) to better adapt to current processors with increasing core counts, potentially bringing better parallel optimization effects in large-scale engineering compilation scenarios. At the same time, for the ARM64 platform, function multi-versioning is no longer marked as an experimental feature, meaning that this feature has entered a mature and usable stage in the ARM64 ecosystem.
+
+In the embedded field, GCC 16 adds support for the Picolibc embedded C library, providing embedded system and resource-constrained device developers with a new standard library option. In addition to the above highlights, GCC 16 also includes a large number of performance optimizations and details improvements throughout the compiler stack, further consolidating its position as a mainstream compilation infrastructure in the open-source world.
+
+With the establishment of the GCC 16 release branch and the opening of the GCC 17 development cycle, the GNU Compiler Collection's evolution pace remains tight and stable. In the coming weeks, as GCC 16.1 is officially released, the industry and community will also use various benchmarks to more intuitively test the actual performance and new hardware support of this version.
