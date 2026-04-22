@@ -1,0 +1,38 @@
+---
+title: Windows 11四月更新新增Secure Boot证书状态显示
+date: '2026-04-22T12:39:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559326.htm'
+summary: >-
+  微软在Windows11四月2026更新中，除允许用户在无需重装系统的情况下开启或关闭SmartAppControl外，还悄然加入了一项与启动安全相关的重要改进：Windows安全中心现在可以直接显示SecureBoot（安全启动）证书的状态，方便用户确认自己的电脑是否已经应用了2023版SecureBoot证书。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559326.jpg'
+slug: 1559326-Windows-11四月更新新增Secure-Boot证书状态显示
+id: '1559326'
+title_en: Windows 11 April Update Adds Secure Boot Certificate Status Display
+summary_en: >-
+  Microsoft's April 2026 update for Windows 11 allows users to enable or disable
+  SmartAppControl without reinstalling the system and quietly adds an important
+  improvement related to boot security: Windows Security now directly displays
+  the status of the Secure Boot certificate, allowing users to confirm whether
+  their computer has applied the 2023 Secure Boot certificate.
+---
+
+Secure Boot 证书用于验证系统启动过程中运行的软件是否可信，如果证书过期，理论上可能被启动级恶意软件（bootkit）或未经授权的修改所利用，从而在系统尚未完全启动前就植入攻击代码。 目前已知最早一批在 2011 年签发的 Secure Boot 证书将于 2026 年 6 月到期，微软此前已经确认会通过 Windows 更新将这些旧证书替换为新的 Secure Boot 2023 证书。 不过，对于普通用户而言，自己电脑上到底是否已经替换为新证书，一直缺乏直观、易用的判断方式。
+
+此前，想要确认 Secure Boot 2023 证书是否已经应用，用户只能依靠 PowerShell 命令或事件查看器日志等较为专业的方法，这显然不适合大多数非技术用户日常操作。 而在四月更新之后，Windows 安全中心首次直接在界面中展示 Secure Boot 证书状态，解决了这一“信息黑箱”问题。 以作者本人的设备为例，Windows 安全中心已经显示 Secure Boot 2023 证书已应用，并给出了“无需进一步操作”的提示。
+
+更新前，Windows 安全中心在“设备安全”页面中仅显示 Secure Boot 功能是否开启这一维度的信息。 更新后，用户不仅能看到 Secure Boot 是否启用，还可查看证书是否已经更新至最新版本。 这一状态位于“设备安全”（Device Security）下的“Secure Boot”区域，在完成相应更新后，界面会给出更细致的安全状态反馈。
+
+根据微软介绍，这一 Secure Boot 状态显示功能是通过 Windows 11 累积更新 KB5083769 推送的，适用于 Build 26200.8246 / 26100.8246 或更新版本的系统，但并非所有设备会在同一时间看到该功能，预计整个推送将在 2026 年 4 月底前陆续覆盖全部支持设备。 微软在一份支持文档中指出，2023 版证书正通过 Windows Update 自动下发，而 Windows 安全中心的状态显示则告诉用户：设备是否已经收到这些更新、当前所处状态以及是否需要采取额外操作。
+
+在新的设计下，用户可以通过一个简单的路径检查 Secure Boot 状态：打开 Windows 安全中心，依次进入“设备安全”（Device Security）—“Secure Boot”即可查看界面上的标志与提示文字。 这一模块采用了类似信号灯的三色标记方案：绿色代表“已完全更新，无需操作”；黄色意味着“有安全建议”，可能需要联系电脑制造商更新固件；红色则表示“需要立即关注”，通常说明由于硬件或固件限制，微软难以向该设备应用最新证书。
+
+具体而言，当 Secure Boot 部分显示绿色对勾时，提示将表明“设备已受保护，所有必需证书更新已完成，无需进一步更改”。 当显示黄色警告图标时，则意味着系统仍可运行，但存在安全建议，例如需要查看提示内容并根据说明更新设备固件或相关组件。 若出现红色图标，则说明系统在 Secure Boot 方面需要立即处理，这种情况往往出现在硬件条件无法满足证书更新要求、或 Secure Boot 本身未启用的设备上。
+
+需要注意的是，Secure Boot 是正式安装和运行 Windows 11 的强制硬件要求之一。 对于通过非官方途径绕过硬件检查，从 Windows 10 升级到 Windows 11 的用户，Windows 安全中心更有可能显示红色警报，提示 Secure Boot 未启用、且缺失最新证书。 微软提醒，遇到这一情况时，用户应尽快根据提示检查 BIOS/UEFI 设置或与设备厂商联系。
+
+微软方面表示，大多数用户无需为 Secure Boot 证书问题过度担心，因为系统会自动通过 Windows 更新向绝大多数兼容设备下发并应用 2023 版证书。 不过，Windows Latest 的观察显示，部分设备上的 Secure Boot 证书更新正在因固件限制而失败，这意味着这些设备可能长期无法获得新证书，对应的 Windows 安全中心状态将持续显示黄色或红色警告。
+
+即便如此，即使从未收到 Secure Boot 2023 证书，并不意味着设备一定会变得不稳定或立即暴露在严重安全风险之下。 报道指出，对于大部分普通消费者而言，仅因为 Secure Boot 证书未更新而遭遇实际攻击的概率仍然较低，但从长期维护和合规角度看，确保固件可更新、Secure Boot 正常启用，并尽可能获得最新证书，仍然是提升整机安全性的关键步骤。
+
+
