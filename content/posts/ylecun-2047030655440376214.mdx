@@ -1,0 +1,146 @@
+---
+title: "🦤 LeWorldModel: Learning Physics from Pixels — Stable World Models with Just Two Losses  World mode"
+date: "2026-04-22T19:11:54.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@junfanzhu98"
+link: "https://x.com/junfanzhu98/status/2047030655440376214"
+image: ""
+slug: "ylecun-2047030655440376214"
+---
+
+🦤 LeWorldModel: Learning Physics from Pixels — Stable World Models with Just Two Losses
+
+World models:
+
+1️⃣ DINO-WM: pretrained ViT encoder (from ImageNet) → features → predictor. But encoder is frozen, so no end-to-end learning. Its “visual genetics” are tuned for coarse classification (cats vs dogs), not physics: hard to resolve mm-level changes (e.g., 2 mm block motion). A powerful predictor on top of a “myopic” encoder = blind physical reasoning.
+
+2️⃣ PLDM: end-to-end, but unstable and collapse-prone. Rely on reward as prediction target, so it only works in environments with explicit rewards (e.g., games).
+
+3️⃣ JEPA (Joint Embedding Predictive Architecture): predict next latent instead of pixels. Two hard problems:
+
+collapse (encoder → constant vector, e.g., all zeros)
+
+achieving pixel-level + end-to-end + stable jointly
+
+
+
+💡 LeWM solves:
+
+👉 JEPA that trains stably end-to-end from raw pixels
+
+👉 Single hyperparameter λ:
+
+next-embedding prediction
+
+SIGReg (Gaussian regularization)
+
+
+
+🧠 #1: true end-to-end
+
+No frozen encoder. Perception + dynamics co-evolve → representation aligned with fine-grained physics, not ImageNet bias.
+
+🧠 #2: “only” one hyperparameter
+
+PLDM needs ~6. LeWM needs 1 (λ) → weight of SIGReg. Plug-and-play, stable.
+
+
+
+⚠️ Collapse problem
+
+Encoder could map all inputs → same vector → trivial prediction → zero loss → useless model.
+
+🧩 SIGReg (Gaussian Integral Signature Regularization)
+
+Core: prevent collapse via distribution constraints.
+
+Sample 1024 random directions
+
+Project embeddings → 1024 1D “shadows”
+
+Each must pass Epps–Pulley test (≈ standard normal)
+
+Loss pushes test statistic → 0
+
+Any failed projection ⇒ penalty
+
+Why it works:
+
+Cramér–Wold theorem → a high-dim distribution is determined by its 1D projections.
+
+👉 Enforcing Gaussianity across 1D projections precludes degenerate collapse under projection constraints
+
+
+
+🧪 Physical probing
+
+Train in PushT (push block to target), then:
+
+Linear probe recovers: block position, angle, end-effector
+
+👉 physics is linearly decodable
+
+🚨 Teleport block (physically impossible):
+
+embedding anomaly spikes sharply
+
+👉 model internalizes constraint: objects cannot teleport
+
+👉 not inferred from pixel surface features, but encoded as latent constraints
+
+
+
+📈 Temporal straightness
+
+No smoothness loss, yet trajectories in latent space are ~straight lines
+
+👉 no prior, purely from “predict next embedding”
+
+👉 implies physically consistent motion, not blurry interpolation
+
+
+
+⚡ Performance
+
+Planning: 0.98s vs 47s (DINO-WM)
+
+Success: 96% vs 78% (PLDM)
+
+Why faster?
+
+DINO-WM: frozen encoder → info loss → extra online passes
+
+LeWM: end-to-end → representation already task-aligned
+
+👉 0.98s = fast to handle dynamic obstacles & real-time control
+
+⚠️ Limitations
+
+~15M params (“ant-scale”) → fails on OGBench-Cube (complex physics)
+
+not yet tested on real robots
+
+
+
+🔥LeWM shows:
+
+👉 JEPA + SIGReg = stable world models
+
+👉 raw pixels → physics-aware latent space
+
+👉 minimal design (2 losses, 1 hyperparameter)
+
+Next step: scale + real-world deployment 🤖
+
+
+Junfan Zhu 朱俊帆 (@junfanzhu98)
+
+http://x.com/i/article/2047025326879072256
+
+
+
+— https://nitter.net/junfanzhu98/status/2047029352995639341#m
