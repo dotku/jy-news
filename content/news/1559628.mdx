@@ -1,0 +1,35 @@
+---
+title: Windows任务管理器之父自曝“社死”操作 曾把电话号写进代码
+date: '2026-04-23T20:08:00'
+category: funny
+source: 'https://www.cnbeta.com.tw/articles/funny/1559628.htm'
+summary: >-
+  当人们谈论旧时代的编程故事时，DavePlummer是一个绕不开的名字。作为Windows原生任务管理器的创造者，他在上世纪90年代为微软构建了这款至今仍被无数用户依赖的系统工具。然而鲜为人知的是，这位程序员曾在这款软件的代码中，意外留下了自己的家庭电话号码。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559628.jpg'
+slug: 1559628-Windows任务管理器之父自曝-社死-操作-曾把电话号写进代码
+id: '1559628'
+title_en: >-
+  Father of Windows Task Manager Reveals Embarrassing "Social Death" Operation:
+  Once Wrote Phone Number into Code
+summary_en: >-
+  When people talk about programming stories from the past, Dave Plummer is a
+  name that cannot be avoided. As the creator of the native Windows Task
+  Manager, he built this system tool for Microsoft in the 1990s, which is still
+  relied upon by countless users today. However, little known is that the
+  programmer once accidentally left his home phone number in the software's
+  code.
+---
+
+故事的起点是一个看似不可能的错误：Plummer在开发任务管理器时发现，CPU使用率有时加起来会超过100%——“如果计算正确，这根本不可能发生”。
+
+在确认自己的代码无误之后，唯一的可能性是内核层面存在Bug，因为任务管理器的数据正是从内核中调取的。然而在90年代微软的内部“等级秩序”中，想让内核开发人员重视这个问题并不容易。“内核是‘天才精英’们的地盘，”Plummer回忆道，“而我只是一个画CPU小图标的UI程序员。可想而知，当我向内核团队提出‘也许是你们的Bug’时，他们对我的处境可谓毫无同情心。”
+
+为了定位这个极少复现的问题，Plummer在代码中添加了一个断言，规定CPU使用率不应超过100%。如果条件不满足，程序会在调试器中抛出错误并停止，以便检查问题所在。
+
+然而，这个Bug极其罕见——“它从没有在我或我团队任何人的机器上触发过”。于是Plummer想出了一个“最有可能抓住问题”的办法：“我把自己的名字和家庭电话号码写进了断言里。这样，无论公司里谁在什么时候、什么地点、哪栋楼里遇到了这个问题，他们都会看到我的联系方式，然后告诉我。”
+
+Plummer很快忘记了自己埋下的这枚“彩蛋”。随后，Windows测试版正式发布——用户规模至少数千人，甚至可能达到数百万。所有这些测试者的电脑里，都藏着一串代码：一旦出错，就会弹出一个显示他家庭电话的对话框。
+
+令人意外的是，尽管Plummer至今仍在使用同一个家庭号码，却从未有人打来过。至于那个让CPU使用率超100%的Bug，最终在一台实验室机器上被捕获，内核开发人员确认问题确实出在他们那边并予以修复。
+
+
