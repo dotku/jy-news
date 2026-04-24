@@ -1,0 +1,103 @@
+---
+title: >-
+  DeepSeek Officially Releases V4 API: Dual Versions of Flash/Pro with 1 Million
+  Context as Standard
+date: '2026-04-24T15:48:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559794.htm'
+summary: >-
+  DeepSeekV4 has finally been released, as eagerly anticipated! The long-awaited
+  DeepSeekV4 preview version is now available, featuring two versions – V4-Pro
+  and V4-Flash – both equipped with a 1M (million-character) ultra-long context
+  as standard, with model weights and technical reports also open-sourced.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559794.jpg'
+slug: 1559794-DeepSeek-正式发布-V4-API-Flash-Pro-双版本齐发-百万上下文成标配
+id: '1559794'
+lang: en
+original_title: DeepSeek 正式发布 V4 API：Flash/Pro 双版本齐发 百万上下文成标配
+---
+In the days leading up to the May Day holiday, the large model landscape has entered a new round of releases.
+
+On April 23rd at noon, “genius boy” Yao Shunyu delivered the first model answer after joining Tencent, with the Tencent Hunyuan Hy3 preview version unveiled. It features a MoE architecture with 2950 billion parameters and 21B activated parameters, a 40% improvement in inference efficiency, and an input price reduced to 1.2 yuan/million tokens.
+
+Early this morning, OpenAI launched GPT-5.5 for paid users and officially announced its API plan, focusing on Agent workflows and multi-step task completion, extending the context window to 1 million tokens. API pricing has also risen accordingly – input at $5 and output at $30/million tokens.
+
+On the surface, the three companies are taking different paths: OpenAI is pursuing a high-end, closed-source approach, continuing to raise the price ceiling; Tencent is embedding models into its own ecosystem, leveraging cost-effectiveness to drive large-scale commercialization; and DeepSeek continues its open-source tradition while pushing the context length to a new, universally accessible threshold.
+
+At the same time, the three keywords – Agent capabilities, ultra-long context, and code & tool calling – repeatedly appear in the new models released by the three companies. They are all doubling down on the same direction: enabling models to handle longer information, operate autonomously in more complex task chains, and truly integrate into workflows to “get things done.”
+
+01
+
+The “Pragmatism” of DeepSeek V4
+
+DeepSeek’s release this time has transformed the million-character context from a “high-end option” to a “basic standard.”
+
+Previously, context lengths of 1M were more commonly found in the high-end versions of flagship closed-source models, with high calling costs making it prohibitive for most developers and small to medium-sized enterprises.
+
+DeepSeek’s approach is clear: both V4-Pro and V4-Flash versions come standard with a 1M context length, the former targeting ultimate performance and the latter providing an affordable economic option, fully covering users at different demand levels. This strategy of “indiscriminately releasing core capabilities” essentially lowers the industry barrier to accessing long-text processing capabilities.
+
+[Image source: DeepSeek official website]
+
+The Flash version focuses on extreme low latency and high cost-effectiveness, representing DeepSeek’s core solution for lightweight, high-frequency scenarios. With 13B activated parameters, a new token compression attention mechanism, and DSA sparse attention architecture optimization, it achieves extremely fast response speeds while maintaining core inference capabilities close to the Pro version. This feature brings essential improvements to the experience for real-time dialogue interaction, function call pipelines, and all lightweight scenarios sensitive to response speed.
+
+More importantly, it has a competitive cost structure.
+
+According to DeepSeek’s official API pricing document, the Flash version adopts a tiered pricing scheme: input tokens with cache hits as low as 0.2 yuan / million tokens, input tokens with cache misses at 1 yuan / million tokens, and output tokens priced at 2 yuan / million tokens.
+
+[Image source: DeepSeek API document]
+
+Such a friendly price, combined with the 1M context capability standard across the board, means that “single call cost” is no longer a core constraint in engineering design – developers can prioritize product experience and architectural design without repeatedly weighing calling frequency against cost.
+
+Flash solves the widespread need for “affordability and speed,” while V4-Pro answers another core question: where can the capability boundary of open-source large models be pushed?
+
+The most intuitive capability leap still revolves around long context. DeepSeek has directly increased the model context length from 128K in the previous generation V3.2 to 1M (one million tokens), and with underlying architectural innovations, it has significantly reduced the computational and memory requirements of long context while ensuring lossless performance across the entire context window.
+
+At this scale, developers can directly import complete codebases, ultra-long industry documents, multi-round project archives, or even million-character books for end-to-end processing, without the need to build complex retrieval-augmented generation (RAG) systems, greatly simplifying the technical link for long-text processing.
+
+On the underlying architecture, the Pro version adopts a MoE architecture with a total of 1.6T parameters and 49B activated parameters, with a pre-training data volume of 33T, representing a comprehensive deepening of DeepSeek’s mixture of experts route. Official evaluation data shows that it surpasses all publicly evaluated open-source models in core inference evaluations such as mathematics, STEM, and competitive coding, reaching the level of the world’s top closed-source models.
+
+In terms of Agent capabilities, its delivery quality is close to Claude Opus 4.6 non-thinking mode, with internal usage feedback better than Anthropic Sonnet 4.5, becoming the main Agentic Coding tool for DeepSeek internal employees.
+
+In terms of functionality, both versions of the V4 series simultaneously support non-thinking mode and thinking mode, allowing developers to customize the thinking intensity through the reasoning_effort parameter, and fully support Json Output, Tool Calls, and dialogue prefix continuation capabilities.
+
+In terms of pricing, the Pro version also continues the high-cost-performance route, with official pricing as follows: input tokens with cache hits at 1 yuan / million tokens, input tokens with cache misses at 12 yuan / million tokens, and output tokens priced at 24 yuan / million tokens, significantly lower than overseas flagship closed-source models of the same level.
+
+API access has also been made extremely easy. Developers do not need to modify the original base_url, simply replacing the model parameter with the corresponding version name to complete the access, and it is compatible with both OpenAI ChatCompletions and Anthropic interface formats.
+
+This combination of “capability exploration + cost reduction” makes top-tier model capabilities no longer an exclusive resource for a few manufacturers. As industry involution gradually falls into the trap of parameter arms races, DeepSeek’s choice of equipping all series with a million contexts and open-sourcing the entire chain provides a new paradigm for the popularization of large models.
+
+At the same time, DeepSeek V4 has been specifically adapted and optimized for mainstream Agent products such as Claude Code, OpenClaw, OpenCode, and CodeBuddy, with improvements in actual scenarios such as code tasks and document generation. The value of the model is ultimately verified in real development and workflows.
+
+02
+
+Continued Open Source, Full API Access
+
+DeepSeek continues its open-source route and directly releases full API access.
+
+Currently, the DeepSeek-V4 model weights have been simultaneously released for download on the Hugging Face and ModelScope platforms, and the accompanying technical report has also been made public, supporting developers for local deployment and secondary development.
+
+Unlike the industry practice of some manufacturers “open-sourcing a castrated version and closing-sourcing a complete version,” the two versions open-sourced this time fully retain all capabilities consistent with the official cloud API – including dual non-thinking/thinking modes, lossless processing of 1M ultra-long contexts, Agent-specific optimization, and full tool calling capabilities, without any functional castration.
+
+This means that whether it’s small and medium-sized startups, individual developers, or research institutions, they can access large model foundations with million-character contexts, top-tier inference, and Agent capabilities with zero barriers, without having to pay high closed-source interface fees for high-end model capabilities.
+
+To further lower the barrier to entry, DeepSeek has simultaneously open-sourced the full toolchain for model fine-tuning, quantization, and inference acceleration, completed Day 0 native adaptation for mainstream inference frameworks such as vLLM and TGI, and mainstream Agent frameworks such as LangChain and LlamaIndex, and also released a full-stack deployment solution for domestic computing power platforms, allowing developers to quickly land applications in different hardware environments.
+
+At the same time, DeepSeek has also provided a clear model iteration transition plan: the old API interface model names deepseek-chat and deepseek-reasoner will be discontinued in three months (July 24, 2026). Currently, these two model names point to the non-thinking mode and thinking mode of deepseek-v4-flash, respectively, giving developers ample time for smooth migration.
+
+03
+
+Firmly Building an AI “Infrastructure Model”
+
+Looking at the releases of the past few days, a trend is clear: everyone is accelerating Agent capabilities.
+
+Over the past two years, public and capital market attention to large models has largely focused on “intelligence,” but now it’s shifting to “who can reliably get things done.” The focus of the GPT-5.5 release is not how much multimodal understanding has improved, but its sustained execution ability in Agent programming, computer use, and knowledge work scenarios. The core selling point of Tencent Hunyuan Hy3 is also its “actionability” in the real world. DeepSeek V4 directly positions Agent capabilities and long context processing as its main selling points, clearly targeting actual workloads.
+
+Behind this shift is the entire industry moving towards “model utility” competition. Now, users and enterprise customers care less about where your model ranks in a certain evaluation, they care about how much work the model and product can actually do for them: can this model help me write code, can it handle complex documents, can it avoid errors in multi-step tasks, and can it run at a reasonable cost.
+
+[Image source: DeepSeek official website]
+
+At the end of the released statement today, DeepSeek quoted a sentence from “Xunzi”: “Not tempted by praise, not afraid of criticism, follow the way and act, be upright and correct,” continuing to anchor its technical route. In the context of the current large model competition, the meaning of this sentence is clear – not to be disturbed by external evaluations and noise, but to focus on doing things right.
+
+DeepSeek’s actions over the past year have indeed been practicing this logic: establishing global developer ecosystem influence through open-source openness, breaking the barriers to using high-end AI capabilities through extreme cost-effectiveness, and solving the most real pain points of developers and enterprise users through solid underlying architectural innovation.
+
+From the emergence of the R1 inference model to V4 pushing long context capabilities to the affordable range for the first time, DeepSeek has been using a relatively “slow” approach to do a more difficult thing – transforming top-tier model capabilities from a tool for a few people into infrastructure that more people can directly call.

@@ -1,0 +1,33 @@
+---
+title: >-
+  Running the Latest Linux on a Windows 95 Old Computer: Developer Achieves It
+  After 6 Years
+date: '2026-04-24T16:33:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559798.htm'
+summary: >-
+  A developer named Hailey has released a tool called WSL9x on Codeberg,
+  enabling modern Linux kernels to run on Windows 95 and earlier versions of
+  Windows. She calls it "Windows9xSubsystemforLinux" and says it might be her
+  greatest hack ever.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559798.png'
+slug: 1559798-Windows-95老电脑跑最新Linux-开发者耗时6年做到了
+id: '1559798'
+lang: en
+original_title: Windows 95老电脑跑最新Linux 开发者耗时6年做到了
+---
+The core capability of WSL9x is to run a modern Linux kernel (currently Linux 6.19) in cooperative mode within the Windows 9x kernel, with both kernels running simultaneously at ring 0 privilege. This allows users to use Windows 9x and Linux applications concurrently without restarting.
+
+The tool consists of three components: a patched Linux kernel, a VxD driver, and a client program responsible for console input and output.
+
+Unlike Microsoft's official WSL, WSL9x does not rely on hardware virtualization technology, making it highly compatible and supporting processors as old as the Intel 486.
+
+This means that a 30-year-old computer can run the latest Linux kernel and enjoy features like full paging, memory protection, and preemptive scheduling.
+
+Hailey revealed that the project has been in development for six years, stemming from her previous doslinux project. She also specifically noted in the project description "proudly written without AI," indicating that it was entirely handwritten without any AI assistance.
+
+Ironically, at the same time as WSL9x's release, the Linux kernel community is removing support for 486 processors.
+
+A patch submitted by developer Ingo Molnar will remove build options such as CONFIG_M486SX, CONFIG_M486, and CONFIG_MELAN, and is expected to be merged into Linux 7.1.
+
+Linus Torvalds has previously stated that there is no practical reason to continue supporting this 37-year-old processor.

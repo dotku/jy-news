@@ -1,0 +1,37 @@
+---
+title: Windows 95老电脑跑最新Linux 开发者耗时6年做到了
+date: '2026-04-24T16:33:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559798.htm'
+summary: >-
+  一位名叫Hailey的开发者在Codeberg上发布了一款名为WSL9x的工具，实现了在Windows95及更早版本的Windows系统中运行现代Linux内核。她将其称为“Windows9xSubsystemforLinux”，并在社交平台上表示，这可能是她有史以来最伟大的hack之一。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559798.png'
+slug: 1559798-Windows-95老电脑跑最新Linux-开发者耗时6年做到了
+id: '1559798'
+title_en: >-
+  Running the Latest Linux on a Windows 95 Old Computer: Developer Achieves It
+  After 6 Years
+summary_en: >-
+  A developer named Hailey has released a tool called WSL9x on Codeberg,
+  enabling modern Linux kernels to run on Windows 95 and earlier versions of
+  Windows. She calls it "Windows9xSubsystemforLinux" and says it might be her
+  greatest hack ever.
+---
+
+WSL9x的核心能力是在Windows 9x内核中，以协作模式运行现代Linux内核（目前为Linux 6.19），两个内核同时在ring 0权限下运行，用户可以在不重启的情况下同时使用Windows 9x和Linux应用程序。
+
+该工具由三个组件构成：一个打过补丁的Linux内核、一个VxD驱动程序，以及一个负责控制台输入输出的客户端程序。
+
+与微软官方的WSL不同，WSL9x不依赖硬件虚拟化技术，因此兼容性极强，最低可支持到Intel 486处理器。
+
+这意味着一台30年前的老电脑，也能运行最新的Linux内核，享受完整的分页、内存保护和抢占式调度等功能。
+
+Hailey透露，这个项目已经酝酿了六年，源自她此前完成的doslinux项目，她还在项目说明中特别标注“proudly written without AI”，全程手写没有使用任何AI辅助。
+
+颇具戏剧性的是，就在WSL9x发布的同一时期，Linux内核社区正在移除对486处理器的支持。
+
+开发者Ingo Molnar提交的补丁将移除CONFIG_M486SX、CONFIG_M486和CONFIG_MELAN等构建选项，预计该补丁将合并至Linux 7.1。
+
+Linus Torvalds此前也曾表示，继续支持这款37年前的处理器没有任何实际理由。
+
+
