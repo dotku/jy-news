@@ -1,0 +1,34 @@
+---
+title: Weak IoT Security Could Lead to Widespread Public Charging Pile Paralysis
+date: '2026-04-25T02:15:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559852.htm'
+summary: >-
+  As electric vehicles become increasingly popular, public charging networks are
+  evolving into critical infrastructure, but their security protection level
+  remains at the level of ordinary consumer-grade IoT devices, posing a risk of
+  large-scale malicious shutdowns. Researchers point out that predictable device
+  numbers and weak identity authentication mechanisms could allow attackers to
+  escalate from "interfering with one driver" to taking the public charging
+  network of an entire city offline.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559852.jpg'
+slug: 1559852-物联网安全薄弱或致公共充电桩遭遇大面积瘫痪
+id: '1559852'
+lang: en
+original_title: 物联网安全薄弱或致公共充电桩遭遇大面积瘫痪
+---
+Public electric vehicle charging piles, shared electric scooters, and rental scooters all share a common characteristic: the devices are unattended, rely on remote control via mobile apps, are exposed to the open environment for extended periods, and anyone has the opportunity to access and disassemble the hardware or analyze the accompanying software. At this year's Black Hat Asia conference, Shi Hetian, an IoT security researcher at Tsinghua University, demonstrated how to use a vulnerability in an application of a Chinese charging platform to remotely shut down charging ports, raising high concern in the industry about this type of risk.
+
+According to reports, Shi Hetian used the official app of a Chinese electric vehicle charging service provider in his demonstration. When the audience selected "Shanghai" as the demonstration city, he called up a list of nearby charging stations in the app, selected a charging pile near People's Square, and copied the device's ID into a pre-prepared script for execution. Subsequently, the charging pile's icon on the map turned from green to gray, indicating that the charging port had been remotely disabled. He believes that using the same method, a large number of charging facilities in an entire city could be subjected to denial-of-service attacks in the absence of effective protection.
+
+More worryingly, this problem is not unique to the Chinese market. Shi Hetian's team also tested 11 applications from European shared bicycle and electric scooter operators and found similar security vulnerabilities. At the hardware level, they found still-open debugging interfaces and UART connection points, making it easier for attackers to reverse engineer and tamper with device functions. At the software and cloud levels, they discovered shared authentication keys within the firmware and a lack of sufficient identity verification mechanisms for user requests on the backend services.
+
+Research shows that vulnerabilities on the application side are also dangerous. Weak authentication design may allow attackers to forge so-called "phantom clients," making it impossible for the platform to distinguish them from real users. Based on this, attackers may not only obtain illegal services such as free rides and free charging, but also further steal users' personal information, causing economic and privacy losses to both operators and users.
+
+This demonstration at the conference is not an isolated case, but a microcosm of systemic research results. A related paper published at USENIX Security 2024, by the Tsinghua University team (including Shi Hetian), conducted a systematic analysis of 17 rentable IoT devices and their 92 accompanying applications. The team identified a total of 57 vulnerabilities distributed across 28 products, of which 24 vulnerabilities were identified as having the potential for large-scale exploitation, potentially affecting millions of users and terminal devices.
+
+The paper points out that resource IDs that can be inferred or algorithmically predicted are one of the key issues. Attackers only need to obtain a large number of device or user identifiers through simple enumeration or inference, and then exploit them in conjunction with access control defects to initiate batch operations on a massive number of devices, causing service interruptions or functional abnormalities on a city-wide or even larger scale.
+
+Among all such systems, public charging piles are particularly sensitive. They often involve user payments, cellular network connections, cloud management platforms, and infrastructure directly connected to the power grid. A single charging pile failure or attack may only cause inconvenience to individual car owners; but if thousands of charging terminals are remotely shut down or locked within a short period of time, it will seriously damage the confidence of potential users who are already skeptical about the reliability of electric vehicles in the entire charging network and electric vehicle ecosystem.
+
+The research team said that the relevant manufacturers have confirmed the research results and have repaired or mitigated most of the disclosed problems with the assistance of the researchers. However, they also emphasized that the entire rentable IoT industry still needs to strengthen its security capabilities in many aspects, including establishing stronger unique identity identifiers for each device, implementing stricter authorization mechanisms on the backend, configuring independent credentials for each device, closing unnecessary debugging ports, and establishing a comprehensive abuse detection system. Only after the security infrastructure is systematically strengthened can public charging networks and shared travel devices truly assume the role of critical infrastructure, rather than becoming "soft targets" in the eyes of attackers.
