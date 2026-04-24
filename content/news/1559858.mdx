@@ -1,0 +1,38 @@
+---
+title: Google拟以“一键式凭证”取代邮箱验证码 推进原生身份验证机制
+date: '2026-04-25T06:16:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559858.htm'
+summary: >-
+  Google正推动一项新的Android身份验证方案，试图用由系统直接签发的“已验证邮箱凭证”替代传统邮箱验证码流程，从而让应用开发者在用户注册、登录及账户恢复等场景中，减少依赖一次性密码或“魔法链接”的邮件验证步骤。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559858.webp'
+slug: 1559858-Google拟以-一键式凭证-取代邮箱验证码-推进原生身份验证机制
+id: '1559858'
+title_en: >-
+  Google Plans to Replace Email Verification Codes with "One-Tap Credentials" to
+  Advance Native Authentication
+summary_en: >-
+  Google is promoting a new Android authentication scheme, aiming to replace
+  traditional email verification codes with "verified email credentials" issued
+  directly by the system. This will reduce the reliance on one-time passwords or
+  email "magic links" for app developers during user registration, login, and
+  account recovery.
+---
+
+根据报道，这项新能力被整合进 Android 的 Credential Manager API（凭证管理器 API）之中。Google希望借此改造当前常见的身份验证方式：用户过去在注册应用或第三方服务时，通常需要通过电子邮件或短信接收一次性密码，或点击邮件中的验证链接，以证明自己对某个邮箱地址的控制权；而在新机制下，用户将不必再频繁切换到收件箱查找临时验证码。
+
+Google方面认为，现代身份验证长期处于安全性与便利性之间的权衡之中。虽然传统的邮箱验证码和短信验证方式总体有效，但其操作链路较长，用户往往需要在新安装的应用与邮箱之间来回切换，这种“上下文切换”会增加摩擦成本。此外，邮箱地址虽然获取门槛低，但在垃圾邮件过滤、邮件送达稳定性等方面，并不总是足够可靠。
+
+报道还提到，Google将用户在验证环节中的额外停留时间视为影响转化率的潜在因素。按照Google的说法，用户在“验证循环”中每多停留一秒，都可能增加其失去兴趣、放弃流程的概率，进而直接影响应用或服务的注册转化表现。
+
+为此，Google提出的替代方案，是向 Android 设备直接发放经过加密验证的邮箱凭证。这类凭证与设备本身绑定，工作方式与近年来被广泛推广的 passkey（通行密钥）有相似之处，并通过 Credential Manager API 在身份验证过程中交付给应用。
+
+从技术标准看，这套 API 采用了 W3C 的 Digital Credential API（数字凭证 API）规范。报道指出，它未来有可能在“确认邮箱归属权”这一任务上，替代现有发送和校验一次性验证码或短信消息的做法。Google称，新方案在交互层面也更清晰，用户可以更明确地知道自己被请求提供哪些数据，以及这些数据将如何共享给第三方服务提供者。
+
+对于开发者而言，只要接入 Digital Credential API，就可以在应用中调用这种保存在设备端的邮箱凭证。这样一来，无论是新用户注册、账号找回，还是执行敏感操作与设置变更前的再次验证，都可以通过“一键同意”的方式完成。
+
+不过，这项功能目前仍有适用范围限制。Google表示，现阶段仅支持普通消费者账户，绑定 Workspace 服务的 Google 账户以及受监管账户暂不在支持之列。与此同时，已验证凭证可包含名字、姓氏、全名、头像等多种资料字段，但真正由Google主动完成验证的，目前只有邮箱地址本身。
+
+按照Google的设想，这项嵌入 Credential Manager API 的“已验证邮箱凭证”功能，最终目标是让身份验证不再是一项由用户手动完成的独立步骤，而是成为移动端原生体验中的一部分。报道同时指出，Google近来也在其他安全敏感领域采取类似思路，例如对第三方来源应用侧载持续加强风险提示与管控，显示其正试图在 Android 生态中，对更多关键安全环节实施更强的系统级主导。
+
+
