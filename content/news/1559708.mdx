@@ -1,0 +1,33 @@
+---
+title: DeepSeek-V4预览版正式上线 提供1M超长上下文记忆全新体验
+date: '2026-04-24T11:55:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559708.htm'
+summary: >-
+  4月24日，DeepSeek宣布，全新系列模型DeepSeek-V4的预览版本正式上线并同步开源。DeepSeek-V4拥有百万字超长上下文，在Agent能力、世界知识和推理性能上均实现国内与开源领域的领先。模型按大小分为deepseek-v4-flash和deepseek-v4-pro两个版本。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559708.jpg'
+slug: 1559708-DeepSeek-V4预览版正式上线-提供1M超长上下文记忆全新体验
+id: '1559708'
+title_en: >-
+  DeepSeek-V4 Preview Version Officially Launched, Offering a New Experience
+  with 1M+ Long Context Memory
+summary_en: >-
+  On April 24th, DeepSeek announced the official launch and open-source release
+  of the preview version of its new series of models, DeepSeek-V4. DeepSeek-V4
+  boasts an ultra-long context of one million characters and leads domestically
+  and in the open-source field in terms of Agent capabilities, world knowledge,
+  and reasoning performance. The models are available in two versions based on
+  size: deepseek-v4-flash and deepseek-v4-pro.
+---
+
+即日起登录官网或官方App，即可与最新的DeepSeek-V4对话，探索1M超长上下文记忆的全新体验。API服务已同步更新，通过修改model_name为deepseek-v4-pro或deepseek-v4-flash即可调用。
+
+相比前代模型，DeepSeek-V4-Pro的Agent能力显著增强。在Agentic Coding评测中，V4-Pro 已达到当前开源模型最佳水平，并在其他Agent相关评测中同样表现优异。目前DeepSeek-V4已成为公司内部员工使用的Agentic Coding模型，据评测反馈使用体验优于Sonnet 4.5，交付质量接近Opus 4.6非思考模式，但仍与Opus 4.6思考模式存在一定差距。
+
+据介绍，DeepSeek-V4开创了一种全新的注意力机制，在token维度进行压缩，结合DSA稀疏注意力(DeepSeek Sparse Attention)，实现了全球领先的长上下文能力，并且相比于传统方法大幅降低了对计算和显存的需求。从现在开始，1M(一百万)上下文将是DeepSeek所有官方服务的标配。
+
+V4-Pro与V4-Flash最大上下文长度为1M，均同时支持非思考模式与思考模式，其中思考模式支持reasoning_effort 参数设置思考强度(high/max)。对于复杂的Agent场景建议使用思考模式，并设置强度为 max。
+
+目前，DeepSeek API已同步上线V4-Pro与V4-Flash，支持OpenAI ChatCompletions接口与Anthropic接口。访问新模型时，base_url不变，model参数需要改为 deepseek-v4-pro或 deepseek-v4-flash。
+
+
