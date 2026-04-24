@@ -1,0 +1,78 @@
+---
+title: >-
+  DeepSeek V4 Achieves Million-Context Performance at a Low Price, Potentially
+  Halving API Costs for Domestic Cards?
+date: '2026-04-24T19:24:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559824.htm'
+summary: >-
+  DeepSeek has released a preview version of DeepSeek-V4, including the
+  deepseek-v4-pro and deepseek-v4-flash models with million-token context
+  lengths. These models are now open-source and accessible via the official
+  website or app. API services have also been updated, offering competitive
+  pricing and performance comparable to leading international models.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559824.jpg'
+slug: 1559824-DeepSeek-V4把百万上下文打到2毛-国产卡将-腰斩-API价格
+id: '1559824'
+lang: en
+original_title: DeepSeek V4把百万上下文打到2毛 国产卡将“腰斩”API价格？
+---
+By Zhou Wenmeng, "BUG" Column
+
+According to official benchmark tests, DeepSeek V4’s performance rivals top international closed-source models in areas like context length, knowledge, reasoning, and Agent capabilities, reaching the forefront of open-source models. The "BUG" column found that DeepSeek, which previously drove down prices in the domestic large model industry with its previous version, is once again offering the industry’s “lowest price” with V4.
+
+“Although the per-million-token call price hasn’t decreased significantly for domestic models, its ultra-long context length and impressive performance make it highly competitive!” an industry insider told the "BUG" column, exclaiming, “That model price butcher is back!”
+
+Performance Rivals Top Closed-Source Models, Leading Knowledge and Reasoning Abilities
+
+DeepSeek officially introduces the V4 series with two models: DeepSeek-V4-Pro, with 1.6T total parameters and 49B active parameters, trained on 33T data; and DeepSeek-V4-Flash, with 284B total parameters and 13B active parameters, trained on 32T data. Both natively support 1000k token contexts.
+
+According to benchmark test data disclosed by DeepSeek, DeepSeek-V4-Pro-Max achieved the best performance in knowledge and reasoning tests, surpassing international models like Claude-Opus-4.6-Max, GPT-5.4-xHigh, and Gemini-3.1-Pro-Hight on the Apex Shortlist and Codeforces tests, demonstrating strong logic and algorithmic capabilities. It performed slightly below Gemini-3.1-Pro-High in the SimpleQA Verified test but outperformed Claude and GPT.
+
+In Agentic capability assessments, V4, Opus-4.6, and Gemini-3.1-pro achieved a tie on the SWE Verified task. DeepSeek also achieved a level second only to GPT-5.4-xHigh on the Toolathlon task and outperformed Opus-4.6 on Terminal Bench 2.0, demonstrating advantages in complex instruction execution and tool calling scenarios.
+
+Currently, DeepSeek-V4 is used internally as an Agentic Coding model, with evaluation feedback indicating a better user experience than Sonnet 4.5 and delivery quality approaching Opus 4.6 in non-thinking mode.
+
+In mathematics, STEM, and competitive coding assessments, DeepSeek-V4-Pro surpassed most publicly evaluated open-source models, achieving results comparable to world-leading closed-source models.
+
+Overall, DeepSeek-v4 has achieved comprehensive leadership over domestic open-source models in knowledge processing and reasoning capabilities, matching international assessment levels. However, in Agentic capabilities, while the latest DeepSeek-v4 has seen improvements, it hasn’t widened the gap with the leading domestic and international models, with each having its own advantages.
+
+“Standard” 1 Million Context, the Price Butcher “Returns”
+
+Compared to the performance advantages demonstrated in various benchmark tests, the biggest feature of this V4 release lies in the breakthrough in long-text capabilities and the further reduction in API call prices.
+
+Thanks to DeepSeek-V4’s innovative attention mechanism, V4 achieves leading long-context capabilities by compressing tokens and combining DSA sparse attention (DeepSeek Sparse Attention), significantly reducing the demand for computation and memory. A 1M (one million) context has become standard across all official DeepSeek services.
+
+A year ago, a 1 million context was Gemini’s exclusive ace. Even in many recently released mainstream domestic open-source models, model context lengths are mostly in the 128K–200K range, while DeepSeek has directly turned a million context from a “high-end closed-source feature” into an open-source standard.
+
+In terms of API pricing, compared to the current GLM-5.1 input price of 1.3-2 yuan/million tokens (cache hit) and Kimi-K2.6 1.1 yuan/million tokens (cache hit), the input prices for the deepseek-v4-pro and flash versions are 1 yuan/million tokens and 0.2 yuan/million tokens respectively. Although the price reduction isn’t significant, it’s the lowest, and the context length has expanded several times.
+
+[Images of API pricing for DeepSeek-v4 series, Kimi-k2.6, and GLM-5.1 models are included in the original article.]
+
+“The performance breakthrough brought by DeepSeek-v4 is less impactful than the release of DeepSeek-R1. Performance remains in the first tier, but the leading advantage hasn’t been fully widened,” an industry insider believes. “The release of V4 models is more about improving long-text capabilities and further reducing prices.”
+
+The insider added, “DeepSeek-V3 and R1 models previously drove the entire domestic large model industry to collectively lower prices through bottom-layer technological innovation. Although the per-million-token call price for V4 hasn’t decreased much compared to its peers, it remains competitive. That model price butcher is back!”
+
+“Batching on Huawei Computing Power in the Second Half of the Year, Pro Prices Will Drop Significantly”
+
+Notably, at the very bottom of the DeepSeek-v4 API pricing information, the official specifically notes: “Limited by high-end computing power, the Pro service throughput is currently very limited. It is expected that the Pro price will drop significantly after the mass listing of Ascend 950 supernodes in the second half of the year.”
+
+This means that the V4 series models released this time have already been adapted for Huawei Ascend 950 supernodes. Once Ascend 950 is launched, users will be able to use DeepSeek-v4, comparable to top international closed-source models, based on domestic computing power.
+
+In the open-source technical documentation, DeepSeek also mentions this, stating that V4 has verified fine-grained EP (expert parallelism) schemes on NVIDIA GPUs and HUAWEI Ascend NPUs, achieving 1.50-1.73x acceleration in general inference tasks compared to a strong non-fusion baseline, and up to 1.96x acceleration in latency-sensitive scenarios (such as RL inference and high-speed agent services).
+
+After V4’s release, Huawei Ascend also announced simultaneously that “the entire series of supernode products supports DeepSeek V4 series models.” It is reported that Ascend 950 reduces Attention computation and memory access overhead through kernel fusion and multi-stream parallelism technologies, significantly improving inference performance. Combined with various quantization algorithms, it achieves high throughput and low latency for DeepSeek V4 model inference deployment.
+
+Earlier this month, NVIDIA founder Jensen Huang said in an interview with Dwarkesh Patel that “if DeepSeek releases first on Huawei’s platform, that would be catastrophic for our country (the United States).” Huang believes that although DeepSeek is an open-source model that can also be used on NVIDIA products, if DeepSeek specifically optimizes for Huawei computing power, NVIDIA will be at a disadvantage under limitations such as restricted access to high-end computing power.
+
+Now it seems that although DeepSeek has also verified the EP scheme for NVIDIA computing power, Huang’s concerns have come true. Industry insiders believe that “V4 is a product forced out by the computing power battle, and in the next year, domestic large models running on domestic cards will gradually mature.”
+
+Lack of Multimodal Capabilities
+
+Regrettably, although DeepSeek V4 has been released, this version remains a pure text model, lacking extensive text-to-image, text-to-video, and other multimodal capabilities. This adds difficulty for ordinary users to quickly experience and evaluate the model.
+
+After all, with the continuous improvement of large language model capabilities and the gradual decline in hallucination rates, conventional, single knowledge question answering can no longer objectively reflect a model’s comprehensive capabilities. For most users, to intuitively feel the capabilities of the V4 model, they still need to download and use it for a while.
+
+At the same time as the V4 series model release, DeepSeek has recently reported plans to raise 500 billion yuan. A source close to DeepSeek revealed that DeepSeek’s pre-funding valuation is 300 billion yuan, equivalent to approximately $44 billion. Tencent Holdings and Alibaba Group are currently in talks to invest in DeepSeek. However, DeepSeek has not yet responded positively to media inquiries regarding financing matters.
+
+Perhaps, for DeepSeek founder Liang Wenfeng, in the context of slowing global large model “intelligence” growth, increasing industry talent competition, and the continuous emergence of multimodal and Agentic trends, securing financing to strengthen its capabilities at the time of the V4 release is a wise move.
