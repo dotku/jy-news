@@ -1,0 +1,44 @@
+---
+title: Windows 11更新机制改进：用户将可跳过安装、无限期暂停并自主决定重启时机
+date: '2026-04-25T14:48:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559940.htm'
+summary: >-
+  微软正在为Windows11带来一轮围绕更新体验的大幅调整，重点是把更多决定权交还给用户，包括在系统初始设置阶段跳过更新、将更新暂停任意长时间，以及在已有更新待安装时仍可单独选择关机或重启而不立即应用更新。相关改动目前已开始向WindowsInsider测试用户推送，其中包括Beta频道的Build26220.8282，以及Experimental分支中Canary和Dev频道的Build2630
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559940.png'
+slug: 1559940-Windows-11更新机制改进-用户将可跳过安装-无限期暂停并自主决定重启时机
+id: '1559940'
+title_en: >-
+  Windows 11 Update Mechanism Improvements: Users Can Skip Installation,
+  Indefinitely Pause, and Decide Restart Time
+summary_en: >-
+  Microsoft is making significant adjustments to the Windows 11 update
+  experience, focusing on giving users more control, including skipping updates
+  during initial setup, pausing updates for an indefinite period, and choosing
+  to shut down or restart independently when updates are pending. These changes
+  are currently being rolled out to Windows Insider testers, including Build
+  26220.8282 in the Beta Channel and Build 26300.8289 in the Canary and Dev
+  Channels of the Experimental branch.
+---
+
+微软正在为Windows 11带来一轮围绕更新体验的大幅调整，重点是把更多决定权交还给用户，包括在系统初始设置阶段跳过更新、将更新暂停任意长时间，以及在已有更新待安装时仍可单独选择关机或重启而不立即应用更新。 相关改动目前已开始向Windows Insider测试用户推送，其中包括Beta频道的Build 26220.8282，以及Experimental分支中Canary和Dev频道的Build 26300.8289。
+
+这一轮改动是微软根据超过7621条有关Windows更新体验的用户反馈作出的回应，核心共包括四项变化：Windows 11安装设置过程中新增“稍后更新”按钮、允许用户长期阻止设备接收更新、支持在不安装更新的情况下执行关机或重启，以及在系统中提供更清晰的可用更新信息展示。
+
+在整体思路上，微软正尝试统一不同类型的Windows更新，并将目标设定为“把更新体验压缩到每月一次重启”。 按照文章说法，微软首先会加强驱动、.NET以及固件更新之间的协同，以减少用户一个月内频繁被重启打断的情况。
+
+今后，用户进入“设置 > Windows 更新”页面后，将看到一个新的“可用更新”区域，用于集中显示多类更新内容。 这些内容不仅包括每月例行的安全更新，也涵盖紧急带外更新以及可选的非安全更新。
+
+按照新的机制，这些更新会先在后台静默下载，随后等待下一个预定的Windows质量更新时机，或者等待用户自行批准后再安装。 若用户希望尽快安装某项更新，仍然可以手动启动下载并重启系统；否则，更新会继续停留在后台，直到后续统一应用。
+
+在新电脑或重装系统后的首次设置阶段，微软也对长期被用户诟病的强制更新流程进行了调整。 文章称，Windows 11 OOBE，也就是开机初始设置流程中，如今新增“稍后更新”按钮，用户点击后即可先跳过更新，继续完成系统设置并直接进入桌面。 不过，采用这一选项也意味着，在更新真正完成之前，设备暂时无法获得最新功能和安全补丁。
+
+另一个备受关注的变化，是Windows 11更新暂停机制被显著放宽。 Windows Update页面现在提供带有日历界面的“暂停更新”选项，默认可选择最长35天的暂停期限。 但新的变化在于，当这35天到期后，用户可以再次延长暂停时间，再追加最多35天，而且这一过程理论上可以无限重复。 这意味着，从机制上看，用户几乎可以让一台Windows 11电脑在极长时间内始终不安装更新，尽管文章同时指出，这样做并不利于安全防护。
+
+在关机与重启逻辑方面，微软也进一步拆分了原本容易引发困扰的操作选项。 过去，系统在下载完更新后常把“更新并关机”或“更新并重启”摆在显眼位置，用户如果只是想单纯关机或重启，往往也要被迫等待更新安装完成。 现在，下载完更新后，系统将同时提供四个按钮，分别是“更新并关机”“关机”“更新并重启”“重启”。 其中，“关机”和“重启”会始终保留，用户可以在不安装待处理更新的情况下直接完成相应操作。
+
+对于驱动更新，微软也对信息展示方式作出细化调整。 此前，Windows 11中的驱动更新标题往往高度相似，用户很难判断究竟是哪一个硬件设备即将获得更新。 按照新的设计，微软会在驱动标题中加入设备类别信息，例如显示器、音频、电池、扩展设备或HDC等，帮助用户更准确地识别即将更新的对象。 对于那些只想更新部分硬件驱动、而不希望动到特定设备的用户来说，这种标注方式将明显提高可见性与可控性。
+
+这一系列调整说明，微软正在兑现其此前关于改善Windows 11体验的承诺，而这些改进本身也将通过Windows更新机制逐步送达更多电脑。 目前相关功能仍主要面向Insider测试渠道开放，正式面向普通用户的全面推送，预计还需要数周到数月时间。
+
+
