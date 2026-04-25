@@ -1,0 +1,166 @@
+---
+title: "图灵奖获得者、 AI 三大教父之一的 LeCun在达沃斯的发言，算是把整个硅谷的遮羞布扯了。    他说现在整个行业都被LLM彻底洗脑了，所有人都在同一条赛道上互相挖人，谁敢偏离主流谁就被骂落后。  "
+date: "2026-04-24T15:23:18.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@AYi_AInotes"
+link: "https://x.com/AYi_AInotes/status/2047697898989572176"
+image: "https://pbs.twimg.com/amplify_video_thumb%2F2047697708551385088%2Fimg%2FbJZq9mti1fgWfMCQ.jpg"
+slug: "ylecun-2047697898989572176"
+---
+
+图灵奖获得者、 AI 三大教父之一的 LeCun在达沃斯的发言，算是把整个硅谷的遮羞布扯了。
+
+
+
+他说现在整个行业都被LLM彻底洗脑了，所有人都在同一条赛道上互相挖人，谁敢偏离主流谁就被骂落后。
+
+
+
+这也是他离开Meta的真正原因，连Meta都已经LLM-pilled，他不想再跟风了。
+
+
+
+最扎心的一句话是：纯生成式架构，不管是LLM、VLM还是VLA，永远造不出哪怕猫级的智能体。
+
+
+
+因为它们本质上只是下一个token预测机，只能在文字和像素的空间里做统计关联，从来没有真正理解过这个世界的因果。
+
+它们不会预测行动的后果，不会真正的规划，更没有常识。
+
+
+
+当然，我不是说LLM没用，短期来看，scaling LLM+微调+工具调用，已经能吃掉80%的白领工作，硅谷所有人往这里冲，也算是完全理性，毕竟钱和机会就在这里。
+
+
+
+但长期来看，这是一条有天花板的路。因为你永远不可能在文字地图上，开出一辆真正的车。
+
+机器人、具身智能、长期自主代理、真正的科学发现，这些坎，纯LLM永远跨不过去。
+
+
+
+LeCun说，真正的智能必须有世界模型。就是说给定当前的状态和你要做的动作，你要能准确预测下一秒世界会变成什么样。不是简单的像素级的生成，还需要对物理规律和因果关系的抽象建模。
+
+
+
+最近Figure、特斯拉、谷歌的机器人项目，其实都在偷偷补这一课，只是没人愿意公开说，LLM不是万能地基。
+
+
+
+我理解未来真正的智能，一定是混合栈，LLM负责语言交互和符号推理，世界模型负责因果预测和长期规划，执行层负责把计划变成动作。
+
+
+
+LeCun从来没说过要抛弃LLM，他只是反对把LLM当成一切的答案。
+
+
+
+硅谷现在最可怕的问题不是卷，是所有人都在同一条赛道上卷得太狠，以至于忘了终点其实根本不在这条赛道上。
+
+
+
+世界模型这道坎，迟早要跨。
+
+而谁先跨过去，谁就是下一个时代的赢家。
+
+https://nitter.net/search?f=tweets&q=%23YannLeCun https://nitter.net/search?f=tweets&q=%23世界模型 https://nitter.net/search?f=tweets&q=%23AGI https://nitter.net/search?f=tweets&q=%23大模型 https://nitter.net/search?f=tweets&q=%23具身智能
+
+
+Video
+
+  
+
+
+
+
+阿绎 AYi (@AYi_AInotes)
+
+后续来了兄弟们，卧槽真的太炸了，同样的任务，同样的配置，速度比Claude Sonnet 4.6还快 6 倍，成本低约 50 倍，
+
+openrouter 和 官方 API 均限时免费 1 周使用时间，白嫖的机会，冲啊兄弟们！
+
+
+
+我上周那条讲Elephant Alpha的推不是爆了吗，很多兄弟在评论区猜背后是谁，现在谜底揭晓了。
+
+
+
+蚂蚁集团AGI团队（https://nitter.net/AntLingAGI）的Ling-2.6-flash，
+
+猜中国产大厂马甲的兄弟，你赢了。
+
+
+
+说实话我看到架构数字那一刻，上周用它的所有体感全部对上了。
+
+
+
+总参数104B，每次推理真正激活的只有7.4B，激活率7%，256个专家里每次只叫醒一小撮干活，其他的继续睡觉😂
+
+
+
+这就是为啥上周我说它token消耗肉眼可见往下掉——100块钱的模型，每次推理只烧7块钱的算力，跑出了100块钱的智能，这可不是玄学啊，属于架构层面就在为效率让路。
+
+
+
+再叠Linear Attention把传统Transformer的二次复杂度压下来，再加Multi-Token Prediction做推理加速，三件事一起上，FP8单卡341 tokens/s，Artificial Analysis实测输出215 tokens/s，和gpt-oss-120B并列第一梯队。
+
+
+
+说实话，速度方面上周体验之后我早就服了，这回真正让我愣住的是跑分。
+
+
+
+Artificial Analysis跑完全量评测，Ling-2.6-flash只烧了大约15M tokens，Nemotron-3-Super烧了接近10倍，Intelligence Score却拿到26，和Gemini 2.5 Flash同梯队。
+
+
+
+都便宜到这个份上，大家下意识觉得肯定哪里凑合了，但agentic跑分直接打脸，SWE-bench Verified 62，BFCL-V4 67，TAU2-Telecom 93.86，SWE-bench测的是真实代码仓库里定位Bug加生成补丁，BFCL测的是函数调用准确性，全是硬场景，不是那种学术榜单刷分。
+
+
+
+上周我搭那个串三个工具的小Agent跑得贼利索，现在明白了，这模型从训练阶段就是奔着Agent去的，别人做Agent是改装车，它是原厂出的Agent专用机。
+
+
+
+所以我上周说的那套玩法现在有了官方解释——Claude管架构和规划调一次，Ling-2.6-flash管分步执行跑一百次，成本砍到十分之一，不是我瞎搭的野路子，是这个模型本来就为这个场景而生。
+
+
+
+蚂蚁的产品线逻辑也清晰，Ling做基础，Ring做推理，Ming做多模态，这次先以stealth身份在OpenRouter和Kilo上免费放出来收集反馈，后面会开源，再推商用版LingDT，还会出BF16/FP8/INT4量化版。
+
+
+
+路径就是社区验证→开源扩散→商业落地，对开发者来说，现在就是白嫖窗口期，免费还剩几天。
+
+
+
+用了这段时间我给它的定位很明确，它是目前最适合一直开着的模型之一，Agent持续跑、代码补全随时触发、长文档批量处理，越高频越省钱，账单每个月都会替它说话。
+
+
+
+但极端复杂的推理链、需要反复自我纠错的长思考任务，你可能还是得上重型推理模型，它的sweet spot是够聪明+极快+极省那个三角区，日常80%的活它接得住，接得还比大多数模型便宜。
+
+
+
+所以说2026年看模型不能再盯着单一智能分了，当Agent从偶尔问一下变成24小时不间断跑的基础设施，每个token的有效产出就是新的胜负手，Ling-2.6-flash是目前这个方向上跑得最激进、也交出实际成绩单的选手之一。
+
+上周说过的话，这周全部兑现，挺爽的🌚
+
+https://nitter.net/search?f=tweets&q=%23ElephantAlpha https://nitter.net/search?f=tweets&q=%23Ling2Flash https://nitter.net/search?f=tweets&q=%23AntAGI https://nitter.net/search?f=tweets&q=%23Agent https://nitter.net/search?f=tweets&q=%23大模型
+
+
+Video
+
+  
+
+
+
+
+
+— https://nitter.net/AYi_AInotes/status/2047364394229850188#m
