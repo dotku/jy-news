@@ -1,0 +1,200 @@
+---
+title: 'DeepSeek-V4 Report Released: Secrets Behind the Delay Finally Revealed'
+date: '2026-04-25T16:16:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559948.htm'
+summary: >-
+  Yesterday was a veritable "Spring Festival Gala" for the AI community. The
+  release of the DeepSeek-V4 technical report, spanning nearly 60 pages, lays
+  bare everything from architecture to training to post-training. 484 days was
+  an unusual timeframe for the team, as V3 only took less than 8 months to go
+  from V2 to release. Why did V4 take nearly twice as long? This article delves
+  into the possible reasons and the impressive engineering foundation of this
+  "Chinese pride."
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559948.png'
+slug: 1559948-DeepSeek-V4报告亮了-V4发布延迟的秘密终于曝光
+id: '1559948'
+lang: en
+original_title: DeepSeek-V4报告亮了 V4发布延迟的秘密终于曝光
+---
+What truly gives food for thought about DeepSeek-V4 isn't how much compute it stacked, but its almost ruthless rationality and transparency in Agent training, engineering foundation, and handling "training oscillations."
+
+Today, we're dissecting V4's engine to see what hardcore details lie within.
+
+33T Tokens + Trillion Parameter Scale
+
+Difficulty Directly Maxed Out
+
+484 days after the release of V3, V4 launched in a "preview version."
+
+The paper doesn't explain this timeframe, but a certain passage might offer a clue.
+
+V3 used 14.8T tokens for pre-training, while V4 directly doubled that, with V4-Flash trained on 32T and V4-Pro on 33T. The parameter count also expanded significantly, with V4-Pro totaling 1.6T parameters and V4-Flash having 284B.
+
+Doubling the data and parameters also increases the difficulty of training stability exponentially.
+
+The report is very honest: DeepSeek explicitly mentioned "training stability challenges."
+
+GoogleDeepMind researcher Susan Zhang praised this transparency, a sentiment echoed by the "father of lobster."
+
+On a massive scale cluster, when the parameter count and training data reach a critical point, subtle hardware errors are infinitely amplified.
+
+The word "stability" appears more than ten times in the paper.
+
+This frequency itself is a signal within a technical report. Normally, stability is a default assumption and not worth repeating. Repeating it indicates it's a real problem.
+
+Specifically, DeepSeek discovered that numerical outliers in the MoE layers are continuously amplified through the routing mechanism, forming a vicious cycle that ultimately triggers a loss spike and a sudden surge in the training curve.
+
+The team's main remedial measures are two-fold.
+
+The first is called Anticipatory Routing. Essentially, it uses parameters from a slightly earlier version during the routing phase, decoupling the updates of the backbone network and the routing network, breaking the vicious cycle between them.
+
+The second is SwiGLU Clamping. It directly clamps the numerical range of SwiGLU within [-10, 10], suppressing outliers from the source, a brute-force but effective method.
+
+Current large model training has entered a no-man's land of a trinity of hardware bottom layer, compiler stack, and mathematical architecture.
+
+There's a detail in the paper that's worth pondering.
+
+DeepSeek confirmed that Anticipatory Routing and SwiGLU Clamping were "significantly effective," but immediately followed with "the underlying mechanism remains an open question."
+
+Even for basic operations like Q/KV normalization, which have been widely verified, the paper only dares to write that it "may improve training stability."
+
+A single "may" is enough to show that in the training of trillion-parameter MoE models, nothing is 100% reliable.
+
+From 15T to 33T, doubling the data volume doesn't bring linear growth in difficulty, but rather an exponential increase in systemic risk.
+
+Every layer of the network, every gradient update, every communication synchronization, is amplified into a potential breaking point at a larger scale.
+
+And DeepSeek chose to write all of this into the paper, which is almost unprecedented in the industry.
+
+Whose Fault Is It: Hardware or Software?
+
+So, what exactly is the "training stability challenge" explicitly mentioned in the technical report referring to?
+
+Although the paper doesn't explicitly name any hardware platform, some with keen senses have already begun to speculate.
+
+Some argue that the so-called "training stability challenge" is likely a problem with the compute platform, and not just DeepSeek, but all major manufacturers have encountered it.
+
+At a release event, the head of the Macrohard project at xAI vaguely mentioned that NVIDIA's latest chips caused them "considerable trouble," forcing them to redevelop hardware adaptation programs. This may also explain one of the reasons for the sudden slowdown in xAI's progress.
+
+However, the matter is, of course, more complex than that.
+
+Large-scale compute clusters involve too many variables: the chip itself, the interconnection architecture, the cooling system, the power supply, the driver version, and the compiler stack adaptation. Training instability doesn't necessarily equate to a chip-level defect, it could also be a problem with system integration.
+
+However, no official documents have yet provided an answer.
+
+Everything is still speculation.
+
+Agent Training System
+
+Engineering Capabilities Inspire Awe
+
+If V4's pre-training is a battle with hardware, its Post-training demonstrates textbook-level engineering aesthetics.
+
+The engineering path to Agent capabilities is the most worthwhile part of the V4 paper.
+
+In the past, we believed that Agent capabilities were "taught," but DeepSeek believes they should "grow."
+
+Rejecting "Hard Transfer," "Bloodline Injection" During Pre-training
+
+Most of the industry practice is to first train a dialogue model and then hard-transfer it into an Agent. DeepSeek believes this is too inefficient.
+
+During V4's mid-training phase, they injected a massive amount of Agentic Data.
+
+This means that the model has already seen long task chains, environmental feedback, and file modification patterns during the basic learning phase. It hadn't even learned to write poetry yet, but it had already seen error messages from the Linux command line.
+
+This is a ground-level design.
+
+Unique Specialist Training
+
+Another highlight is DeepSeek's unique specialist training method.
+
+V4 didn't directly train an all-rounder, but first trained experts in mathematics, code, Agents, and instruction following.
+
+This phased Specialist Training ensures that the upper limit of each field is maximized.
+
+Finally, through OPD (Multi-teacher On-Policy Distillation), the souls of these experts are integrated into a unified model.
+
+The engineering difficulty here is that simultaneously loading more than ten trillion-parameter-level teacher models for online inference is unrealistic.
+
+V4's solution is not to cache the teacher's logits (the memory can't hold it), but only to cache the hidden state of the teacher's last layer, and reconstruct the logits through the prediction head during training as needed.
+
+Then, training samples are sorted by teacher index, ensuring that each teacher's prediction head is loaded only once. KL divergence calculation is accelerated by a dedicated kernel written in TileLang.
+
+Saying Goodbye to Traditional Reward Models
+
+Also, for "hard-to-verify" tasks, traditional scalar reward models are no longer sufficient.
+
+To address this, DeepSeek introduced a Generative Reward Model (GRM).
+
+It no longer simply gives a score from 0 to 1, but generates a detailed evaluation report based on a pre-defined Rubric (evaluation criteria).
+
+More importantly, DeepSeek also performed RL optimization on the GRM itself, allowing the actor network to simultaneously act as a generative reward model, with both judging and generating capabilities jointly optimized in the same model.
+
+Turning Agents into a Distributed System
+
+Not only that, DeepSeek also developed a dedicated foundation for V4.
+
+DSec: Production-Level Sandbox Cluster
+
+To train the Agent's practical skills, DeepSeek built a platform called DSec.
+
+3FS distributed file system ensures ultra-fast data access; tens of thousands of concurrent Sandbox instances mean that during training, V4 simultaneously has hundreds of thousands of "virtual computers" running code and testing bugs.
+
+MegaMoE: Communication-Computation Integration
+
+In the MoE layer, DeepSeek integrated communication and computation into a single pipeline kernel, with experts scheduled by wave, and communication latency completely hidden within the computation.
+
+The result is a 1.5 to 1.73x acceleration in general scenarios, and up to a 1.96x acceleration in latency-sensitive scenarios such as RL rollout.
+
+Self-Developed DSML: Rejecting Translation Failures
+
+In terms of tool calling, DeepSeek simply designed its own XML-like DSL (domain-specific language).
+
+This protocol is simple and efficient, directly increasing the success rate of tool calling from "luck-based" to "industrial-grade robust."
+
+Reasoning Effort Mode Training
+
+There's also a refined design: V4 supports different thinking modes.
+
+Non-think mode is simple tool selection, with instant responses. High/Max is for long documents, refactoring, and complex bugs, maximizing reasoning compute.
+
+This "save where you can, go all-out when necessary" strategy is also key to V4 achieving a cost of 1/4 of Claude.
+
+The community's many researchers, after reading this section, bowed in reverence: "DeepSeek's engineering capabilities remain as solid as ever."
+
+Interleaved Thinking Upgrade
+
+V3.2 discarded previous thinking traces each time a new user message arrived. V4 retains the complete cross-round reasoning history in Tool-Calling scenarios, allowing the Agent to maintain a coherent reasoning chain in long-term tasks.
+
+Normal dialogue scenarios still clear each round, keeping the context concise.
+
+The flip side of the coin is a 94% hallucination rate.
+
+Artificial Analysis's measurements provide a more three-dimensional picture.
+
+After running the full Intelligence Index benchmark, V4 Pro cost only $1071, more than four times cheaper than Claude Opus 4.7's $4811.
+
+In terms of Agent capabilities, V4 Pro Max scored 1554 on the GDPval-AA benchmark (a benchmark for real-world work tasks), comprehensively leading all open-source models.
+
+However, there's no free lunch.
+
+The Artificial Analysis report also frankly points out the cost of this approach: V4 pro has a hallucination rate of as high as 94% on AA-Ominiscience.
+
+This reveals a structural dilemma: in order to approach top performance with a limited compute budget, trade-offs must be made in certain dimensions.
+
+DeepSeek chose to bet all its chips on reasoning and Agent capabilities, at the cost of knowledge accuracy.
+
+Why We Still Have Respect for DeepSeek
+
+In this V4 report, some have seen the embarrassment of "unstable training," and others have seen the shortcomings of "severe hallucinations."
+
+But in our view, the most moving aspect of this report is its transparency.
+
+They dare to admit the pain of hardware adaptation, dare to disclose those seemingly "patchy" solutions, and dare to show how they grind out the Agent's soul bit by bit in hundreds of thousands of sandboxes with the most hardcore engineering capabilities.
+
+From V3's Multi-head Latent Attention to V4's OPD distillation and DSec sandbox, DeepSeek is exploring another path to AGI with a near-obsessive "engineeringism"—
+
+If the architecture isn't perfect yet, use engineering to thicken the walls; if compute isn't cheap enough, squeeze every ounce of efficiency out of the algorithm.
+
+DeepSeek-V4 may not be the perfect endgame, but it's definitely the most real and vibrant "Chinese AI scene" right now.

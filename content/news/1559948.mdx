@@ -1,0 +1,206 @@
+---
+title: DeepSeek-V4报告亮了 V4发布延迟的秘密终于曝光
+date: '2026-04-25T16:16:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559948.htm'
+summary: >-
+  昨天，是名副其实的AI圈“春晚”。DeepSeek-V4的技术报告一出，近60页的篇幅，从架构到训练到后训练全部摊开。484天，对这个团队来说不寻常。V3从V2到发布只用了不到8个月。V4为什么多花了将近一倍的时间？
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559948.png'
+slug: 1559948-DeepSeek-V4报告亮了-V4发布延迟的秘密终于曝光
+id: '1559948'
+title_en: 'DeepSeek-V4 Report Released: Secrets Behind the Delay Finally Revealed'
+summary_en: >-
+  Yesterday was a veritable "Spring Festival Gala" for the AI community. The
+  release of the DeepSeek-V4 technical report, spanning nearly 60 pages, lays
+  bare everything from architecture to training to post-training. 484 days was
+  an unusual timeframe for the team, as V3 only took less than 8 months to go
+  from V2 to release. Why did V4 take nearly twice as long? This article delves
+  into the possible reasons and the impressive engineering foundation of this
+  "Chinese pride."
+---
+
+认真研读完这篇报告，我们发现了背后可能的原因，以及这家“国产之光”令人震撼的工程底色实。
+
+可以说，DeepSeek-V4真正令人深思的，不是它堆了多少算力，而是它在Agent训练、工程底座、以及处理“训练震荡”时的那种近乎残酷的理性和透明。
+
+今天，我们直接拆开V4的引擎盖，看看里面藏着哪些不为人知的硬核细节。
+
+33T Token + 万亿参数
+
+难度直接拉满
+
+距离V3发布整整484天，V4才以“preview version”的姿态上线。
+
+论文里虽然没有解释这个时间跨度，但有一段内容或许能提供线索。
+
+V3用了14.8T token做预训练，V4直接翻倍，V4-Flash训了32T，V4-Pro训了33T。参数量同样大幅扩张，V4-Pro总参数1.6T，V4-Flash也有284B。
+
+数据翻倍、参数翻倍，训练稳定性的难度也跟着上了一个量级。
+
+报告里非常诚实：DeepSeek明确点名了“训练稳定性挑战”。
+
+GoogleDeepMind研究者Susan Zhang表扬说：这种透明的做法值得称赞。这个说法还得到了龙虾之父的转发
+
+在超大规模集群上，当参数量和训练数据达到某个临界点时，硬件的细微误差会被无限放大。
+
+论文里，“stability”这个词出现了十余次。
+
+放在一篇技术报告里，这个频率本身就是信号。正常情况下，稳定性是默认前提，不值得反复提。反复提，说明它确实是个问题。
+
+具体来看，DeepSeek发现MoE层中的数值异常值（outlier）会通过路由机制不断放大，形成恶性循环，最终触发loss spike，训练曲线突然飙升。
+
+团队祭出的主要补救措施是两招。
+
+第一招叫Anticipatory Routing。它本质上就是在路由阶段使用稍早版本的参数，把骨干网络和路由网络的更新解耦，打破两者之间的恶性循环。
+
+第二招是SwiGLU Clamping。它直接把SwiGLU的数值范围钳制在[-10， 10]以内，从源头压制异常值，虽然暴力但很有效。
+
+当前大模型训练已进入硬件底层、编译器栈、以及数学架构三位一体的无人区
+
+论文里有个细节很耐琢磨。
+
+Anticipatory Routing和SwiGLU Clamping，DeepSeek确认“显著有效”，但紧跟一句“底层机理仍是open question”。
+
+连Q/KV归一化这种已经被广泛验证的基础操作，论文的措辞都只敢写“may improve training stability”。
+
+一个“may”字，足以说明在万亿参数MoE的训练里，没有什么是百分百靠得住的。
+
+从15T到33T，数据量翻倍带来的不是线性增长的困难，而是指数级放大的系统性风险。
+
+每一层网络、每一个梯度更新、每一次通信同步，都在更大的规模下被放大成潜在的崩溃点。
+
+而DeepSeek选择把这些全写进论文里，这在业内几乎没有先例。
+
+硬件的锅，还是软件的锅？
+
+所以，技术报告中明确提出的“训练稳定性挑战”，指的到底是谁家的硬件？
+
+虽然论文里没有明确点名任何硬件平台，但已经有嗅觉敏锐的人开始猜测了。
+
+有观点直接指出：所谓“训练稳定性挑战”，很可能就是算力平台的问题。而且不只是DeepSeek一家踩坑，各大厂商都遇到过。
+
+xAI在一次发布会上，Macrohard项目的负责人曾隐晦提到，英伟达最新的芯片给他们造成了“不小的麻烦”，不得不重新开发硬件适配程序。这或许也解释了xAI进度突然放缓的原因之一。
+
+不过，这件事当然没那么简单。
+
+大型算力集群涉及的变量太多：芯片本身、互连架构、散热系统、电力供应、驱动版本、编译栈适配。训练不稳定未必等于芯片级缺陷，也可能是系统集成层的问题。
+
+不过，目前还没有任何官方文件给出答案。
+
+一切都还在猜测之中。
+
+Agent训练体系
+
+工程能力让人肃然起敬
+
+如果说V4的预训练是在和硬件博弈，那么它的Post-training则展现了教科书级别的工程审美。
+
+可以说，Agent能力的工程化路径，是V4论文里最值得细读的部分。
+
+以往我们认为Agent能力是“教”出来的，但DeepSeek认为，Agent能力应该是“长”出来的。
+
+拒绝“硬迁移”，预训练阶段的“血脉注入”
+
+行业内大部分的做法是，先训一个对话模型，再硬迁移成Agent。DeepSeek看来，这太低效了。
+
+在V4的mid-training阶段，他们就注入了海量的Agentic Data。
+
+这意味着，模型在基础学习阶段，就已经见过长任务链、环境反馈和文件修改模式。它还没学会写诗，就已经见过了Linux命令行的报错。
+
+这就是一种地基层面的设计。
+
+独创的Specialist Training（专家特训法）
+
+另一大亮点，就是DeepSeek独创的专家特训法。
+
+V4没有直接练一个全能战士，而是先练出了数学专家、代码专家、Agent专家、指令跟随专家。
+
+这种分阶段的Specialist Training保证了每个领域的上限被拉到最高。
+
+最后，再通过OPD（Multi-teacher On-Policy Distillation，多教师在线策略蒸馏），将这些专家的灵魂聚合成一个统一的模型。
+
+这里工程上的难度在于，同时加载十多个万亿参数级的教师模型做在线推理不现实。
+
+V4的方案是不缓存教师的logits（显存装不下），只缓存教师最后一层的隐藏状态，训练时按需通过prediction head重建logits。
+
+然后，按教师索引排序训练样本，确保每个教师的prediction head只加载一次。KL散度计算则用TileLang编写的专用kernel加速。
+
+告别传统Reward Model
+
+另外，对于“难以验证（hard-to-verify）”的任务，传统的标量奖励模型（Scalar Reward Model）已经力不从心。
+
+对此，DeepSeek选择引入了Generative Reward Model (GRM)。
+
+它不再简单地给一个0到1的分数，而是根据预设的Rubric（评估准则）生成详细的评估报告。
+
+更关键的是，DeepSeek对GRM本身也做了RL优化，让actor网络同时充当生成式奖励模型，评判能力和生成能力在同一个模型中联合优化。
+
+把Agent做成一套分布式系统
+
+不仅如此，DeepSeek还为V4专门自研了一套底座。
+
+DSec：生产级沙箱集群
+
+为了训练Agent的实操能力，DeepSeek搭建了一个名为DSec的平台。
+
+3FS分布式文件系统，确保了数据的极速存取；数十万并发Sandbox实例，则意味着V4在训练时，同时有几十万台“虚拟电脑”在跑代码、测Bug。
+
+MegaMoE：通信计算一体化
+
+在MoE层，DeepSeek把通信和计算融合进单个pipeline kernel，专家按wave调度，通信延迟完全隐藏在计算之下。
+
+结果就是，通用场景加速1.5到1.73倍，RL rollout等延迟敏感场景最高1.96倍。
+
+自研DSML：拒绝转义失败
+
+工具调用方面，DeepSeek干脆自己设计了一套类似XML的DSL（领域特定语言）。
+
+这套协议简单高效，直接把工具调用的成功率从“看运气”提升到了“工业级稳健”。
+
+Reasoning Effort分模式训练
+
+还有一个精细的设计，就是V4支持不同的思考模式。
+
+Non-think模式是简单的工具选择，秒回。High/Max则针对长文档、重构、复杂Bug，拉满推理算力。
+
+这种“能省则省，该狠则狠”的策略，也是V4成本能做到Claude 1/4的关键。
+
+社区的很多研究者读完这部分后，膜拜得五体投地：“DeepSeek的工程能力，依旧扎实得让人没话说”。
+
+Interleaved Thinking升级
+
+V3.2在每个新用户消息到来时会丢弃之前的思考痕迹，V4在Tool-Calling场景下保留了完整的跨轮次推理历史，让Agent在长时程任务中维持连贯的推理链。
+
+普通对话场景仍每轮清空，保持上下文精简。
+
+硬币的另一面，是94%的幻觉率
+
+Artificial Analysis的实测给出了一个更立体的画面。
+
+跑完Intelligence Index的全量基准测试，V4 Pro只花了1071美金，比Claude Opus 4.7的4811美金便宜了四倍多。
+
+Agent能力方面，V4 Pro Max在GDPval-AA实测（面向真实工作任务的Agent基准）中拿到了1554分，全面领先一众开源模型。
+
+然而，天下没有免费的午餐。
+
+Aritificial Analysis的报告里也非常坦诚地指出了这种做法的代价：V4 pro在AA-Ominiscience上的幻觉率高达94%。
+
+这揭示了一个结构性困境：要在有限算力预算下逼近顶级性能，就不得不在某些维度上做取舍。
+
+DeepSeek选择把筹码全压在推理和Agent能力上，代价，就是知识都准确性。
+
+为什么我们依然对DeepSeek充满敬意？
+
+在这次V4的报告中，有人看到了“训练不稳”的尴尬，有人看到了“幻觉严重”的短板。
+
+但在我们看来，这份报告最动人的地方在于透明。
+
+他们敢于承认硬件适配阵痛，敢于披露那些看似“补丁”的解决方案，更敢于展示自己如何用最硬核的工程能力，在几十万个沙箱里一点点磨出Agent的灵魂。
+
+从V3的Multi-head Latent Attention到V4的OPD蒸馏和DSec沙箱，DeepSeek正在用一种近乎偏执的“工程主义”，探索着大模型通往AGI的另一条路径——
+
+如果架构还没完美，那就用工程把墙砌厚；如果算力不够便宜，那就用算法把效率榨干。
+
+DeepSeek-V4也许不是最完美的终局，但它绝对是目前最真实的、最充满活力的“中国AI现场”。
+
+
