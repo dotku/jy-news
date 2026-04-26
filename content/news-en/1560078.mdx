@@ -1,0 +1,28 @@
+---
+title: >-
+  Linux Kernel Source Tree Total Approaching 40 Million Lines, AMD Graphics
+  Driver Exceeds 6 Million Lines
+date: '2026-04-26T23:25:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560078.htm'
+summary: >-
+  The total lines of code in the Linux kernel source tree are approaching 40
+  million. Despite the removal of a large amount of outdated drivers and old
+  platform support code in the Linux 7.1 merge window, the overall size
+  continues to expand, and the AMD graphics driver-related code has exceeded 6
+  million lines.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560078.webp'
+slug: 1560078-Linux内核源码树总量正逼近4000万行-AMD图形驱动超过600万行
+id: '1560078'
+lang: en
+original_title: Linux内核源码树总量正逼近4000万行 AMD图形驱动超过600万行
+---
+As Linux 7.1-rc1 is expected to be released later today and the Linux 7.1 merge window is about to close, there was initial concern that large-scale code deletions might cause the total kernel code volume to decline compared to Linux 7.0. However, the results show that the reduction in size is still insufficient to offset the new content, and the total number of lines in the Linux 7.1 Git source tree continues to rapidly approach 40 million.
+
+During this Linux 7.1 development cycle, the kernel has removed ISDN, amateur radio, and other old network driver code, which alone reduced approximately 138,000 lines of code. In addition, some outdated PCMCIA drivers and some PCI drivers have been cleaned up. Support for the Russian Baikal processor has also begun to be removed, and Linux 7.1 has initiated the process of retiring support for Intel 486 processors, but the impact of this part on the total code volume is not yet significant. More cleanup work related to i486 is expected to continue in subsequent kernel cycles.
+
+According to statistics from the cloc program, the Linux v7.0 Git repository totaled 39,621,378 lines, including 4,991,874 blank lines, 4,737,829 lines of comments, and 29,891,675 lines identified as actual code. As of the morning of April 26th, the Linux 7.1 Git source tree had increased to 39,880,636 lines, which means that even after multiple deletions, the merge window still saw a net increase of approximately 259,000 lines of code. This total includes 5,015,790 blank lines, 4,775,889 lines of comments, and 30,088,957 lines of actual code.
+
+This also means that Linux 7.1 has crossed the 30 million line threshold of actual code; if blank lines and comments are included, the entire Linux source tree is only one step away from 40 million lines. Reports suggest that, based on the current growth trend, the Linux 7.2 development cycle is likely to be the time point when the total kernel code volume officially exceeds 40 million lines.
+
+In addition to the overall kernel size, the size of the AMD graphics driver-related directory drivers/gpu/drm/amd in the Linux kernel is also quite large, covering AMDGPU, AMDKFD, display core code, and automatically generated header files for each generation of GPUs. Statistics show that at the Linux 7.0 stage, the total code volume of this modern AMD kernel graphics driver stack was 6,049,235 lines, and in the current Linux 7.1 Git state, this number has increased to 6,162,946 lines, further highlighting the increasing proportion of the GPU driver subsystem in the Linux source tree.

@@ -1,0 +1,32 @@
+---
+title: Linux内核源码树总量正逼近4000万行 AMD图形驱动超过600万行
+date: '2026-04-26T23:25:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560078.htm'
+summary: >-
+  Linux内核源码树总量正逼近4000万行。尽管Linux7.1合并窗口中删除了大量过时驱动与旧平台支持代码，但整体规模仍持续扩大，而AMD图形驱动相关代码也已突破600万行。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560078.webp'
+slug: 1560078-Linux内核源码树总量正逼近4000万行-AMD图形驱动超过600万行
+id: '1560078'
+title_en: >-
+  Linux Kernel Source Tree Total Approaching 40 Million Lines, AMD Graphics
+  Driver Exceeds 6 Million Lines
+summary_en: >-
+  The total lines of code in the Linux kernel source tree are approaching 40
+  million. Despite the removal of a large amount of outdated drivers and old
+  platform support code in the Linux 7.1 merge window, the overall size
+  continues to expand, and the AMD graphics driver-related code has exceeded 6
+  million lines.
+---
+
+在Linux 7.1-rc1版本预计于今日晚些时候发布、Linux 7.1合并窗口即将关闭之际，外界原本关注大规模代码删减是否会让内核总代码量较Linux 7.0出现回落，但结果显示，删减幅度仍不足以抵消新增内容，Linux 7.1 Git源码树的总行数依旧快速逼近4000万行。
+
+在本轮Linux 7.1开发周期中，内核已经移除了ISDN、业余无线电以及其他老旧网络驱动代码，仅这一部分就减少了约13.8万行代码。 此外，部分过时的PCMCIA驱动、一些PCI驱动也被清理，同时，针对俄罗斯Baikal处理器的支持开始被移除，Linux 7.1还启动了对Intel 486处理器支持的退役进程，不过这一部分目前对总代码量的影响还不明显，更多与i486相关的清理工作预计将在后续内核周期继续推进。
+
+根据cloc程序的统计，Linux v7.0的Git仓库总计为39621378行，其中包含4991874空白行、4737829行注释，以及29891675行被识别为实际代码的内容。 而截至4月26日早间，Linux 7.1 Git源码树已增至39880636行，这意味着即便经历了多项删除工作，本轮合并窗口内仍净增约25.9万行代码。 在这一总量中，包括5015790行空白行、4775889行注释，以及30088957行实际代码。
+
+这也意味着，Linux 7.1已经跨过了3000万行实际代码这一门槛；如果将空白行和注释一并计算，整个Linux源码树距离4000万行仅一步之遥。 报道认为，按照当前增长趋势推测，Linux 7.2开发周期很可能将成为内核总代码量正式突破4000万行的时间点。
+
+除内核整体体量外，Linux内核中AMD图形驱动相关目录drivers/gpu/drm/amd的规模也相当庞大，其中涵盖AMDGPU、AMDKFD、显示核心代码以及针对各代GPU自动生成的头文件等内容。 统计结果显示，在Linux 7.0阶段，这一现代AMD内核图形驱动栈的代码总量为6049235行，而在当前Linux 7.1 Git状态下，这一数字已上升至6162946行，进一步凸显出GPU驱动子系统在Linux源码树中所占比重持续提升。
+
+
