@@ -1,0 +1,38 @@
+---
+title: >-
+  Enthusiast Solves 30-Year-Old Display Issue with S3 Graphics Cards, Finally
+  Achieving True Black
+date: '2026-04-26T15:13:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560010.htm'
+summary: >-
+  A retro hardware enthusiast, BitsundBolts (BuB), has successfully resolved a
+  long-standing issue with S3 graphics cards from the 1990s – a grayish tint and
+  inability to display true black. By modifying the card's VBIOS boot firmware,
+  he disabled the "pedestal" function, allowing the classic card to output a
+  pure black image that meets modern display standards.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560010.png'
+slug: 1560010-发烧友破解S3显卡30年画面顽疾-终于能显示纯黑了
+id: '1560010'
+lang: en
+original_title: 发烧友破解S3显卡30年画面顽疾 终于能显示纯黑了
+---
+So, what is the "pedestal"? The screen images we see daily have a clear standard brightness range, with pure black at the darkest and pure white at the brightest. "Pedestal," meaning base or pedestal, is a forced setting hard-coded into the firmware of S3 graphics cards at the factory.
+
+It essentially adds a minimum base to the black image of the graphics card, preventing it from outputting true black and forcibly raising the lowest brightness level, turning what should be pure black into dark gray. This results in an overall pale and opaque appearance.
+
+In the 1990s, S3 was a leading graphics card manufacturer, and its Virge, Trio, and some early Savage series cards all included this setting. At that time, mainstream display devices in the home market were CRT monitors, many of which followed the NTSC display standard of older televisions, which had inherent display limitations.
+
+Images that were too dark could not display dark details and would simply become a blur, making it impossible for users to see the content clearly. S3 added this setting with the intention of adapting to the mainstream display devices of the time, allowing users to see the content in dark areas of the image. It was a targeted adaptation design.
+
+However, times have changed, and this once-thoughtful design has become a hindrance to image quality. Today, retro hardware enthusiasts mostly use higher-quality modern displays or high-end CRT devices, which can perfectly display true black. This forced elevation of the black level makes the overall image appear as if covered in a layer of gray mist, causing the black to appear grayish, lacking layers, and significantly reducing the viewing experience. This problem, present since the factory, has persisted for nearly 30 years.
+
+BuB's test platform was a classic S3 VirgeDX 4MB graphics card. He first used debugging tools to locate the code address of the pedestal bit, and quickly narrowed the search range based on his past hardware debugging experience and community discussions.
+
+The first code modification had no effect, but during the second debugging session, he locked onto register 1a at address 3c4 and changed the corresponding value to 0. The screen background immediately darkened, and the black instantly became pure. After resetting the value to verify, he confirmed that he had found the core code controlling the pedestal in one go.
+
+Subsequently, BuB used a dedicated NSSI tool to export the original factory firmware of the graphics card, found the corresponding code for the pedestal bit in the Hiew hexadecimal editor, and changed the hexadecimal value controlling this function from 20 to 00.
+
+At the same time, he adjusted the firmware's checksum value, changing the original hexadecimal checksum from 77 to 97 to prevent the graphics card from identifying the modified firmware as a corrupted file. The modified firmware was then flashed into the graphics card chip, replacing the original firmware, and the graphics card booted up with a pure, deep black image. Subsequent debugging confirmed that the original black level value of 3F had been reduced to 1F, and the pedestal bit had been completely eliminated.
+
+BuB stated that this modification method applies to all VirgeDX model graphics cards, and this 30-year-old problem that has plagued retro hardware enthusiasts finally has a simple and reproducible perfect solution.

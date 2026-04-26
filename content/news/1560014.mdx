@@ -1,0 +1,36 @@
+---
+title: Google第八代TPU搭配2PB HBM 成功打破被视为AI瓶颈的内存墙
+date: '2026-04-26T15:15:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560014.htm'
+summary: >-
+  内存价格这一年来涨了3-5倍，已经严重影响了大家对PC和手机的消费意愿，而导致这次内存大涨价的元凶就是AI需求太猛。大家都知道AI对内存（GPU上算显存）的容量及带宽要求都很高，但具体能高到什么程度？Google前几天发布的第八代TPU就是最好的例子。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560014.png'
+slug: 1560014-Google第八代TPU搭配2PB-HBM-成功打破被视为AI瓶颈的内存墙
+id: '1560014'
+title_en: >-
+  Google's Eighth-Generation TPU Paired with 2PB HBM Successfully Breaks Through
+  the Memory Wall, Considered an AI Bottleneck
+summary_en: >-
+  Memory prices have risen 3-5 times in the past year, severely impacting
+  consumer willingness to purchase PCs and phones, with the culprit being the
+  strong demand from AI. How high can AI's requirements for memory capacity and
+  bandwidth be? Google's recently released eighth-generation TPU is the best
+  example.
+---
+
+今年的TPU v8首次针对训练及推理做了区分，V8T偏重AI训练，虽然Google说也可以做推理，但主要还是训练用的，每个Pod节点堆了9600个V8T芯片，FP4性能达到了121EFlops，内存带宽19.2TB/s，芯片内部带宽400GB/s，几乎都是2-4倍的变化。
+
+V8i主要面向AI推理负载，规格上要降不少，每个节点只有1152个V8i芯片，算力降低到了11.6EFlops，内存带宽19.2TB/s没变。
+
+值得注意的是，内存容量这次猛增了不少，V8i也达到331.8TB HBM内存，V8T更是夸张到了2PB HBM内存，每个V8T芯片配备了216GB HBM内存。
+
+Google这次的设计理念是为了打破AI瓶颈的内存墙，2PB HBM不止是总容量超大那么简单，是在一个节点内作为单一全局地址使用，而NVIDIA的GPU此前虽然也能通过NVLink等技术堆出PB级的HBM内存，但连接也绕不过传统的数据中心网络，这会有性能及延迟瓶颈问题。
+
+RobustCloud首席顾问Larry Carvalho表示，打破“内存墙”标志着Google在AI芯片领域的潜在重大竞争转变。
+
+但是对普通人来说，Google这次上2PB HBM内存可不是什么好现象，因为这意味着AI对内存的需求还在涨，要知道HBM内存通常要比常规的DDR内存多消耗2-4倍的DRAM芯片产能，HBM用量越多，挤占的DDR内存产能就越多。
+
+即便需求高涨，三星、SK海力士、美光等公司也会优先保证HBM需求，但他们此前明确了不会大幅提升芯片产能，显然内存芯片的紧缺状态还会更严重，价格是别指望快速降回来了。
+
+

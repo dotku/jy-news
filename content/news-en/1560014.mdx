@@ -1,0 +1,32 @@
+---
+title: >-
+  Google's Eighth-Generation TPU Paired with 2PB HBM Successfully Breaks Through
+  the Memory Wall, Considered an AI Bottleneck
+date: '2026-04-26T15:15:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560014.htm'
+summary: >-
+  Memory prices have risen 3-5 times in the past year, severely impacting
+  consumer willingness to purchase PCs and phones, with the culprit being the
+  strong demand from AI. How high can AI's requirements for memory capacity and
+  bandwidth be? Google's recently released eighth-generation TPU is the best
+  example.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560014.png'
+slug: 1560014-Google第八代TPU搭配2PB-HBM-成功打破被视为AI瓶颈的内存墙
+id: '1560014'
+lang: en
+original_title: Google第八代TPU搭配2PB HBM 成功打破被视为AI瓶颈的内存墙
+---
+This year's TPU v8 distinguishes between training and inference for the first time. V8T is more focused on AI training, although Google says it can also be used for inference, its primary use is for training. Each Pod node is stacked with 9600 V8T chips, achieving FP4 performance of 121EFlops, a memory bandwidth of 19.2TB/s, and an internal chip bandwidth of 400GB/s – almost all 2-4 times the increase.
+
+V8i is mainly aimed at AI inference workloads and has lower specifications. Each node only has 1152 V8i chips, with computing power reduced to 11.6EFlops, while the memory bandwidth remains at 19.2TB/s.
+
+Notably, the memory capacity has increased significantly this time, with V8i reaching 331.8TB HBM memory and V8T an even more impressive 2PB HBM memory, with each V8T chip equipped with 216GB HBM memory.
+
+Google's design philosophy this time is to break through the memory wall, an AI bottleneck. The 2PB HBM is not just about the huge total capacity, but also about being used as a single global address within a node. While NVIDIA's GPUs can also stack PB-level HBM memory using technologies like NVLink, the connection still cannot bypass the traditional data center network, which can cause performance and latency bottlenecks.
+
+Larry Carvalho, Chief Advisor at RobustCloud, said that breaking the "memory wall" marks a potential major competitive shift for Google in the AI chip field.
+
+However, for ordinary people, Google's use of 2PB HBM memory this time is not a good sign, because it means that the demand for memory from AI is still increasing. It is worth noting that HBM memory usually consumes 2-4 times more DRAM chip capacity than conventional DDR memory. The more HBM used, the more DDR memory capacity is squeezed.
+
+Even with high demand, companies like Samsung, SK Hynix, and Micron will prioritize HBM demand, but they have made it clear that they will not significantly increase chip capacity. Obviously, the shortage of memory chips will become even more severe, and prices are unlikely to fall quickly.

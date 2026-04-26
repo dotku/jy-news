@@ -1,0 +1,42 @@
+---
+title: 发烧友破解S3显卡30年画面顽疾 终于能显示纯黑了
+date: '2026-04-26T15:13:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560010.htm'
+summary: >-
+  近日，海外复古硬件博主BitsundBolts（简称BuB）发布技术视频，成功解决了困扰复古硬件玩家近30年的经典难题——上世纪90年代S3系列显卡普遍存在的画面泛灰、黑色不纯问题。他通过修改显卡的VBIOS开机固件，彻底关闭了造成画质缺陷的“pedestal位”功能，让这款经典老显卡终于能输出符合现代显示标准的纯正黑色画面。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560010.png'
+slug: 1560010-发烧友破解S3显卡30年画面顽疾-终于能显示纯黑了
+id: '1560010'
+title_en: >-
+  Enthusiast Solves 30-Year-Old Display Issue with S3 Graphics Cards, Finally
+  Achieving True Black
+summary_en: >-
+  A retro hardware enthusiast, BitsundBolts (BuB), has successfully resolved a
+  long-standing issue with S3 graphics cards from the 1990s – a grayish tint and
+  inability to display true black. By modifying the card's VBIOS boot firmware,
+  he disabled the "pedestal" function, allowing the classic card to output a
+  pure black image that meets modern display standards.
+---
+
+那什么是“pedestal位”呢？我们日常看到的屏幕画面，亮度有着明确的标准区间，最暗为纯黑，最亮为纯白，而pedestal的本意是基座、底座，这个所谓的“pedestal位”，就是S3显卡出厂时硬写在固件里的一项强制设置。
+
+它相当于给显卡的黑色画面垫了一个最低底座，不允许显卡输出真正的纯黑，强行把画面的最低亮度往上抬了一截，让本该纯黑的画面变成了深灰色，最终呈现出整体泛白、不通透的观感。
+
+上世纪90年代，S3是全球主流显卡厂商，旗下Virge、Trio以及部分早期Savage系列显卡，都加入了这项设置。当年家用市场的主流显示设备是CRT大头显示器，其中不少产品遵循老电视的NTSC显示标准，有着天生的显示短板。
+
+过于暗沉的画面无法呈现暗部细节，会直接糊成一团，用户完全看不清内容。S3加入这项设置，本意是适配当时的主流显示设备，让用户能看清画面暗部内容，是一项针对性的适配设计。
+
+可时过境迁，这项当年的贴心设计，成了拖累画质的累赘。如今玩复古硬件的玩家，大多使用素质更高的现代显示器或是高端CRT设备，这些设备完全可以完美呈现纯正的黑色。这项强制抬升黑位的设置，会让画面整体像蒙了一层灰雾，黑色发灰、层次感缺失，观感大打折扣，这个从出厂就带有的问题，一留就是近30年。
+
+这次BuB的测试载体，是一块经典的S3 VirgeDX 4MB显卡。他先用调试工具定位pedestal位的代码地址，凭借过往的硬件调试经验和社区讨论的积累，很快缩小了搜索范围。
+
+第一次修改代码没有产生任何效果，第二次调试中，他锁定了3c4地址的1a寄存器，将对应数值改为0后，画面背景立刻变暗，黑色瞬间变得纯正。他将数值复位验证后，确认自己一次就找对了控制pedestal位的核心代码。
+
+随后，BuB用NSSI专用工具导出了显卡的原厂固件，在Hiew十六进制编辑器中找到pedestal位的对应代码，将控制这项功能的十六进制数值从20修改为00。
+
+同时，他调整了固件的校验值，将原本的十六进制校验值77修改为97，避免显卡把修改后的固件判定为损坏文件。修改完成的固件被刷入显卡芯片，替换原厂固件后，显卡开机就呈现出了纯正的深黑画面，后续调试确认，原本3F的黑位数值已经变为1F，pedestal位被彻底消除。
+
+BuB表示，这套修改方法适用于所有VirgeDX型号的显卡，这个困扰复古硬件玩家30年的老问题，终于有了简单可复制的完美解决方案。
+
+
