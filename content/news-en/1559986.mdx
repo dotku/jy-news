@@ -1,0 +1,64 @@
+---
+title: 'OpenClaw Updated to Version 2026.4.24, Officially Integrating DeepSeek V4'
+date: '2026-04-26T14:29:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559986.htm'
+summary: >-
+  Two days after the release of DeepSeekV4, OpenClaw has been updated again,
+  completing the adaptation and integration of this series of models. OpenClaw
+  released version ‘2026.4.24’ in the early hours of today.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559986.png'
+slug: 1559986-OpenClaw更新2026-4-24版-正式接入DeepSeek-V4
+id: '1559986'
+lang: en
+original_title: OpenClaw更新2026.4.24版 正式接入DeepSeek V4
+---
+The detailed update interface shows that this OpenClaw update focuses more on productivity integration and model architecture: it's no longer just simple conversation, but deep embedding into your workflow.
+
+The key updates include:
+
+First, deep integration with Google Meet.
+
+OpenClaw can now be directly integrated into Google Meet as a plugin. It supports personal account authorization, real-time session processing, and even processing already opened meeting tabs. Most powerfully, it supports output and attendance export, and has an automatic recovery mechanism, completely turning AI into your ‘meeting secretary’.
+
+Second, full access to DeepSeek V4.
+
+DeepSeek V4 Flash is the default preferred model, and the Pro version is launched simultaneously. More importantly, the official has fixed the thinking logic of DeepSeek in continuous multi-round tool calls, making the responses smarter.
+
+Third, voice calls are fully connected.
+
+Both regular conversations and voice calls (including Meet) now support real-time voice loops. This means that AI is no longer just a repeater, but can call all tool plugins in the OpenClaw background to provide you with in-depth, verifiable answers.
+
+Fourth, browser automation evolution.
+
+It now supports coordinate clicks and extends the upper limit of operation time (Action budgets). At the same time, the browser's reuse of tabs and crash recovery have become more stable, and it also supports setting ‘headless mode’ separately for different configuration files.
+
+Fifth, detail polishing and fixes.
+
+Special fixes have been made for Telegram, Slack, MCP protocol, session management, and TTS (text-to-speech), further improving system stability.
+
+Sixth, ‘slim down’ of the underlying architecture.
+
+Startup speed has been optimized, model directory and plugin loading have been changed to ‘lazy loading’, no longer occupying all memory at startup, and dependency fixes for packaged installation versions have become simpler.
+
+In addition, OpenClaw has also restructured the plugin SDK this time.
+
+To ensure consistency across different environments (Pi and Codex), the official has removed the old compatibility path. Now, all tool result rewrites must go through api.registerAgentToolResultMiddleware and be explicitly declared in the contract. Simply put: the code is more standardized, but developers also need to adapt to the new middleware logic.
+
+At the same time, the DeepSeek official updated the API documentation, announcing a limited-time 2.5-fold discount on DeepSeek-V4-Pro, ending on May 5th. It also mentioned that OpenClaw needs to be upgraded to the latest version to use the latest series of models.
+
+After the price adjustment, the input price (cache hit) is 1M tokens / 0.25 yuan, the input price (cache miss) is 3 yuan, and the output price is 6 yuan.
+
+Everyone is very curious about the performance of the DeepSeek V4 series.
+
+Netizen hot comment: I'm not playing anymore, I'm out.
+
+OpenClaw’s update pace has always been a mixed bag.
+
+As one netizen said below, ‘This update brings huge changes, including real-time voice, Google Meet agent, faster startup speed, and better local models.’
+
+However, more netizens are ‘broken’.
+
+Many users reported that after the update, the entire system crashed, and the core ‘gateway’ could not be started at all.
+
+Someone also said, ‘Another update full of bugs. Brothers, I'm not playing with you anymore, I'm very busy, I'm going to tinker with my Hermes agent that can run.’

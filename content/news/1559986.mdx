@@ -1,0 +1,69 @@
+---
+title: OpenClaw更新2026.4.24版 正式接入DeepSeek V4
+date: '2026-04-26T14:29:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1559986.htm'
+summary: >-
+  在 DeepSeekV4
+  发布两天之后，OpenClaw再次迎来更新，完成了对该系列模型的适配接入。今天凌晨，OpenClaw发布了‘2026.4.24’版本。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1559986.png'
+slug: 1559986-OpenClaw更新2026-4-24版-正式接入DeepSeek-V4
+id: '1559986'
+title_en: 'OpenClaw Updated to Version 2026.4.24, Officially Integrating DeepSeek V4'
+summary_en: >-
+  Two days after the release of DeepSeekV4, OpenClaw has been updated again,
+  completing the adaptation and integration of this series of models. OpenClaw
+  released version ‘2026.4.24’ in the early hours of today.
+---
+
+从详细的更新界面可以看到，此次 OpenClaw 更加注重生产力集成和模型架构：不再只是简单的对话，而是深度嵌入你的工作流。
+
+更新重点包括如下：
+
+一是，Google Meet 深度集成。
+
+OpenClaw 现在可以作为插件直接入驻 Google Meet。它支持个人账号授权、实时会话处理，甚至能处理已经打开的会议标签页。最强的是，它支持产出物和考勤导出，并具备自动恢复机制，彻底把 AI 变成了你的‘会议秘书’。
+
+二是，DeepSeek V4 全面接入。
+
+DeepSeek V4 Flash 为默认首选模型，Pro 版同步上线。更重要的是，官方修复了 DeepSeek 在连续多轮工具调用中的思考逻辑，响应更聪明。
+
+三是，语音通话全线打通。
+
+不管是普通对话还是语音通话（包括 Meet），现在都支持实时语音循环。这意味着 AI 不再只是复读机，而是能调用 OpenClaw 后台所有工具插件，给你提供有深度、有据可查的回答。
+
+四是，浏览器自动化进化。
+
+现在支持坐标点击，并延长了操作耗时的上限（Action budgets）。同时，浏览器对标签页的复用和崩溃恢复变得更稳，还支持针对不同配置文件单独设置‘无头模式’。
+
+五是，细节打磨与修复。
+
+针对 Telegram、Slack、MCP 协议、会话管理以及 TTS（语音合成）进行了专项修复，进一步提升了系统稳定性。
+
+六是，底层架构‘瘦身’ 。
+
+优化了启动速度，模型目录和插件加载改为‘懒加载’，不再一上来就占满内存，打包安装版的依赖修复也变得更简单。
+
+另外，OpenClaw 此次还重构了插件 SDK。
+
+为了保证在不同环境（Pi 和 Codex）下的一致性，官方删除了旧的兼容路径。现在，所有工具结果的重写必须通过 api.registerAgentToolResultMiddleware 并在合同中明确声明。简单说：代码更规范了，但也需要开发者适配新的中间件逻辑。
+
+与此同时，DeepSeek 官方更新 API 文档，宣布 DeepSeek-V4-Pro 开启限时 2.5 折优惠，截止日期 5 月 5 日。它也提到 OpenClaw 要升级到最新版本，才能使用最新系列模型。
+
+调价之后，模型的输入价格（缓存命中）为 1M tokens /0.25 元，输入价格（缓存未命中）为 3 元，输出价格为 6 元。
+
+大家伙对 DeepSeek V4 系列的表现非常好奇。
+
+网友热评：不玩了，撤
+
+OpenClaw 的更新节奏一直毁誉参半。
+
+如下面这位网友所说，‘此次更新带来的变化巨大，包括实时语音、Google Meet 智能体、更快的启动速度、更好的本地模型。’
+
+不过，更多网友‘破防’了。
+
+很多人反馈，更新完后，整个系统全线崩溃，核心的‘网关’完全无法启动。
+
+还有人表示，‘又是一个全是 Bug 的更新。兄弟们我不陪玩了，我很忙，要去折腾我那个能跑通的 Hermes 智能体了。’
+
+
