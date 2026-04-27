@@ -1,0 +1,57 @@
+---
+title: DeepSeek大幅降价
+date: '2026-04-27T13:03:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560086.htm'
+summary: >-
+  DeepSeek正在重新定义大模型普惠的边界。4月26日，DeepSeek官方发布API价格调整公告，全系API输入缓存命中价格降至首发价的十分之一，V4‑Pro更叠加限时2.5折，百万Tokens输入缓存命中低至0.025元，创全球大模型价格新低。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560086.jpg'
+slug: 1560086-DeepSeek大幅降价
+id: '1560086'
+title_en: DeepSeek Significantly Reduces Prices
+summary_en: >-
+  DeepSeek is redefining the accessibility of large models. On April 26th,
+  DeepSeek officially announced API price adjustments, reducing the price of
+  input cache hits across the entire series to one-tenth of the initial release
+  price. V4‑Pro also offers a limited-time 2.5% discount, with input cache hits
+  for millions of tokens as low as 0.025 yuan, setting a new low price for
+  global large models.
+---
+
+根据DeepSeek官方API定价页面公示，本次降价覆盖V4系列全模型，核心调整集中在输入缓存命中场景。其中DeepSeek-V4-Flash输入缓存命中价格从0.2元/百万Tokens降至0.02元/百万Tokens。
+
+面向企业级用户的DeepSeek-V4-Pro优惠力度更大，原价1元/百万Tokens的缓存输入降至0.1元，2026年5月5日前叠加2.5折限时特惠，实际仅0.025元/百万Tokens，缓存未命中输入从12元降至3元，输出从24元降至6元。
+
+图片来源：DeepSeek官网
+
+DeepSeek方面提及，DeepSeek-Chat与DeepSeek-Reasoner两个模型名将于日后弃用。出于兼容考虑，二者分别对应DeepSeek-V4-Flash的非思考与思考模式。
+
+对比调价前后不难发现，高频调用、长文本处理场景成本降幅超90%，RAG知识库、智能客服、文档分析等缓存命中率高的应用，可直接实现商用成本断崖式下跌，有助于打破AI规模化落地的成本枷锁。
+
+DeepSeek大幅降价背后，与DeepSeek‑V4的技术升级以及和昇腾生态的深度协同有关。
+
+4月24日，DeepSeek‑V4预览版正式发布，同步开源Pro与Flash两款模型，均支持100万token超长上下文，自研稀疏注意力架构让推理算力消耗大幅降低，Pro版单token算力仅为V3.2的27%，KV缓存降至10%，从底层实现成本优化。
+
+DeepSeek方面公布的参数显示，DeepSeek‑V4‑Pro激活参数49B、预训练数据33T，定位高性能旗舰；DeepSeek‑V4‑Flash激活参数13B、预训练数据32T，主打高速与低成本。
+
+与前代模型比较，DeepSeek-V4-Pro的Agent能力显著增强。在Agentic Coding评测中，V4-Pro已达到当前开源模型最佳水平，并在其他Agent相关评测中同样表现优异。据悉，目前DeepSeek-V4已成为DeepSeek内部员工使用的 Agentic Coding模型，据评测反馈使用体验优于Sonnet 4.5，交付质量接近Claude Opus 4.6非思考模式，但仍与Opus 4.6思考模式存在一定差距。
+
+在世界知识测评中，DeepSeek-V4-Pro大幅领先其他开源模型，稍逊于顶尖闭源模型Gemini-Pro-3.1。而在数学、STEM、竞赛型代码的测评中，DeepSeek-V4-Pro超越当前所有已公开评测的开源模型，比肩世界顶级闭源模型。
+
+相比DeepSeek-V4-Pro，DeepSeek-V4-Flash在世界知识储备方面稍逊一筹，但展现出了接近的推理能力。而由于模型参数和激活更小，相较之下V4-Flash能够提供更加快捷、经济的API服务。
+
+DeepSeek-V4还开创了一种新的注意力机制，在token维度进行压缩，结合DSA稀疏注意力（DeepSeek Sparse Attention），实现了全球领先的长上下文能力，并且相比于传统方法大幅降低了对计算和显存的需求。
+
+更值得关注的是，昇腾超节点全系列产品支持DeepSeek V4系列模型。这也意味着，DeepSeek释放了更多国产化信号。
+
+DeepSeek-V4在一份技术报告中提及，“在英伟达GPU和华为昇腾NPU两个平台上验证了细粒度EP（专家并行）方案，与强力的非融合（non-fused）基线相比，该方案在通用推理任务中实现了1.50-1.73倍加速；在对延迟敏感的场景（例如强化学习（RL）rollout 和高速 Agent 服务）中，最高可达1.96倍加速。”
+
+DeepSeek强调，随着下半年昇腾超节点全系列产品批量上市，Pro版价格有望大幅下调。
+
+DeepSeek-V4发布后，高盛发布分析报告指出，DeepSeek V4的核心意义在于以更低成本支持更复杂的智能体应用落地，从而打开AI应用规模化的新空间。对于纳入昇腾超节点，高盛认为DeepSeek的成本竞争力将进一步强化，为更广泛的应用落地创造条件。此外，在芯片持续收紧的背景下，中国顶尖AI模型向国产算力迁移的趋势得到头部玩家的明确背书。
+
+高盛报告还援引新闻报道称，腾讯和阿里正在洽谈以逾200亿美元估值投资DeepSeek，而智谱和MiniMax的最新市值分别约为530亿美元和310亿美元，这一潜在交易折射出巨头对稀缺顶层AI能力的争夺逻辑。
+
+而华泰证券认为，市场容易将V4理解为“降本压低算力、存储需求”，但更重要的边际变化在于长上下文成本下降后，复杂Agent、多文档分析、长周期任务、在线学习等场景可用性提升，推理调用量与存储访问频次有望扩张。
+
+

@@ -1,0 +1,53 @@
+---
+title: DeepSeek Significantly Reduces Prices
+date: '2026-04-27T13:03:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560086.htm'
+summary: >-
+  DeepSeek is redefining the accessibility of large models. On April 26th,
+  DeepSeek officially announced API price adjustments, reducing the price of
+  input cache hits across the entire series to one-tenth of the initial release
+  price. V4‑Pro also offers a limited-time 2.5% discount, with input cache hits
+  for millions of tokens as low as 0.025 yuan, setting a new low price for
+  global large models.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560086.jpg'
+slug: 1560086-DeepSeek大幅降价
+id: '1560086'
+lang: en
+original_title: DeepSeek大幅降价
+---
+According to the official DeepSeek API pricing page, this price reduction covers the entire V4 series, with core adjustments focused on input cache hit scenarios. The input cache hit price for DeepSeek-V4-Flash has been reduced from 0.2 yuan/million tokens to 0.02 yuan/million tokens.
+
+DeepSeek-V4-Pro, aimed at enterprise users, offers even greater discounts. The cached input price, originally 1 yuan/million tokens, has been reduced to 0.1 yuan, with an additional limited-time 2.5% discount until May 5th, 2026, bringing the actual price to 0.025 yuan/million tokens. Uncached input has been reduced from 12 yuan to 3 yuan, and output from 24 yuan to 6 yuan.
+
+[Image source: DeepSeek official website]
+
+DeepSeek mentioned that the names DeepSeek-Chat and DeepSeek-Reasoner will be discontinued in the future. For compatibility reasons, these correspond to the non-thinking and thinking modes of DeepSeek-V4-Flash, respectively.
+
+Comparing the prices before and after the adjustment, it is not difficult to find that the cost of high-frequency calls and long-text processing has decreased by more than 90%. Applications with high cache hit rates, such as RAG knowledge bases, intelligent customer service, and document analysis, can directly achieve a cliff-like drop in commercial costs, helping to break the cost constraints of large-scale AI deployment.
+
+The significant price reduction by DeepSeek is related to the technological upgrades of DeepSeek‑V4 and its deep collaboration with the Ascend ecosystem.
+
+On April 24th, the preview version of DeepSeek‑V4 was officially released, simultaneously open-sourcing the Pro and Flash models, both supporting ultra-long contexts of 100 million tokens. The self-developed sparse attention architecture significantly reduces inference computing power consumption, with the Pro version’s single token computing power being only 27% of V3.2, and KV cache reduced to 10%, achieving cost optimization at the underlying level.
+
+DeepSeek announced parameters showing that DeepSeek‑V4‑Pro has 49B activated parameters and 33T pre-training data, positioning it as a high-performance flagship model. DeepSeek‑V4‑Flash has 13B activated parameters and 32T pre-training data, focusing on speed and low cost.
+
+Compared to previous models, DeepSeek-V4-Pro’s Agent capabilities have been significantly enhanced. In the Agentic Coding evaluation, V4-Pro has reached the best level of current open-source models and also performed well in other Agent-related evaluations. It is reported that DeepSeek-V4 has become the Agentic Coding model used by DeepSeek internal employees, with feedback indicating a better user experience than Sonnet 4.5 and a delivery quality close to Claude Opus 4.6’s non-thinking mode, but still has a certain gap with Opus 4.6’s thinking mode.
+
+In world knowledge testing, DeepSeek-V4-Pro significantly outperformed other open-source models, slightly behind the top closed-source model Gemini-Pro-3.1. In mathematics, STEM, and competitive coding evaluations, DeepSeek-V4-Pro surpassed all publicly evaluated open-source models, matching the world’s top closed-source models.
+
+Compared to DeepSeek-V4-Pro, DeepSeek-V4-Flash is slightly inferior in world knowledge reserves but demonstrates comparable reasoning capabilities. However, due to smaller model parameters and activation, V4-Flash can provide faster and more economical API services.
+
+DeepSeek-V4 also pioneered a new attention mechanism that compresses tokens in the token dimension, combined with DSA sparse attention (DeepSeek Sparse Attention), achieving leading long-context capabilities globally and significantly reducing the demand for computing and memory compared to traditional methods.
+
+More noteworthy is that the entire series of Ascend ultra-nodes supports DeepSeek V4 series models. This also means that DeepSeek has released more domestic signals.
+
+DeepSeek-V4 mentioned in a technical report, “We validated the fine-grained EP (expert parallelism) scheme on both NVIDIA GPUs and Huawei Ascend NPUs. Compared to a strong non-fused baseline, this scheme achieved 1.50-1.73x acceleration in general inference tasks; in latency-sensitive scenarios (such as reinforcement learning (RL) rollout and high-speed Agent services), it can reach up to 1.96x acceleration.”
+
+DeepSeek emphasized that with the mass production of the entire series of Ascend ultra-nodes in the second half of the year, the Pro version price is expected to drop significantly.
+
+Following the release of DeepSeek-V4, Goldman Sachs released an analysis report stating that the core significance of DeepSeek V4 lies in supporting more complex agent application deployments at a lower cost, thereby opening up new space for the scale of AI applications. Regarding the inclusion in Ascend ultra-nodes, Goldman Sachs believes that DeepSeek’s cost competitiveness will be further strengthened, creating conditions for wider application deployment. Furthermore, against the backdrop of continued chip tightening, the trend of China’s top AI models migrating to domestic computing power has received clear endorsement from leading players.
+
+The Goldman Sachs report also cited news reports stating that Tencent and Alibaba are in talks to invest in DeepSeek at a valuation of over $20 billion, while Zhipu and MiniMax’s latest market capitalization is approximately $53 billion and $31 billion respectively. This potential transaction reflects the logic of giants competing for scarce top-tier AI capabilities.
+
+Huatai Securities believes that the market is likely to understand V4 as “reducing costs and lowering the demand for computing and storage,” but the more important marginal change lies in the increased availability of complex Agents, multi-document analysis, long-cycle tasks, and online learning after the cost of long context decreases, and the expansion of inference calls and storage access frequency.
