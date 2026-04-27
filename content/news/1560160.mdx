@@ -1,0 +1,32 @@
+---
+title: Linux 7.1首个候选版发布 NTFS性能大幅提升 i486处理器支持正式终结
+date: '2026-04-27T15:31:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560160.htm'
+summary: >-
+  Linux创始人LinusTorvalds日前宣布推出Linux7.1-rc1版本。此次发布标志着合并窗口正式关闭，开发者们在此前抢在截止期限前提交了大量新功能、补丁及待移除项目，接下来这些改动将经历数月严格测试，最终才会面向公众发布。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560160.webp'
+slug: 1560160-Linux-7-1首个候选版发布-NTFS性能大幅提升-i486处理器支持正式终结
+id: '1560160'
+title_en: >-
+  Linux 7.1 First Release Candidate Available: Significant NTFS Performance
+  Boost, End of i486 Processor Support
+summary_en: >-
+  Linux founder Linus Torvalds recently announced the release of Linux 7.1-rc1.
+  This release marks the official closing of the merge window, with developers
+  submitting a large number of new features, patches, and items for removal
+  before the deadline. These changes will undergo several months of rigorous
+  testing before being publicly released.
+---
+
+对于仍在使用老旧硬件的用户来说，这次内核更新意义重大，因为Linux开始逐步淘汰对i486处理器的支持。目前相关配置文件已被删除，但代码移除工作仍需谨慎推进，以确保不会影响其他功能的稳定性。此外，一些年代久远的网络硬件支持也在被清理之列，部分"从未真正投入市场"的片上系统平台支持同样遭到移除。
+
+i486支持的终止近几周以来成为业界关注焦点。不过从实际影响来看，受波及的用户预计寥寥无几，毕竟i486处理器早在1989年推出，并已于2007年停产。
+
+尽管有诸多移除项目，但从提交日志来看，Linux 7.1的代码总量实际上显著增加，原因在于大量新功能同步加入。其中最引人注目的改进是NTFS驱动程序的彻底重构。这项全新实现将为Windows与Linux双系统用户带来显著的文件传输速度提升和更高的安全性，由于不再依赖额外开销较大的FUSE驱动机制，在不同系统分区间传输文件时效率将大幅改善。
+
+硬件支持方面也有不少亮点，Linux 7.1新增了对英特尔Xe3P_LPG和Nova Lake P图形架构的初步支持，同时Nouveau驱动程序也加入了对英伟达GA100加速器的支持。对于掌机玩家而言，联想拯救者Go的驱动程序也获得改进，游戏体验将更加流畅。
+
+谈及本次更新的开发节奏，Torvalds表示目前情况看起来"相当正常"，这对于几个月后按时发布正式版本来说是个积极信号。他指出，真正可能导致延期的往往是开发后期出现复杂混乱的局面，而至少从当前阶段来看，Linux 7.1的推进仍保持在可控范围内。
+
+
