@@ -1,0 +1,26 @@
+---
+title: >-
+  Intel’s New Driver Allows Arc Integrated Graphics to Call Up to 93% of System
+  Memory
+date: '2026-04-27T22:51:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560236.htm'
+summary: >-
+  Intel has released the latest HotFix workstation driver 302.0.101.8517
+  (Q1.26R2) for the ArcPro series graphics cards, making significant adjustments
+  to the memory allocation strategy. This allows users to allocate a higher
+  proportion of system memory to Arc integrated GPUs (iGPUs) to run larger-scale
+  artificial intelligence large language models (LLMs) locally.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560236.jpg'
+slug: 1560236-英特尔新驱动允许Arc集成显卡调用最高93-系统内存
+id: '1560236'
+lang: en
+original_title: 英特尔新驱动允许Arc集成显卡调用最高93%系统内存
+---
+Previously, Intel drivers could call up to about 87% of system memory. For example, with a 32GB memory configuration, the GPU available memory was about 28GB. With the latest driver, this ratio has increased to about 92%—with 32GB of memory, approximately 30GB can be allocated to the GPU for use as “video memory.”
+
+This update is mainly aimed at Intel processors with built-in Arc Pro graphics cores, such as Arc Pro B390, Arc Pro B370, etc., and is also compatible with a number of Arc Pro professional graphics card products based on Battlemage and Alchemist architectures. Although this HotFix driver does not list other functional changes in the update log, Intel says it is continuously promoting ISV certification of Arc Pro GPUs in professional application areas to improve stability and compatibility in workstation and professional software environments.
+
+In AI local inference, memory allocation capability is one of the key indicators of whether to run large models. Intel has this time increased the allocatable ratio to a maximum of 93%. On a Windows 10 or Windows 11 host equipped with 64GB of system memory, the Arc Pro integrated graphics card can theoretically dynamically obtain about 59.5GB of available video memory (64×0.93≈59.5), significantly expanding the scale of models that can be loaded and inferred locally. In comparison, the AMD Ryzen AI platform currently allows approximately 87% of memory to be allocated to the GPU, and on the AI MAX+ platform equipped with 128GB of system memory, the GPU can obtain up to about 112GB of available memory, also targeting local running scenarios for larger parameter models.
+
+The driver covers multiple Windows versions in terms of operating system support, including Windows 10 64-bit 22H2 update, as well as multiple major versions of Windows 11 64-bit from 21H2 to 25H2. On the hardware platform, the supported product lines include Intel Arc graphics cards based on Alchemist and Battlemage architectures, as well as processor platforms using the Core Ultra brand, code-named Meteor Lake, Lunar Lake, Arrow Lake-S, Arrow Lake-H and Panther Lake. Through this relaxation of the memory allocation strategy, Intel clearly hopes to further enhance the attractiveness of the Arc series in AI local inference and productivity scenarios, providing developers, content creators and enterprise users with more flexible large model deployment options.

@@ -1,0 +1,30 @@
+---
+title: 英特尔新驱动允许Arc集成显卡调用最高93%系统内存
+date: '2026-04-27T22:51:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560236.htm'
+summary: >-
+  英特尔面向ArcPro系列显卡发布了最新的HotFix工作站驱动302.0.101.8517（Q1.26R2），在内存分配策略上做出重要调整，允许用户为Arc集成GPU（iGPU）分配更高比例的系统内存，以便在本地运行更大规模的人工智能大语言模型（LLM）。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560236.jpg'
+slug: 1560236-英特尔新驱动允许Arc集成显卡调用最高93-系统内存
+id: '1560236'
+title_en: >-
+  Intel’s New Driver Allows Arc Integrated Graphics to Call Up to 93% of System
+  Memory
+summary_en: >-
+  Intel has released the latest HotFix workstation driver 302.0.101.8517
+  (Q1.26R2) for the ArcPro series graphics cards, making significant adjustments
+  to the memory allocation strategy. This allows users to allocate a higher
+  proportion of system memory to Arc integrated GPUs (iGPUs) to run larger-scale
+  artificial intelligence large language models (LLMs) locally.
+---
+
+此前，英特尔驱动最多可以调用约 87% 的系统内存，如在 32GB 内存配置下，GPU 可用内存约为 28GB，而在最新驱动下，该比例提升至约 92%——同样是 32GB 内存，就可以为 GPU 分配大约 30GB 作为“显存”使用。
+
+此次更新主要面向内置 Arc Pro 图形核心的英特尔处理器，例如 Arc Pro B390、Arc Pro B370 等，同时也兼容多款基于 Battlemage 和 Alchemist 架构的 Arc Pro 专业显卡产品。虽然本次 HotFix 驱动在更新日志中没有列出其他功能变更，但英特尔表示正持续推进 Arc Pro GPU 在专业应用领域的 ISV 认证，以提升工作站和专业软件环境下的稳定性和兼容性。
+
+在 AI 本地推理方面，内存分配能力是能否运行大模型的关键指标之一。英特尔此次将可分配比例最高提升至 93%，在一台配备 64GB 系统内存的 Windows 10 或 Windows 11 主机上，Arc Pro 集成显卡理论上可以动态获得约 59.5GB 的可用显存（64×0.93≈59.5），显著扩大了可在本地加载和推理的模型规模。与之相比，AMD Ryzen AI 平台当前最高允许将约 87% 的内存分配给 GPU，在搭载 128GB 系统内存的 AI MAX+ 平台上，GPU 可获得最多约 112GB 可用内存，同样面向更大参数量模型的本地运行场景。
+
+驱动在操作系统支持方面覆盖了多个 Windows 版本，包括 Windows 10 64 位 22H2 更新，以及 Windows 11 64 位从 21H2 至 25H2 的多个主要版本。在硬件平台上，受支持的产品线包括基于 Alchemist 和 Battlemage 架构的 Intel Arc 显卡，以及采用 Core Ultra 品牌、代号为 Meteor Lake、Lunar Lake、Arrow Lake-S、Arrow Lake-H 与 Panther Lake 的处理器平台。通过这次内存分配策略的放宽，英特尔显然希望进一步提升 Arc 系列在 AI 本地推理与生产力场景中的吸引力，为开发者、内容创作者及企业用户提供更灵活的大模型部署选项。
+
+
