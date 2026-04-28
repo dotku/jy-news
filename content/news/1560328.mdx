@@ -1,0 +1,38 @@
+---
+title: 告别周末通宵配环境 Ubuntu 26.04带来NVIDIA CUDA和AMD ROCm原生支持
+date: '2026-04-28T13:00:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560328.htm'
+summary: >-
+  Canonical近日正式发布代号“ResoluteRaccoon”的Ubuntu26.04LTS，将NVIDIACUDA和AMDROCm两大GPU计算框架原生集成到官方软件仓库。终结了Linux用户多年来GPU计算环境配置繁琐的行业痛点。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560328.png'
+slug: 1560328-告别周末通宵配环境-Ubuntu-26-04带来NVIDIA-CUDA和AMD-ROCm原生支持
+id: '1560328'
+title_en: >-
+  Say Goodbye to Weekend-Long Configuration: Ubuntu 26.04 Brings Native Support
+  for NVIDIA CUDA and AMD ROCm
+summary_en: >-
+  Canonical has officially released Ubuntu 26.04 LTS, codenamed
+  "ResoluteRaccoon," natively integrating the NVIDIA CUDA and AMD ROCm GPU
+  computing frameworks into its official software repositories. This resolves
+  the long-standing pain point for Linux users of complex GPU computing
+  environment configuration.
+---
+
+用户仅需通过apt install单条命令，即可完成完整可用的GPU计算堆栈部署，无需再周末通宵手动调试配置环境。
+
+AMD首席软件官称该方案覆盖从数据中心服务器到锐龙处理器笔记本的全场景设备。
+
+NVIDIA显卡用户可开箱即用正式版Wayland驱动与VRR功能，无需任何手动配置，游戏与本地AI推理体验大幅提升。
+
+该版本基于Linux 7.0内核构建，新增对Intel Panther Lake（酷睿 Ultra 300）处理器及其集成NPU的定向支持，默认搭载GNOME 50桌面环境。
+
+同时，Ubuntu 26.04 LTS正式移除GNOME的X11会话，Wayland成为唯一强制默认显示协议，仅保留XWayland兼容旧版X11应用。
+
+安全层面，该版本用基于Rust开发的sudo-rs、uutils/coreutils替代原有C语言版本工具，TPM全盘加密从实验性功能升级为安装程序稳定选项。
+
+据Phoronix实测，本次系统捆绑的ROCm版本为7.1.0，落后于当前最新的7.2.x系列，有最新功能需求的用户可通过AMD官方渠道安装。
+
+Ubuntu 26.04 LTS常规支持周期持续至2031年4月，通过Ubuntu Pro可扩展支持至2036年，官方建议生产环境用户等待8月发布的26.04.1版本再升级。
+
+
