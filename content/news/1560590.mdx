@@ -1,0 +1,62 @@
+---
+title: Windows 11月度更新体积已膨胀到5GB 两年增长16倍
+date: '2026-04-29T19:08:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560590.htm'
+summary: >-
+  据WindowsLatest深度调查，Windows11月度累积更新体积已从2024年的约300MB膨胀至2026年的5GB，解压后更接近9GB。其中AI功能确实贡献了部分增量，但更新机制本身的设计才是体积持续膨胀的根本原因。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560590.png'
+slug: 1560590-Windows-11月度更新体积已膨胀到5GB-两年增长16倍
+id: '1560590'
+title_en: 'Windows Monthly Updates Have Swollen to 5GB, a 16-Fold Increase in Two Years'
+summary_en: >-
+  According to an in-depth investigation by WindowsLatest, the size of Windows
+  11 monthly cumulative updates has swelled from approximately 300MB in 2024 to
+  5GB in 2026, and nearly 9GB when uncompressed. While AI features have
+  contributed to some of the increase, the design of the update mechanism itself
+  is the root cause of the continued expansion in size.
+---
+
+AI组件：3GB的增量从何而来
+
+2025年5月的累积更新是一个关键转折点，该月更新包体积从此前的约1.3GB骤增至4.4GB，解压体积从6.5GB跳升至近9GB。
+
+WindowsLatest解包分析发现，增量主要来自数十个此前不存在的MSIX组件，全部与语义搜索和本地AI推理相关，这约3GB的增量基本可以归因于AI组件。
+
+这里存在一个关键细节，这些AI组件最初仅为Copilot+ PC设计，随着支持范围扩展到Intel和AMD平台，更多版本被塞进同一个更新包。
+
+Windows Update的适用性检查逻辑会在下载前检测硬件配置，仅拉取系统实际需要的部分。在一台无NPU的虚拟机上测试，4GB+的目录包实际仅下载了约1.7GB，语义搜索组件未被拉取。
+
+也就是说，AI组件被打包进了更新，但大量用户的电脑根本不会安装它们。
+
+技术上，这些AI模型和语义搜索组件完全可以通过Microsoft Store或按需下载单独分发，与月度累积更新解耦，微软目前尚未这样做。
+
+累积更新机制：体积膨胀的真正根源
+
+Windows 11采用最新累积更新（LCU）模式，每月的安全更新包含当月修复以及所有历史修复，即使你的电脑只需要一个微小补丁，更新包仍然携带将任何系统升级到该版本所需的完整变更集。
+
+这种模式从可靠性角度是干净的，安装最新更新即可确保系统完全更新，即使跳过了之前的更新。但副作用是更新包只会越来越大，永远不会缩小。
+
+微软曾在Windows 11 24H2中引入检查点累积更新，试图缓解这一问题，其思路是定期建立新基线，后续月度更新仅包含自上一个检查点以来的变更，从而缩小体积。
+
+2024年9月建立了第一个检查点后，截至2025年4月的更新确实保持了相对较小的体积，但2025年5月更新体积骤增三倍，此后至今超过一年未建立新检查点，微软承诺的体积优化正在悄然失效。
+
+企业端：成本暴涨4倍
+
+对于家庭用户，实际下载量远小于目录包体积，多数人不会注意到4-5GB这个数字，但企业环境没有这种灵活性。
+
+WSUS每月下载完整累积更新，Configuration Manager将完整包分发到每个分发点，离线服务工具将完整MSU包注入系统镜像，每个场景都需要完整包，即使单个终端仅使用其中一小部分。
+
+WindowsLatest测算，每个架构每个分发点的年度更新存储成本已从2024年的约11GB飙升至2026年的52GB，增幅超过4倍。
+
+一个拥有5个分发点的组织，每年每个架构仅更新文件就占用超过250GB磁盘空间，且这还不包括定期清理的节省。
+
+与苹果的对比
+
+macOS增量更新通常在1-3GB范围内，大型版本跳跃才出现更大体积，主要是因为硬件版本远少于Windows。
+
+苹果也没有固定的月度更新时间表，更新在准备好时发布，在变更打包方式上有更大灵活性，Windows则优先考虑兼容性、可预测性和在极其庞大的硬件及软件配置组合中的部署能力。
+
+WindowsLatest总结认为，Windows更新之所以体积庞大，是因为它被设计为能在任何配置下、适用于任何企业场景的环境中运行，微软已经在尽量缩减体积，但包本身仍在不断增长。
+
+
