@@ -1,0 +1,36 @@
+---
+title: >-
+  Original Developers Rewrite Legendary ZSNES Nintendo Emulator, Giving It New
+  Life
+date: '2026-04-29T15:49:00'
+category: game
+source: 'https://www.cnbeta.com.tw/articles/game/1560552.htm'
+summary: >-
+  The classic Super Nintendo emulator ZSNES has experienced a true rebirth after
+  nearly twenty years of silence: two original authors, zsKnight and Demo, have
+  completely rewritten the code from scratch, releasing a new version called
+  SuperZSNES. Born in the DOS era, ZSNES relied on manual performance
+  optimization with assembly language and was the standard tool for countless
+  players running Super Nintendo games. However, due to a long lack of major
+  updates, its simulation accuracy and graphics processing methods have long
+  been outdated.
+image: >-
+  https://img1.mydrivers.com/img/20260429/347c48b6-428a-4146-afaa-0b45bc66702b.png
+slug: 1560552-原开发者从零重写-传奇的ZSNES任天堂模拟器重获新生
+id: '1560552'
+lang: en
+original_title: 原开发者从零重写 传奇的ZSNES任天堂模拟器重获新生
+---
+This remake is not a simple patch; the development team admits that the technical difficulty lies in the fact that the old version was based on old-fashioned CRT displays, which have a completely different geometric rendering logic than modern GPUs, making adaptation and modification extremely difficult.
+
+The new version of the emulator completely reconstructs the underlying architecture, using GPU shaders to take over the PPU screen core, including palette retrieval, tile rendering, transparency effects, Mode7 effects, color calculations, double-screen overlay, and mosaic filters, all handled by modern graphics cards.
+
+Super ZSNES also comprehensively surpasses the old version in CPU computation and audio simulation accuracy. They have equipped a super-enhanced engine, providing multiple quality and experience upgrades:
+
+Native high-resolution rendering is not simply stretching, but optimizing details through algorithms; supports high-definition textures and normal mapping to enhance background texture; built-in game overclocking function can alleviate the original version's stuttering and frame dropping issues; automatically adapts to native widescreen for games with reserved widescreen code; lossless audio replaces the original's poorly compressed audio source; Mode7 perspective scenes are upgraded to 3D height-mapped stereoscopic images.
+
+Super ZSNES is built on the Unity engine, but the developers emphasize that they used traditional rigorous coding throughout the process, refusing to use haphazardly assembled AI-generated code, ensuring the underlying code is solid and reliable.
+
+Currently, the software is an early 0.100 test version and still has many issues, such as some simulation bugs not being fixed, DSP1, SuperFX and other special chips not yet adapted, and overall performance still needs optimization, resulting in slow running speeds. Future plans include continuing to fix bugs, optimize performance, and add online battle functionality.
+
+In terms of platform adaptation, the Windows, Mac, Linux, and Android versions of Super ZSNES have now been officially launched, and the iOS version is under development and will be released soon. The development team has also opened a Patreon sponsorship channel, relying on player support to sustain project iterations.
