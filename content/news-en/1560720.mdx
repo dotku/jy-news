@@ -1,0 +1,34 @@
+---
+title: >-
+  AMD and Intel Jointly Release ACE White Paper to Advance x86 Standard Matrix
+  Acceleration Architecture Instruction Set
+date: '2026-04-30T15:37:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560720.htm'
+summary: >-
+  In October 2024, AMD and Intel jointly established the x86 Ecosystem Advisory
+  Group (x86EAG), bringing together industry leaders to jointly promote the
+  future of the x86 computing architecture. The EAG announced four core features
+  upon its establishment: FRED, AVX10, ChkTag, and ACE. Now, AMD and Intel have
+  jointly released the ACE white paper, officially launching this instruction
+  set, known as the "x86 standard matrix acceleration architecture," to the
+  developer community.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560720.jpg'
+slug: 1560720-AMD与Intel联合发布ACE白皮书-推进x86标准矩阵加速架构指令集
+id: '1560720'
+lang: en
+original_title: AMD与Intel联合发布ACE白皮书 推进x86标准矩阵加速架构指令集
+---
+The core goal of ACE is straightforward: to achieve an order of magnitude leap in the matrix multiplication performance of x86 chips.
+
+Matrix multiplication is the fundamental computational unit of neural networks and large language models. Existing SIMD instruction sets such as AVX10 can complete matrix operations, but they have obvious bottlenecks in terms of computational density and scalability.
+
+ACE introduces a matrix acceleration mechanism based on outer product operations, achieving 16 times the computational density of equivalent AVX10 multiply-accumulate operations while consuming the same input vectors.
+
+In terms of data format support, ACE natively covers mainstream precision standards in the current AI field, including INT8, OCP FP8, OCP MXFP8, OCP MXINT8, and BF16.
+
+As an extension of the AVX10 instruction set, software ecosystem adaptation for ACE is underway. Deep Learning and HPC underlying libraries, NumPy, SciPy and other Python scientific computing libraries, as well as mainstream machine learning frameworks such as PyTorch and TensorFlow have all initiated integration work.
+
+AMD and Intel emphasized in the white paper that the design philosophy of ACE is low friction and broad coverage. From laptops to supercomputers, developers do not need to rewrite code for different hardware platforms.
+
+This contrasts sharply with the approach of migrating AI computing to dedicated accelerators, which often requires additional code adaptation and migration costs.

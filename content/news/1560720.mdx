@@ -1,0 +1,38 @@
+---
+title: AMD与Intel联合发布ACE白皮书 推进x86标准矩阵加速架构指令集
+date: '2026-04-30T15:37:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560720.htm'
+summary: >-
+  在2024年10月的时候，AMD和Intel联合成立了x86生态系统咨询小组（x86EcosystemAdvisoryGroup），汇聚行业领导厂商，共同推动x86计算架构的未来。EAG成立时公布了四项核心特性：FRED、AVX10、ChkTag和ACE，如今AMD与Intel联合发布了ACE白皮书，正式将这一被称为“x86标准矩阵加速架构”的指令集推向开发者社区。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560720.jpg'
+slug: 1560720-AMD与Intel联合发布ACE白皮书-推进x86标准矩阵加速架构指令集
+id: '1560720'
+title_en: >-
+  AMD and Intel Jointly Release ACE White Paper to Advance x86 Standard Matrix
+  Acceleration Architecture Instruction Set
+summary_en: >-
+  In October 2024, AMD and Intel jointly established the x86 Ecosystem Advisory
+  Group (x86EAG), bringing together industry leaders to jointly promote the
+  future of the x86 computing architecture. The EAG announced four core features
+  upon its establishment: FRED, AVX10, ChkTag, and ACE. Now, AMD and Intel have
+  jointly released the ACE white paper, officially launching this instruction
+  set, known as the "x86 standard matrix acceleration architecture," to the
+  developer community.
+---
+
+ACE的核心目标很直接：让x86芯片的矩阵乘法性能实现数量级跃升。
+
+矩阵乘法是神经网络和大语言模型的基础运算单元，现有的AVX10等SIMD指令集虽然能完成矩阵运算，但在计算密度和扩展性上存在明显瓶颈。
+
+ACE通过引入基于外积运算的矩阵加速机制，在消耗相同输入向量的前提下，计算密度达到等效AVX10乘累加操作的16倍。
+
+在数据格式支持方面，ACE原生覆盖了当前AI领域的主流精度标准，包括INT8、OCP FP8、OCP MXFP8、OCP MXINT8和BF16。
+
+作为AVX10的扩展指令集，ACE的软件生态适配已在推进中，Deep Learning和HPC底层库、NumPy、SciPy等Python科学计算库，以及PyTorch和TensorFlow等主流机器学习框架均已启动集成工作。
+
+AMD和Intel在白皮书中强调，ACE的设计理念是低摩擦、广覆盖，从笔记本到超级计算机，开发者无需针对不同硬件平台重写代码。
+
+这与将AI计算迁移到专用加速器的方案形成鲜明对比，后者往往需要额外的代码适配和迁移成本。
+
+
