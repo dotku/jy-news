@@ -1,0 +1,36 @@
+---
+title: Cloudflare开放AI代理自助开通能力 可代用户注册账号、购买域名并部署应用
+date: '2026-04-30T22:38:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560764.htm'
+summary: >-
+  Cloudflare宣布，从即日起，编程类AI代理已经可以代表用户完成Cloudflare账号开通、付费订阅启动、域名注册以及获取用于部署代码的API令牌，整个过程无需人工进入控制台操作，也不需要手动填写信用卡信息；在这一新模式下，人类通常只需在服务条款确认环节介入一次即可。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560764.webp'
+slug: 1560764-Cloudflare开放AI代理自助开通能力-可代用户注册账号-购买域名并部署应用
+id: '1560764'
+title_en: >-
+  Cloudflare Opens Self-Service Capability for AI Agents, Enabling Account
+  Registration, Domain Purchase, and Application Deployment
+summary_en: >-
+  Cloudflare announced that AI agents can now handle Cloudflare account
+  creation, paid subscription initiation, domain registration, and API token
+  acquisition for code deployment on behalf of users. This process requires
+  minimal human intervention, typically only for service agreement confirmation,
+  and eliminates the need for manual credit card entry.
+---
+
+过去AI代理要把一个项目真正部署到生产环境，通常离不开三个前提条件：可用账号、支付方式以及API令牌，而这些关键步骤长期以来都必须由人工亲自处理。如今，Cloudflare正将这些能力逐步交给代理执行，让AI不仅能写代码，也能完成上线前的整套基础准备工作。
+
+这套流程基于Cloudflare与Stripe联合构建的一项协议，也是Stripe Projects发布的一部分。其运行机制主要包含三个环节：首先是“发现”，由代理查询服务目录，确认可调用的服务；其次是“授权”，由Stripe负责校验用户身份，而Cloudflare则会自动关联已有账户，或在必要时创建新账户；最后是“支付”，Stripe提供的是经过令牌化处理的支付凭证，而非真实信用卡号码，因此代理能够完成购买操作，但不会接触到敏感银行卡信息。
+
+在默认设置下，AI代理每个月在每个服务提供商处的支出上限为100美元。若用户希望提高额度，则可以在自己的Cloudflare账户中手动上调限制，或者为更高支出设置预算提醒，以便控制使用风险和成本。
+
+按照Cloudflare的描述，整套流程只需几分钟即可完成。用户首先需要安装带有Stripe Projects插件的Stripe CLI，随后登录Stripe，运行“stripe projects init”，再向自己的AI代理下达构建并部署应用的任务。之后，代理会自动查询服务目录、识别Cloudflare相关服务、按需创建账户、购买域名、部署代码，最终返回一个已经运行在真实域名上的可用应用。
+
+除了自动化能力本身，Cloudflare还宣布了一项面向创业公司的激励措施：凡是通过Stripe Atlas完成注册成立的新创业公司，都有机会获得总额最高10万美元的Cloudflare积分支持。这意味着，Cloudflare希望借助这一新机制进一步吸引早期开发团队和AI原生创业者进入其平台生态。
+
+值得注意的是，这一协议并不被限定在Stripe体系之内。Cloudflare表示，任何拥有登录用户体系的平台，理论上都可以扮演类似Stripe的角色，并以相同方式与Cloudflare集成。该公司还透露，希望吸引更多合作伙伴加入，目前已经在与Planetscale合作，目标是让用户未来可以直接通过Cloudflare来配置Postgres数据库。
+
+从行业趋势来看，Cloudflare这次推出的能力，意味着AI代理正在从“辅助编程工具”进一步迈向“可执行上线流程的操作主体”。当账号创建、支付授权、资源配置和应用部署都可以在有限人工批准下交由代理完成时，软件交付流程的自动化程度无疑又向前推进了一步。
+
+
