@@ -1,0 +1,39 @@
+---
+title: 安全研究员将PS5改造为Linux PC 可60帧运行《GTA 5》光追版本
+date: '2026-05-01T11:56:00'
+category: game
+source: 'https://www.cnbeta.com.tw/articles/game/1560892.htm'
+summary: >-
+  索尼PlayStation5游戏主机原本并非为运行Linux系统而设计，但这并未阻止开发者将其改造为一台电脑的尝试。安全研究员安迪·阮近日公开了一种在特定PS5机型上运行Linux系统的方法，并在GitHub上发布了详细的安装指南。此前，阮曾展示过Ubuntu系统在PS5上直接运行的演示，在该演示中PC游戏能够以高帧率流畅运行。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560892.webp'
+slug: 1560892-安全研究员将PS5改造为Linux-PC-可60帧运行-GTA-5-光追版本
+id: '1560892'
+title_en: >-
+  Security Researcher Transforms PS5 into a Linux PC, Runs Ray Tracing Version
+  of "GTA 5" at 60fps
+summary_en: >-
+  A security researcher has found a way to run Linux on specific PS5 models,
+  effectively turning the console into a PC. They've published detailed
+  installation guides on GitHub and demonstrated games like "GTA 5" with ray
+  tracing and "Spider-Man" running smoothly at high frame rates.
+---
+
+该改造方案利用了一个已被修补的漏洞，使PS5能够启动进入Linux环境。这实际上将游戏主机临时转变为一台PC，但存在明显的局限性——改造并非永久性的，每次重启都会清除系统设置，用户必须在每次开机后重新加载Linux系统。
+
+在性能测试中，阮展示了《侠盗猎车手5》在启用光线追踪的情况下以60帧每秒运行，同时还演示了《蜘蛛侠》在1440p分辨率下达到60帧每秒的表现。这些演示充分说明，一旦移除索尼的软件限制，PS5的硬件性能已经非常接近传统游戏PC。
+
+不过，该漏洞的兼容性相当有限。目前该破解方案仅支持光驱版PS5，且必须运行较旧的固件版本，具体为3.xx和4.xx系列。已更新至5.xx固件的系统无法使用此方法。阮表示:"未来可能会添加对1.xx和2.xx固件的支持，但我们不会优先考虑这项工作"，这表明开发重心将继续放在有限的设备子集上。
+
+与PlayStation 4破解社区最终实现的广泛自制软件和游戏备份支持相比，这个项目的范围更为有限。运行Linux系统是主要目标，目前没有迹象表明它能实现早期游戏主机上所见的系统深度修改。
+
+在技术层面，要让Linux在PS5硬件上正常运行需要进行大量定制工作。阮的实现方案包括调整后的显存分配和可用的风扇控制功能，这两项对于在使用过程中保持稳定性能至关重要。目前显示输出支持1080p、1440p和4K分辨率，但刷新率被限制在60Hz。阮表示:"未来可能会添加120Hz或30Hz支持"。
+
+当前系统仍存在一些不完善之处。例如网络连接并不完全无缝——用户可能需要在启动后关闭WLAN适配器再重新打开才能恢复互联网访问。这类临时解决方案反映了驱动程序支持仍处于早期阶段，正在为从未打算运行Linux的硬件进行适配。
+
+阮还在探索简化设置流程的方法。目前考虑的一个想法是添加一个关机选项，可以让主机进入休眠模式而非完全断电，使用户能够更快速地重新启动Linux而无需重复整个过程。
+
+目前这个项目最适合已经熟悉Linux操作并愿意进行反复试错的用户。阮强调"主机不存在变砖的风险"，这在一定程度上降低了风险，但对特定固件版本和非官方漏洞的依赖仍使其成为一项小众尝试。
+
+通过公开工具和安装说明，该项目从受控演示转变为更广泛社区可以实际尝试的方案。虽然这并未从根本上改变PS5的本质，但确实展示了当软件限制被绕过时硬件的灵活性——即使只是暂时性的。
+
+
