@@ -1,0 +1,45 @@
+---
+title: 美澳英加新发布联合指南 呼吁将自主AI代理纳入核心网络安全治理
+date: '2026-05-02T03:55:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560962.htm'
+summary: >-
+  美国及其盟国的网络安全主管部门日前联合发布面向“代理型人工智能”（agenticAI）的安全部署指南，强调这类能够在网络上自主采取行动的AI系统，已经进入关键基础设施和防务等高敏感领域，但多数组织给予它们的访问权限远超自身的监控和管控能力。该文件呼吁各类机构将自主AI代理视作核心网络安全议题，优先考虑弹性、可逆性与风险遏制，而非单纯追逐效率提升。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560962.png'
+slug: 1560962-美澳英加新发布联合指南-呼吁将自主AI代理纳入核心网络安全治理
+id: '1560962'
+title_en: >-
+  US, Australia, UK, Canada, and New Zealand Release Joint Guidance, Calling for
+  Inclusion of Autonomous AI Agents in Core Cybersecurity Governance
+summary_en: >-
+  The United States and its allies' cybersecurity authorities have jointly
+  released security deployment guidance for "agentic AI," emphasizing that these
+  AI systems capable of autonomous action online have entered highly sensitive
+  areas such as critical infrastructure and defense. However, most organizations
+  grant them access permissions exceeding their monitoring and control
+  capabilities. The document calls on organizations to treat autonomous AI
+  agents as a core cybersecurity issue, prioritizing resilience, reversibility,
+  and risk mitigation over simply pursuing efficiency gains.
+---
+
+全文下载：
+
+https://cyberscoop.com/wp-content/uploads/sites/3/2026/05/CAREFUL-ADOPTION-OF-AGENTIC-AI-SERVICES_FINAL.pdf
+
+这份指南由美国网络安全和基础设施安全局（CISA）、国家安全局（NSA）、澳大利亚信号局旗下澳大利亚网络安全中心、加拿大网络安全中心、新西兰国家网络安全中心以及英国国家网络安全中心联合撰写，对外发布于当地时间周五。 指南聚焦的“代理型AI”，是建立在大语言模型之上的软件系统，具备规划、决策和在既定权限内自主执行动作的能力。为完成复杂任务，这类系统往往需要对接外部工具、数据库、记忆仓库以及自动化工作流，从而在缺乏每一步人工复核的情况下执行多步骤任务。
+
+联合发布机构在文件中强调，部署代理型AI并不意味着必须重建完整的安全体系，而应将其纳入现有网络安全框架和治理结构。建议包括：将零信任、防御纵深、最小权限等既有原则系统性应用于AI代理；在身份与访问管理、审计日志、变更控制等环节，将AI代理视作“高敏感、强权限”的技术组件进行治理。
+
+指南将与代理型AI相关的风险概括为五大类别。首先是“权限风险”：一旦AI代理被授予过高或过广的访问权限，一次成功入侵就可能造成远超传统软件漏洞的破坏，例如对关键配置的集中篡改或对大范围业务的中断。 第二类是设计和配置缺陷风险，即系统在上线前，由于架构设计不当、默认配置过于宽松或安全边界划分模糊，导致天生存在难以弥补的安全缺口。
+
+第三类风险被归为“行为风险”，指代理在追求目标时可能采取设计者未预期、甚至从未设想过的路径，从而触发安全或合规事件。 第四类是“结构性风险”，当多个代理与复杂业务系统交织成网络时，一处故障或异常行为可能在系统内部级联扩散，引发跨系统、跨部门的连锁反应。
+
+第五类风险关乎“可追责性”。指南指出，代理型AI的决策过程往往难以完全审视，其生成的操作日志和决策记录也不易解析，这使得事后追踪问题根源、厘清责任变得极具挑战。 一旦这类系统出现失误，其后果并非停留在“虚拟层面”，而是会体现在具体的IT资产上，例如文件被篡改、访问控制被更改、审计轨迹被删除等，直接影响取证和恢复工作。
+
+文件还专门警示“提示注入”（prompt injection）带来的攻击风险。攻击者可以在数据或内容中悄然嵌入指令，引导AI代理偏离原本任务，执行恶意操作。 提示注入一直被视为大语言模型生态中的顽疾，一些企业已公开承认这一问题可能长期难以彻底根除，这也使得在自动化程度更高的代理场景中，该类攻击的潜在危害尤为突出。
+
+在具体防护措施层面，身份管理在整份指南中占据重要位置。联合机构建议，每一个AI代理都应具备可验证的、通过密码学方式保护的独立身份；其使用的凭证应尽量短期有效；代理与其他代理及服务之间的所有通信应采用加密通道。 对于任何可能带来重大影响的操作，如修改关键配置、提升用户权限或大规模数据删除等，指南明确要求必须由人类进行审批，且由系统设计者而非代理本身来界定哪些操作属于“高影响行为”。
+
+同时，发布机构也坦言，现有安全行业实践尚未完全跟上代理型AI的发展速度。一些具有鲜明“AI代理特征”的风险尚未被现有安全框架充分覆盖，亟需更多跨机构、跨行业的研究与合作。 指南指出，在安全方法论、评估手段和相关标准尚不成熟之前，组织应该预设代理型AI“可能会出现意料之外的行为”，并据此进行部署规划，在系统设计中优先保证韧性、可逆性和风险可控，而不是一味追求自动化带来的效率红利。
+
+
