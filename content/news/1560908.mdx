@@ -1,0 +1,36 @@
+---
+title: Rufus重大更新：推出全新Windows 11安装方式 可大幅提升电脑性能
+date: '2026-05-01T14:07:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560908.htm'
+summary: >-
+  流行的可引导USB制作工具Rufus今日发布4.14正式版更新，此前该版本已于上月进入测试阶段。此次更新为Windows用户带来了多项重要改进，包括静默安装功能、预装应用移除选项、WindowsToGo修复以及本地账户问题修复等。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560908.webp'
+slug: 1560908-Rufus重大更新-推出全新Windows-11安装方式-可大幅提升电脑性能
+id: '1560908'
+title_en: >-
+  Major Rufus Update: Introduces New Windows 11 Installation Method,
+  Significantly Improves Computer Performance
+summary_en: >-
+  The popular bootable USB creation tool Rufus today released the official
+  version 4.14 update, which entered the testing phase last month. This update
+  brings several important improvements for Windows users, including silent
+  installation, pre-installed app removal options, WindowsToGo fixes, and local
+  account issue fixes.
+---
+
+新版本引入了无人值守"静默"安装模式，允许Windows系统自动部署到首个检测到的磁盘上，无需用户输入任何信息。这一功能主要面向高级用户和资深玩家，能够实现更快速、免人工干预的系统安装过程。同时，更新还新增了在安装过程中禁用特定微软预装应用的选项，包括Teams、Outlook和Copilot等。对于不需要这些应用的用户来说，该更新能够加快电脑启动速度，这对在低端硬件上运行Windows 11的用户尤其有帮助。
+
+此次更新还通过增强UEFI:NTFS分区标签改善了Windows安装过程中的清晰度。UEFI:NTFS是一个轻量级引导加载程序，可让UEFI系统从NTFS或exFAT分区启动，即使固件仅支持FAT32格式。它通过从小型FAT分区加载NTFS驱动程序，然后将控制权转移到NTFS分区上的引导文件，从而绕过了典型的文件大小和文件系统限制。
+
+更新还解决了由新版BCDBoot导致的Windows 11 25H2版本Windows To Go介质创建错误。Windows To Go是一项传统功能，允许从USB设备运行Windows系统，而BCDBoot则是一个命令行实用程序，可用于配置引导文件或引导配置数据。此外，本次更新还修复了以空格字符开头或结尾的本地账户创建时会导致问题的bug。
+
+除了针对Windows的改进之外，Rufus 4.14还为所有对话框选项添加了工具提示，改进了当用户尝试使用位于目标驱动器上的镜像时的错误提示信息，并增加了对El-Torito UEFI镜像提取的有限支持，主要用于戴尔BIOS更新ISO文件。更新还改进了对新版Bitdefender隐藏虚拟硬盘的检测和排除功能，因为之前的版本无法正确过滤这些文件。
+
+下载地址：
+
+https://github.com/pbatard/rufus/releases/tag/v4.14
+
+https://rufus.ie/downloads/
+
+

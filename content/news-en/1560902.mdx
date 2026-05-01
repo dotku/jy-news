@@ -1,0 +1,198 @@
+---
+title: What Exactly Did DeepSeek Delete the New Paper About Overnight?
+date: '2026-05-01T13:55:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560902.htm'
+summary: >-
+  Last night, DeepSeek multimodal researcher Chen Xiaokang posted a tweet on X,
+  announcing DeepSeek's new paper on multimodal technology, "Thinking with
+  Visual Primitives," expressing his excitement. This morning, the tweet was
+  deleted, and the paper on GitHub was withdrawn. However, APPSO read the full
+  text before it disappeared and found that the paper was likely withdrawn not
+  because of problematic content, but because it revealed too much.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560902.png'
+slug: 1560902-DeepSeek连夜删掉的新论文到底说了什么
+id: '1560902'
+lang: en
+original_title: DeepSeek连夜删掉的新论文到底说了什么
+---
+Today, the tweet was deleted, and the paper on GitHub was also withdrawn.
+
+But APPSO read the full text before it disappeared. After reading it, I felt that the paper was withdrawn not because of the content.
+
+On the contrary, it may have revealed too much.
+
+The day before yesterday, we tested DeepSeek's image recognition mode and asked it to count fingers. It thought for a moment and complained, "I'm really dizzy counting," and then answered incorrectly. At the time, we thought it was a minor issue in the gray testing phase.
+
+This paper tells us that the dizziness from counting fingers hides a technical bottleneck that GPT, Claude, and Gemini collectively haven't solved.
+
+And DeepSeek's solution, when spoken aloud, is almost laughably simple: give AI a finger.
+
+Chen Xiaokang wrote in that tweet:
+
+“Traditional CoT stays in the linguistic space, but visual reasoning needs more. By using points and boxes as cognitive anchors, our model bridges the Reference Gap—mimicking the "point-to-reason" synergy humans use.”
+
+“Traditional chains of thought stay in the linguistic space, but visual reasoning needs more. By using points and boxes as cognitive anchors, our model bridges the ‘Reference Gap,’ mimicking the ‘point-to-reason’ synergy humans use.”
+
+Seeing clearly and pointing accurately are two different things.
+
+Currently, all multimodal large models perform image reasoning by essentially converting what they see into text and then performing chain-of-thought reasoning in the textual space. GPT-5.4, Claude-Sonnet-4.6, and Gemini-3-Flash all follow this approach.
+
+Over the past two years, OpenAI, Google, and Anthropic have focused their improvements on one problem: how to make models see more clearly. High-resolution cropping, dynamic chunking, and enlarging the image before feeding it in. DeepSeek calls this the Perception Gap.
+
+But this paper points out another bottleneck: the Reference Gap. The model sees clearly, but cannot precisely point to something in the image during reasoning.
+
+You can understand it this way: in a picture with 25 people standing closely together, describing “the person next to the one wearing a blue jersey on the third row from the left” is inherently vague. The model loses context while counting and forgets who it counted to.
+
+How do humans solve this problem? In a very primitive way: extend a finger and count one by one.
+
+A 284B parameter model, equipped with a finger.
+
+DeepSeek's solution: let the model directly output coordinates on the image during the thinking process.
+
+Imagine the model seeing a picture with many people. Its chain of thought is no longer “I see a person wearing a blue shirt on the left,” but “I see this person” and then attach the coordinates of a bounding box, circling the person. Every time it counts a person, it circles a box, and then counts the number of boxes.
+
+There are two coordinate formats: one is a bounding box, drawing a rectangle to enclose the object, suitable for identifying object locations; the other is a point, poking a position on the image, suitable for tracking paths and mazes. DeepSeek calls these two things “visual primitives,” the smallest units of thought.
+
+The key change here: previously, the model output coordinates as the final answer (“the target is here”), now the coordinates are embedded in the thinking process itself. Coordinates are markings on draft paper, not answers on the answer sheet.
+
+Compressing a picture 7056 times and still being able to count the people in it.
+
+The model base is DeepSeek-V4-Flash, a 284B parameter MoE model. MoE means: the model has a large brain, but only calls a small portion of the neurons to work each time it answers a question, activating only 13B parameters during inference. Similar to a team of 100 people, only 5 are sent to work on each task.
+
+On the visual encoder side, it performed three levels of compression. For example: you have a photo to send to a friend, but the internet speed is slow. First, you cut the photo into small squares for backup; second, you merge every 9 small squares into 1 (3x3 compression); third, you further simplify redundant information during transmission (KV Cache compression by 4 times).
+
+Actual numbers: a 756x756 image, 570,000 pixels, compressed down to 81 information units. A compression ratio of 7,056 times.
+
+My first reaction to this number was: can it still see things clearly? But the results in the paper show that it can. Not only can it see clearly, but it can also accurately count 25 people.
+
+In comparison: for the same 800x800 image, Gemini-3-Flash consumes about 1100 tokens to represent the image, Claude-Sonnet-4.6 about 870, and GPT-5.4 about 740. DeepSeek uses only 90 information units during final calculation. Others use more than a thousand grids to remember a picture, while DeepSeek only needs 90 grids, and then uses the saved computing power to “point.”
+
+How the 40 million training data points were collected.
+
+DeepSeek crawled all datasets labeled with “object detection” from platforms such as Huggingface, initially obtaining 97,984 data sources.
+
+Then it performed two rounds of screening.
+
+The first round checked label quality. AI automatically reviewed three issues: labels are meaningless numerical codes (categories named “0” or “1”), labels are private entities (“MyRoommate”), labels are vague abbreviations (industrial inspection’s “OK” and “NG”, an apple “OK” and a circuit board “OK” look completely different, AI can’t learn). This round cut 56%, leaving 43,141.
+
+The second round checked the quality of the boxes. Three standards: too many missing labels (labeled half and then stopped), boxes were drawn crookedly and cut off half of the object, boxes were large enough to enclose the entire image (indicating that the original data was image classification converted to detection, with no location information). Another 27% was cut, leaving 31,701.
+
+Finally, it sampled by category and deduplicated, producing more than 40 million high-quality samples.
+
+DeepSeek chose to focus on box data first, and then supplement point data later. The reason is simple: if you ask AI to draw a box, the answer is basically unique (encircle the object just right); but if you ask AI to mark a point, any position on the object is considered correct, there is no unique correct answer, and the training signal is too ambiguous. Moreover, the box itself contains two points (top-left and bottom-right corners), so learning to draw a box and then marking points is a dimensionality reduction operation.
+
+How to teach AI to “point.”
+
+The post-training strategy is “train separately first, then merge.”
+
+DeepSeek first trained a specialized box-drawing expert model using box data, and then trained a specialized point-marking expert model using point data. They were trained separately because the amount of data was not yet large enough, and mixing the two abilities together would easily interfere with each other.
+
+Then, reinforcement learning was performed on the two experts separately. How to judge whether the model “drew the box correctly” or “walked the path correctly”? DeepSeek designed a multi-dimensional scoring system: is the format correct (are the coordinate syntax correct), is the logic reasonable (is the reasoning process self-contradictory), is the answer accurate (how much does the final result differ from the standard answer).
+
+The data selection for reinforcement learning is also particular: let the model do the same question N times, questions that are all correct are too simple and have no training value, questions that are all wrong are too difficult to learn from, only keep questions with “right and wrong” to practice.
+
+The final step is to combine the abilities of the two experts into one model. Specifically: let the unified model learn from the output of the two experts, similar to a student learning different subjects from two teachers.
+
+After giving it a finger, how did it count?
+
+Counting 25 people.
+
+Given a team photo, asked “How many people are in the picture?”
+
+Thinking process: first determine “this is a team photo, count everyone, including players and coaches.” Then output 25 box coordinates at once, circling each person. Next, count by row: 4 sitting in the front row + 9 in the middle row + 8 in the back row + 2 coaches on the left + 2 coaches on the right = 25.
+
+“How many bears are on the ground?”
+
+There are three bears in the picture. The model draws a box around each one and judges its position: the first one is climbing vertically on the trunk, exclude; the second one is walking on the edge of the rock, count; the third one is among the debris and mud, count. Answer: 2 bears.
+
+It didn’t first count three and then subtract one, but made a “is it on the ground” judgment for each one, with a specific coordinate anchoring each judgment. It’s really checking one by one, not guessing.
+
+Multi-hop spatial reasoning.
+
+In a 3D rendering scene with a pile of colorful geometric shapes. Question: “Does a purple rubber object exist that is the same size as a gray metal object?”
+
+The model first boxes out the gray metal sphere and confirms it is a small object. Then it boxes out other small objects in the scene one by one: a brown metal cylinder, a blue metal cube, a blue rubber cube, a yellow rubber cylinder… It checks six objects one by one, comparing color, material, and size. Conclusion: no purple rubber exists.
+
+Six localizations, six judgments. Each step has a coordinate anchoring it, preventing the situation of “wait, where was I?”
+
+More cases in the paper:
+
+Maze navigation: others flip a coin, DeepSeek actually searches.
+
+The paper tested four tasks, and the maze is where the gap was widest.
+
+The task is very direct: given a maze picture, ask if there is a path from the starting point to the ending point, and if so, draw it. The mazes have three shapes: grid, ring, and honeycomb.
+
+The way the model walks the maze is the same as when you were a kid drawing on paper with a pencil: choose a fork in the road and walk to the end, if it’s a dead end, go back and try another one. The difference is that it marks a coordinate point on the image with each step, leaving a record.
+
+The paper shows a complete process of a circular maze: the model first marks the starting and ending positions, then begins to explore. It took 18 steps, twice entering dead ends and backing out, and finally found a path, outputting the coordinates of the entire path.
+
+DeepSeek also designed a batch of trap mazes: at first glance, there is a path, but somewhere in the middle it is secretly blocked. This type of maze tests patience. The model cannot conclude based on the trend near the starting point alone, it must honestly try all possible paths to confirm that it is impassable.
+
+Accuracy comparison:
+
+- DeepSeek: 66.9%
+- GPT-5.4: 50.6%
+- Claude-Sonnet-4.6: 48.9%
+- Gemini-3-Flash: 49.4%
+- Qwen3-VL: 49.6%
+
+The maze has only two answers: there is a path, or there is no path. Random guessing is exactly 50%. GPT, Claude, Gemini, and Qwen are all hovering around 50%, no different from flipping a coin. DeepSeek’s 66.9% is not high, but it is indeed walking step by step, not guessing.
+
+Path tracking: the ultimate version of finding the differences.
+
+This task is more intuitive: a pile of wires tangled together, each wire leading from a mark to another mark. The picture is what your headphone wire looks like when you take it out of your pocket. The question asks: where does line C lead?
+
+The model’s approach is to output coordinate points along the line, like a finger tracing the surface of the paper. It marks points densely where the line bends sharply, and sparsely on straight segments. When people use their eyes to follow a line, they do the same, slowing down at curves and sweeping across straight lines.
+
+The paper also added a difficult version of the test: all the lines are the same color and thickness. You can’t distinguish which line is which by color, you can only judge which one to follow at the intersection based on the continuity of the curve itself.
+
+- DeepSeek: 56.7%
+- GPT-5.4: 46.5%
+- Claude-Sonnet-4.6: 30.6%
+- Gemini-3-Flash: 41.4%
+
+Claude’s 30.6% was a bit unexpected. There are generally four or five options at the end, random guessing should be around 20%, 30.6% is only slightly better than random guessing. Perhaps in this kind of pure spatial tracking task, the inertia of language reasoning actually hindered it.
+
+How to teach AI to walk the maze without cheating.
+
+There is a realistic problem with maze training: if you only score based on whether the final answer is correct or not, the model will quickly learn to cheat. Rather than work hard and risk getting it wrong, it’s better to just guess, because getting it wrong after searching diligently and getting it wrong after not searching at all, the score is the same zero.
+
+DeepSeek’s solution is to include the process in the score. Each legal exploration step is given a score, walking through walls deducts points, and the further you go, the better. Even if you don’t reach the end, you can still get a good score if you search most of the area diligently. This way, the model has no motivation to be lazy.
+
+The requirements for unsolvable mazes are even higher: you can’t just say “impassable,” you must also prove that you have reached all possible places. Search coverage is also scored.
+
+A little easter egg, three limitations.
+
+There is no Chinese data in the post-training data. But the model can use Chinese for visual primitive reasoning.
+
+Given a coffee machine picture and asked “How to make a latte” in Chinese, it labeled the steam wand, milk pitcher, coffee beans, and latte button positions in Chinese, and then gave the operation steps. The multilingual ability is inherited from the base model, and the visual primitive training did not destroy it.
+
+It can also combine looking at pictures with world knowledge: given a picture of the Golden Gate Bridge and asked “Is there an NBA team nearby?” it first boxes out the Golden Gate Bridge, infers that this is San Francisco, and then answers the Golden State Warriors.
+
+It can understand humor: the natural spots on a slice of fruit happen to form the face of a sad cat, the model can point out the similarities and explain why it’s funny.
+
+It can provide escape room guidance: box out the key on the high place, the chair on the floor, the locked door, and suggest “move the chair under the key → step on it to get the key → go open the door.”
+
+The paper frankly wrote about what it can’t do yet.
+
+Input resolution is limited. ViT output is capped between 81 and 384 visual information units, and the coordinate accuracy is not enough when encountering very fine scenes (such as counting fingers). This may be the direct reason why it failed to count fingers during the test the day before yesterday.
+
+Currently, specific trigger words are needed to activate visual primitive mode. The model cannot automatically judge “I should extend my finger to do this question,” someone has to remind it.
+
+The generalization ability of topological reasoning is limited. It performs well on trained maze types, but may fail when encountering a new spatial structure. Chen Xiaokang also said in the deleted tweet:
+
+“We’re still in the early stages; generalization in complex topological reasoning tasks isn’t perfect yet, but we’re committed to solving it.”
+
+“We are still in the early stages; generalization in complex topological reasoning tasks is not yet perfect, but we are committed to solving it.”
+
+The abilities demonstrated by DeepSeek’s image recognition mode the day before yesterday (asking the publisher’s identity, associating the meaning of the whale logo, self-correcting, and holding a “mini-defense session” for itself) are consistent with the way of thinking described in this paper. It establishes visual anchors in its mind, reasons around the anchors, and revises when encountering contradictions.
+
+And the dizziness from counting fingers is a live demonstration of the Reference Gap. Counting fingers that are crossed and overlapping, and trying to distinguish “the third from the left” and “the second from the right” by pure language description, is like trying to count a group of people huddled together without extending your fingers, it is destined to be chaotic.
+
+This paper points in the direction of: the next evolution of multimodal reasoning lies in the anchoring mechanism. DeepSeek achieved the same effect as others using more than a thousand tokens with only 90 information units, and used the saved computing power to let the model “think and point” at the same time.
+
+The resolution arms race can slow down. Teaching the model to extend its finger is more useful than giving it a more expensive pair of glasses.
+
+This whale has opened its eyes and grown fingers. The 66.9% maze accuracy is still far from perfect, but at least it is seriously walking, unlike the others flipping coins.
