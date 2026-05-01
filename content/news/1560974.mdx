@@ -1,0 +1,35 @@
+---
+title: Ubuntu基础设施遭持续跨境攻击 服务停摆超过一日
+date: '2026-05-02T06:17:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1560974.htm'
+summary: >-
+  Ubuntu及其母公司Canonical运营的多台服务器自当地时间周四早晨起遭到攻击而下线，截至目前已持续中断逾24小时，严重影响了这家主流Linux发行版在一项重大安全漏洞披露“翻车”后与用户的正常沟通。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1560974.jpg'
+slug: 1560974-Ubuntu基础设施遭持续跨境攻击-服务停摆超过一日
+id: '1560974'
+title_en: >-
+  Ubuntu Infrastructure Under Sustained Cross-Border Attacks, Services Down for
+  Over a Day
+summary_en: >-
+  Ubuntu and its parent company Canonical have experienced an outage of multiple
+  servers since early Thursday morning local time, lasting over 24 hours. This
+  severely impacts the mainstream Linux distribution's normal communication with
+  users following a major security vulnerability disclosure "mishap."
+---
+
+在过去 24 小时里，大多数 Ubuntu 与 Canonical 网站几乎无法访问，用户从官方服务器获取系统更新也多次失败，不过来自各地镜像站点的更新服务仍然正常。Canonical 在一则状态公告中表示，其“网络基础设施正遭受持续的跨境攻击，我们正在设法应对”，除这则声明外，Ubuntu 与 Canonical 官方在整个宕机期间基本保持沉默。
+
+一个自称与伊朗政府立场同情的黑客组织已在社交媒体上对这次攻击“认领”，称其通过名为 Beam 的平台发起了分布式拒绝服务（DDoS）攻击。Beam 对外宣称是用于测试服务器在高负载下承压能力的“压力测试”服务，但与其他所谓“压力机”（stressor）或“流量放大器”（booter）一样，本质上是供不法分子付费瘫痪第三方网站的工具。近几日，这一亲伊朗团体还声称对电商平台 eBay 发起过类似的 DDoS 攻击。
+
+根据问答社区 AskUbuntu.com 一名版主的说法，目前无法访问或严重受影响的域名和服务包括：security.ubuntu.com、jaas.ai、archive.ubuntu.com、canonical.com、maas.io、blog.ubuntu.com、developer.ubuntu.com、Ubuntu Security API（涵盖 CVE 与安全通告）、academy.canonical.com、ubuntu.com、portal.canonical.com 以及 assets.ubuntu.com。这些服务既涉及 Ubuntu 的安全更新、包仓库和镜像索引，也涵盖 Canonical 面向开发者、企业客户和学习平台的多条业务线。
+
+此次基础设施大面积宕机，恰逢安全研究人员公开了一段具有强大攻击能力的漏洞利用代码，可在数据中心、大学网络等多租户环境中，让不受信任的普通用户获取几乎所有主流 Linux 发行版服务器（包括 Ubuntu）上的最高权限 root 控制权。这一时间点的重叠，使得 Ubuntu 在向受影响用户发布安全指引、风险缓解方案和补丁说明方面受到明显掣肘，相关安全信息的传播在很大程度上被迫依赖第三方镜像站点和社区渠道。尽管如此，目前通过各地镜像源分发的更新包仍然可用，为用户在短期内获取关键修复提供了替代路径。
+
+所谓压力机或“僵尸流量租用”平台已经存在数十年之久，DDoS 即服务的商业化运营模式也长期在各国执法机构的打击名单之上。尽管多国警方多次采取联合执法行动，查封网站、抓捕运营者，但这种以租用僵尸网络和攻击流量为生的地下灰产始终未被根除，新的平台和品牌不断“换壳”重现。此次针对 Ubuntu 与 Canonical 的攻击表明，成熟的商用安全团队和基础设施运营方依然可能在短时间内被这类大流量攻击打得措手不及。
+
+目前尚不清楚 Ubuntu 与 Canonical 的基础设施为何长时间未能完全恢复外部可访问状态。业内普遍认为，市面上存在大量成熟的 DDoS 防护服务，其中至少有一类是免费提供基础防护能力的方案，因此此次长时间中断引发了外界对 Canonical 在应急预案、流量清洗和架构冗余等方面准备程度的诸多疑问。不过，截至发稿时，Canonical 方面尚未进一步披露其受攻击的具体细节、防护策略以及全面恢复服务的时间表。
+
+在此次事件余波尚未平息之际，安全社区仍在消化这起“多年来最严重 Linux 威胁之一”带来的连锁反应，而 Ubuntu 这场基础设施危机则为整个开源生态如何在高压攻击与紧急安全响应之间保持韧性敲响了警钟。
+
+
