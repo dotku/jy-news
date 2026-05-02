@@ -1,0 +1,34 @@
+---
+title: >-
+  Microsoft and CISA Warn of Severe Vulnerability Affecting Nearly All
+  Mainstream Linux Systems
+date: '2026-05-03T02:40:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1561084.htm'
+summary: >-
+  Microsoft and the U.S. Cybersecurity and Infrastructure Security Agency (CISA)
+  recently issued a warning about a new security vulnerability in the Linux
+  kernel that could affect numerous mainstream distributions including Ubuntu,
+  RedHat, SUSE, Debian, Fedora, ArchLinux, and Amazon (AWS) Linux, potentially
+  impacting millions of devices.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561084.png'
+slug: 1561084-微软与CISA警告影响几乎所有主流Linux系统的严重漏洞
+id: '1561084'
+lang: en
+original_title: 微软与CISA警告影响几乎所有主流Linux系统的严重漏洞
+---
+The vulnerability, designated CVE-2026-31431 with a CVSS score of 7.8, has been added to CISA’s “Known Exploited Vulnerabilities” catalog, recognized as a common attack vector posing a significant risk to federal agencies and broader enterprise environments.
+
+CISA’s advisory identifies this as a vulnerability involving “incorrect resource transfer between different security domains” within the Linux kernel. Exploitation can lead to local privilege escalation to root level. This type of local privilege escalation is particularly dangerous for environments with numerous containerized and multi-tenant workloads, as initial access by an attacker could lead to breaking isolation and controlling the entire node.
+
+Red Hat released a security advisory last month providing more detailed technical explanations of the issue. The advisory states that the vulnerability lies within the algif_aead cryptographic algorithm interface in the Linux kernel. An incorrect “in-place operation” implementation causes inconsistencies in the memory mapping of source and destination data, potentially leading to unexpected behavior or data integrity issues during encryption operations, thus affecting the reliability of encrypted communications.
+
+Microsoft security researchers traced the issue further back to a logical flaw in the kernel’s cryptographic subsystem, pinpointing an optimization within the algif_aead module under the AF_ALG framework introduced in 2017. The “in-place optimization” at the time caused the kernel to incorrectly reuse source memory as the destination buffer when performing certain encryption operations. Attackers can exploit the interaction between the AF_ALG socket interface and the splice() system call to achieve a controllable 4-byte write into the kernel page cache, allowing for precise manipulation of critical data structures.
+
+Researchers indicate that this attack flow can be implemented with a Python script, targeting high-privilege binaries like /usr/bin/su for modification, causing them to run directly with root privileges upon execution. Unlike many kernel exploits that rely on race conditions, this vulnerability’s exploitation does not depend on timing races and can be reliably reproduced with a small, approximately 732-byte script. Due to its near-effortless exploitability across multiple mainstream distributions with minimal modification, the vulnerability is considered a “highly reliable” privilege escalation method.
+
+This characteristic further amplifies the risks in cloud computing environments. Many containers share the same host kernel, and a vulnerability in the underlying kernel version can allow a compromise of a single container to spread to a complete takeover of the entire node. Microsoft warns that even limited initial access, such as a low-privilege SSH login or execution opportunity within a CI/CD pipeline, is sufficient to leverage this vulnerability to escalate to root privileges, break container boundaries, achieve lateral movement, and infect other workloads in multi-tenant environments.
+
+Currently, observed exploitation activity remains primarily in the proof-of-concept (PoC) stage and has not been widely weaponized. Nevertheless, Microsoft has released detection signatures through Microsoft Defender XDR to help organizations identify potential exploitation attempts and compromised systems. Microsoft also urges security teams to promptly complete kernel updates after corresponding patches are available from each distribution to fundamentally eliminate the risk.
+
+Before patches are fully deployed, Microsoft recommends a series of mitigation measures, including temporarily disabling affected related encryption functions or blocking the creation of AF_ALG sockets to reduce the attack surface. Additionally, access control policies should be strengthened to limit the scope of accounts capable of running arbitrary code on the system, and network isolation should be used to reduce the possibility of lateral spread within the internal environment after a single point of compromise. For nodes exhibiting suspicious signs, rapid recovery and rebuilding, combined with log auditing and behavior detection, are also important means of reducing long-term risk.

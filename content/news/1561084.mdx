@@ -1,0 +1,38 @@
+---
+title: 微软与CISA警告影响几乎所有主流Linux系统的严重漏洞
+date: '2026-05-03T02:40:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1561084.htm'
+summary: >-
+  微软和美国网络安全与基础设施安全局（CISA）近日就一项存在于Linux内核中的新安全漏洞发出警告，称该问题可能影响包括Ubuntu、RedHat、SUSE、Debian、Fedora、ArchLinux以及Amazon（AWS）Linux在内的大量主流发行版，涉及设备数量可能以数百万计。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561084.png'
+slug: 1561084-微软与CISA警告影响几乎所有主流Linux系统的严重漏洞
+id: '1561084'
+title_en: >-
+  Microsoft and CISA Warn of Severe Vulnerability Affecting Nearly All
+  Mainstream Linux Systems
+summary_en: >-
+  Microsoft and the U.S. Cybersecurity and Infrastructure Security Agency (CISA)
+  recently issued a warning about a new security vulnerability in the Linux
+  kernel that could affect numerous mainstream distributions including Ubuntu,
+  RedHat, SUSE, Debian, Fedora, ArchLinux, and Amazon (AWS) Linux, potentially
+  impacting millions of devices.
+---
+
+该漏洞编号为 CVE-2026-31431，CVSS 评分为 7.8，被 CISA 列入“已知被利用漏洞”目录，认为其是恶意攻击者常用攻击向量，对联邦机构及更广泛企业环境构成重大风险。
+
+CISA 在通报中指出，这是一个“Linux 内核在不同安全域之间错误转移资源”的漏洞，若被利用，可导致本地权限提升到 root 级别。 对于基于上述发行版的大量容器化与多租户工作负载环境而言，这类本地提权漏洞尤其危险，因为一旦攻击者在系统上获得初始访问，就有机会进一步突破隔离、控制整个节点。
+
+Red Hat 上月已发布安全公告，对这一问题作出更详细的技术说明。 公告称，漏洞出现在 Linux 内核中的 algif_aead 加密算法接口中，由于引入了错误的“原地（in-place）操作”实现，源数据与目标数据的内存映射不一致，从而在加密操作过程中可能出现意外行为或数据完整性问题，进而影响加密通信的可靠性。
+
+微软安全研究人员则进一步追溯到内核加密子系统中的逻辑缺陷，指出问题集中在 2017 年引入的 AF_ALG 框架下 algif_aead 模块的一项优化。 当时的“原地优化”导致内核在执行某些加密操作时，会错误地将源内存重复用作目标缓冲区。 攻击者可以利用 AF_ALG 套接字接口与 splice() 系统调用之间的交互，在内核页缓存中实现一个可控的 4 字节写入，从而精准篡改关键数据结构。
+
+研究人员表示，这一攻击流程可以通过一段 Python 脚本实现，并针对 /usr/bin/su 等高权限二进制文件进行修改，使其在执行时直接以 root 权限运行。 与许多依赖竞争条件（race condition）的内核利用方式不同，此次漏洞的利用并不依靠时序竞态，而是可以通过约 732 字节的小型脚本以确定性方式稳定复现。 由于在多种主流发行版上几乎无需修改即可成功利用，该漏洞被视为“高度可靠”的提权手段。
+
+在云计算环境中，这一特性带来的风险进一步放大。 许多容器共享同一宿主机内核，一旦底层内核版本存在该漏洞，单个容器被攻破就可能蔓延为整个节点被完全接管。 微软警告称，即便攻击者最初仅拥有有限访问权限，例如通过 SSH 低权用户登录，或在 CI/CD 流水线中取得执行机会，都足以借此漏洞提升至 root 权限，突破容器边界，实现横向移动并感染多租户环境中的其他工作负载。
+
+目前公开观测到的利用活动还主要停留在概念验证（PoC）阶段，并未大规模武器化扩散。 尽管如此，微软已经通过 Microsoft Defender XDR 发布检测签名，帮助各类组织识别潜在的利用尝试和已被攻击的系统。 微软同时敦促安全团队在各发行版提供相应补丁后，尽快完成内核更新，以从根本上消除风险。
+
+在补丁完全到位之前，微软建议采取一系列缓解措施，包括临时禁用受影响的相关加密功能，或阻止创建 AF_ALG 套接字，以减少攻击面暴露。 此外，还应强化访问控制策略，限制能够在系统上运行任意代码的账户范围，并通过网络隔离降低单点沦陷后在内部环境中横向扩散的可能性。 对于存在可疑迹象的节点，快速回收和重建、配合日志审计与行为检测，也是降低长期风险的重要手段。
+
+
