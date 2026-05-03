@@ -1,0 +1,29 @@
+---
+title: >-
+  Popular New Game Faces Backlash: Accused of Rapidly Depleting SSD Lifespan,
+  Accelerating Hard Drive Failure
+date: '2026-05-03T14:10:00'
+category: game
+source: 'https://www.cnbeta.com.tw/articles/game/1561116.htm'
+summary: >-
+  "Windbound Journey," a PVE survival game developed by KrakenExpress, launched
+  on Steam in mid-April and reached a peak of 222,134 concurrent players,
+  becoming incredibly popular. However, the game has recently become embroiled
+  in controversy, with multiple players reporting abnormally high disk
+  read/write loads that could potentially impact SSD lifespan, sparking
+  community concern.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561116.png'
+slug: 1561116-爆火新游翻车-被曝疯狂消耗SSD寿命-加速硬盘报废
+id: '1561116'
+lang: en
+original_title: 爆火新游翻车：被曝疯狂消耗SSD寿命 加速硬盘报废
+---
+According to tests by players and content creator Pixel Operative, the game's write speed during runtime can reach 15MB/s to 30MB/s, meaning it can write up to approximately 108GB of data to the SSD per hour. Continuous gameplay for 4 hours would result in an astonishing 432GB of data written.
+
+Further testing shows that disk usage consistently surges to around 30MB/s when players move within their base or drive vehicles; read/write pressure only decreases when the character is stationary or in low-load areas.
+
+Technical analysis suggests that this issue is not a simple bug, but may be related to the game's save system design. "Windbound Journey" uses a database structure based on RocksDB, and its relatively small write-ahead log (WAL) cache configuration may lead to frequent data refresh and compression operations, thereby amplifying the actual write volume.
+
+In response to the controversy, developer Kraken Express has quickly released a fix patch. In the latest version 0.10.0.4, the official significantly reduced disk usage during gameplay. According to updated test data, the game's write speed has been reduced to 10MB/s to 16MB/s, and even below 1MB/s when the character is stationary, with an overall optimization of 60% to 75%.
+
+Despite the issue being alleviated, this incident has once again sparked discussion among players regarding game optimization and hardware wear and tear.

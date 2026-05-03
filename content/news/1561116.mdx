@@ -1,0 +1,33 @@
+---
+title: 爆火新游翻车：被曝疯狂消耗SSD寿命 加速硬盘报废
+date: '2026-05-03T14:10:00'
+category: game
+source: 'https://www.cnbeta.com.tw/articles/game/1561116.htm'
+summary: >-
+  由KrakenExpress开发的PVE生存类游戏《风启之旅》于4月中旬在Steam平台发售，同时在线人数峰值达到222,134人，热度十分火爆。然而，近日游戏却陷入争议。多名玩家反馈称，该作在运行过程中会产生异常高的磁盘读写负载，甚至可能对SSD寿命造成影响，引发社区关注。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561116.png'
+slug: 1561116-爆火新游翻车-被曝疯狂消耗SSD寿命-加速硬盘报废
+id: '1561116'
+title_en: >-
+  Popular New Game Faces Backlash: Accused of Rapidly Depleting SSD Lifespan,
+  Accelerating Hard Drive Failure
+summary_en: >-
+  "Windbound Journey," a PVE survival game developed by KrakenExpress, launched
+  on Steam in mid-April and reached a peak of 222,134 concurrent players,
+  becoming incredibly popular. However, the game has recently become embroiled
+  in controversy, with multiple players reporting abnormally high disk
+  read/write loads that could potentially impact SSD lifespan, sparking
+  community concern.
+---
+
+据玩家和内容创作者Pixel Operative 测试发现，游戏在运行时的写入速度可达15MB/s至30MB/s，意味着每小时最高可向SSD写入约108GB数据。如果连续游玩4小时，写入量将达到惊人的432GB。
+
+进一步测试显示，当玩家在基地内移动或驾驶船只时，磁盘占用会持续飙升至约30MB/s；只有在角色静止或处于低负载区域时，读写压力才会有所下降。
+
+技术分析指出，这一问题并非单纯Bug，而可能与游戏的存档系统设计有关。《风启之旅》采用基于RocksDB的数据库结构，其较小的写前日志（WAL）缓存配置，可能导致频繁的数据刷新与压缩操作，从而放大实际写入量。
+
+面对争议，开发商Kraken Express 已迅速推出修复补丁。在最新的0.10.0.4版本中，官方大幅降低了游戏运行时的磁盘占用。根据更新后的测试数据，游戏写入速度已降至10MB/s至16MB/s，角色静止时甚至低于1MB/s，整体优化幅度达到60%至75%。
+
+尽管问题已有所缓解，但此次事件也再次引发玩家对于游戏优化以及硬件损耗问题的讨论。
+
+
