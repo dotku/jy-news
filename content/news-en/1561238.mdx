@@ -1,0 +1,143 @@
+---
+title: “DeepSeek Version of Claude Code” Gains 2.3k Stars on GitHub
+date: '2026-05-04T14:39:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1561238.htm'
+summary: >-
+  DeepSeek now has its own dedicated CodingAgent called DeepSeek-TUI, created by
+  a DeepSeek enthusiast who calls himself a “whale brother.” The project
+  recently experienced a surge in stars, reaching 2.3k and topping GitHub's
+  trending list.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561238.jpg'
+slug: 1561238-DeepSeek版Claude-Code-GitHub-2-3k星
+id: '1561238'
+lang: en
+original_title: “DeepSeek版Claude Code” GitHub 2.3k星
+---
+This is a TUI (Text User Interface) programming tool written in Rust, running in the terminal like Claude Code, but specifically optimized and adapted for DeepSeek.
+
+To promote his work to domestic users, author Hunter Bown used DeepSeek to translate the promotional post into Chinese.
+
+After DeepSeek-TUI went viral on GitHub as he hoped, Hunter posted a picture, saying these past two days have been the craziest of his life, and expressed his gratitude to the “whale brothers” in Chinese.
+
+“DeepSeek Version of Claude Code”
+
+DeepSeek-TUI is essentially a programming Agent living in the terminal – or, simply put, the “DeepSeek version of Claude Code.”
+
+It was initiated in January of this year by American independent developer Hunter Bown, written in Rust, and open-sourced under the MIT license. However, it remained relatively unknown until the release of DeepSeek-V4 and Hunter’s Chinese promotion, after which the project exploded in popularity during the May Day holiday.
+
+Like reading and writing files, executing Shell commands, searching the web, managing Git, scheduling sub-agents, and connecting to MCP servers – it can basically do everything Claude Code can do. It also supports installing Skills, but now runs on DeepSeek V4 in the background.
+
+The entire tool, from its design logic to its functional details, revolves around the characteristics of DeepSeek.
+
+The most direct aspect is the chain of thought.
+
+DeepSeek-TUI streams the model’s reasoning process directly to the terminal – how the model analyzes the problem, which path it takes, and whether it changes its mind mid-way, all are visible in real-time.
+
+Then there’s the context window. V4 supports a 1 million token context window, and the project defaults to using it fully, so you don’t have to worry about memory loss when running complex tasks from start to finish.
+
+When the context is nearly full, the TUI automatically compresses the content, or you can manually trigger /compact.
+
+The compression strategy specifically considers DeepSeek’s prefix caching mechanism – preserving the stable front part as much as possible to allow the cache to continue hitting.
+
+This TUI also has a design called RLM, with an approach that is “very DeepSeek” – since DeepSeek is cheap enough to be stacked in quantity, this tool directly incorporates that feature.
+
+In RLM mode, a master model directs up to 16 V4 Flash sub-tasks to run simultaneously, for batch analysis or task decomposition. Flash output is approximately one-third the price of Pro, and delegating sub-tasks that don’t require strong reasoning to it can significantly reduce overall costs.
+
+Model switching has also been specifically handled, supporting not only the official DeepSeek API, but also NVIDIA NIM, Fireworks, and self-hosted SGLang.
+
+There are three operating modes:
+
+Plan is read-only exploration, first giving you a proposed solution;
+
+Agent is the default mode, requiring your approval for each tool call;
+
+YOLO, as the name suggests, is fully automatic, allowing everything to proceed without interruption. Sessions can be saved and restored, the workspace has independent Git snapshots as a fallback, rolling back rounds without affecting the original repository, so you don’t have to worry about failures.
+
+However, it’s important to note that opening too many sub-agents can make it difficult to guarantee cache hit rates.
+
+Remember, the price of an unhit token is 10 times that of a hit token. The project interface displays the cost per round, so it’s recommended to pay attention when running long sessions, so you don’t get a shocking bill.
+
+For installation, pre-compiled binaries are available for Linux, macOS, and Windows. A single command, `npm install -g deepseek-tui`, does the trick.
+
+In addition, the author has prepared a dedicated Chinese README document and dedicated configuration paths for domestic users, supporting TUNA Cargo mirrors, and release packages can be hosted on Alibaba Cloud OSS or Tencent Cloud COS.
+
+The project was created on January 19th and has already iterated to v0.8.8 in less than 4 months, with 37 releases, at a steady pace.
+
+From the update log, it can be roughly divided into several stages.
+
+Early versions were mainly focused on building the framework – tool calls, session management, basic Git snapshots, and getting the Agent running was the top priority.
+
+The v0.7.x stage began to refine the details, adding multi-language interface support (v0.7.6), TUI prompts, help text, and status bar localization in Chinese and other languages, which is a step towards adapting to domestic users.
+
+v0.8.x is the main focus of recent versions, with a focus on stability and experience refinement.
+
+v0.8.2 specifically fixed a file handle leak issue in long sessions;
+
+v0.8.6/v0.8.7 added a batch of interactive features, including a countdown retry banner when rate-limited or the server errors, input history search, and a visualization of the running message queue;
+
+v0.8.8 built on this with a round of cleanup, and also supplemented the pre-compiled binary for Linux ARM64.
+
+Overall, the iteration path shows dense feature updates, but each version basically has a clear problem to solve.
+
+“A Scientific Musician”
+
+In fact, Hunter has always been a passionate DeepSeek fan, and has posted many tweets praising it since V4 came out.
+
+He also enjoys other Chinese models and participated in Xiaomi’s trillion-token creator incentive program.
+
+Hunter Bown’s starting point, however, was music. He once aspired to be a band conductor.
+
+He first studied music education at the University of North Texas, and continued his studies after graduation, earning a Master of Music Education from Southern Methodist University.
+
+After graduating with his master’s degree, Hunter fulfilled his dream of becoming a band conductor for 3 years.
+
+Later, he earned an MBA from the University of Texas at Dallas, and then returned to his alma mater SMU, entering law school specializing in patent law.
+
+As for coding, he chose it as a “late bloomer.”
+
+But this “late bloomer” wasn’t a career change, but rather a convergence of several lines.
+
+While studying vocal science, he encountered a concept called “missing fundamental” – the human ear can reconstruct a physically non-existent pitch from harmonics.
+
+He later discovered that this directly corresponds to information theory, you don’t need to explicitly give all the information, the system itself will fill it in.
+
+This intuition from music became a key to his understanding of AI systems.
+
+Last year, he founded a studio called Shannon Labs, positioning it as “the next Bell Labs of the AGI era.”
+
+DeepSeek-TUI is just one of many research projects here. He has 65 public repositories on GitHub, including NeMoCode, a similar terminal Agent for NVIDIA Nemotron, and the MLX kernel toolkit, among others.
+
+Shannon Labs’ projects span a wider range.
+
+Hegelion is a dialectical reasoning engine, following the cycle of “thesis → antithesis → synthesis”;
+
+Aleph is an MCP server, focusing on zero-token-cost large-capacity context;
+
+Heliosinger converts solar wind data into sound in real-time, crossing the boundary from AI infrastructure to space acoustics.
+
+He also built three software architectures (SCU, Driftlock, Hegelion) and a hardware solution (Driftlock Choir). He believes that these combined are building infrastructure for the AGI era.
+
+His family history is also closely related to his ability to put these directions together.
+
+His great-grandfather, Ralph Bown Sr., was a research vice president at Bell Labs and a pioneer in radio, and in his spare time, he liked to make wax cylinders and record at Carnegie Hall.
+
+Hunter realized in patent law class that he was walking a path that converged with his ancestor –
+
+Bringing the perceptual way of a musician into technical research, to discover those “ideas that were overlooked because researchers lacked this background.”
+
+He compared himself to his great-grandfather on his personal website, “He was a scientist who loved music; I am a musician who loves science.”
+
+One More Thing
+
+In the contributor list of DeepSeek-TUI, you can also see some familiar faces.
+
+These include a series of AI models such as Claude, Gemini, and Qwen, as well as programming tools such as Cursor and GitHub Copilot.
+
+Detailed records show that most of the code was submitted directly by Hunter, and Claude made over 150 commits, along with some minor commits from other human contributors.
+
+A programmer who started out late, using AI to assist programming to write an AI-assisted programming framework – this workflow is a closed loop (manual dog head).
+
+GitHub address:
+
+https://github.com/Hmbown/DeepSeek-TUI

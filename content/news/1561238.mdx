@@ -1,0 +1,147 @@
+---
+title: “DeepSeek版Claude Code” GitHub 2.3k星
+date: '2026-05-04T14:39:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1561238.htm'
+summary: >-
+  DeepSeek也有自己专属的CodingAgent了。名字简单粗暴，就叫DeepSeek-TUI，作者自称是一名“鲸鱼兄弟”的DeepSeek爱好者。刚刚，这个项目的星标数突然开始骤增，来到了2.3k，还登上了GitHub热榜。
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561238.jpg'
+slug: 1561238-DeepSeek版Claude-Code-GitHub-2-3k星
+id: '1561238'
+title_en: “DeepSeek Version of Claude Code” Gains 2.3k Stars on GitHub
+summary_en: >-
+  DeepSeek now has its own dedicated CodingAgent called DeepSeek-TUI, created by
+  a DeepSeek enthusiast who calls himself a “whale brother.” The project
+  recently experienced a surge in stars, reaching 2.3k and topping GitHub's
+  trending list.
+---
+
+这是一个用Rust语言编写的TUI编程工具，像Claude Code一样在终端里运行，但专门针对DeepSeek做了优化适配。
+
+为了向国内网友宣传自己的作品，作者Hunter Bown还特意用DeepSeek把宣传推文翻译成了中文。
+
+当DeepSeek-TUI在GitHub上如他所愿爆火之后，Hunter发图哦直言这是自己人生中最疯狂的两天，并用中文向“鲸鱼兄弟”们表示了感谢。
+
+“DeepSeek版Claude Code”
+
+DeepSeek-TUI就是一个住在终端里的编程Agent，再简单点理解，就是“DeepSeek版Claude Code”。
+
+它在今年1月由美国独立开发者Hunter Bown发起，用Rust语言编写，MIT协议开源，但一直不温不火，直到DeepSeek-V4的发布和Hunter的中文宣传，这个项目在这个五一假期开始爆火。
+
+像读写文件、执行Shell、搜网页、管Git、调度子Agent、接MCP服务器……这些Claude Code能干活的它基本都能干，也支持安装Skills，只不过换成了DeepSeek V4在背后跑。
+
+整个工具从设计逻辑到功能细节，都在围绕DeepSeek的特性转。
+
+最直接的一个是思维链。
+
+DeepSeek-TUI把模型的推理过程直接流式输出到终端里——模型怎么分析问题、走了哪条路、中途改没改主意，全部实时可见。
+
+然后是上下文。V4支持100万token的上下文窗口，项目默认就把这个用满，跑复杂任务从头到尾不用担心记忆断档。
+
+上下文快填满时，TUI会自动对内容进行压缩，也可以手动/compact触发。
+
+压缩策略专门考虑了DeepSeek的前缀缓存机制——尽量保住前面稳定的部分，让缓存能继续命中。
+
+这个TUI还有一个设计叫RLM，思路“很DeepSeek”——既然DeepSeek便宜到可以拿来堆数量，这个工具就把这个特性直接用进来了。
+
+在RLM模式中，一个主模型指挥最多16个V4 Flash子任务同时跑，用来做批量分析或任务拆解。Flash的输出价格大约是Pro的三分之一，把不需要强推理的子任务交给它，整体花费能砍不少。
+
+模型切换也做了专门处理，除了DeepSeek官方API，还支持NVIDIA NIM、Fireworks、自托管的SGLang几条路径。
+
+操作模式则一共有三档：
+
+Plan是只读探索，先给你出个方案再说；
+
+Agent是默认档，每步工具调用都要你点头；
+
+YOLO顾名思义，全自动放行，不想被打断就开它。会话可以保存恢复，工作区有独立Git快照兜底，按轮次回滚不动原仓库，翻车了也不慌。
+
+不过有一点需要注意的是，子Agent开多了，缓存命中率很难保证。
+
+要知道，未命中的token价格是命中的10倍，项目界面上有逐轮费用显示，跑长会话建议留意一下，别跑完账单吓一跳。
+
+安装上，Linux、macOS、Windows都有预编译二进制，npm install -g deepseek-tui一条命令搞定。
+
+另外，作者还给国内用户准备了专门的中文版README文档和专门配置路径，支持TUNA Cargo镜像，release包还可以托管到阿里云OSS或腾讯云COS。
+
+项目1月19日建仓，到现在不到4个月，已经迭代到v0.8.8，发布了37个版本，节奏不慢。
+
+从更新记录来看，大致分几个阶段。
+
+早期版本主要在搭骨架——工具调用、session管理、基础的Git快照，把Agent跑起来是第一优先级。
+
+v0.7.x阶段开始往细节上打磨，加了多语言界面支持（v0.7.6）、中文等语言的TUI提示、帮助文本、状态栏开始本地化，这也是为国内用户做适配的一步。
+
+v0.8.x是最近几个版本的主轴，重心在稳定性和体验打磨上。
+
+v0.8.2专门修了长会话里文件句柄泄漏的问题；
+
+v0.8.6/v0.8.7往上加了一批交互功能，包括限流或服务器报错时显示倒计时重试横幅、输入历史搜索、运行中消息队列可视化；
+
+v0.8.8在这个基础上做了一轮收口，同时把Linux ARM64预编译二进制补上了。
+
+整体节奏上看，这个迭代路径中功能更新密集，但每个版本基本都有明确的问题要解决。
+
+“爱科学的音乐家”
+
+实际上，Hunter一直是一名DeepSeek狂热粉丝，自打V4出来之后，他就发过很多推文不断称赞。
+
+同时他也爱好其他中国模型，参加过小米的百万亿Token创造者激励计划。
+
+而Hunter Bown的起点，其实是音乐，他曾立志当一名乐队指挥。
+
+他先是在北得克萨斯州大学修读音乐教育，毕业后继续深造，取得了南方卫理公会大学的音乐教育硕士。
+
+硕士毕业后，Hunter如愿当了3年的乐队指挥。
+
+后来，他拿了得克萨斯大学达拉斯分校的MBA，之后又回到了之前的母校SMU，进入法学院专攻专利法。
+
+至于码代码这件事，就更是“半路出家”的选择了。
+
+但这个“半路”不是转行，更像是几条线最终汇到了一起。
+
+他在学声乐科学时接触到一个概念叫“缺失基音”（missing fundamental）——人耳可以从泛音里重建出一个物理上并不存在的音高。
+
+他后来发现这和信息论直接对应，你不需要把所有信息都显式给出，系统本身也会补全。
+
+这个从音乐里来的直觉，成了他理解AI系统的一把钥匙。
+
+去年，他给自己创立了一个工作室，名字叫Shannon Labs，定位是“AGI时代的下一个贝尔实验室”。
+
+DeepSeek-TUI在他这里只是众多研究项目之一，他的GitHub上有65个公开仓库，包括面向NVIDIA Nemotron的同款终端Agent NeMoCode，以及MLX kernel工具包等等。
+
+Shannon Labs旗下的项目跨度更大。
+
+Hegelion是一个辩证推理引擎，走的是"正题→反题→合题"的循环逻辑；
+
+Aleph是一个MCP服务器，主打零token成本的大容量上下文；
+
+Heliosinger则把太阳风数据实时转化成声音，从AI基础设施一路跨界到了到太空声学。
+
+他还自己建了三套软件架构（SCU、Driftlock、Hegelion）和一个硬件方案（Driftlock Choir），在他看来，这些拼在一起，是在为AGI时代做基础设施。
+
+能把这些方向拼在一起，也和他的家族故事颇具关联。
+
+他的曾祖父Ralph Bown Sr.是贝尔实验室的研究副总裁、无线电先驱，业余时间喜欢自制蜡筒、跑去卡内基音乐厅录音。
+
+Hunter在专利法课堂上意识到，自己正在走一条和这位先祖交汇的路——
+
+把音乐人的感知方式带进技术研究，去发现那些“因为没有这种背景的研究者而被忽视的想法”。
+
+他在个人网站上将自己和曾祖父进行了对比，“他是科学家，爱音乐；我是音乐家，爱科学。”
+
+One More Thing
+
+在DeepSeek-TUI的贡献者列表当中，还能看到一些我们熟悉的影子。
+
+其中包括了Claude、Gemini、Qwen等一系列AI模型和Cursor、GitHub Copilot等编程工具。
+
+详细记录则表明，大部分的代码由Hunter直接提交，还有150多次commit是Claude做的，另外还有一些真人贡献者提交了少量的commit。
+
+半路出家的程序员，用AI辅助编程给AI写辅助编程框架，这工作流也是闭环了（手动狗头）。
+
+GitHub地址：
+
+https://github.com/Hmbown/DeepSeek-TUI
+
+

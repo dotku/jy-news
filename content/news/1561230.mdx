@@ -1,0 +1,47 @@
+---
+title: 主板上的PCI-E插槽有什么不一样？一文就读懂
+date: '2026-05-04T14:31:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1561230.htm'
+summary: >-
+  主板是电脑主机的承载平台，也是影响整个系统性能的基础设备，尤其是在功能扩展方面，需要安装不同的板卡，例如显卡、专业声卡、高性能网卡、RAID磁盘阵列卡等设备，都是通过PCI-E插槽扩展的，在主板上这些插槽长短不一，而不少人装机时只认得最长的显卡插槽，那么它们有什么不同呢？
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561230.jpg'
+slug: 1561230-主板上的PCI-E插槽有什么不一样-一文就读懂
+id: '1561230'
+title_en: >-
+  What are the Differences Between PCI-E Slots on a Motherboard? Understand it
+  in One Article
+summary_en: >-
+  The motherboard is the carrying platform for the computer host and a basic
+  device that affects the performance of the entire system. Especially in terms
+  of functional expansion, different cards need to be installed, such as
+  graphics cards, professional sound cards, high-performance network cards, RAID
+  disk array cards, etc., all of which are expanded through PCI-E slots. These
+  slots on the motherboard are of different lengths, and many people only
+  recognize the longest graphics card slot when assembling a computer. So what
+  are the differences between them?
+---
+
+PCI-E是目前主板通用的高速扩展总线，分为x1、x2、x4、x8、x16、x32等规格，对应的插槽长短也不一样。从下图看，PCI-E插槽被防呆隔断分成两段，靠近机箱挡板的部分提供基础供电、复位、时钟、设备检测、SMBus等功能，根据PCI-SIG规范，它们在物理上都提供最高75W的供电能力，因此，所有PCI-E规格插槽长度这部分长度都是相同的，内部有22个接触针。
+
+而另一段的长度根据通道数量不同，长度也不一样。通常来说，插槽物理长度越长，内部的接触针数量也越多，提供的传输通道越多，整体的带宽也就越高。在规格中，它们通常都是以2倍系数来提升的，下图是常见的几种PCI-E插槽规格。
+
+最短的是PCI-E x1插槽总长度25mm，内部数据传输针脚只有14个（除去供电部分的22个），仅能提供1条传输通道，传输带宽有限，普遍应用于低速外设，包括独立声卡、网卡、无线网卡/蓝牙等设备。
+
+长度中等的PCI-E x4插槽总长度39mm，内部数据传输针脚有42个，可提供4条传输通道，能够满足中高速硬件稳定运行的需求，例如NVMe协议的固态硬盘，也能适配万兆网卡、磁盘阵列卡这类进阶型外设。PCI-E x4插槽还有一种特殊形式的插槽，即M.2插槽，专门用来安装高速NVMe固态硬盘。
+
+有人可能会问PCI-E x2插槽哪去了？其实主板厂家基本不做专用的PCI-E x2物理插槽，而一些扩展外设厂商通常会在PCI-E x4的规格进行缩减，例如某些罕见的OEM固态硬盘（例如XBOX Series X/S游戏机的固态硬盘）、microSD Express存储卡就是x2规格。
+
+接下来是PCI-E x8插槽，它的长度是56mm，内部数据传输针脚有76个，可提供8条传输通道，传输带宽比PCI-E x4高出四倍，但基本只能在服务器主板或早期的消费级主板上才能看到，现代消费级主板的PCI-E x8插槽往往是由PCI-E x16插槽缩水而来，这个我们一会再说。
+
+然后就是PCI-E x16插槽，也就是大家熟悉的显卡插槽，它的长度是89mm，内部数据传输针脚有142个，可提供16条传输通道，也就是所谓的“满血”插槽，通常都是安装独立显卡的。
+
+另外，刚才说的消费级主板的PCI-E x8插槽由PCI-E x16插槽缩水而来，外观与PCI-E x16没什么两样，但仔细观察会发现里面只有一半数量的数据传输接触针脚。
+
+除此之外，PCI-E规格里面还有通道数量更多的PCI-E x32插槽，插槽长度自然也更长，因此基本只能在服务器中看到了。
+
+最后提一下兼容性，PCI-E是可以向下兼容的，例如PCI-E x1的设备就可以插在任意规格的PCI-E插槽，说白了就是只要能插进去就能用。
+
+整体来看，不同PCI-E插槽各司其职，短槽拓展小件、中槽扩容增效、长槽专供核心硬件，合理规划安装，就能稳妥发挥全部硬件性能，新手装机也能轻松避开各类插槽误区。
+
+
