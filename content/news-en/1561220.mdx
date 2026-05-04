@@ -1,0 +1,33 @@
+---
+title: >-
+  Microsoft is Completely Rewriting the "Properties" Dialog Box for Windows 11
+  File Explorer with WinUI 3
+date: '2026-05-04T12:31:00'
+category: tech
+source: 'https://www.cnbeta.com.tw/articles/tech/1561220.htm'
+summary: >-
+  Microsoft plans to replace the File Explorer "Properties" dialog box, which
+  has been used since Windows 95, with a modern interface based on WinUI 3 in
+  Windows 11. This change is part of a larger effort to improve performance and
+  reliability. While Windows 11 has achieved a relatively unified and modern
+  visual effect through frameworks like WebView2, legacy interfaces are still
+  prevalent, and the File Explorer's properties window is a prime example.
+image: 'https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1561220.png'
+slug: 1561220-微软将WinUI-3彻底重做Windows-11资源管理器-属性-对话框
+id: '1561220'
+lang: en
+original_title: 微软将WinUI 3彻底重做Windows 11资源管理器“属性”对话框
+---
+In Windows 11, the File Explorer itself has received updates such as multi-tab support, a new address bar, and a modern gallery view with smooth scrolling. However, when users right-click a file and select "Properties," the dialog box that appears still has an old-fashioned style reminiscent of the last century. Especially when dark mode is enabled, this traditional Win32 properties window with its pure white background is almost like a "flashbang" in a dim environment, causing discomfort and a noticeable disconnect for users accustomed to dark interfaces.
+
+New discoveries from Windows 11 Insider Preview builds reveal that Microsoft is actively developing a completely modernized file properties dialog box based on WinUI 3. Well-known Windows observer "phantomofearth" noticed several new "DeletedFileProperties" related strings in the resources.pri file within the MicrosoftWindows.Client.FileExp (the modern File Explorer framework) during code digging. These strings are identical to the text in the existing legacy "Deleted File Properties" dialog box, strongly indicating that Microsoft is preparing to replace the old properties window with modern components.
+
+In further communication with Windows Latest, phantomofearth stated that, given the fact that parts of the current File Explorer – including the address bar, search box, command bar, details pane, home page, and gallery – already use WinUI 3, he is "almost certain" that Microsoft is building a WinUI 3 version of the properties dialog box. He believes that if the new properties window released by Microsoft is not based on WinUI 3, it would be surprising, as it would be unreasonable to choose another solution after already extensively using this technology stack. He also pointed out that if Microsoft did not plan to modernize the properties dialog box, there would be no need to specifically migrate its related strings to the modern File Explorer resource package.
+
+The long-standing issue of the properties dialog box not supporting dark mode now has a more logical explanation. In Windows 11, some legacy components have been updated through simple dark mode toggles or visual tweaks, but the file properties menu has remained unchanged, prompting many advanced users to ask for a reason for years. According to phantomofearth, if this component is already on the replacement list, Microsoft would have no motivation to invest effort in dark mode adaptation on the old Win32 dialog box, but rather solve it all at once in the new native WinUI 3 version. Windows Latest previously confirmed that Microsoft is gradually replacing Windows 8-era interface elements remaining in Windows 11, and the migration of properties dialog box-related strings to the modern framework further demonstrates that the company is systematically cleaning up the operating system's historical UI legacy.
+
+From an architectural perspective, rewriting the properties dialog box with WinUI 3 will help alleviate the performance issues caused by the current mixture of code in File Explorer. The current Explorer still overlays XAML and WinUI, modern components, on top of the old Win32 foundation. This hybrid rendering mode is considered one of the reasons for occasional stuttering, white screen flickering, and other experience problems. Previous reports indicate that Microsoft is fulfilling its promise to "fix Windows 11" through a series of updates within 2026, and a key part of this work is deep architectural optimization of File Explorer and the progressive introduction of more WinUI 3 elements, bringing continuous and perceptible performance improvements. Replacing the legacy properties dialog box with a native WinUI 3 version aligns with the "real improvements in performance, reliability, and polish" promised by Marcus Ash, head of Windows Insider.
+
+Visually, users may also get a glimpse of the approximate style of the new properties dialog box from recent other updates. For example, the modern "Run" dialog box (Win+R) hidden in Windows 11 has already appeared in Insider builds, with an overall design that is more lightweight and slender, closer to the smooth look and feel of the rest of the system's WinUI 3 interface. If Microsoft continues this design language, the new properties dialog box may also escape the feeling of an "old-fashioned tool window" and instead present a more unified, soft, and modern appearance, while natively supporting dark mode.
+
+Currently, this modernized properties dialog box is still hidden in the resource files of the Insider Preview version and has not been officially released to test users, but its existence means that the stage of widespread testing is not far away. Reports speculate that the component may be pushed to some users first in the Experimental Channel along with other upcoming interface improvements, possibly later this year. For users who have long been bothered by the glaring white properties window, the day of saying goodbye to this "Windows 95 legacy" is gradually approaching.
