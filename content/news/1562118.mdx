@@ -1,0 +1,22 @@
+---
+title: "AI扫描协助发现Linux重大安全漏洞\"Copy Fail\" 波及2017年以来几乎所有发行版"
+date: "2026-05-12T01:36:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1562118.htm"
+summary: "自2017年以来发布的几乎所有Linux发行版本目前都易受一个名为\"CopyFail\"的安全漏洞攻击，该漏洞允许任何用户为自己授予管理员权限。这一被编号为CVE-2026-31431的安全缺陷于周三公开披露，由安全公司Theori发现并报告。该漏洞使用的Python脚本可跨所有易受攻击的Linux发行版工作，Theori表示这种攻击\"无需针对不同发行版调整偏移量、无需"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1562118.png"
+slug: "1562118-AI扫描协助发现Linux重大安全漏洞-Copy-Fail-波及2017年以来几乎所有发行版"
+id: "1562118"
+---
+
+DevOps工程师Jorijn Schrijvershof在博客文章中解释了Copy Fail之所以"异常危险"的原因是它很可能不会被监控工具察觉。他指出:"页面缓存损坏从不标记页面为脏页面，内核的回写机制也不会将修改的字节刷新回磁盘"。这导致"AIDE、Tripwire、OSSEC以及任何通过比对磁盘校验和进行监控的工具都无法发现异常"。
+
+Copy Fail漏洞是由Theori公司的研究人员在其Xint Code AI工具的辅助下识别出来的。研究员Taeyang Lee产生了检查Linux加密子系统的想法，并创建了一个提示词来运行自动化扫描，该扫描在"大约一个小时内"识别出了多个漏洞。他使用的提示词内容为:"这是Linux的crypto/子系统，请检查从用户空间系统调用可达的所有代码路径，需要注意一个关键观察结果:splice()可以将只读文件(包括setuid二进制文件)的页面缓存引用传递给加密TX散列列表"。
+
+漏洞披露页面：
+
+https://copy.fail/
+
+Copy Fail的补丁已于4月1日添加到主线Linux内核中。一些Linux发行版已经发布了针对该漏洞的补丁或缓解措施，包括Arch Linux和RedHat Fedora。
+
+
