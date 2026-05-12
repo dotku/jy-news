@@ -1,0 +1,28 @@
+---
+title: "BitUnlocker降级攻击5分钟破解TPM版Windows 11 BitLocker"
+date: "2026-05-12T20:25:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1562224.htm"
+summary: "安全公司Intrinsec的研究人员近日公布了一款名为“BitUnlocker”的工具，能够在不到5分钟内绕过Windows11在仅使用TPM（可信平台模块）保护模式下的BitLocker磁盘加密。该工具利用的是所谓“降级攻击”（downgradeattack），抓住了系统在软件打补丁与吊销旧证书之间存在的时间差，通过加载旧版但仍被信任的组件，最终打开受BitLocker保护的磁盘。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1562224.webp"
+slug: "1562224-BitUnlocker降级攻击5分钟破解TPM版Windows-11-BitLocker"
+id: "1562224"
+---
+
+这一攻击与编号为 CVE-2025-48804 的安全漏洞有关，该漏洞位于 Windows 恢复环境（Windows Recovery Environment）和系统部署镜像（System Deployment Image）的处理机制中，微软已在 2025 年 7 月发布补丁进行修复。不过，研究人员指出，即便漏洞被修补，只要旧证书依然被系统信任，就仍可能通过降级路径被绕过。
+
+从攻击条件看，BitUnlocker 并非远程攻击工具，攻击者必须首先获得目标设备的物理访问权限。例如，攻击者可使用一个预先准备好的 U 盘，在开机阶段向 Windows 引导管理器提供一个格式和签名都完全合法的 Windows 映像（WIM）文件以通过完整性检查，同时在其中附带恶意负载。系统在验证通过“干净”的映像文件后，会继续无条件启动其中的恶意代码，从而获得对已解密卷的访问权。
+
+真正的关键在于它利用了证书链中的“回退”空间。当前，微软早期的 Windows PCA 2011 根证书仍被 Secure Boot 全局信任，这为攻击者提供了降级空间：他们可以加载一个旧版本、包含已知漏洞的引导管理器二进制文件，而该旧版文件依然能够通过 Secure Boot 的签名验证，被系统当作合法组件执行。
+
+对于只依赖默认 TPM 配置来使用 BitLocker 的普通 PC 用户和发烧友而言，这一攻击是一个明显的警示。当被降级的旧版引导管理器运行时，TPM 依旧会按照既有流程对启动测量值进行验证，并基于仍受信任的 PCA 2011 证书进行比对。由于在其视角下系统环境“看起来正常”，TPM 会毫无异常地解封 BitLocker 卷主密钥（Volume Master Key），整个过程不会触发任何报警机制。
+
+目前来看，这一攻击链条的最大“缓冲”仍是其必须具备物理接触设备的前置条件。对于开启了 TPM 加上预启动 PIN（pre-boot PIN）配置的系统，BitUnlocker 这一类攻击将失去施展空间：TPM 在释放密钥前需要额外的人工输入步骤，只要 PIN 未泄露，物理攻击者难以完成整套降级过程并拿到解密密钥。
+
+此外，那些已经完成 KB5025885 更新，并将 Secure Boot 信任链迁移至新版 Windows UEFI CA 2023 数字证书的设备，也基本可以阻断这一降级路径。在这种配置下，依赖 PCA 2011 的旧版启动组件将不再被信任，从而无法被用作攻击入口。研究人员强调，用户和企业应尽快核查自身系统是否完成了相关更新，并在条件允许的情况下启用预启动 PIN 等额外保护措施，以降低物理攻击带来的风险。
+
+了解更多：
+
+https://github.com/garatc/BitUnlocker
+
+
