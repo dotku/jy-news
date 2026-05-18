@@ -1,0 +1,70 @@
+---
+title: "Please help make Grok Build great!    Much appreciated, Elon.   Morgan (@morganlinton)  Phew, Grok B"
+date: "2026-05-18T16:21:33.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: false
+original_author: "@elonmusk"
+link: "https://x.com/elonmusk/status/2056409870262268270"
+image: "https://pbs.twimg.com/media%2FHInH2G6bcAANJ7K.jpg"
+slug: "elonmusk-2056409870262268270"
+---
+
+Please help make Grok Build great!
+
+
+
+Much appreciated, Elon.
+
+
+Morgan (@morganlinton)
+
+Phew, Grok Build is really thorough, pretty incredible.
+
+
+
+Relay feature for PasteLocal is done, pushing to Github now. 
+
+
+
+And if you want to know what this adds, here's a bit more about it, this is a feature I really wanted in there, and honestly didn't really expect to have done this week.
+
+
+
+• Per-peer E2E encryption: clipboard data is encrypted individually for each paired device using X25519 + HKDF + AES-GCM (no plaintext ever leaves the client)
+
+
+
+• Durable persistence: relay state is now stored in an atomic state.json with proper TTL handling and compaction. Pending clips survive relay-server restarts
+
+
+
+• Safe compaction: fixed unsafe map mutation during expiration/compaction that could cause data loss or undefined behavior
+
+
+
+• Full bidirectional CLI: new commands: pastelocal relay send, inbox, fetch, and status, plus pastelocal-remote --relay --peer --send
+
+
+
+• Auto-sync: when watch.enabled + http://relay.auto_upload are on, meaningful clipboard changes are automatically pushed to paired devices
+
+
+
+• Improved DX: doctor checks are now only shown when relay is enabled, and the TUI shows basic relay status
+
+
+
+• Multiple review cycles: went through full implement → review → fix → re-review (effort 4), plus a final targeted regression fix round
+
+
+
+Try it out and please send any and all feedback!
+
+
+
+
+
+— https://nitter.net/morganlinton/status/2056395661915148367#m
