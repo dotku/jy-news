@@ -1,0 +1,38 @@
+---
+title: "微软推出首个服务器版 Linux 发行版 Azure Linux 4.0"
+date: "2026-05-19T18:54:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1562954.htm"
+summary: "在美国明尼阿波利斯举行的北美开源峰会上，微软意外公布了其首个面向服务器场景的通用Linux发行版——AzureLinux4.0。这意味着，长期深度依赖Linux的微软，正以官方发行版的形式，进一步承认自己在云和服务器领域“事实上是一家以Linux为基础”的公司。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1562954.gif"
+slug: "1562954-微软推出首个服务器版-Linux-发行版-Azure-Linux-4-0"
+id: "1562954"
+---
+
+发布这一消息的是 Kubernetes 联合创始人、现任微软 Azure 云原生与管理平台及开源业务公司副总裁 Brendan Burns。他在演讲中回顾称，自己十年前加入 Azure 时，Linux 还不是该云平台上的主流操作系统，而如今 Linux 已成为 Azure 上的主要操作系统。随后他宣布，微软将向所有 Azure 用户提供一个由微软官方支持的开源 Linux 发行版，并可在 Azure 上自由使用。这一突如其来的消息让在场不少业内人士一度愣住，连 Linux 基金会 CEO Jim Zemlin 都特意把他叫回台上确认是否真的“宣布了一个微软 Linux 发行版”。
+
+事实上，微软此前已多次在特定场景中采用自研 Linux 方案，例如用于边缘计算设备的 Azure Sphere，以及后来用于容器平台的 CBL-Mariner，这一发行版后来被更名为 Azure Linux。不过，这些系统一直主要服务于内部或特定云场景，并非面向公众的一般用途发行版。Azure Linux 4.0 的推出则标志着微软首次将自家 Linux 打造成面向广泛云工作负载的通用云发行版。
+
+根据微软 Azure 开源团队首席项目经理 Lachlan Everson 的介绍，当前的 Azure Linux 被一分为二：一条线是全新版本 Azure Linux 4.0，定位为面向所有 Azure 客户的通用虚拟机镜像；另一条线则是基于 Flatcar Container Linux 打造的 Azure Container Linux（ACL），专门用于提供强化、安全、不可变的容器宿主环境。此前的 Azure Linux 3.0 仅通过 Azure Kubernetes Service（AKS）向第三方客户提供，主要作为容器主机使用，未来这一角色将由 Azure Container Linux 来承担。
+
+Everson 表示，Azure Linux 4.0 是微软在内部长期运行和迭代 Azure Linux 的成果延伸，也是早期 Mariner 发行版演进的集中体现。在技术架构上，Azure Linux 4.0 以上游 Fedora Linux 为基础，使用 Fedora 生态的 RPM 包，并以开源形式在 GitHub 上提供源代码。微软在此基础上对软件包和供应链进行统一策划和裁剪，使其更适配 Azure 云平台的基础设施，并实现与 Azure 底层环境的深度垂直整合，从而为用户提供针对 Azure 场景优化的 Linux 体验。
+
+在交付形态上，Azure Linux 4.0 首先以虚拟机镜像的方式在 Azure 上提供。微软同时计划通过 Windows Subsystem for Linux（WSL）为开发者带来桌面侧的使用路径，让开发者可以在 Windows 11 设备上本地运行 Azure Linux，以获得与云端一致的运行环境。不过，Everson 明确表示，Azure Linux 并不会被打造成传统意义上的桌面 Linux 发行版，目前没有提供图形界面的计划。其核心目标仍是为云端和服务器场景提供一个精简、可复现、与 Azure 环境高度一致的开发和运行平台。
+
+与 Azure Linux 4.0 相对，Azure Container Linux 则聚焦于容器化工作负载，尤其是在 AKS 上的容器宿主需求。Flatcar 仍将作为上游社区项目存在，而微软会在此基础上进行加固和产品化，提供默认安全、不可变、面向生产的容器宿主系统。在这种不可变架构下，系统不提供传统的包管理器，系统组件和应用由镜像构建阶段一次性“烘焙”进系统，运行中不建议直接修改系统或应用包，业务变更应通过容器工作负载进行交付和更新。
+
+针对现有 Azure Linux 3.x 用户，微软承诺提供顺畅的升级路径，而非破坏性迁移。Everson 表示，用户可以直接从现有环境升级，无需重新部署。在生命周期方面，Azure Linux 单个版本的支持周期为两年，在此期间微软将选取并维持相对稳定的内核版本，并提供可预期的升级路径及每月安全更新节奏。如果出现严重漏洞（如重大 CVE），微软则将尽快推出修复后的系统镜像，而不会仅仅等待例行的月度补丁节奏。
+
+安全性被视为 Azure Linux 的核心价值之一。微软希望通过自建和自控整个发行版供应链，将系统暴露的攻击面降到最低，并通过精选内核和精简软件包来强化安全基线。在运维方面，Azure Linux 支持按需“自动升级”模式，用户可以选择基于安全级别自动完成更新，特别是对大规模部署场景，系统会以渐进方式滚动升级，以降低对业务的影响。同时，对于负载特殊或对变更敏感的用户，仍可选择关闭自动升级，按自身节奏控制更新。
+
+在更宏观的定位上，微软将 Azure Linux 视作对“AI 原生”时代基础平台需求的回应。Everson 指出，当前几乎所有 AI 应用都构建在 Linux 栈之上，微软在为自身 AI 服务（包括 Microsoft 365、GitHub、以及 OpenAI 的 ChatGPT 等）构建和运营大规模 Linux 平台方面积累了丰富实践，而 Azure Linux 正是把这些经验产品化，赋能客户在 AI 原生时代构建自己的云工作负载。根据微软公开的数据显示，如今 Azure 上超过三分之二的客户计算核心运行在 Linux 上，支撑 ChatGPT 每天处理数十亿次请求的，也是基于 Linux 和 Kubernetes 的基础设施。
+
+值得注意的是，微软强调 Azure Linux 并非要取代 Azure 生态中既有的 Linux 发行版，而是作为“电池全配”的一项新增选项。微软表示，已与 Red Hat 等合作伙伴保持沟通，后者知晓 Azure Linux 的推出。当前 Azure 平台上仍有多家获官方背书的 Linux 发行版，包括 Red Hat、Ubuntu 等，用户可以继续像以往一样在 Azure 上选择偏好的 Linux 系统。Azure Linux 则更多承担起由微软统一提供、统一维护、安全强化的一体化平台角色，为那些希望获得“微软原生”云体验的客户提供选择。
+
+从曾经的“Linux 是癌症”言论，到今天正式发布面向云服务器场景的 Linux 发行版并将其置于战略核心，微软在开源与 Linux 生态中的角色已经发生根本转变。在桌面之外，微软正在事实上成为一家高度依赖 Linux 的公司，而 Azure Linux 4.0 的出现，无疑是这一长期演变过程中的关键一步。
+
+了解更多：
+
+https://opensource.microsoft.com/blog/2026/05/18/from-open-source-to-agentic-systems-microsoft-at-open-source-summit-north-america-2026/
+
+
