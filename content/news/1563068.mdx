@@ -1,0 +1,44 @@
+---
+title: "黑客窃取GitHub约3800个内部源代码仓库 目前正在公开出售"
+date: "2026-05-20T14:16:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1563068.htm"
+summary: "致力于供应链攻击的黑客团队TeamPCP日前发布商业广告宣称要出售代码托管平台GitHub核心源代码和内部组织架构信息，该黑客团伙称此次交易并不是勒索而是独家直接销售，当然即便是勒索GitHub也不太可能会向黑客支付赎金以换取数据保密。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1563068.webp"
+slug: "1563068-黑客窃取GitHub约3800个内部源代码仓库-目前正在公开出售"
+id: "1563068"
+---
+
+值得注意的是 TeamPCP 并未提供任何样本数据，仅展示包含源代码仓库的目录和相关截图，只能说有实力的黑客不屑于提供样本，因为现在 GitHub 官方已经证实确实遭到攻击，经过初步调查后确认约有 3800 个内部仓库被黑客窃取。
+
+涉及多个核心功能的源代码仓库：
+
+从黑客公布的目录和截图来看，此次黑客窃取的数据涉及 GitHub 多个核心功能的源代码仓库，包括 GitHub Copilot、GitHub Enterprise Server、Red Team，还有用于漏洞管理、风险报告以及针对图形用户界面中跨站脚本攻击的缓解补丁仓库。另外 GitHub 运营和内部通信的逻辑通道之类的仓库也被窃取。
+
+部分压缩包名称：
+
+raycast-github-copilot.tar.gz
+
+chiedo-copilot-cli-skills.tar.gz
+
+github-enterprise-server-release-notifier.tar.gz
+
+github-security-risk-reporting.tar.gz
+
+red-team.tar.gz
+
+github-ui-xss-hardening-research.tar.gz
+
+github-india.tar.gz
+
+repo-custom-claims-chatops.tar.gz
+
+GitHub 经过调查后确认数据泄露：
+
+GitHub 经过初步调查后确认数据泄露，攻击源头则是 GitHub 员工安装包含恶意代码的 Visual Studio Code 扩展程序，这个扩展程序很可能是 TeamPCP 蠕虫病毒的受害者，即扩展程序开发者也遭到攻击，随后黑客利用窃取的凭证发布包含恶意代码的版本，当更多开发者安装这个扩展程序的恶意版本时也会被窃取凭证。
+
+检测到威胁后 GitHub 立即删除恶意版本的扩展程序并将这名员工的设备隔离，作为应急措施 GitHub 也立即对所有可能受影响的关键凭证进行轮换，不过考虑到蠕虫的潜在威胁，GitHub 还需要继续分析日志监控后续活动避免蠕虫已经感染其他系统并窃取更多凭证。
+
+最后 GitHub 确认大约有 3800 个内部源代码仓库被窃取，GitHub 后续将发布详细的安全调查报告分享经验。
+
+
