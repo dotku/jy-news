@@ -1,0 +1,22 @@
+---
+title: "英伟达计划允许GPU直接访问存储 有望加速HBF"
+date: "2026-05-20T21:00:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1563100.htm"
+summary: "随着AI模型的持续扩展，HBM可能难以满足未来显存容量的需求，也促使行业将GPU驱动的存储架构视为潜在的下一个技术前沿。去年就有消息称，英伟达分别与SK海力士和铠侠合作，推动AISSD的开发，使用量身定制的SSD部分取代HBM作为GPU显存的扩展器。另外今年SK海力士还与闪迪合作，带来了面向AI推理时代的下一代存储器解决方案HBF（HighBandwidthFlash），也是为了解决相同的问题。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1563100.jpg"
+slug: "1563100-英伟达计划允许GPU直接访问存储-有望加速HBF"
+id: "1563100"
+---
+
+据TrendForce报道，英伟达正在推进GPU直接访问存储的架构开发，计划从Vera Rubin平台引入，启动GIDS（GPU-Initiated Direct Storage Access）功能。外界认为，这一转变可能加速HBF的发展。
+
+GIDS与现有的GDS（GPU Direct Storage）功能有所不同，两者之间是有差异的：在GDS里，CPU在数据传输到GPU之前先向存储设备发出数据请求，而到了GIDS，GPU直接访问存储设备，中间会跳过CPU和DRAM来实现。
+
+GIDS和GDS都旨在克服传统计算架构中的数据传输瓶颈，传闻微软和AMD也在探索类似的方法。主要问题还是在于传统的数据传输方式效率较低，CPU在线程处理上结构受限，而GPU则能生成数万个并行线程。目前GPU-HBM数据传输已占系统总功耗大概一半，这进一步支持HBF架构，将超高速的NAND闪存更靠近GPU，以应对未来的AI瓶颈。
+
+GIDS的出现可能使NAND闪存在AI存储系统中扮演更为重要的角色，同时减轻HBM在容量方面的压力。这种转变需要性能更高的NAND闪存，以便跟上GPU的处理速度。NAND闪存的优势在于位密度，约为DRAM的30倍，在相近的占用空间下实现了更大的存储容量。
+
+可是NAND闪存的耐久度有限，而DRAM拥有几乎无限的写入能力。因此HBF被认为更适合存储AI模型参数，因为这部分数据在推理过程中基本保持不变，仅作为只读工作负载使用。
+
+
