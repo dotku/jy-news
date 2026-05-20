@@ -1,0 +1,272 @@
+---
+title: "Google I/O大会的10个新东西 用Gemini接管一切"
+date: "2026-05-20T12:45:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1563050.htm"
+summary: "一年一度的GoogleI/O大会重磅来袭。Google官方这次一口气发布了24篇I/O相关公告，信息量很大，但主线并不复杂：底层模型更新到Gemini3.5，并推出面向视频和多模态创作的GeminiOmni；用户入口上，GeminiApp开始往个人助理方向走；搜索开始加入更多AI模式和智能体能力；购物、办公、开发工具也都被重新接入Gemini；硬件上，Google还展示了搭载Gemini的智能眼镜"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1563050.webp"
+slug: "1563050-Google-I-O大会的10个新东西-用Gemini接管一切"
+id: "1563050"
+---
+
+重点在于，今年不仅有模型能力的提升，Google还把Gemini塞到了各种地方。
+
+从搜索框，到购物车，再到智能眼镜……Google正在用AI接管一切。
+
+我们整理了这次大会上最值得关注的10个新东西，一起来看：
+
+01
+
+Gemini 3.5：迄今为最强的编码、智能体模型
+
+先来看备受关注的底层模型。
+
+这次Google发布了Gemini 3.5系列，首发的是Gemini 3.5 Flash，3.5 Pro还在内部使用，计划下个月推出。
+
+虽然3.5 Flash名字里还是Flash，但它的定位已经不只是“快”和“便宜”，可以说，它是Google这次所有Agent产品的发动机。
+
+3.5 Flash面向的是编码、智能体任务和真实工作流，已经进入Gemini App、Google Search的AI Mode、Google Antigravity、Gemini API、Android Studio，以及企业平台。
+
+跑分方面，Gemini 3.5 Flash在编码能力、Agent能力、工具调用能力上比3.1 Pro强了不少，但在Humanity's Last Exam和ARC-AGI-2上还是有所不足。
+
+输出速度上，比其它前沿模型快4倍，在人工智能分析指数中位列右上象限——意思是又快又强。
+
+定价上，3.5 Flash输入$1.50/百万token，输出$9.00/百万token，比3 Flash贵了3倍，比3.1 Pro便宜40%。
+
+官方给了几个典型场景：比如开发应用、维护代码库、准备财务文件、整理非结构化资产、把旧代码库迁移到Next.js，甚至让两个agent合作，把AlphaZero论文读完，再做出一个可玩的游戏。
+
+在Gemini 3强大的多模态基础之上，3.5 Flash可以生成更丰富、更具交互性的Web用户界面和图形。
+
+它可以在不到一分钟里生成6个不同的支付页面，也可以一次做出64个分形图案变体；用户只要用文字描述一个想法，它就能生成可互动的网页组件。
+
+更复杂一点，它还能把论文、课程视频变成互动式学习卡片和可视化页面，甚至在Google搜索里，根据用户的问题现场生成图表、模拟器和沉浸式解释界面。
+
+以前大家对Flash类模型的印象是：便宜、快、适合轻量任务。但现在Google要表达的是，未来的Agent不可能每一步都调用最贵、最慢的大模型。真正能规模化跑起来的Agent，需要一个速度、成本和能力都比较平衡的模型。
+
+这就是Gemini 3.5 Flash的位置。
+
+02
+
+Gemini Omni：Google版全模态生成模型
+
+除了Gemini 3.5，这次Google还发布了一个更偏创作的新模型：Gemini Omni。
+
+Google对它的定位是：can create anything from any input（从任何输入，生成任何内容）。
+
+当然，现在第一步还是视频。之后Google还计划支持图片、音频等更多输出形式。
+
+首个上线的是Gemini Omni Flash，已经向Google AI Plus、Pro和Ultra订阅用户开放，可以在Gemini App和Google Flow 中使用；YouTube Shorts和YouTube Create App也会免费接入。未来几周，Google还会把它通过API开放给开发者和企业客户。
+
+Omni不是一个单纯的文生视频模型。它可以把文字、图片、音频、视频一起作为输入，然后生成一段完整视频，并且支持对话式视频编辑。
+
+官方还展示了一个连续修改的例子：先生成一个小提琴手演奏的视频，然后把小提琴手放进另一张图片里的环境，再把小提琴变成透明，最后把镜头角度改成从小提琴手肩膀后方看。整个过程是一轮一轮接着改，而不是每次推倒重来。
+
+Google还特别强调，Omni背后接的是Gemini的世界知识。它对重力、动能、流体这些物理效果有更好的理解，也可以把复杂概念做成解释视频。行动会产生后果，环境会对事件做出反应，叙事会按逻辑发展。
+
+换句话说，Google想表达的是，AI视频不是只能做炫酷短片，也可以变成一种知识表达工具。复杂概念、科学过程、教学内容，都可以被转成更直观的视频。
+
+和Seedance 2.0一样，Omni也能多种参考素材来生成视频，图片、视频、音频、音乐都可以成为输入。用户可以让它保留某张图里的角色，借用一段视频里的动作，再让画面跟随音乐节奏变化，最后生成一段新的完整视频。
+
+官方还提到，用户可以从已有素材出发：用草图作为动作参考，把它变成真实影像；例如用视频里的鲸鱼游动动作，迁移到一种反光流体材料上；或者保留房间结构不变，只把植物变成半透明的发光植物，并让萤火虫和声音节奏互动。
+
+简单点说，Omni想让用户能够“把各种素材、风格、动作和声音，重新组织成一个新视频”。这对创作者很重要。
+
+不过，看社群反应，它用起来并没有Seedance 2.0出色……但这只是Flash版本的一个开始，对吧？
+
+安全方面，Omni支持用户创建自己的数字分身，也就是用自己的声音和形象生成视频。但Google强调，其他涉及改音频、改语音的能力还在测试中，需要更谨慎地推出。所有Omni生成的视频都会带有不可见的SynthID数字水印，用户可以通过Gemini以及Google搜索来验证内容是否由Gemini Omni生成。
+
+03
+
+Gemini App：大更新
+
+这次Gemini App也大改。
+
+Google说，今年对Gemini App来说是“硕果累累的一年”。去年I/O时Gemini App有4亿用户，现在已经有超过9亿月活，覆盖230多个国家和70多种语言。
+
+这次 Gemini App 的更新主要有几个：
+
+第一，接入Gemini 3.5 Flash。
+
+第二，推出新的设计语言Neural Expressive。界面会更动态，有流体动画、更鲜明的颜色、新字体、触觉反馈。Gemini Live也被直接整合到Gemini，用户可以从打字自然切到语音对话。Google还说，Gemini以后不只是给你一堵文字墙，而是会根据问题实时生成更适合的回答形式，比如图片、交互时间线、旁白视频、动态图形等。这个新设计从今天起在Web、Android、iOS全球推出。
+
+第三，Gemini App接入Gemini Omni，可以直接生成和编辑视频。用户可以上传手机相册里的素材，用模板、提示词、背景替换、电影感变焦等方式做视频。甚至可以创建自己的数字分身。
+
+第四，是Daily Brief。它像一个早晨简报Agent，你授权之后，它会在后台看你的 Gmail、Calendar，把紧急邮件、接下来的日程、需要跟进的事项整理成一个早间摘要。它不只是总结，还会按你的目标排序，并建议下一步。Daily Brief从美国开始，面向Google AI Plus、Pro、Ultra用户推出。
+
+第五，也是最重要的，是Gemini Spark。
+
+04
+
+Gemini Spark：Google版24小时个人Agent
+
+Gemini Spark是这次最值得单独介绍的产品之一。
+
+Google给它的定位是24/7 personal AI agent。也就是说，它可以在你授权下，持续帮你做事。
+
+它运行在Gemini 3.5上，使用Antigravity harness，并且深度连接Gmail、Docs、Slides等工具。而且因为它是云端Agent，所以你关掉电脑、锁上手机，它也可以继续在后台工作。
+
+Google举了几个例子。
+
+比如你可以让它定期解析每月信用卡账单，找出新增订阅或者隐藏费用；或者教它检查孩子学校邮件，把重要日期提取出来，每天发一份简报给你和伴侣；再比如，你可以让它从邮件和聊天记录里的会议笔记中提炼信息，整理成Google Docs，再起草一封项目启动邮件。
+
+这是典型的Agent叙事：帮你跨应用完成一串动作。
+
+这也是Google最有优势、也最敏感的地方：它手里有Gmail、Calendar、Docs、Drive、Slides、Maps、YouTube、Search。只要用户愿意授权，Gemini可以触达的个人上下文，将成为一个非常庞大的生态。
+
+当然，Google也在强调权限和安全。Spark需要用户选择是否开启、连接哪些App；涉及花钱、发邮件等高风险动作时，会先询问用户。
+
+这一功能本周先面向trusted testers，下周计划作为Beta推给美国Google AI Ultra用户。
+
+05
+
+macOS版Gemini：开始进入桌面工作流
+
+Gemini App还有一个比较容易被忽略的更新：macOS桌面版。
+
+Google说，Gemini的macOS App已经可以下载，接下来会把Gemini Spark带到桌面端，让它处理本地文件，并自动化桌面上的工作流。它还会加入新的语音能力：用户可以对着屏幕说一段并不完整、夹杂着停顿和口头禅的话，Gemini能根据屏幕上下文，把它整理成更准确的文本，并直接放到光标所在位置。
+
+这件事看起来小，但也值得注意，因为Agent最终不可能只在网页里工作。很多真实工作发生在本地：文件夹、桌面软件、浏览器、多窗口、多文档之间。Google把Spark带到macOS，其实就是在往桌面Agent的方向走。
+
+我们之前写过一篇文章，说PC才是agent时代的头号硬件，Google之前在The Android Show上发布的种种更适应真实工作流的软硬件产品，和这件事也是互通的。
+
+06
+
+Google Search：搜索框25年来最大改版
+
+这次最有象征意义的产品，还是Search。
+
+Google说，AI Mode上线一年后，月活已经超过10亿，查询量每个季度翻倍。现在，Google把Gemini 3.5 Flash作为AI Mode的默认模型，并宣布对搜索框进行25年来最大升级。
+
+新的搜索框不再只是输入关键词的小框，变成了一个AI入口。
+
+它会动态展开，让你用更自然的方式描述问题；它会根据意图给出AI建议，不只是传统自动补全；它支持多模态输入，可以用文本、图片、文件、视频，甚至Chrome标签页作为输入。
+
+也就是说，搜索不再只是“给我十个链接”，变成了“我有一个问题、一段材料、一张图、一个网页上下文，你帮我理解并继续往下走”。
+
+另外，AI Overview 也可以更自然地接入AI Mode。用户可以直接对AI Overview继续追问，搜索会带着上下文进入对话。这个体验已经在桌面和移动端全球上线。
+
+Search这次还有一个更Agent化的能力：Search agents。
+
+Google说，用户以后可以在Search里创建、定制和管理多个AI agents。第一批是information agents，信息型Agent。它们可以24小时在后台监控你关心的信息，然后在合适的时候给你一份综合更新。
+
+这和Google Alerts很像，但更智能。
+
+Google Alerts只能按关键词订阅。Search agents订阅的是“你的意图”。它不像爬虫那样只看某个词有没有出现，而是理解你到底要什么，然后跨网页、新闻、社交、购物、体育、金融等信息源监控变化。
+
+information agents今年夏天先给Google AI Pro和Ultra用户推出。
+
+此外，Search还在扩展agentic booking，也就是帮你完成预订类任务。比如你要找一个周五晚上、能坐6个人、供应夜宵的私人KTV房间，Search会综合价格和可用性，并给你直接完成预订的入口。部分品类，比如家政维修、美容、宠物护理，用户甚至可以让Google代为给商家打电话。这些能力今年夏天在美国面向所有用户推出。
+
+另外，Google还把Antigravity和Gemini 3.5 Flash的编码能力带进了Search。目标是让搜索结果不再只是文本、图片、表格，而是根据你的问题即时生成合适的交互界面。
+
+比如你想理解天体物理，或者想看手表内部怎么运转，Search可以实时组装交互视觉、表格、图表、模拟器。这些generative UI能力今年夏天会免费开放给所有Search用户。
+
+更进一步，Search还可以为持续性任务生成mini apps。比如你在搬家、筹备婚礼、管理健康计划，不是一次搜索就结束，而是一个长期项目。Search可以给你生成一个自定义dashboard或tracker，以后你可以持续回来用。
+
+这非常像一个新的产品形态：搜索结果不再是网页，变成了临时生成的小工具。
+
+07
+
+Universal Cart：Google想做AI购物车
+
+购物也是这次大会的大更新之一。
+
+Google发布了Universal Cart，一个跨服务、跨商家的智能购物车。它可以出现在Search、Gemini、YouTube、Gmail里。用户在搜索商品、和Gemini聊天、看YouTube、读Gmail的时候，都可以把商品加入同一个购物车。
+
+但它不是普通的购物车。
+
+商品一加入购物车，它就会在后台开始工作：找优惠、追踪价格下降、查看价格历史、提醒补货。它还会用推理能力提前发现问题，比如你在不同零售商那里买电脑配件，它会提醒你哪些零件不兼容，并推荐替代方案。
+
+因为它基于Google Wallet，还能理解你的支付方式权益、会员信息、商家优惠，帮你找到隐藏折扣或者积分机会。
+
+结账时，Universal Commerce Protocol会让用户用Google Pay快速完成购买，或者把商品转到商家网站继续下单。
+
+Google提到，Nike、Sephora、Target、Ulta Beauty、Walmart、Wayfair，以及Shopify 上的Fenty、Steve Madden 等品牌会参与相关结账能力。Universal Cart今年夏天会先在美国的Search和Gemini App推出，之后进入YouTube和Gmail。
+
+Google还提到Agent Payments Protocol，AP2。它的目的是让Agent代表用户安全付款。用户可以给Agent设定严格边界，比如只能买哪些品牌、哪些产品、最多花多少钱。AP2会在用户、商家、支付处理方之间创建可验证的记录，让Agent的购买行为有边界、有凭据、有追踪。Google说，AP2会在未来几个月进入Google产品，首先从Gemini Spark开始。
+
+不过……购物也就算了，谁会想让AI帮你一键付款呢。
+
+08
+
+智能眼镜：Google Glass的AI时代重启
+
+硬件侧最值得关注的是智能眼镜。
+
+以前Google Glass确实做得挺烂的，甚至能算是硅谷硬件史上“技术很酷，但产品没想明白”的典型案例。
+
+这次和当年Google Glass最大的不同是产品逻辑换了。Google Glass像是把手机通知、拍照、导航这些功能，硬塞到眼前，但这次的Gemini智能眼镜更像是：让AI随时看见你看到的东西、听见你听到的东西，然后帮你理解和处理。
+
+也就是说，它不再只是“戴在脸上的小屏幕”，变成了一个更自然的AI入口。
+
+在今年的I/O大会上，Google分享了更多关于智能眼镜的信息：这种眼镜可以在不打断你的情况下，即时提供帮助。
+
+智能眼镜分为两种：一种是音频眼镜，可以在你的耳朵里提供语音帮助；另一种是显示眼镜，可以在你需要的时候立即显示所需信息。这两种眼镜都能让你解放双手，专注于其他事情，只需开口询问，即可获得Gemini的帮助。
+
+音频眼镜会先上市，今年秋天推出。
+
+样子看起来，怎么说，挺日常的。
+
+功能上，它可以通过“Hey Google”或者轻触镜腿唤起Gemini。用户可以问它眼前看到的东西，比如路过一家餐厅，问它评价怎么样；看到一块云，问这是什么云；看到复杂停车标志，让它帮你解释。
+
+它还支持导航，也可以接电话、发短信、总结错过的消息、播放音乐；可以拍照和视频，并用Nano Banana做图像编辑，比如拍完照直接说“给每个人戴上搞笑帽子”；还能实时翻译语音和文字，翻译语音时甚至会尽量匹配说话人的语气和音高。眼镜也可以连接 Uber、Mondly等手机应用，并同时支持Android和iOS。
+
+虽然不好说实际使用效果如何，但这次至少避开了Google Glass当年的几个坑：
+
+不再把眼镜当成微型手机，核心不是通知和小屏幕，而是Gemini对现实世界的理解和任务执行；不再一上来押注重AR，先推音频眼镜，降低硬件难度和社会接受门槛；不再忽视外观，找Gentle Monster和Warby Parker，承认眼镜是时尚消费品，不是纯科技产品。
+
+毕竟当初Google Glass长这样：
+
+场景也更清楚了。导航、翻译、识别眼前事物、总结消息、拍照编辑、叫车点单，这些都更接近“我为什么要戴它”。
+
+09
+
+Google Antigravity 2.0：开发者侧的Agent工作台
+
+开发者侧，最重要的是Google Antigravity 2.0。
+
+Google把它称为agent-first development platform。也就是说，它不是普通 IDE 插件，而是一个以Agent为中心的开发平台。
+
+这次I/O大会发布了Antigravity 2.0桌面应用、Gemini API里的Managed Agents，以及AI Studio的原生Android vibe coding。
+
+过去AI编程工具的核心是“帮你补代码、写函数、解释报错”，现在Google想做的是“从prompt到生产就绪app”，也就是你给一个目标，AI就能规划、拆任务、调用工具、跑测试、修bug、部署，并且可能让多个子Agent并行工作。
+
+这和Codex、Claude Code、Cursor竞争的是同一条赛道。Google的优势在于它不只有模型，还有Android、Firebase、Cloud、Workspace、Play Store、Search、Chrome 等完整生态。
+
+10
+
+Project Genie + Street View：世界模型开始连接真实街景
+
+另一个偏前沿的产品是Project Genie。
+
+Genie是Google DeepMind的通用世界模型，可以生成多样化、可交互的环境。Google说，它已经成为研究工具，可以让Agent在复杂虚拟环境中学习和推理，也帮助Waymo（Alphabet旗下的自动驾驶公司）模拟高真实度道路环境。
+
+这次的新能力，是把Genie和Google Street View连接起来。
+
+也就是说，Genie 的生成能力开始和Google近20年街景图像结合，让模型生成的环境可以锚定真实世界。Google说，这可以为AI agents或机器人提供虚拟环境，让它们在其中导航、互动、学习现实世界的复杂性。
+
+机器人和自动驾驶需要大量真实世界数据，但现实世界测试昂贵、危险、慢。世界模型可以提供虚拟训练场；而Street View则是Google独有的数据资产。二者结合，意味着Google可以把真实街景变成可交互的模拟环境。
+
+换句话说，Project Genie是Google把“地图资产”变成“AI训练环境”的尝试。
+
+11
+
+总结
+
+今年Google I/O不是一个单点发布会，而是一次生态铺开。
+
+模型层，Google发布Gemini 3.5和Gemini Omni。前者面向行动和 Agent，后者面向全模态生成和视频编辑。
+
+产品层，Gemini被塞进Search、Workspace、Shopping、Flow、AI Studio、智能眼镜。它不再只是一个App，而是Google产品体系里的统一智能层。
+
+商业层，Google开始把Agent落到真实任务上：帮你盯信息、订服务、管购物车、处理邮件、写文档、做App、生成视频、甚至辅助科研。
+
+这次大会的一个明显趋势是，Google正在把Gemini改造成Google生态的操作系统。
+
+过去的Google，是一个你主动使用的工具箱，你可以用它搜索、发邮件、写文档……现在，Google想让Gemini站在这些工具之上，理解你的意图，调用这些工具，替你完成一串动作。
+
+今年I/O的发布看起来特别多、特别散：搜索、购物、办公、视频、眼镜、开发、科研，几乎每条线都在讲AI，它们指向的其实是同一件事：
+
+Google想要证明，自己仍然拥有把AI变成日常入口的最大生态。
+
+
