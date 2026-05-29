@@ -1,0 +1,35 @@
+---
+title: "Tip on Grok Build + Grok 4.3 VLM    One of my critical tasks is to keep Grok VLM in the loop. Throwi"
+date: "2026-05-29T15:14:06.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: true
+original_author: "@yunta_tsai"
+link: "https://x.com/yunta_tsai/status/2060379158610595923"
+image: ""
+slug: "elonmusk-2060379158610595923"
+---
+
+Tip on Grok Build + Grok 4.3 VLM
+
+
+
+One of my critical tasks is to keep Grok VLM in the loop. Throwing a default system prompt usually yields poor results due to lack of context.
+
+
+
+Here is how to scale:
+
+
+
+- Curate a small but diverse evaluation set that can be rapidly iterated on.
+
+
+
+- Enter the prompt: “Make a plan to design and execute a task that a) takes input per entry from: <input>, b) generates output per entry to: <output>, c) the ground truth of output: <ground truth>. Launch sub-agents to iterate on strategy to optimize recall and precision against ground truth until both metrics reach <threshold>.”
+
+
+
+Done. Watch your research agents do the work.

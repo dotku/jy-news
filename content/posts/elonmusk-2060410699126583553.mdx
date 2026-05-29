@@ -1,0 +1,58 @@
+---
+title: "Having Grok Build sub-agents to iterate several ideas for me on data loading, batching, inference, a"
+date: "2026-05-29T17:19:25.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: true
+original_author: "@yunta_tsai"
+link: "https://x.com/yunta_tsai/status/2060410699126583553"
+image: "https://pbs.twimg.com/media%2FHJgKjTKagAA2l8c.png"
+slug: "elonmusk-2060410699126583553"
+---
+
+Having Grok Build sub-agents to iterate several ideas for me on data loading, batching, inference, and writing results to files for dense datasets before I went to sleep.
+
+
+
+It gave me a nice summary of trade-offs and validation in the morning.
+
+
+
+The same idea can be extended to almost anything as long as gradient descent and stochastic sampling apply.
+
+
+
+Looking forward to how you utilize the sub-agents.
+
+
+
+
+Yun-Ta Tsai (@yunta_tsai)
+
+Tip on Grok Build + Grok 4.3 VLM
+
+
+
+One of my critical tasks is to keep Grok VLM in the loop. Throwing a default system prompt usually yields poor results due to lack of context.
+
+
+
+Here is how to scale:
+
+
+
+- Curate a small but diverse evaluation set that can be rapidly iterated on.
+
+
+
+- Enter the prompt: “Make a plan to design and execute a task that a) takes input per entry from: <input>, b) generates output per entry to: <output>, c) the ground truth of output: <ground truth>. Launch sub-agents to iterate on strategy to optimize recall and precision against ground truth until both metrics reach <threshold>.”
+
+
+
+Done. Watch your research agents do the work.
+
+
+
+— https://nitter.net/yunta_tsai/status/2060379158610595923#m
