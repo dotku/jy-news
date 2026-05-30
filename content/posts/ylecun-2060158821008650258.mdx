@@ -1,0 +1,87 @@
+---
+title: "Took me a while to figure out what all the ESMFold2 rage was about. At first, the benchmarking data "
+date: "2026-05-29T00:38:33.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@SylvainGariel"
+link: "https://x.com/SylvainGariel/status/2060158821008650258"
+image: ""
+slug: "ylecun-2060158821008650258"
+---
+
+Took me a while to figure out what all the ESMFold2 rage was about. At first, the benchmarking data didn't look super remarkable to me but it turns there are many impressive aspects: 
+
+- Fully open source, open weights + massive ESM Atlas (1.1B structures vs 0.2B for AF3).
+
+- SOTA performance despite no MSA use. MSA search and triangular attention were simply taken out of the base model.
+
+- Direct consequence, super low latency inference: 1024-residue protein structure prediction in 9 secs, still outperforming prior models on antibody-antigen tasks.
+
+- Best in class PPI and antibody-antigen results. 65% pass rate on antibody-antigen benchmarks after inference-time scaling, significant improvement over AF3.
+
+- Tons of experimental data, in particular with lab-validated miniprotein binders plus single-chain antibodies across 5 targets in cancer and immunology. Binding affinities consistent with therapeutic activity.
+
+- Inference-time scaling benefits PPI: Multiple seeds + selection by confidence show real gains on challenging antibody-antigen predictions, leading to comments/hypotheses that it has learned an energy-function-like behavior via the folding module.
+
+- Base model works without MSAs, but providing them further boosts prediction quality on difficult protein-protein interaction cases.
+
+One caveat: No true scoring for protein-protein interactions, making it harder to assess which specific residues or domains are reliably involved in binding.
+
+
+Alex Rives (@alexrives)
+
+Today we're announcing ESMFold2, an open scientific engine to power prediction, design, and discovery across protein biology.
+
+
+
+The new model delivers state of the art performance on protein interactions, especially antibodies, a critical modality for therapeutics.
+
+
+
+We have designed and validated miniprotein binders and single chain antibodies across five therapeutic targets that are important in cancer and immunology. We are seeing very high success rates, and affinities at levels consistent with therapeutic activity.
+
+
+
+We’re also releasing an atlas of 6.8 billion proteins, and 1.1 billion predicted structures.
+
+
+
+ESMFold2 is built on a state of the art language model that has been trained on billions of protein sequences.
+
+
+
+A world model of protein biology emerges through language modeling.
+
+
+
+We’ve used the techniques of mechanistic interpretability developed to understand large language models to understand the concepts ESM uses to represent proteins.
+
+
+
+The model’s representation space has a compositional organization of features across scales, levels of complexity, and abstraction, that reflects and mirrors the understanding of protein biology developed through a century of empirical science.
+
+
+
+This understanding emerges without prior knowledge, just from language modeling of protein sequences.
+
+
+
+Language models are becoming a powerful substrate to understand and program biology.
+
+
+
+The design of protein interactions is one of the most fundamental problems in biophysics, and has critical implications for the discovery of new medicines. A simple gradient based search with the model was able to discover high-affinity protein binders.
+
+
+
+I'm excited by the potential this has to accelerate basic science and the understanding of proteins. And especially for the new avenues it opens up for therapeutic design and medicine.
+
+  
+
+
+
+
+— https://nitter.net/alexrives/status/2059611151860683097#m
