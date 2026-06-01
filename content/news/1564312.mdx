@@ -1,0 +1,20 @@
+---
+title: "开源项目NBD-VRAM让NVIDIA GeForce 显卡显存变身Linux交换分区"
+date: "2026-06-01T19:40:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1564312.htm"
+summary: "开源开发者近日推出一款名为NBD-VRAM的工具，可在Linux系统下将消费级NVIDIAGeForceGPU的部分显存划分为交换空间，弥补系统内存不足，尤其面向内存焊死、难以扩容却配备独立RTX显卡的笔记本电脑用户。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1564312.webp"
+slug: "1564312-开源项目NBD-VRAM让NVIDIA-GeForce-显卡显存变身Linux交换分区"
+id: "1564312"
+---
+
+据介绍，NBD-VRAM 于昨日公布，其工作方式是在后台运行一个小型守护进程，通过 NVIDIA CUDA 驱动 API 在显卡上申请一块显存空间，然后通过 Linux 的 Network Block Device（NBD，网络块设备）协议，经由 Unix 套接字将这块显存暴露为块设备，最终在系统中以常规的 Linux 交换分区（swap 设备）的形式出现并可被直接使用。
+
+开发者将 NBD-VRAM 明确定位为针对 NVIDIA 消费级 GPU 的解决方案，用于在官方点对点（P2P）API 及其他替代机制无法使用的场景下，提供一条额外的“内存溢出缓冲通道”。 用户需要在系统中启用 NVIDIA 官方 Linux 图形驱动及 CUDA 支持，不能使用 Nouveau 或 Nova 等开源驱动，否则该工具无法正常工作。
+
+该项目以 MIT 许可证开源发布，感兴趣的用户与开发者可以在 GitHub 上获取源代码并了解更多实现细节，目前项目也在持续完善中：
+
+https://github.com/c0dejedi/nbd-vram
+
+
