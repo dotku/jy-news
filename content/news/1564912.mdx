@@ -1,0 +1,20 @@
+---
+title: "Firefox浏览器合并支持Vulkan视频解码 提升跨平台硬件加速体验"
+date: "2026-06-07T23:13:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1564912.htm"
+summary: "Firefox浏览器日前在开发分支中正式合并了对VulkanVideo的初步支持，为这一主流开源浏览器引入了新的GPU视频硬件解码路径，被视为Mozilla在加速视频播放体验方面的一项重要进展。长期以来，Linux平台上的Firefox主要依赖VideoAccelerationAPI（VA-API）进行硬件解码，但VA-API并未在所有图形驱动上得到广泛、一致的支持，这不仅给NVIDIA用户带来额"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1564912.webp"
+slug: "1564912-Firefox浏览器合并支持Vulkan视频解码-提升跨平台硬件加速体验"
+id: "1564912"
+---
+
+在此背景下，社区此前不得不通过诸如 NVIDIA-VAAPI-Driver 之类的方案，将 NVIDIA 的 NVDEC 接口通过一层适配暴露为 VA-API，以便在 Firefox 中启用 GPU 加速播放，这类间接方案在稳定性和维护成本方面都存在一定局限。 随着 Khronos 推动的 Vulkan Video 规范逐步成熟并获得更多驱动实现支持，它开始以更跨平台的方式进入 Linux 图形生态，为浏览器等应用提供了一条绕过 VA-API 限制的新路径。
+
+今年 3 月，针对 Firefox 缺乏 Vulkan Video 支持的问题，社区在 Mozilla Bugzilla 上提交了相关缺陷报告，并在随后的数月里推动实现落地。 近期，随着相关补丁在 Firefox 代码库中完成合并，这一 Bug 报告已正式标记为关闭，意味着 Vulkan Video 解码支持已进入主干代码并具备进入正式版本的条件。
+
+按 Mozilla 目前的发布节奏，计划于 7 月发布的 Firefox 153 将成为首个默认提供 Vulkan Video 解码能力的版本。来自 NVIDIA 的工程师 Tymur Boiko 和 Red Hat 的 Martin Stransky 是该功能合入过程中的主要贡献者，他们在 Firefox Git 仓库中持续推进 Vulkan Video 相关代码，最终在本周完成关键合并。 按规划，Firefox 153.0 预计将于 7 月 21 日正式发布，如无最后时刻的重大问题，这一版本将面向用户开放 Vulkan Video 硬件解码支持。
+
+对于 Linux 用户而言，Vulkan Video 的加入意味着 Firefox 在硬件加速视频播放方面将更具通用性和可移植性，有望减少依赖特定 API 或第三方适配层带来的兼容性不确定性。 尤其是在小型 Arm 设备和嵌入式平台上，随着 Vulkan Video 的进一步普及，Firefox 将有机会在更多类型的 GPU 驱动上实现高效的视频解码，为流媒体播放、网页多媒体内容等场景提供更流畅的体验。
+
+
