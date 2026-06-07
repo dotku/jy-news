@@ -1,0 +1,38 @@
+---
+title: "Chrome 149正式版向所有用户提供设备端AI管理 可以禁用功能删除4GB本地模型"
+date: "2026-06-07T16:03:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1564898.htm"
+summary: "此前Google浏览器因为反复自动下载大约4GB的本地AI模型引起不少用户的关注，这其实是Google在2024年开始陆续推出的新功能，利用设备端AI模型来执行某些简单任务，例如提供文本撰写和钓鱼网站检测等功能，坏处则是这个AI模型会占用用户的存储空间，即便用户从文件夹里删除模型，Google浏览器也会重新自动下载。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1564898.png"
+slug: "1564898-Chrome-149正式版向所有用户提供设备端AI管理-可以禁用功能删除4GB本地模型"
+id: "1564898"
+---
+
+Google也倒是向部分用户提供设备端 AI 管理功能，只需要禁用该功能就可以自动删除模型且不会再重复下载，但此前并非所有用户都能看到管理功能，直到现在 Chrome v149.0 版发布后所有用户都可以主动在设置里禁用设备端 AI 功能。
+
+设备端 AI 功能管理位置：
+
+用户将Google浏览器更新到 v149.0 及后续版本后，可以转到设置、系统、设备端 AI 并禁用此功能 (chrome://settings/system)，禁用后浏览器会自动删除已经下载的设备端模型，不需要用户到文件夹里手动执行删除操作。
+
+对大多数普通用户来说基本不需要禁用设备端 AI 功能，因为约 4GB 的本地 AI 模型其实也不算大，但如果你像蓝点网同时安装多个版本的Google浏览器，那就需要考虑主动禁用设备端 AI 功能避免太多模型权重文件直接耗费太多的硬盘空间。
+
+例如蓝点网安装Google浏览器正式版、测试版、开发版和金丝雀版，尽管并非所有版本都经常使用，但默认情况下每个版本都会独立下载 4GB 的模型权重文件，这种情况下不禁用设备端 AI 后系统盘被消耗的空间就太多了，不如直接禁用腾出更多空间。
+
+检查模型是否成功删除：
+
+禁用设备端 AI 功能后Google会立即自动删除已经下载到本地的设备端模型文件，所以用户也可以在禁用功能后转到模型权重文件夹检查模型是否存在，正常情况下整个文件夹都会被删除。
+
+如果你手动展开文件夹到 OptGuideOnDeviceModel 后发现里面是空的，说明禁用设备端 AI 已经生效，此时Google已经自动删除该文件夹下的 2025.8.x.x 文件夹，原本模型文件就是放在这个文件夹里的。
+
+#Windows 10/11：
+
+C:\Users\{你的用户名}\AppData\Local\Google\Chrome\User Data\OptGuideOnDeviceModel\2025.8.21.1028\weights.bin
+
+#macOS：
+
+/Users/{你的用户名}/Library/ApplicationSupport/Google/Chrome/OptGuideOnDeviceModel/2025.8.8.1141/weights.bin
+
+/Users/{你的用户名}/Library/ApplicationSupport/Google/ChromeCanary/OptGuideOnDeviceModel/2025.8.8.1141/weights.bin
+
+
