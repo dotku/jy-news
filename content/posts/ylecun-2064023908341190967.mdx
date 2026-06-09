@@ -1,0 +1,72 @@
+---
+title: >-
+  As many of you were interested in the technical details of the model, here is
+  a followup thread to g
+date: '2026-06-08T16:37:02.000Z'
+handle: ylecun
+name: Yann LeCun
+author_title: 'VP & Chief AI Scientist, Meta'
+category: ai
+is_rt: true
+original_author: '@LeRobotHF'
+link: 'https://x.com/LeRobotHF/status/2064023908341190967'
+image: >-
+  https://pbs.twimg.com/amplify_video_thumb%2F2063171053443059712%2Fimg%2FuiCwKSpFQ63vkKfd.jpg
+slug: ylecun-2064023908341190967
+video_url: >-
+  https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/videos/ylecun-2064023908341190967.mp4
+---
+
+As many of you were interested in the technical details of the model, here is a followup thread to go more into technical details about VLA-JEPA.
+
+
+
+1. Architecture
+
+2. Training
+
+3. Recipe for the demo
+
+4. TLDR
+
+
+
+🧵below
+
+
+LeRobot (@LeRobotHF)
+
+VLA-JEPA just dropped in LeRobot 🤖
+
+
+
+What makes this model special is that it does not just learn what action to take from a given observation, it also leverages a JEPA world model to learn action-relevant dynamics.
+
+
+
+During training, the VLA leverages V-JEPA2 by conditioning its predictor. This clever trick adds a world modeling objective to the training, which also allows pretraining on human videos.
+
+At inference, the world model is dropped entirely, keeping only a standard VLA architecture: Qwen backbone and action head. 
+
+
+
+The demo here was only fine-tuned on 13 examples, showing great pretraining capability and running in real time on https://nitter.net/NVIDIARobotics DGX Spark!
+
+
+
+VLA-JEPA is the first world model to be ported to LeRobot, and I feel like it won't be the last 🚀
+
+
+
+https://nitter.net/Thom_Wolf https://nitter.net/ClementDelangue
+
+
+Video
+
+  
+
+
+
+
+
+— https://nitter.net/LeRobotHF/status/2063171227288510532#m
