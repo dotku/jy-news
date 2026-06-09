@@ -1,0 +1,20 @@
+---
+title: "macOS 27 Beta致Asahi Linux暂时无法启动 开发团队呼吁用户谨慎升级"
+date: "2026-06-09T23:16:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1565182.htm"
+summary: "近日，Apple面向开发者发布了代号为“GoldenGate”的macOS27测试版，但这一更新意外影响了在AppleSilicon设备上运行的AsahiLinux。AsahiLinux项目团队发出公开提醒，建议用户暂时不要在安装了AsahiLinux的设备上尝试macOS27测试版。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1565182.png"
+slug: "1565182-macOS-27-Beta致Asahi-Linux暂时无法启动-开发团队呼吁用户谨慎升级"
+id: "1565182"
+---
+
+根据 Asahi Linux 的说明，在升级到 macOS 27 测试版后，系统启动菜单和“启动磁盘”设置逻辑发生了变化，导致 Asahi Linux 分区不再出现在启动选择界面中，从而无法正常引导进入 Linux 系统。目前来看，这一变化并不会导致 Asahi Linux 分区上的数据丢失，分区本身依然存在，但在现有的启动路径下无法被选中或启动。
+
+目前尚不清楚这是 Apple 在调整启动机制过程中引入的非预期缺陷，还是有意为之的行为变更。Asahi Linux 团队已经就此向 Apple 提交了错误报告，等待进一步回复。在此期间，项目方明确提醒用户尽量避免在主力设备上升级 macOS 27 测试版，尤其是依赖 Asahi Linux 进行日常工作或开发的用户。
+
+对于已经尝试升级到 macOS 27 测试版的用户，如果此前在同一设备上还保留有 macOS 26 或更早版本的系统安装，可以通过这些旧版本系统的启动环境来间接启动 Asahi Linux 分区，以在过渡阶段继续访问现有的 Linux 环境。
+
+在 Apple Silicon Linux 生态的其他进展方面，Linux 7.2 已准备加入对 Apple M3 设备的启动支持，不过当前阶段距离普通终端用户可用还有较大距离。对于尚未升级到 macOS 27 “Golden Gate”的用户，这也意味着在保持现有可用性的同时，仍可关注后续内核和引导工具链对 Apple M 系列芯片支持的改善。
+
+
