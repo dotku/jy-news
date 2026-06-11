@@ -1,0 +1,24 @@
+---
+title: "RegionSpoof：在国行设备macOS 27预览版中启用完整苹果AI"
+date: "2026-06-11T13:27:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1565404.htm"
+summary: "由于苹果的限制目前使用国行版MacBook的用户即便升级到macOS27也无法开启AppleIntelligence，所以有开发者使用极简内核扩展直接从源头修改设备区域码，修改后全系统每个进程都会识别为美版区域，这样可以开启完整的苹果AI服务，支持端侧AI模型和其他基于云端调用的模型。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1565404.png"
+slug: "1565404-RegionSpoof-在国行设备macOS-27预览版中启用完整苹果AI"
+id: "1565404"
+---
+
+需要禁用 SIP 并使用极简内核扩展：
+
+RegionSpoof 项目的工作原理主要是从源头修改设备区域码，修改前必须禁用 SIP 并使用 kext 极简内核扩展，禁用 SIP 后可能会导致系统安全性下降，仅推荐有经验的专业开发者在测试机上部署尝试。发布项目的开发者 @SkyBlue997 使用的测试机为 M3 Max 版 MacBook Pro。
+
+成功操作后可以启用端侧 AI 功能和云端全功能 (包括写作工具含语气修改、图乐园、Genmoji、Foundation Models、ChatGPT 扩展)。
+
+快速安装步骤：
+
+克隆项目到本地并执行 install.sh 安装脚本即可，安装脚本会检测是否已经禁用 SIP，如果没有禁用则会给出步骤引导用户禁用 SIP 后再进行安装。脚本在工作时也需要用户授权，到时候用户根据屏幕提示在隐私和安全性里允许再重启即可。
+
+项目地址：https://github.com/SkyBlue997/enableMacosAI
+
+
