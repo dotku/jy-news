@@ -1,0 +1,88 @@
+---
+title: "Grok Build just got a major update with a ton of new features and improvements    Release Notes: v0."
+date: "2026-06-12T06:56:48.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: true
+original_author: "@XFreeze"
+link: "https://x.com/XFreeze/status/2065327439476375760"
+image: "https://pbs.twimg.com/media%2FHKmDjDibwAAac2l.jpg"
+slug: "elonmusk-2065327439476375760"
+---
+
+Grok Build just got a major update with a ton of new features and improvements
+
+
+
+Release Notes: v0.2.51
+
+
+
+Breaking Changes:
+
+• grok mcp add now accepts positional arguments (e.g. grok mcp add filesystem -- npx ...), supports --scope project, and adds -e/-H flags for env/headers.
+
+
+
+Features:
+
+• Mermaid flowcharts now render subgraph blocks as titled frames with correct internal and cross-boundary edges.
+
+• Class diagrams in Mermaid now render as proper UML boxes with attributes, methods and inheritance arrows instead of raw source.
+
+• Permission prompts now accept a double-click on an option to submit it, matching the existing Enter and number-key shortcuts.
+
+• New /code-review slash command now ships with the CLI and is always available
+
+
+
+Bug Fixes:
+
+• Plan mode exit reminders no longer appear after the model has already started implementing the plan.
+
+• Expanded thinking blocks in scrollback now remain expanded when the agent finishes them.
+
+• grok update no longer downloads the same binary twice when multiple updaters or leader checks run concurrently.
+
+• Background task IDs after /compact are now shown verbatim so the model can reference them correctly in later tool calls.
+
+• Typing / while scrollback is focused now focuses the prompt and opens the slash-command dropdown.
+
+
+
+
+X Freeze (@XFreeze)
+
+Grok Build just got another update with improvements on reliability, stability, and developer experience
+
+
+
+Release Notes: v0.2.45
+
+
+
+Features:
+
+• Mermaid diagrams now render to images when you click Open in a code block (enabled by default)
+
+
+
+Bug Fixes:
+
+• Fixed rare conversation corruption when skills changed while a tool call was still running
+
+• Fixed grok --resume failing on empty image-only session folders left by cross-directory pastes
+
+• Fixed pasted images and relative paths using the wrong directory after resuming a session from another folder
+
+• Welcome screen logo no longer renders as invalid characters on legacy Windows command prompts and PowerShell
+
+• Fixed "unknown session id" errors that occurred after the leader process crashed or was killed
+
+
+
+
+
+— https://nitter.net/XFreeze/status/2064819487837401199#m
