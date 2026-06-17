@@ -1,0 +1,28 @@
+---
+title: "Mozilla Firefox启用Rust版zlib-rs提升安全性与性能"
+date: "2026-06-17T14:20:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1566018.htm"
+summary: "Mozilla近日披露，自今年5月发布的Firefox151版本起，浏览器已经在Gzip压缩与解压缩处理中广泛采用zlib-rs库，这是一套以Rust编写的Zlib实现，旨在在保持兼容性的前提下提升内存安全性和整体性能。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1566018.webp"
+slug: "1566018-Mozilla-Firefox启用Rust版zlib-rs提升安全性与性能"
+id: "1566018"
+---
+
+根据 Trifecta Tech Foundation 今日发布的技术说明，他们与 Mozilla 团队围绕 zlib-rs 的引入已沟通近两年，最终才推动该库进入 Firefox 正式版本。
+
+zlib-rs 被宣传为可直接替换 C 语言实现的 Zlib“即插即用”方案，但在实际落地过程中，Mozilla 遇到了一些预期之外的复杂情况。由于 zlib-rs 在不同压缩级别下采用了不同的算法实现，导致其行为与传统 Zlib 不完全一致，给兼容性验证与实际部署带来一定挑战。在此之外，zlib-rs 也受到英特尔第 13、14 代 Core 处理器稳定性问题的波及，为修复这些 CPU 相关故障，Firefox 端不得不在部分代码路径中引入少量“unsafe”代码，从而绕过特定硬件缺陷。
+
+尽管过程并非完全顺利，Mozilla 与 Trifecta Tech Foundation 仍强调，迁移到 zlib-rs 的收益是显著的。一方面，相比传统 C 版 Zlib，实现迁移到 Rust 为压缩解压逻辑提供了更好的内存安全保障，降低了潜在的越界访问或内存破坏风险。另一方面，zlib-rs 在性能方面也带来明显提升，尤其是在 x86_64 平台上，压缩与解压吞吐量均有可观改善。
+
+在 AArch64 平台上，zlib-rs 当前带来的性能收益相对较小，不过 Trifecta Tech Foundation 指出，未来仍有优化空间。与 macOS 中由苹果提供的 Zlib 实现相比，zlib-rs 在部分场景下有机会通过更精细的代码调优进一步提升效率，从而在 Arm 平台上实现更一致的跨平台表现。
+
+Trifecta Tech Foundation 在博文中详细记录了 zlib-rs 引入 Firefox 的全过程，包括与 Mozilla 长达多年的沟通、在算法选择与兼容性测试中的取舍，以及针对英特尔 CPU 问题所做的工程权衡。Mozilla 方面则希望，通过在关键基础组件中逐步采用 Rust 实现，Firefox 能在继续追求性能的同时，进一步巩固自身在安全性上的口碑。
+
+更多技术细节与基准测试结果可在 Trifecta Tech Foundation 博客中查阅：
+
+https://trifectatech.org/blog/zlib-rs-in-firefox/
+
+目前 Firefox 用户已经在日常使用中透明地受益于这次底层库替换。
+
+
