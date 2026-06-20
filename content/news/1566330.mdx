@@ -1,0 +1,22 @@
+---
+title: "英伟达开源 NVK 驱动为 Linux 带来实验性 DLSS 支持"
+date: "2026-06-20T13:38:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1566330.htm"
+summary: "开源、社区驱动的英伟达Linux驱动栈正持续追赶专有闭源驱动，在功能上向“全面对等”稳步推进。最新进展来自Mesa驱动栈中的NVK——这是一款开源的NVKVulkan驱动，近日已合并对英伟达GPU上DLSS（深度学习超采样）功能的支持。 "
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1566330.webp"
+slug: "1566330-英伟达开源-NVK-驱动为-Linux-带来实验性-DLSS-支持"
+id: "1566330"
+---
+
+Mesa 图形栈的开发分支 26.2-devel 合并了一项重要改动：开源的 NVIDIA“NVK”Vulkan 驱动现已能够在 Linux / Steam Play 环境下，为现代游戏提供对 Deep Learning Super Sampling（DLSS）的支持。
+
+这项能力源自去年由 Autumn Ashton 提交的补丁，请求在 Mesa 中实现 VK_NVX_binary_import 扩展，这是在 NVIDIA GPU 上启用 DLSS 所需的关键 Vulkan 扩展。 该扩展允许应用导入 NVIDIA 的 CuBIN 二进制文件并在 GPU 上执行，而这些 CuBIN ELF 文件本质上是为 NVIDIA GPU 预先编译好的 CUDA 二进制。 通过 VK_NVX_binary_import，NVK 驱动即可加载并运行 DLSS 相应的二进制，实现 DLSS 在 NVK 驱动上的启用。
+
+由于 Autumn Ashton 近几个月在 Mesa 开发上的活跃度下降，这一补丁在合并过程中一度出现合并冲突和其他问题。 两个月前，开发者 Thomas Andersen 提交了新的合并请求，对原有补丁进行冲突修复和完善，并最终推动其进入 Mesa 26.2 分支。 正是这一新版合并请求在今天完成了最终合入，使 NVK 能够在开启 DLSS 的游戏中正常工作。
+
+目前，这一 DLSS 支持仍然被标记为实验性功能，需要通过环境变量 NVK_EXPERIMENTAL=dlss 来显式启用。 由于 DLSS 依赖 CUDA 二进制，NVK 侧的实现还要求为所使用的 GPU 提供相匹配的字节码，否则功能将无法正常运行。 相比之下，NVIDIA 专有 Vulkan 驱动通过 PTX 到字节码的路径来支持这类功能，而 NVK 目前尚不具备将 NVIDIA PTX 转换为 Mesa NIR 表示的能力，这也是当前实现的一项限制。
+
+尽管存在已知缺陷和尚未打通的 PTX 转换链路，这次合并仍被视为 NVK 与 Linux 开源图形生态的一项重要进展。 根据 Mesa 项目的规划，这些改动将出现在预计于 8 月发布的稳定版 Mesa 26.2 中，为使用 NVK 的 Linux 玩家带来在开源驱动上体验 DLSS 的新可能。
+
+
