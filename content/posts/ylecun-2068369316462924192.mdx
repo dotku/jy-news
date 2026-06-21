@@ -1,0 +1,35 @@
+---
+title: "🚨🚨🚨A research project idea! How to measure world models?    Everyone's talking about world models"
+date: "2026-06-20T16:24:08.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@ziv_ravid"
+link: "https://x.com/ziv_ravid/status/2068369316462924192"
+image: "https://pbs.twimg.com/media%2FHLRS7ZdXkAIMvL1.jpg"
+slug: "ylecun-2068369316462924192"
+---
+
+🚨🚨🚨A research project idea! How to measure world models?
+
+
+
+Everyone's talking about world models these days. World model here, world model there. We can argue about what "world model" actually means, and we have some interesting results on that, but let's assume some hand-wavy definition for now. The real question is how you tell a good world model from a bad one.
+
+
+
+Here's my bet on what actually matters, and it isn't how real the video looks or whether you can read off physical quantities from some giant latent. It's the structure of how the latents evolve. Say a rock is flying towards you and you want to plan an escape — do you care about its velocity? its energy? the projection of its velocity onto the 2D plane? They're all nonlinearly related, so chasing any one of them is the wrong target. What matters more is whether there's a simple, interpretable rule for how the latents move. And it has to be the latents — the real degrees of freedom aren't the pixels. Write down the map from past latents to future latents: what's its Jacobian? The world is noisy, so do errors propagate in a reasonably uniform way, or are there points where a tiny error blows up immediately? And separately, find the smallest latent space that still works and check whether its dimension matches what physics says it should be.
+
+
+
+Meanwhile the field measures world models in a dozen ways, and they quietly disagree with each other. Representational probing puts a linear probe on the representation and asks what's decodable. Information-based methods try to measure something like the predictive information the latents carry about the future. Rollout error runs the model forward and tracks how fast it drifts from reality. Then there's downstream task success — does it help on some task — versus closed-loop utility, where an agent actually plans with it and you see whether it succeeds. Different things, and they often disagree.
+
+
+
+So two ways to make sense of the mess. One is empirical: take many settings and many models, measure all these metrics, and map how they correlate, similar to the "Fantastic Generalization Measures and Where to Find Them," paper,  but for world models. The other is to stop treating them as separate benchmarks at all. There's really one thing underneath: a system that changes over time, that you can act on, and that you only ever see part of. Every metric is just one shadow of it — realism checks the frames, rollout error checks the predictions, probing checks the state, and closed-loop checks the planning. Each hides an assumption about when it's even a fair test. Make those explicit, and ask the real question: when does doing well on one metric actually guarantee doing well on another, and when do they just happen to agree?
+
+
+
+I'd love to hear what people think, and let me know if you want to collaborate on it.
