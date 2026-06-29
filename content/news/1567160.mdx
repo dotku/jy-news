@@ -1,0 +1,32 @@
+---
+title: "微软推出免费发行版Azure Linux 4.0 正式加入云端Linux阵营"
+date: "2026-06-29T07:59:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1567160.htm"
+summary: "微软在25年前曾对开源社区态度强硬，当时的首席执行官史蒂夫·鲍尔默曾把Linux形容为“在知识产权意义上附着在所有事物上的癌症”。如今，在2026年的Build大会上，微软不仅成为开源软件的重要贡献者之一，还面向公众正式发布了自家的Linux发行版AzureLinux4.0，这一转变在业内引发广泛关注。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1567160.png"
+slug: "1567160-微软推出免费发行版Azure-Linux-4-0-正式加入云端Linux阵营"
+id: "1567160"
+---
+
+Azure Linux 4.0 是一个真正的开源 Linux 发行版，由微软全权维护，基于 Fedora 43 构建，长期以来已在 Azure 虚拟机和微软内部基础设施中大规模运行。
+
+所谓 Linux 发行版，是在 Linux 内核基础上，整合包管理器、系统工具、默认配置、支持体系以及图形界面等组件，形成可以实际部署使用的完整操作系统。 Ubuntu、Fedora、Debian、Red Hat Enterprise Linux（RHEL）、Arch Linux 等，都共享同一个 Linux 内核，但面向的使用场景和用户群体各不相同。 Azure Linux 4.0 则是微软加入这一名单的产品，它以 Fedora 43 为上游基础，沿用 RPM 包格式和 Red Hat 系生态，但由微软筛选包集、维护安全补丁，并针对 Azure 云工作负载进行专项优化。
+
+Azure Linux 的前身是 2019 年启动的内部项目 CBL‑Mariner，全称为 Common Base Linux Mariner，目标是在 Azure 基础设施中提供轻量、安全的操作系统。 到 2022 年，Azure Linux 已在 AKS（Azure Kubernetes Service）、Azure SQL、Azure Cosmos DB 等生产级服务中大规模部署。 领英（LinkedIn）也曾完成向 Azure Linux 3 的整体迁移，而 Databricks 将超过 10 万台虚拟机、逾百万颗 CPU 核心切换至该系统，却未出现面向客户的重大故障。 2024 年 3 月，微软正式将该系统更名为 Azure Linux，并在 2026 年 5 月的北美开源峰会上官宣 Azure Linux 4.0，随后于 6 月 Build 2026 大会期间开放公众预览。
+
+与 Ubuntu、Fedora 或 RHEL 等通用发行版不同，Azure Linux 4.0 并非面向桌面或日常使用的操作系统。 它没有图形界面、音频栈或桌面环境，基础映像甚至不预装诸如 less 这样的常见文本分页工具，仅包含云和服务器工作负载所需的最小化组件。 安装完成后，系统直接进入纯文本控制台，以 Bash 为默认 shell，不提供类似桌面版 Fedora 或 Ubuntu 的图形安装程序或桌面环境。 这种设计的目标是尽可能缩小包的总体体积，从而降低攻击面，减少每月需要修补的潜在漏洞，使服务器和容器环境的运行更加可预测和高效。
+
+在部署场景方面，Azure Linux 与其它发行版也有明显差异。 Ubuntu Server、Fedora Server 及 RHEL 相比桌面版已做精简，但仍保留相当多的通用组件，并且被官方支持运行在本地数据中心、其他云平台以及物理服务器上。 与之相比，Azure Linux 4.0 的定位是“云专用发行版”，主要面向 Azure 云端服务器和虚拟机工作负载；在 Azure 之外运行在技术上虽可行，却不在微软的官方支持范围之内。 其基础映像大小约 300 MB，而 Ubuntu、Fedora 或 RHEL 的基础映像通常在 500–600 MB 甚至更高。 Azure Linux 4.0 免费提供使用，不收取操作系统许可费用，由微软统一维护，重视加固的安全默认配置以及快速响应 CVE 漏洞。
+
+从技术栈来看，目前公开预览版的 Azure Linux 4.0 搭载了针对 Azure 优化的 Linux 6.18 LTS 内核，强化了 Hyper‑V 集成，并支持 GPU 与 AI 加速器。 包管理器改用 dnf5——这是以 C++ 重写的新版 DNF，相比旧版 Python 实现的 DNF 在依赖解析速度和资源占用上更为出色。 系统使用 glibc 2.42 作为 C 标准库，初始化系统采用 systemd 258。 发行版内置 Python 3.14，并启用了新的 JIT 编译器，同时搭载支持后量子密码算法的 OpenSSL 3.5，涵盖已被 NIST 标准化的 CRYSTALS‑Kyber 与 CRYSTALS‑Dilithium 算法，这对具有合规需求的企业用户具有现实意义。 目前 Azure Linux 4.0 的 FIPS 140‑3 认证仍在推进，预计在 2026 年全面正式发布（GA）前完成。
+
+与 Azure Linux 4.0 同期亮相的还有 Azure Container Linux，这是微软在 Build 2026 推出的第二款 Linux 产品。 虽然这两者共享同一内核和安全更新节奏，但定位存在根本区别：Azure Container Linux 是不可变（immutable）系统，操作系统以只读映像形式提供，用户无法在运行时安装新包或修改系统配置。 当有更新发布时，平台会整体替换系统映像，并在出现异常时自动回滚。 Azure Container Linux 自 2023 年起就静默运行于 Azure Kubernetes Service（AKS）之下，而随着 4.0 版本推出，它首次作为独立产品向外提供。 相比之下，Azure Linux 4.0 面向一般云服务器和虚拟机，允许自由安装软件包，更新通过 dnf5 按包逐一完成，目前处于公开预览阶段，而 Azure Container Linux 已经达到“普遍可用”的成熟状态。
+
+从商业和战略角度来看，微软打造自有 Linux 发行版并不意外。 目前，在 Azure 云上运行的操作系统中，Linux 的实例数量已经超过 Windows Server，而这些 Linux 系统大多来自 Ubuntu、RHEL、SUSE、Debian 等第三方厂商。 客户在 Azure 上运行这些系统时，往往向各自的发行版供应商购买支持订阅；微软提供底层基础设施，却需要与这些厂商分享操作系统层面的收入。 通过推动客户在 Azure 上标准化使用 Azure Linux，微软可以在供应链和技术栈上实现端到端的统一控制，每个软件包都由微软进行签名，并为每个版本发布详细的软件物料清单（SBOM）。 对受监管行业的企业团队而言，将整个操作系统层面责任集中在单一供应商身上，是重要的卖点。
+
+这种策略与其他云巨头一脉相承：亚马逊推出了 Amazon Linux，Google推出了 Container‑Optimized OS，微软则通过 Azure Linux 跟进这一趋势。 微软还明确将 Azure Linux 打造成开发与生产环境一致的解决方案——在本地 Windows 上通过 WSL 使用 Azure Linux 开发，随后直接将同一环境部署到 Azure 生产环境，以减少“本地能跑、云端出错”的环境差异问题。 随着 WSL Containers 功能在 Windows 11 中上线，开发者可以在本地通过 WSL 构建、运行和测试 Linux 容器，并将其一键部署到 Azure Linux 上，而无需离开 Windows 生态。
+
+对于普通用户而言，是否需要关注 Azure Linux 4.0，则可以更现实地看待。 目前 Azure Linux 4.0 仍处于公众预览阶段，明确标注“不可用于生产环境”，目标用户主要是面向 Azure 云端服务器和容器工作负载的开发者和企业团队。 如果日常在个人电脑上使用 Ubuntu，或在企业环境中部署 RHEL、Fedora 等发行版，Azure Linux 现阶段并不会取代这些成熟产品。 更重要的是，它显示出微软已成为一个维护真实生产级 Linux 发行版的厂商，这一发行版已经在 LinkedIn 和 Databricks 等大型互联网服务中承担关键工作负载，并开始向更广泛的用户群体开放，作为 Azure 平台上的一等公民选项。
+
+
