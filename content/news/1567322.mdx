@@ -1,0 +1,20 @@
+---
+title: "微软Authenticator将阻止在越狱/root设备上使用工作、学校账号"
+date: "2026-06-30T10:36:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1567322.htm"
+summary: "微软在其Microsoft365企业版管理门户更新说明，明确了此前在Authenticator应用中加入“越狱/root检测”功能的适用范围。当前，这一功能仅针对使用MicrosoftEntra凭据的工作或学校账号生效，包括企业、学校、大学以及与Microsoft365、Teams、Outlook（工作版）、Azure、Intune等相关的工作或学习账号。一旦Authenticator检测到设备为"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1567322.png"
+slug: "1567322-微软Authenticator将阻止在越狱-root设备上使用工作-学校账号"
+id: "1567322"
+---
+
+Authenticator 当前的越狱 / root 检测并不会影响保存在应用内的第三方双重验证（2FA）代码，例如 GitHub、Cloudflare、Facebook、Instagram 等通过扫描二维码添加的普通服务账号，这类代码在已 root 设备上仍可继续使用。 微软也表示，暂未计划将该检测强制应用到个人 Microsoft 账号或一般第三方服务。 不过，如果某些第三方服务通过企业 Entra 账号使用“使用 Microsoft 登录”（例如企业 GitHub 账号绑定公司 Microsoft 登录），则会沿着企业工作账号路径受到这项限制；而像普通 Stripe 这类仅保存为 2FA 代码的账号则不在封锁范围内。
+
+微软原计划自 2026 年 2 月起推送这项变更，但目前仍在逐步落地，最新目标是在 2026 年中前后完成全面 rollout。 推送采用分阶段方式，系统不会“突然”锁死 Authenticator 要求用户立刻更换设备，而是先在应用内弹出设备状态警告。 对于越狱 iOS 设备，Authenticator 会显示“Your device is jailbroken”的提示；对于已 root Android 设备，则会显示“Your device is rooted”提示，说明后续将无法继续使用 Authenticator。
+
+在警告阶段，用户可以暂时忽略并点击“继续”，但 Authenticator 主页会始终展示横幅提醒，防止用户忽视风险与后续封锁。 最终阶段中，用户不仅无法在 Authenticator 中添加新凭据，还会被阻止使用该应用进行登录批准，届时只能通过撤销设备越狱 / root 状态或更换为未越狱、未 root 的新设备来恢复正常使用。
+
+微软强调，这项越狱 / root 检测功能属于“默认安全设置”，对所有相关客户统一启用，用户和组织都无法选择退出。 官方说明中指出，越狱 / root 设备用户将在分阶段 rollout 中依次经历警告、限制直至封锁，各阶段之间的预计时间间隔大约为一个月，以便组织和用户有时间评估影响并调整设备策略。 微软还表示，将在近期继续通过管理门户等渠道沟通具体时间表，一部分用户将在未来几天内率先看到警告和封锁提示，剩余用户则会在 7 月底前陆续接收这次安全更新。
+
+
