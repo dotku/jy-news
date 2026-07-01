@@ -1,0 +1,65 @@
+---
+title: "Can regularization based JEPA (e.g. SIGReg) scale and compete with SOTA foundation models (DINO)? He"
+date: "2026-06-30T22:44:30.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@randall_balestr"
+link: "https://x.com/randall_balestr/status/2072088917348630648"
+image: "https://pbs.twimg.com/media%2FHMGJbemXgAARWrX.png"
+slug: "ylecun-2072088917348630648"
+---
+
+Can regularization based JEPA (e.g. SIGReg) scale and compete with SOTA foundation models (DINO)? Here is the answer: yes and with 10x less data.
+
+VISReg (slight variation of SIGReg) competes with DINOv2-LVD142M while only training on inet22k.
+
+Try it out: https://huggingface.co/BooBooWu/visreg
+
+
+
+
+Haiyu Wu (@HaiyuWu1)
+
+Working on world model or SSL? You definitely need to try our new work: VISReg!
+
+
+
+What does it achieve?
+
+💪 Strong collapse prevention: High gradient when embedding collapse
+
+⚡ Friendly to scale training: Linear complexity to scaling factors
+
+🧩 Easy to train: Similar to LeJEPA, it is a heuristic-free method
+
+🏆 Best OOD performance: Achieving the best accuracy on 6 OOD datasets
+
+📉 Data efficiency: Achieving a similar OOD average accuracy to DINOv2 with 90% less data
+
+🧬 Robust to low-quality datasets: It is robust to long-tailed and sparse datasets
+
+
+
+Our results also indicate that SIGReg type methods can scale up, filling in the missing piece in https://nitter.net/ylecun's great talk https://piped.video/watch?v=72Xj8k5WQX4.
+
+
+
+A big thanks to my co-author https://nitter.net/randall_balestr and my manager https://nitter.net/DrMorganLevine. Also, huge gratitude to https://nitter.net/ylecun for connecting us to make this project happen! 🤝
+
+
+
+https://nitter.net/search?f=tweets&q=%23SelfSupervisedLearning https://nitter.net/search?f=tweets&q=%23JEPA https://nitter.net/search?f=tweets&q=%23WorldModel
+
+
+Video
+
+  
+
+
+
+
+
+— https://nitter.net/HaiyuWu1/status/2070866534462087626#m
