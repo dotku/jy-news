@@ -1,0 +1,65 @@
+---
+title: "Aaron Burnett (@aaronburnett)  Grok 4.5 is looking like a success with help from Cursor data but und"
+date: "2026-07-09T16:49:42.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: false
+original_author: "@elonmusk"
+link: "https://x.com/elonmusk/status/2075261123264164276"
+image: "https://pbs.twimg.com/media%2FHMzO_h8WMAEu3k3.jpg"
+slug: "elonmusk-2075261123264164276"
+---
+
+Aaron Burnett (@aaronburnett)
+
+Grok 4.5 is looking like a success with help from Cursor data but underneath the surface we expect future Grok/Cursor model training is likely to speed up in the coming months. 
+
+
+
+We've spent several months getting up to speed on the SpaceXAI business, especially the tech underneath it.
+
+
+
+The C rewrite was under appreciated by the investor community so we dug in to quantify its impact. including building a physics first model that functions as a stopwatch for the SpaceXAI model factory.
+
+
+
+Bottomline: C-rewrite gets SpaceXAI faster model cycles, leveraging 33% more tokens/second/GPU against SOTA competition resulting in the potential to shipping new models every ~3.5 weeks. 
+
+
+
+two core learnings from this modeling exercise:
+
+
+
+1: the training cycle speed up is primarily coming from RL (not pretraining) where the increased tokens/second/GPU advantage can shave up 2+ weeks off full model training cycle. 
+
+
+
+2: the rewrite itself should compound the time savings as model sizes grow. at ~2T shaving off 2-3 weeks, ~8 weeks at 6T, and 15 weeks at 10T. 
+
+
+
+Note: a 20T parameter model likely runs into a data bottleneck prior to a training speed bottleneck but the directional advantage stands. Also we assume tokens/second/gpu advantage will melt over time as competitors try to match it.
+
+
+
+when you do the math, in true SpaceX and Elon fashion, it looks like they are attempting to build a SOTA model factory that can pump out bigger models faster than anyone else. 
+
+
+
+Full analysis here for the public:
+
+https://research.33fg.com/analysis/what-spacexai-s-c-rewrite-gamble-buys
+
+
+
+
+
+
+
+
+
+— https://nitter.net/aaronburnett/status/2074995041248940483#m
