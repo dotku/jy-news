@@ -1,0 +1,18 @@
+---
+title: "Google发布JavaScript库LiteRT.js 加快浏览器中的AI和机器学习运行速度"
+date: "2026-07-10T09:33:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1568554.htm"
+summary: "Google近日发布了全新的JavaScript库——LiteRT.js，旨在显著提升网页浏览器端的机器学习与人工智能工作负载的处理速度。这一举措标志着Google正将其移动端优化的LiteRT运行时引入Web平台，从而使得AI模型能够直接在本地浏览器环境中高效运行，无需依赖服务器端的处理。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1568554.webp"
+slug: "1568554-Google发布JavaScript库LiteRT-js-加快浏览器中的AI和机器学习运行速度"
+id: "1568554"
+---
+
+相较于现有的TensorFlow.js，LiteRT.js展现出了明显的性能优势。据悉，该库利用了WebAssembly技术，并深度整合了WebGPU和WebNN等硬件加速接口，以此替代了此前基于JavaScript内核的TensorFlow.js，从而实现了更高效的计算能力。Google在搭载M4芯片的2024款MacBook Pro上进行的测试显示，这一全新运行时的处理速度达到了现有方案的3倍。
+
+此前，LiteRT运行时主要服务于Android和iOS移动平台。随着此次更新，开发者现在可以通过WebAssembly在网页端获得更为强大的AI部署能力。对于正在使用TensorFlow.js的开发者而言，迁移过程相对平滑，如果已拥有.tflite文件，仅需将JavaScript运行时切换为LiteRT.js即可；若使用的是TensorFlow/Keras SavedModel格式，则可以通过Python TensorFlow包中内置的LiteRT转换器进行适配。
+
+此次发布引发了业界的关注，许多人开始推测Google是否会逐步削减对TensorFlow.js的支持或将其优先级降低，并期待该库在除苹果硬件之外的更广泛设备上的实际表现。
+
+
