@@ -1,0 +1,39 @@
+---
+title: "Locally straightening the latent trajectory can largely reduce the optimization difficulty of world "
+date: "2026-07-14T23:44:15.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@HaiyuWu1"
+link: "https://x.com/HaiyuWu1/status/2077177383883624703"
+image: "https://pbs.twimg.com/media%2FHNObWMfbcAATkHY.png"
+slug: "ylecun-2077177383883624703"
+---
+
+Locally straightening the latent trajectory can largely reduce the optimization difficulty of world model planning!
+
+
+
+Sounds confusing? Not sure how to achieve it? Don't worry.
+
+
+
+After the math derivation, the final implementation is very simple: increasing the cosine similarity between adjacent velocity vectors.
+
+
+
+L_curv = 1 - cos(v_t, v_(t+1))
+
+
+
+Another interesting finding: Applying this loss to patch tokens is more effective than applying it to the CLS token (we are far from fully leveraging the pre-trained model, lol).
+
+
+
+Since this paper was done before Le-WM, I wonder if anyone has tested this loss on Le-WM? In this paper, long-horizon planning remains quite challenging (i.e., planning horizon: 50, dataset: PushT, best success rate: 36.00%).
+
+
+
+https://nitter.net/search?f=tweets&q=%23WorldModel
