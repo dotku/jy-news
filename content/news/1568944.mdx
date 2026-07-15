@@ -1,0 +1,20 @@
+---
+title: "FreeBSD 16已完成移除基础系统中残留的全部GPL代码"
+date: "2026-07-15T06:40:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1568944.htm"
+summary: "开源操作系统FreeBSD近日迎来了一个重要的里程碑。根据最新的代码提交记录，FreeBSD16开发分支已正式移除其基础系统中的最后一段GNUGPL授权代码。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1568944.webp"
+slug: "1568944-FreeBSD-16已完成移除基础系统中残留的全部GPL代码"
+id: "1568944"
+---
+
+此次移除的核心内容是传统的 dialog 实现。长期以来，这一工具作为 FreeBSD 基础系统的一部分存在，但随着项目推进，FreeBSD 开发者团队已逐步完成了平滑过渡：首先是安装程序迁移至使用 bsddialog，随后 dpv 工具也停止了对原版 dialog 的依赖，直至近日该实现被彻底清理。
+
+随着 dialog 的退役，FreeBSD 基础系统中的 GNU 子树也已正式成为历史。这也标志着 FreeBSD 在经过长期的开发迭代后，成功完成了基础系统代码的去 GPL 化。目前，FreeBSD 16.0 版本正处于积极的开发阶段，预计将于 2027 年 12 月正式发布。
+
+了解更多：
+
+https://github.com/freebsd/freebsd-src/commit/134a4c78d070f8c4ea43a060a7ae28d22ac39558
+
+
