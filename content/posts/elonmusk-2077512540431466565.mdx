@@ -1,0 +1,31 @@
+---
+title: "I've inspected the open-sourced Grok Build so you don't have to. Here's exactly what data it sends ("
+date: "2026-07-15T21:56:02.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: true
+original_author: "@MiaAI_lab"
+link: "https://x.com/MiaAI_lab/status/2077512540431466565"
+image: "https://pbs.twimg.com/media%2FHNTNziSWoAEz-_U.jpg"
+slug: "elonmusk-2077512540431466565"
+---
+
+I've inspected the open-sourced Grok Build so you don't have to. Here's exactly what data it sends (and what stays local):
+
+
+
+Core (unavoidable)→ Your prompts/conversations + tool calls go to xAI's inference API. That's the whole point of the CLI.
+
+
+
+Everything else is off by default — no Mixpanel, no Sentry, no product telemetry unless you explicitly turn it on. Even the auto-update check is a simple version GET you can disable in config.
+
+
+
+Purely local stuff (crash reports, debug logs, secret redaction, auth) never touches the network. All telemetry paths also scrub secrets before anything is sent.
+
+
+
+Full details 👇
