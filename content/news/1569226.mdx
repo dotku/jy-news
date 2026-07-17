@@ -1,0 +1,18 @@
+---
+title: "PS5模拟器SharpEmu开发进度 已能加载几款大作"
+date: "2026-07-17T08:07:00"
+category: "game"
+source: "https://www.cnbeta.com.tw/articles/game/1569226.htm"
+summary: "近日PS5模拟器SharpEmu官方公布开发进度，其虽然暂时无法运行完整游戏，但已支持加载真实游戏的eboot.bin，执行原生CPU指令。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1569226.jpg"
+slug: "1569226-PS5模拟器SharpEmu开发进度-已能加载几款大作"
+id: "1569226"
+---
+
+这款PS5模拟器采用C#编写，可加载真实游戏的eboot.bin与.elf文件，执行原生CPU指令，并部分处理内核功能。其可以读取游戏标题和版本等基础元数据，并支持通过prx与sys_module加载系统模块，部分支持内核函数。
+
+项目功能还包括处理Fiber和AMPR导出，支持PlayGo场景，以及初始加载游戏文件。图形部分已具备着色器和资源提交功能，并包含AGC的初步处理。
+
+SharpEmu本质上类似ShadPS4，充当PS5游戏转换层，调用PC的CPU和GPU等组件处理运行游戏。目前该项目仍处于早期开发阶段，已测试成功加载《寂静岭：短信》《梦中的莎拉》《恶魔之魂》等游戏。
+
+
