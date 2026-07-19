@@ -1,0 +1,31 @@
+---
+title: "latent actions are having a moment, especially in robotics: instead of predicting a robot's actual j"
+date: "2026-07-18T21:24:00.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@aimalysheva"
+link: "https://x.com/aimalysheva/status/2078591641502580745"
+image: "https://pbs.twimg.com/media%2FHNV51l8XsAAMyz-.jpg"
+slug: "ylecun-2078591641502580745"
+---
+
+latent actions are having a moment, especially in robotics: instead of predicting a robot's actual joint commands or game controller inputs, you learn a compact latent code that just explains what changed between two frames, no action labels needed anywhere in training
+
+
+
+Genie (Bruce et al, DeepMind 2024, http://arxiv.org/abs/2402.15391) was the clean proof of concept: an inverse model looks at consecutive frames, infers a small discrete latent action that explains the transition, and that learned action space alone is enough to make the generated video controllable frame by frame, despite the model never seeing a single ground-truth action label (the same latent space also turns out to transfer, you can use it to train imitation agents on videos that were never annotated for any specific robot)
+
+
+
+(and in the same research cluster: Video as the New Language for Real-World Decision Making, http://arxiv.org/abs/2402.17139 by https://nitter.net/sherryyangML et al., argues the broader case for video itself as the general interface, not just for latent actions specifically)
+
+
+
+the harder problem is generalizing latent actions beyond narrow domains: Genie was trained on platformer game footage with one consistent embodiment and clean signal, while a new paper from FAIR (https://nitter.net/garridoq_, Nagarajan, Terver, Ballas, https://nitter.net/ylecun, Rabbat, http://arxiv.org/abs/2601.05230) pushes latent action learning onto actual in-the-wild internet video, which means no shared embodiment across clips and a lot more environmental noise to filter out before the latent action means anything consistent
+
+
+
+why robotics specifically cares: action labels require teleoperation or motion capture, which doesn't scale, however unlabeled video of things happening in the world is nearly infinite, so if the latent action space generalizes, you get to train on all of it instead of just what you paid someone to label
