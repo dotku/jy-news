@@ -1,0 +1,32 @@
+---
+title: "大神将CS完美移植到PSP 12MB内存稳定60帧"
+date: "2026-07-20T14:35:00"
+category: "game"
+source: "https://www.cnbeta.com.tw/articles/game/1569564.htm"
+summary: "开发者YifengWang近日将经典射击游戏CS移植到初代PSP掌机上，项目命名为OpenStrike，仅占用12MB内存即可稳定运行60帧。YifengWang为该项目搭建了双引擎架构：底层使用Rust语言自研的3D引擎Pocket3D，负责玩家移动、碰撞检测、AI机器人、武器、子弹和场景绘制等对帧率要求极高的任务。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1569564.jpg"
+slug: "1569564-大神将CS完美移植到PSP-12MB内存稳定60帧"
+id: "1569564"
+---
+
+上层使用自研JavaScript引擎PocketJS，通过内嵌的QuickJS执行JavaScript和TypeScript，处理游戏规则、武器参数和血量、弹药、准星、比分等界面逻辑。
+
+这种分层设计让开发者只需修改rules.ts文件就能调整回合流程、机器人数量或武器设定，无需重新编译整个3D引擎。
+
+初代PSP配备32MB内存，但实际留给用户程序的可用空间约24MB，根据Yifeng Wang公开的内存分析，Rust引擎、QuickJS、JavaScript程序和处理完成的地图执行文件约占6.2MB，QuickJS堆、引擎状态和每帧顶点缓存区使用峰值约4.4MB，整体占用约12MB，剩余约13MB可用空间。
+
+OpenStrike能在PSP上维持60帧的关键在于尽可能减少不必要的运算，原版CS使用GoldSrc时代的BSP地图格式，BSP全称二元空间分割，会将整张地图切分为多个区域，地图文件中包含PVS（可能可见区域）数据。
+
+引擎通过查表就能瞬间判断画面可视范围，墙后看不到的房间和通道直接跳过检测和绘制，不浪费GPU性能。
+
+现代显卡有足够算力处理更复杂的遮蔽剔除算法，但PSP最缺的就是运算资源，直接沿用1990年代预计算好的结果反而更高效。
+
+光影处理采用同样思路，GoldSrc地图原本附带Lightmap记录墙面和物件的阴影明暗变化，OpenStrike没有让PSP在运行时重新计算光影，而是在电脑编译阶段将Lightmap结果放进模型顶点颜色。
+
+PSP只需按顶点颜色绘制三角形，硬件自动完成颜色渐变，无需叠加实时光影层。代价是画面没有动态光源和华丽阴影，但对于4.3英寸、480×272分辨率的PSP屏幕来说，这个取舍完全合理。
+
+目前OpenStrike为v0.1概念验证版本，已测试8张经典CS地图，包括de_dust、de_dust2、de_inferno和cs_office。玩家可在地图中与AI机器人进行歼灭战，消灭所有机器人即获胜，玩家先死亡则判定失败，游戏自动开始下一回合并保留比分。
+
+项目已以MIT授权在GitHub开源，支持桌面版和PSP的EBOOT执行文件，也可通过PPSSPP模拟器运行。
+
+
