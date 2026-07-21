@@ -1,0 +1,136 @@
+---
+title: "Backpropagation by hand ✍️ ~ 11 steps walkthrough below    Backpropagation is the algorithm that act"
+date: "2026-07-20T14:15:09.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: true
+original_author: "@ProfTomYeh"
+link: "https://x.com/ProfTomYeh/status/2079208495094677511"
+image: "https://pbs.twimg.com/ext_tw_video_thumb%2F2079208483669315584%2Fpu%2Fimg%2FdDD0x6lHYHuV1POQ.jpg"
+slug: "elonmusk-2079208495094677511"
+---
+
+Backpropagation by hand ✍️ ~ 11 steps walkthrough below
+
+
+
+Backpropagation is the algorithm that actually trains a neural network, and it is where most people stop following along. It is not calculus you cannot do. It is matrix multiplication, working backward, one layer at a time.
+
+
+
+So I drew and calculated one entirely by hand.
+
+
+
+Goal: push the loss gradient back through a 3-layer network and land on a new value for every weight and bias.
+
+
+
+= 1. Given =
+
+
+
+A 3-layer perceptron, an input X, predictions Ypred = [0.5, 0.5, 0], and the truth Ytarget = [0, 1, 0].
+
+
+
+= 2. Backprop gradient cells =
+
+
+
+Let us draw empty cells for every gradient we are about to compute. The shape of the answer comes first.
+
+
+
+= 3. Layer 3 softmax =
+
+
+
+We get dL/dz3 straight from Ypred minus Ytarget = [0.5, -0.5, 0]. No chain rule needed, and that shortcut is the whole reason softmax and cross-entropy are paired.
+
+
+
+= 4. Layer 3 weights and biases =
+
+
+
+Let us multiply dL/dz3 by [a2 | 1]. One multiplication gives the gradient for W3 and b3 together.
+
+
+
+= 5. Layer 2 activations =
+
+
+
+We multiply dL/dz3 by W3 to get dL/da2. The gradient moves back across a layer the same way the signal moved forward.
+
+
+
+= 6. Layer 2 ReLU =
+
+
+
+Let us pass it through the gate: keep the gradient where the activation was positive, zero it everywhere else.
+
+
+
+= 7. Layer 2 weights and biases =
+
+
+
+We multiply dL/dz2 by [a1 | 1]. The same figure as step 4, one layer up.
+
+
+
+= 8. Layer 1 activations =
+
+
+
+Let us multiply dL/dz2 by W2.
+
+
+
+= 9. Layer 1 ReLU =
+
+
+
+We apply the same gate again, now on a1.
+
+
+
+= 10. Layer 1 weights and biases =
+
+
+
+Let us multiply dL/dz1 by [x | 1], and every weight in the network now has a gradient.
+
+
+
+= 11. Update =
+
+
+
+We subtract, and the network has learned. In practice a learning rate scales this step.
+
+
+
+The gradients:
+
+dL/dz3 = [0.5, -0.5, 0]
+
+dL/da1 = [1, -2, 2, -1]
+
+dL/dz1 = [0, -2, 2, -1]
+
+
+
+The takeaway: matrix multiplication is all you need. Just like the forward pass, backpropagation is matrix multiplications end to end. You can do every one by hand, slowly and imperfectly, which is exactly why a GPU's ability to do them fast mattered so much to deep learning.
+
+
+
+💾 Save this post!
+
+
+Video
