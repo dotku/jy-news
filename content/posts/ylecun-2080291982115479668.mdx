@@ -1,0 +1,63 @@
+---
+title: "World Modeling with JEPA has recently gained traction thanks to a novel anti-collapse mechanism call"
+date: "2026-07-23T14:00:33.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@reza_byt"
+link: "https://x.com/reza_byt/status/2080291982115479668"
+image: "https://pbs.twimg.com/media%2FHN6st85WkAAL9fv.jpg"
+slug: "ylecun-2080291982115479668"
+---
+
+World Modeling with JEPA has recently gained traction thanks to a novel anti-collapse mechanism called "SIGReg" (by https://nitter.net/ylecun and https://nitter.net/randall_balestr). The math is clean, but it is rarely explained from first principles, so I broke it down in a detailed blog post 📰
+
+
+
+Here is the summary (🧵):
+
+
+
+The problem: in JEPA, both sides of the prediction loss go through the same encoder. Map every input to a single constant point, the predictor matches it trivially, and the loss hits exactly zero. Perfect score, zero information. Gradient descent finds this solution by default.
+
+
+
+Prior work patched around it with stop-gradients, EMA teacher-student models, frozen pretrained encoders, and VICReg-style losses with 6+ hand-tuned coefficients. Each adds instability, hyperparameters, or a dependency on someone else's pretraining.
+
+
+
+---
+
+
+
+SIGReg replaces all of that with one regularizer built on a single claim: force the batch of embeddings to look like samples from an isotropic Gaussian, N(0, I). LeJEPA proves this isn't arbitrary. It's the distribution that minimizes worst-case downstream risk across linear and nonlinear probes.
+
+
+
+But "make the embeddings Gaussian" is easy to say and hard to compute. You can't estimate a density in 200+ dimensions from a small batch. The fix is a chain of four classical results: compare Fourier transforms instead of densities, turn that comparison into a single scalar, approximate the integral with ~16 points, and lift the whole thing from 1D to any dimension with a theorem from 1936. Each step is simple. The stack is what makes it work. Read the subsequent posts in this thread to understand each step.
+
+
+
+---
+
+
+
+But why it provably works: the only distribution for which SIGReg = 0 is N(0, I), which is full rank by construction, with every eigenvalue equal to 1. A collapsed low-rank encoder cannot be a minimum. It's not just unlikely to converge there—it's mathematically excluded.
+
+
+
+And the training loop stays boring:
+
+
+
+total loss = prediction + λ·SIGReg
+
+
+
+The encoder gets gradients from both terms; the predictor gets gradients from the prediction term only. No alternating updates, no stop-gradients, no two-timescale tricks.
+
+
+
+Now check out the breakdown below. 👇
