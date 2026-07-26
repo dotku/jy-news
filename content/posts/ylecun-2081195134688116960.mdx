@@ -1,0 +1,167 @@
+---
+title: "Recent discussions about open-sourcing make me feel that I should go back and revisit these importan"
+date: "2026-07-26T01:49:21.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@HaiyuWu1"
+link: "https://x.com/HaiyuWu1/status/2081195134688116960"
+image: "https://pbs.twimg.com/media%2FHOHiy1Na4AAfPPq.jpg"
+slug: "ylecun-2081195134688116960"
+---
+
+Recent discussions about open-sourcing make me feel that I should go back and revisit these important open-source works in representation learning that pushed the field forward and eventually made vision foundation models so useful in applications.
+
+
+
+These are the papers that come to mind. Feel free to correct my opinions and share any important papers that I may have missed.
+
+
+
+MoCo v1 (2019-11) – ResNet
+
+Method: contrastive loss + a queue of samples from previous batches for negative pairing + EMA-based weight updates
+
+# of training branches: 2
+
+Effect: EMA-based weight updates became an important training paradigm in later representation learning algorithms, but this work used EMA only to produce stable embeddings for negative samples.
+
+
+
+SimCLR (2020-02) – ResNet
+
+Method: contrastive loss + more augmentations + an MLP projector to capture the effects of augmentations
+
+# of training branches: 2
+
+Effect: An MLP projector became the gold standard in representation learning algorithms.
+
+
+
+BYOL (2020-06) – ResNet
+
+Method: positive pairs only + an asymmetric architecture + stop-gradient + SimCLR augmentations + EMA
+
+# of training branches: 2
+
+Effect: Probably the first representation learning method without negative pairs. It inspired DINO and probably JEPA in terms of architectural design.
+
+
+
+SwAV (2020-06) – ResNet
+
+Method: global/local views + SimCLR augmentations + class prototypes
+
+# of training branches: 2
+
+Effect: Its global/local-view training became the standard setting in later representation learning methods.
+
+
+
+SimSiam (2020-11) – ResNet
+
+Method: BYOL without EMA + a constant learning rate for the predictor
+
+# of training branches: 2
+
+
+
+Barlow Twins (2021-03) – ResNet
+
+Method: global views + SimCLR augmentations + batch-level covariance optimization
+
+# of training branches: 2
+
+Effect: The optimization target changed. Previous works used cosine similarity, but this work uses covariance, which explicitly regularizes the latent space.
+
+
+
+MoCo v3 (2021-04) – ViT
+
+Method: MoCo v1 - memory bank + SimCLR augmentations and an MLP + a frozen first layer
+
+# of training branches: 2
+
+Effect: The first work to show that ViT can be used for representation learning.
+
+
+
+DINO (2021-04) – ViT
+
+Method: BYOL - the predictor + global/local views + softmax distillation + centering + temperature sharpening
+
+# of training branches: 2
+
+Effect: Enabled the era of large-scale vision foundation models.
+
+
+
+VICReg (2021-05) – ViT
+
+Method: Barlow Twins → branch-level covariance + variance + sample-level invariance
+
+# of training branches: 2 or 1
+
+Effect: The first representation learning method to support stable one-branch training without EMA, centering, layer freezing, temperature sharpening, or stop-gradient.
+
+
+
+MAE (2021-11) – ViT
+
+Method: learning representations through pixel reconstruction
+
+# of training branches: 1
+
+Effect: A simple, simple, and simple training strategy that is widely used in medical imaging, from what I have heard.
+
+
+
+I-JEPA (2023-01) – ViT
+
+Method: learning representations through latent prediction
+
+# of training branches: 2
+
+Effect: The first representation learning method in the spirit of JEPA. It is also the basis of V-JEPAs, VL-JEPA, and so on.
+
+
+
+DINOv2 (2023-04) – ViT
+
+Method: DINO v1 + SK centering + KoLeo + LayerScale
+
+# of training branches: 2
+
+Effect: The first large vision foundation model to show superior performance across a wide range of downstream tasks.
+
+
+
+DINOv3 (2025-08) – ViT
+
+Method: DINO v2 + Gram anchoring + flattened schedules
+
+# of training branches: 2
+
+Effect: The first large vision foundation model to show superior performance on fine-grained tasks, such as segmentation and depth estimation, and to achieve accuracy comparable to supervised learning methods on ImageNet-1K.
+
+
+
+LeJEPA (2025-11) – ViT + others
+
+Method: VICReg → full-distribution regularization. It provides mathematical proofs of why an isotropic distribution is the ideal target for the latent space and proposes SIGReg, a method that is linear in the scaling factors.
+
+# of training branches: 1
+
+Effect: No heuristics are needed for training stability. It provides a simple solution for various tasks, including world models, such as the LeWM series; multimodal learning, such as LeVLJEPA; drone applications, such as SkyJEPA; and so on.
+
+
+
+VISReg (2026-06) – ViT
+
+Method: SIGReg → a faster and stronger anti-collapse method that can form an isotropic Gaussian distribution more efficiently. It decomposes the regularization into center, variance, and shape losses, allowing the model to begin introducing isotropy at an early stage of training.
+
+# of training branches: 1
+
+Effect: It is too new to summarize concretely.
