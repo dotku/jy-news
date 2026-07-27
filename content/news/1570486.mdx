@@ -1,0 +1,18 @@
+---
+title: "Google低调上线Linux arm64版Chrome浏览器"
+date: "2026-07-27T14:45:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1570486.htm"
+summary: "Google现已提供适用于Linuxarm64架构设备的Chrome浏览器下载。这意味着树莓派（RaspberryPi）等单板机（SBC）用户、AI桌面设备使用者以及搭载高通骁龙（Snapdragon）芯片的笔记本用户，不仅能更便捷地同步书签与密码，还能借助原生的Widevine模块播放受DRM保护的高清内容。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1570486.webp"
+slug: "1570486-Google低调上线Linux-arm64版Chrome浏览器"
+id: "1570486"
+---
+
+不过，Google目前尚未正式对外宣布这一进展，也未在官方下载页面主动推介该版本。此前，OMG! Ubuntu 的 Joey Sneddon 在使用树莓派访问Google Chrome 下载页面时，系统默认推荐的是无法运行的 amd64 版本。随后他通过手动修改 URL 地址（https://dl.google.com/linux/direct/google-chrome-stable_current_arm64.deb），成功获取了 arm64 版安装包。
+
+在此之前，虽然 Chromium 核心以及 Vivaldi 等基于 Chromium 的第三方浏览器已支持 arm64 架构，但 Chromium 缺乏Google账号同步功能和 Widevine 模块，导致用户无法正常观赏加密视频。本次推出的 arm64 安装包内置了原生的 aarch64 版 Widevine 模块，而非依靠兼容层运行。此外，在安装该 .deb 包后，系统会自动添加Google的官方软件源，方便用户后续接收常规更新。
+
+这一动作距离Google首次表态将推出 Chrome 的 arm64 构架 Linux 版本已过去四个月。需要注意的是，由于Google尚未正式发布该版本，且未将其列为默认下载选项，该构建版本可能仍处于稳定性测试阶段。对于重视系统稳定性的用户而言，暂缓安装或许是更为稳妥的选择。
+
+
