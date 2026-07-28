@@ -1,0 +1,20 @@
+---
+title: "Kimi K3正式开源：2.8万亿参数模型权重、技术报告同步发布"
+date: "2026-07-28T08:20:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1570598.htm"
+summary: "7月28日，月之暗面（MoonshotAI）昨日深夜宣布开源KimiK3模型权重、发布技术报告，并同步开放MoonEP、FlashKDA、AgentEnv三项关键基础设施（Infra）技术。此次开放涵盖模型、训练方法以及底层训练系统，开发者可下载模型进行部署和二次开发，具体使用范围需遵循KimiK3许可证。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1570598.webp"
+slug: "1570598-Kimi-K3正式开源-2-8万亿参数模型权重-技术报告同步发布"
+id: "1570598"
+---
+
+官方介绍显示，Kimi K3采用混合专家（MoE）架构，总参数规模达到2.8万亿，具备原生视觉理解能力，并支持100万Token上下文窗口。相较上一代Kimi K2.5，Kimi K3参数规模提升约3倍。月之暗面表示，在算力资源有限的情况下，借助Kimi Delta Attention、Attention Residuals以及MoonEP等技术，其模型规模化效率提升约2.5倍。
+
+与模型权重同步发布的还有Kimi K3技术报告。根据公开内容，报告披露了模型训练与架构设计的多项技术细节，包括KDA与Gated MLA混合注意力结构、Stable LatentMoE专家路由机制、MoonViT-V2视觉编码器训练方案以及模型后训练和评测方法。其中，模型采用896个路由专家、每个Token激活16个专家的MoE设计，并覆盖通用推理、Agent及编程Agent等多个能力方向的训练与评估。
+
+除模型本身外，月之暗面还宣布开源支撑Kimi K3训练的关键基础设施技术。其中，MoonEP是一套面向大规模MoE模型的高性能专家并行通信库；FlashKDA是Kimi Delta Attention对应的高性能计算算子，官方数据显示，其在英伟达H20上的Prefill速度相比flash-linear-attention基线提升1.72至2.22倍；AgentEnv则是月之暗面与KVCache.ai合作开发的Agent沙箱系统，可支持快速快照、恢复及Fork等能力，用于大规模Agent训练环境。
+
+月之暗面表示，此次开放旨在推动开放权重模型生态的发展，希望通过开放模型、训练方法及底层基础设施，降低模型部署和开发门槛，为AI社区及相关研究提供更多可复用的技术资源。
+
+
