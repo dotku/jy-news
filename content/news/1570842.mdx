@@ -1,0 +1,22 @@
+---
+title: "Kimi K3模型现已通过Fireworks AI在微软Foundry平台上线部署"
+date: "2026-07-29T23:56:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1570842.htm"
+summary: "开源AI模型正大幅缩小与OpenAI、Anthropic以及Google等公司闭源模型之间的性能差距。本月早些时候，总部位于北京的月之暗面MoonshotAI正式发布了开源模型KimiK3，该模型在代码编写、文档处理以及智能体基准测试中均展现出了超越数个前沿模型的实力。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1570842.png"
+slug: "1570842-Kimi-K3模型现已通过Fireworks-AI在微软Foundry平台上线部署"
+id: "1570842"
+---
+
+微软宣布，Kimi K3 现已通过 Fireworks AI 在 Microsoft Foundry 平台正式上线。依托这一集成，Azure 客户现在能够利用 Fireworks AI 针对开源模型优化的推理基础设施，同时借助 Microsoft Foundry 提供企业级的部署、安全保障、监控与治理服务。早在今年 3 月，微软便已宣布在 Azure 上公开预览对 Fireworks AI 模型的支持，由 Fireworks 的高吞吐量推理堆栈来处理无缝请求，在确保极佳性能的同时兼顾 Azure 级别的管理规范。
+
+作为一款拥有 2.8 万亿参数的混合专家（Mixture-of-Experts）模型，Kimi K3 具备原生多模态能力，并支持高达 100 万token的上下文窗口。在推理过程中，该模型在每个 token 上仅会激活 896 个专家中的 16 个，从而有效降低所需的计算开销。凭借庞大的上下文窗口，开发者能够使用该模型轻松分析整套代码库、冗长的法律文书、海量的研究资料甚至是数小时的会议记录。
+
+在各项基准测试中，Kimi K3 的表现同样亮眼：其在 FrontierSWE 测试中斩获 81.2 分，超越了 GPT-5.6 Sol 与 Claude Opus 4.8。同时，它在 BrowseComp、SWE Marathon、AutomationBench、SpreadsheetBench 2 以及 OmniDocBench 等测试中也取得了领先成绩。
+
+目前，Microsoft Foundry 客户可通过 Fireworks AI 的数据区（Data Zone）部署 Kimi K3。其定价标准为：每百万输入 token 收费 3.30 美元，每百万缓存输入 token 收费 0.33 美元，每百万输出 token 则收费 16.50 美元。
+
+值得注意的是，Kimi K3 并未采用早期 Kimi 模型所使用的宽松型修改版 MIT 许可证。例如，当某家公司在 12 个月周期内的营业收入超过 2000 万美元时，若该企业向第三方提供 Kimi K3 的推理或微调服务，则必须与月之暗面单独协商并签署协议。
+
+
