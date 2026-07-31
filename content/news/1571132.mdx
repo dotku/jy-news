@@ -1,0 +1,54 @@
+---
+title: "DeepSeek-V4-Flash正式版上线 干翻自家先发的Pro版"
+date: "2026-07-31T16:17:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1571132.htm"
+summary: "刚刚，DeepSeek-V4-Flash正式版API上线公测，DeepSeek-V4-Pro正式版也将会在8月初上线。此次更新，距离DeepSeekV4预览版上线已过去3个月。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1571132.jpg"
+slug: "1571132-DeepSeek-V4-Flash正式版上线-干翻自家先发的Pro版"
+id: "1571132"
+---
+
+DeepSeek-V4-Flash正式版采用MoE架构，总参数规模达到284B（激活13B），并支持最长100万token上下文，支持非思考与思考模式切换。其模型结构、尺寸均与DeepSeek-V4-Flash-preview保持一致，仅重新进行了后训练。
+
+DeepSeek V4预览版已完成针对Claude Code 、OpenClaw、OpenCode、CodeBuddy等主流Agent产品的适配和优化，Flash正式版还原生支持OpenAI的Responses API格式并针对性适配Codex（*开发者无需修改Base URL即可切换模型）。
+
+据DeepSeek API文档，DeepSeek-V4-Flash正式版的Agent能力大幅增强，基准测试远超4月上线的DeepSeek-V4-Pro-Preview，成绩如下：
+
+Terminal Bench 2.1: 82.7
+
+NL2Repo: 54.2
+
+Cybergym: 76.7
+
+DeepSWE: 54.4
+
+Toolathlon verified: 70.3
+
+Agent Last Exam: 25.2
+
+Automation Bench (Public): 25.1
+
+DSBench-FullStack: 68.7
+
+DSBench-Hard: 59.6
+
+4月24日，DeepSeek正式发布并开源DeepSeek-V4系列预览版本，其中DeepSeek-V4-Pro主打性能上限，对标闭源旗舰模型；而DeepSeek-V4-Flash则在参数规模与激活规模上大幅缩小，换取更低延迟与更低成本。
+
+DeepSeek-V4-Pro-Preview在Agentic Coding等评测中进入开源第一梯队，内部评测显示交付质量已接近Claude Opus 4.6非思考模式，但与其思考模式仍存在差距。
+
+DeepSeek-V4-Pro-Preview在数学、STEM及竞赛型代码等高难度任务中已超过当前已公开评测的开源模型，整体表现接近甚至比肩GPT-5.4、Claude Opus 4.6-Max等顶级闭源模型。
+
+与此同时，DeepSeek-V4在长上下文效率上给出了一组更激进的优化：在100万token场景下，其单token推理计算量仅为V3.2的27%，KV Cache占用降至约10%，显著降低长链路任务的算力与显存成本。
+
+价格上，DeepSeek-V4-Pro在输入命中缓存的情况下为1元/百万tokens，输入未命中缓存则为12元/百万tokens，输出为24元/百万tokens；DeepSeek-V4-Flash在输入命中缓存仅0.2元/百万tokens，未命中输入1元/百万tokens，输出2元/百万tokens。
+
+结语：价格战拼的是入场券，Agent能力才是决赛圈
+
+今天，OpenAI宣布GPT-5.6 Luna降价80%，Terra降价20%，被业内解读为被国产大模型的低价策略倒逼。价格战打到现在，API调用成本似乎已不再是开发者选用模型的决定性因素，真正稀缺的是能交付的Agent能力。
+
+过去半年，国产玩家在占据价格优势的同时，也在疯狂补齐Agent和Coding的短板。DeepSeek-V4-Flash正式版的Agent能力全面超越此前的Pro预览版，相当于用更便宜的价格交出了更强的干活能力，这是在证明：低价不等于低能。
+
+对开发者而言，价格战比拼的是入局门槛，而模型的Agent能力比拼的才是智能的天花板。
+
+
