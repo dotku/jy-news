@@ -1,0 +1,24 @@
+---
+title: "NVIDIA被曝研发新技术 显存不够SSD来凑"
+date: "2026-08-06T10:43:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1571936.htm"
+summary: "据业内传闻，NVIDIA正在开发一项新技术，该技术将允许未来的GeForce显卡利用高速NVMeSSD作为额外的显存（VRAM）。当显卡的板载显存不足时，GPU可以直接访问存储在SSD上的数据。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1571936.webp"
+slug: "1571936-NVIDIA被曝研发新技术-显存不够SSD来凑"
+id: "1571936"
+---
+
+据报道，这项功能将基于NVIDIA的RTX IO技术和微软的DirectStorage API。RTX IO提供了一条从NVMe SSD到GPU的直接数据通道，允许GPU绕过CPU和系统内存，直接从SSD读取压缩数据并在GPU上进行解压。
+
+•	减轻CPU负担：传统的存储访问路径需要CPU介入，而RTX IO和DirectStorage旨在让GPU直接处理存储I/O，从而显著降低CPU的负载。
+
+•	加速数据加载：这项技术能够大幅提升游戏资源的加载速度，实现“秒进游戏”的体验，并减少游戏中的卡顿。
+
+当GPU的板载显存（VRAM）被耗尽时，这项新技术可以让GPU转而使用速度较慢但容量更大的NVMe SSD作为“后备显存”。这对于需要大量显存的游戏或AI应用场景尤为有用。
+
+然而，SSD的速度远低于物理显存。NVIDIA GreenBoost等类似项目的数据显示，通过PCIe 4.0 x16连接的理论带宽约为32 GB/s，远低于GDDR显存。因此，这种技术更可能用于防止因显存不足导致的程序崩溃或严重卡顿。
+
+虽然官方尚未证实，但利用NVMe SSD作为显存扩展的技术传闻，反映了NVIDIA在应对日益增长的显存需求与硬件成本之间的矛盾时，正在探索基于软件和系统架构的解决方案。这项技术的实现将依赖于RTX IO和DirectStorage等底层生态的成熟。
+
+
