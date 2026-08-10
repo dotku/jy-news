@@ -1,0 +1,26 @@
+---
+title: "AMD警告新漏洞：Zen 1至Zen 4全中招 18分钟读取密码文件"
+date: "2026-08-10T08:11:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1572466.htm"
+summary: "AMD近日发布安全公告AMD-SB-7061，警告一种新型SpectreV2攻击，Zen1至Zen4架构处理器均受影响（大致覆盖锐龙1000至锐龙7000/8000G系列）。该漏洞由MIT计算机科学与人工智能实验室的研究人员DaniëlTrujillo和MengjiaYan发现，研究团队在Linux下对Zen2完成了完整攻击演示，并认为Zen3、Zen4同样可能被攻破。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1572466.webp"
+slug: "1572466-AMD警告新漏洞-Zen-1至Zen-4全中招-18分钟读取密码文件"
+id: "1572466"
+---
+
+该攻击并非远程入侵，需要攻击者已在目标Linux系统上以普通用户权限执行代码，对共享服务器、云系统及运行不可信本地应用的设备而言风险较高。
+
+研究团队在锐龙7 4700G上完成了完整验证，KASLR和Safe RET等防护机制全部开启，攻击者10次尝试全部成功定位Linux内核随机位置，中位耗时548秒。
+
+随后以平均5.47字节/秒的速度、91.97%的准确率读取内核内存，10次测试中有5次在平均18分钟内找到并读取了/etc/shadow文件，该文件存储的是Linux账户密码哈希与账户信息。
+
+攻击原理上，Safe RET是Linux应对推测性返回栈溢出（SRSO）的标准防护机制，在内核返回前清理CPU返回栈缓冲区。
+
+中断注入利用的是Safe RET清理与实际返回之间仅两条指令的极短窗口，通过精确计时触发硬件中断，使处理器中断原始流程，执行中断处理程序，重新影响此前已清理的预测状态。
+
+攻击还通过将Safe RET序列从CPU缓存中清出，拉长这两条指令的执行时间，配合此前的Inception攻击，可在Zen 2上将返回栈缓冲区训练至攻击者指定目标。
+
+Linux下目前已有补丁，名为x86/bugs: Make Safe-RET robust against interrupt injection，且已纳入Linux内核。使用Zen 1至Zen 4架构处理器的Linux用户，建议尽快安装内核及安全更新。
+
+
