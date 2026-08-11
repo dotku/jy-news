@@ -1,0 +1,59 @@
+---
+title: "Meta returns to open weights: Muse Glimmer, its first open-weights release since Llama 4, scores 35 "
+date: "2026-08-10T20:42:37.000Z"
+handle: "ylecun"
+name: "Yann LeCun"
+author_title: "VP & Chief AI Scientist, Meta"
+category: "ai"
+is_rt: true
+original_author: "@ArtificialAnlys"
+link: "https://x.com/ArtificialAnlys/status/2086916150278111551"
+image: "https://pbs.twimg.com/media%2FHPYzYvQawAA_TsM.jpg"
+slug: "ylecun-2086916150278111551"
+---
+
+Meta returns to open weights: Muse Glimmer, its first open-weights release since Llama 4, scores 35 on the Artificial Analysis Intelligence Index. It is a 30B-parameter model, and the first from Meta to be released under Apache 2.0
+
+
+
+Muse Glimmer (high) arrives 16 months after Llama 4, scoring 21 points above Llama 4 Maverick (14), Meta's last open weights release. It sits alongside Kimi K2.5 (Reasoning, 36) and just behind Qwen3.6 27B (Reasoning, 38) and Ling 3.0 Flash (38), and creates a two-tier Meta lineup together with the proprietary flagship Muse Spark 1.2 (xhigh, 57)
+
+
+
+https://nitter.net/AIatMeta shared access with us ahead of public release for benchmarking. Congratulations to https://nitter.net/AIatMeta, https://nitter.net/finkd, and https://nitter.net/alexandr_wang on the release!
+
+
+
+Key Takeaways:
+
+
+
+➤ Meta's open-weights line is back, under its most permissive license yet. Every prior Meta open release shipped under a Llama License; Muse Glimmer uses Apache 2.0, placing almost no restrictions on commercial use or derivatives
+
+
+
+➤ Strong intelligence for its parameter count. At 30B parameters, Muse Glimmer scores 5 points above Gemma 4 31B (Reasoning, 30) at the same size, and effectively matches 1T total parameter Kimi K2.5 (Reasoning, 36) with 33x fewer parameters. Qwen3.6 27B (Reasoning, 38) remains ahead on the Intelligence vs Parameters frontier at a slightly smaller size
+
+
+
+➤ Small enough to self-host on a single GPU, even at full context. Muse Glimmer is a 30B dense model (including a ~1.8B vision encoder) with weights at ~60 GB in BF16 and ~18 GB in 4-bit. It features a hybrid-attention mechanism with three sliding-window layers for every global layer, which holds KV cache memory use to ~1.8 GB (minimum) at its pre-extension 128K context. This means the model can run at full context on a single H100 at BF16 precision, or on a higher-spec MacBook or RTX 5090 at 4-bit, with more breathing room if the vision encoder is not required
+
+
+
+➤ Agentic knowledge work is its weakness relative to its size class. Muse Glimmer scores 953 Elo on GDPval-AA v2, below the 1,000 human baseline and behind other models at its intelligence level, including the similarly sized Qwen3.6 27B (Reasoning, 1141), and Gemini 3.5 Flash-Lite (1141). Knowledge calibration follows the same pattern: its AA-Omniscience Index of -33 is low for its intelligence level, driven by an 82% hallucination rate (Qwen3.6 27B: 49%) rather than accuracy, where it matches its peers. Agentic tool use is the exception, with Muse Glimmer scoring 24% on Tau3-Banking, ahead of Gemini 3.5 Flash-Lite (18%) and Qwen3.6 27B (17%), among the best in its class
+
+
+
+Other model details:
+
+
+
+➤ Parameters: 30B Dense
+
+➤ Context window: 128K tokens, plus extension
+
+➤ License: Apache 2.0
+
+➤ Openness Index: 44, indicating relatively high openness/transparency vs. other major open-weights models
+
+➤ Pricing and output speed: at the time of release, Meta is not serving the model on their API; pricing and serving speed are TBC depending on third-party providers
