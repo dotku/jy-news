@@ -1,0 +1,22 @@
+---
+title: "未加密的Firefox签名密钥副本出现在GitHub上后 Mozilla撤销了该密钥"
+date: "2026-08-12T15:42:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1572888.htm"
+summary: "因误将一份未加密的私钥提交至GitHub存储库，Mozilla公司日前撤销了用于签署Firefox浏览器和Thunderbird邮件客户端发布包的GPG签名私钥。据Mozilla官方披露，该GPG私有子密钥此前被误放入了一个仅限少数Mozilla内部员工访问的私有GitHub存储库中，而这些员工本身已拥有该密钥的合法访问权限。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1572888.png"
+slug: "1572888-未加密的Firefox签名密钥副本出现在GitHub上后-Mozilla撤销了该密钥"
+id: "1572888"
+---
+
+受影响的子密钥主要用于签署 Firefox 与 Thunderbird 的 Linux tar 包、RPM 安装包以及校验文件，旨在帮助用户和包管理器验证软件来源的真实性与完整性。
+
+审核记录显示，在密钥存放在存储库期间，未发现任何未经授权的第三方访问证据。目前 Mozilla 已撤销并更换了该受影响的子密钥，并引入了额外的安全防护措施以防类似事件再次发生，但官方尚未透露密钥被误上传的具体原因及置于 GitHub 的时长。
+
+对于绝大多数 Firefox 和 Thunderbird 普通用户而言，此次密钥更换无需进行额外操作；但手动验证 GPG 签名的用户需要导入新密钥及旧密钥的撤销记录。对于通过 Mozilla 官方 RPM 存储库安装 Firefox 的 Linux 用户，Fedora 43 及以上版本的系统将在下次更新时自动下载新密钥并提示确认，而 Fedora 42 及更早版本、RHEL、Rocky Linux、AlmaLinux 和 openSUSE 等系统的用户则需要手动删除旧密钥并导入新密钥。此外，导入撤销记录后，尝试验证旧版本软件时常规的签名验证将提示拒绝。
+
+了解更多：
+
+https://blog.mozilla.org/security/2026/08/10/updated-gpg-key-for-signing-firefox-and-thunderbird-releases/
+
+
