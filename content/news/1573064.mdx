@@ -1,0 +1,22 @@
+---
+title: "DeepSeek Harness预览版上线：把Agent能力全部做成插件"
+date: "2026-08-13T21:44:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1573064.htm"
+summary: "8月13日，DeepSeek宣布，DeepSeekHarness开发者预览版（v0.1）正式面向全球开发者开放测试，并同步以MIT协议开源。该项目采用插件式开放架构，模型、工具、技能、会话、沙箱、存储、调度及UI等Agent能力均可通过插件进行组合和替换。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1573064.gif"
+slug: "1573064-DeepSeek-Harness预览版上线-把Agent能力全部做成插件"
+id: "1573064"
+---
+
+DeepSeek Harness的核心设计原则是“一切皆插件”。其底层基于Cordis插件系统构建，Cordis元框架主要负责插件加载、卸载及依赖关系管理，Agent Harness中的具体组件则以不同插件形式运行，并通过服务与事件进行协作。
+
+按照DeepSeek公布的信息，开发者无需直接修改DeepSeek Harness源码，即可通过插件独立替换或扩展模型、工具、技能等能力，并在配置层进行组合。
+
+DeepSeek Harness目前提供四种运行模式，分别为标准模式、PTC模式、极简模式和创造模式。其中，标准模式提供完整工具组合；PTC模式通过模型生成代码组合多轮工具调用；极简模式仅保留Shell工具和文件编辑工具，用于最小环境下的模型基准测试；创造模式则允许检查当前运行时，并在内存中试验Cordis插件和组合新的运行模式。
+
+在运行记录方面，DeepSeek Harness采用仅追加的会话日志设计。系统提示词、思维链、工具调用及结果、子Agent调度和上下文注入等运行信息均会写入会话日志，开发者可通过Trajectory视图按来源查看。恢复、分叉、检索和回放等功能也基于同一事件流运行。
+
+目前，已经安装Node.js开发工具链的用户，可通过npx @deepseek-ai/dsh web启动DeepSeek Harness Web UI；项目完整源码也已开放。DeepSeek表示，v0.1仍属于早期预览版本，核心插件与基础接口后续还将继续迭代。
+
+
