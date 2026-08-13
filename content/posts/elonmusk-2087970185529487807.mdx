@@ -1,0 +1,296 @@
+---
+title: "In making 𝕏 open source, we are actively seeking criticism to improve fairness and quality of algor"
+date: "2026-08-13T18:30:59.000Z"
+handle: "elonmusk"
+name: "Elon Musk"
+author_title: "CEO, Tesla & SpaceX"
+category: "tech"
+is_rt: false
+original_author: "@elonmusk"
+link: "https://x.com/elonmusk/status/2087970185529487807"
+image: "https://pbs.twimg.com/media%2FHPn0t7EWMAA5g_H.png"
+slug: "elonmusk-2087970185529487807"
+---
+
+In making 𝕏 open source, we are actively seeking criticism to improve fairness and quality of algorithmic recommendations
+
+
+Dogan Ural (@doganuraldesign)
+
+𝕏 just open-sourced the For You algorithm again!
+
+
+
+Grok Bot read all 370,523 lines of the code.
+
+
+
+Here’s the summary:
+
+
+
+Grok does not give your post a “quality” score. For every reader, it guesses what that person will do to your post. Then it multiplies each guess by a weight and adds them up. That total is the value of the post. Highest total goes highest in For You.
+
+
+
+These are the production weights
+
+(last synced 12 Aug 2026).
+
+
+
+WHAT THE ALGORITHM PAYS FOR
+
+
+
+If Grok thinks a reader will:
+
+
+
+• copy the link and share it: +20
+
+• reply, on an original post, and you follow each other: +20 (5 + 15 extra)
+
+• quote: +5
+
+• reply (anyone): +5
+
+• share via DM: +5
+
+• follow you from the post: +4
+
+• hit the share button: +2
+
+• repost: +1
+
+• like: +0.5
+
+• click the post: +0.4
+
+• open a link: +0.2
+
+• expand a photo, open a video, or watch a “quality” video: +0.05 each
+
+• click a quoted post: +0.05
+
+• keep reading (dwell time): +0.004
+
+• “dwell” as yes/no: +0
+
+• click your profile: +0
+
+
+
+A like is 0.5. Copying the link is 20. That is 40 likes. A normal reply is 10 likes. A follow is 8 likes. Clicking your profile is worth nothing.
+
+
+
+WHAT KILLS A POST
+
+
+
+If Grok thinks a reader will:
+
+
+
+• report it: −234
+
+• mute you: −58.8
+
+• hit “not interested”: −43.2
+
+• block you: −31.2
+
+• not dwell: −0.02
+
+
+
+A report is about 468 likes in the other direction. A mute hurts more than a block. “Not interested” also hurts more than a block.
+
+
+
+AFTER THE SCORE, THREE MORE HAIRCUTS
+
+
+
+1) Same-author penalty.
+
+Your 2nd post in that person’s feed is multiplied by 0.625. 3rd by ~0.44. It never goes below 0.25. Flooding one timeline is coded against.
+
+
+
+2) The 25% tax.
+
+If they do not follow you: ×0.75.
+
+Same tax on replies and reposts even when they DO follow you.
+
+Originals from people they follow keep full weight. Replies and reposts are treated as weaker on purpose.
+
+
+
+3) Similar-post shuffle.
+
+After scoring, a reranker (θ = 0.65) spreads similar posts apart. You can lose a few spots for looking like the post above you.
+
+
+
+HOW YOUR POST EVEN GETS IN THE ROOM
+
+
+
+For You is rebuilt every time someone opens it. About 35 posts make the feed.
+
+
+
+• They follow you: Thunder (a live store of recent posts from accounts they follow). Up to 1,200 candidates.
+
+• They don’t: Phoenix retrieval (Grok finds “nearby” posts) + SimClusters (Twitter’s 2020 interest clusters, still on). Up to 1,000 and 800.
+
+
+
+Then Grok scores all of them together. It does not care which door you came through, except for that ×0.75 tax.
+
+
+
+Your own posts never appear in your For You.
+
+
+
+Nothing older than 48 hours gets in. There is no “best of last week.”
+
+
+
+Small-account bump: under 1,000 followers, under 1,000 impressions, post under 24 hours old. One original can get lifted to position 15 or 16. Not the top. You still have to already be in the top 85% of the pile.
+
+
+
+Replies and reposts from accounts the reader does not follow are dropped before scoring. You cannot reply-guy your way into a stranger’s For You.
+
+
+
+FILTERS THAT CAN STILL KILL A HIGH SCORE
+
+
+
+Ranking and visibility are different machines. A post can score well and then get deleted from the feed.
+
+
+
+Followers (in-network) is milder: blocks, mutes, suspensions. NSFW often sits behind a warning instead of disappearing.
+
+
+
+Recommendations (out-of-network) are much harsher. Spam, “Do Not Amplify,” NSFW, compromised accounts, impersonation: followers can still see it, For You recommendations will drop it.
+
+
+
+Video only gets the tiny “quality view” credit if it is at least 10 seconds.
+
+
+
+THE LITTLE-KNOWN PARTS (this is the stuff people miss)
+
+
+
+• Scrolling is not a vote. Yes/no dwell is 0. Time spent barely moves the number (0.004).
+
+• Mute damages you more than block (−58.8 vs −31.2).
+
+• Copy-link is the single biggest positive. The share button is only +2. A repost is only +1.
+
+• The mutual-follow boost is originals only, not your replies. They shipped a bigger version in July and cut it after World Cup complaints (extra reply weight 20 → 15).
+
+• The Following tab is not this algorithm. Following is newest-first.
+
+• Grok, Gork, and an internal products account are hardcoded out of the in-network store.
+
+• Scores are cached for 3 hours because posts inside the model cannot “see” each other. That is why they can rank first and filter later.
+
+• Ads, Who to Follow (around slot 7), and prompts are mixed in after ranking. Grok does not score those.
+
+• The real Grok ranking model is a 2560-dimension, 8-layer transformer looking at 1,022 items of the reader’s history. They did not ship those model weights. The numbers above are the formula sitting on top of the predictions.
+
+• SimClusters is still a 2020 model (20M users, 145k clusters). Old Twitter code, still in the path.
+
+• Inferred gender and IP/geo are on as features for the model. Installed apps too.
+
+• Who to Follow shows about every 30 hours. Ads try to sit next to “safe” posts, with a minimum gap of 3 organic posts.
+
+
+
+WHAT TO DO
+
+
+
+• Write originals people want to reply to, quote, copy, and send to a friend.
+
+
+
+• Make the post itself worth following you for.
+
+
+
+• Talk with people who follow you back. A reply on your original from a mutual is 20, not 5.
+
+
+
+• Stay inside 48 hours. Recycle by posting something new. Old posts do not come back.
+
+
+
+• If you are small, post originals in the first 24 hours. Don’t expect slot 1. A bump around 15–16 is the actual gift.
+
+
+
+• Space your posts. The second one in the same feed is already worth 37.5% less.
+
+
+
+• If you post video, make it at least 10 seconds.
+
+
+
+WHAT NOT TO DO
+
+
+
+• Do not farm likes. They are almost decorative.
+
+
+
+• Do not farm profile visits. Weight is zero.
+
+
+
+• Do not farm “time on post.” Yes/no dwell is zero.
+
+
+
+• Do not use replies and reposts as a growth hack for strangers. Those are filtered out. Even for followers they get a 25% haircut.
+
+
+
+• Do not dump several posts in a row.
+
+
+
+• Do not bait reports, mutes, or “not interested.” One predicted report can erase a pile of predicted likes.
+
+
+
+• Do not lean on NSFW or spammy tricks for reach. 
+
+
+
+• Recommendations will drop you even if your followers can still see it.
+
+
+
+• Do not wait a week and expect For You to revive the post.
+
+
+
+
+
+— https://nitter.net/doganuraldesign/status/2087969186219778252#m
