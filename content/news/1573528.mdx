@@ -1,0 +1,56 @@
+---
+title: "Claude水印已被破解 斩获11k Star 但会被拒绝安装"
+date: "2026-08-17T11:03:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1573528.htm"
+summary: "Claude的水印政策在前些天引起了轩然大波。我们曾报道过，包括OpenAI、Anthropic、Google、Meta、Microsoft在内的一大批公司，签署了欧盟《AI生成内容透明度行为准则》，承诺推进AI生成内容的标记与检测。但Anthropic显然做得更加过分。他们为AI生成的全部文本内容添加隐藏水印，并且适用于全球用户。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1573528.jpg"
+slug: "1573528-Claude水印已被破解-斩获11k-Star-但会被拒绝安装"
+id: "1573528"
+---
+
+技术上，Anthropic 采用了 Google DeepMind 团队 2024 年提出的 SynthID-Text 方案。原理是在模型做“无关紧要的选择”时植入统计模式。比如在描述天气时，选“overcast”还是“grey”对读者没有区别，但这种选择的累积构成了一个隐藏签名，持有密钥者可以检测到它。
+
+Anthropic 宣称水印不影响输出质量，轻度编辑无法去除，完全改写可以消除。但在这种情况下，文本是否还能被称为 AI 生成的，本身就值得商榷。
+
+简单来说，哪怕你把一篇完全自己撰写的文章丢给 Claude 检查标点，返回的内容也会被打上 Claude 生成的标签。
+
+这就很令人感到恶心了。
+
+很快，针对 Claude 不讲道理的水印策略，就已经出现了反制方案。一个去除 AI 水印的开源项目，在发布五天就已在 GitHub 冲到 11k Star。
+
+开源链接：https://github.com/guillaumemeyer/watermarks-remover
+
+这个开源项目能够实现三层工作：
+
+A 层（确定性清洗）：用 Python 脚本去除不可见 Unicode 字符、异域空格、bidi 控制符、tag 字符。这些是最简单粗暴的标记方式，脚本能 100% 去除。
+
+B 层（统计水印破坏）：通过 Agent 改写文本，破坏 token 采样层面的统计模式。覆盖 Claude、Google SynthID-Text、OpenAI 溯源标记、以及开源模型常用的 Kirchenbauer 类水印。
+
+文件层（元数据清除）：去除 PNG、JPEG、WebP、SVG、PDF、DOCX、ODT、HTML、Markdown 中的 C2PA / EXIF / XMP 元数据。
+
+水印去除可以覆盖 Claude、Gemini、OpenAI 三大主流厂商的 AI 服务。一个有趣的细节是：项目曾经叫remove-claude-marks，后来改名为现在的 watermarks-remover。
+
+Claude 拒绝安装
+
+这个项目作为一个 Agent Skill ，大部分人都会让自己的智能体直接安装。但当用户尝试让 Claude 安装这个去除器 skill 的时候，被 Claude 直接拒绝。
+
+他解释说 Anthropic 用户从未同意过被强制水印，这是 EU 法规单方面强加的。Claude 不为所动。他强调付费客户不希望自己的输出被打标。Claude 依然拒绝。他威胁说反正会用不审查的中国模型来完成这件事。Claude 还是不配合。
+
+最终，GLM 5.2 接手了这份工作，顺利完成了 skill 安装。
+
+很讽刺的一点是，这个去除水印的 Skill ，代码很有可能来自于 Claude 自己。
+
+一场注定不会停止的猫鼠游戏
+
+反对水印的人在说：我是付费用户，我为输出买了单，你凭什么在上面打标记？水印创造了一种隐形的“AI 内容二等公民”身份。在求职信、学术论文、商业文案的场景里，就连自己撰写的文字，只要丢给过 AI 就有全篇被质疑的风险。
+
+支持水印的人在说：深度伪造和 AI 生成的虚假信息正在泛滥，溯源是必要的公共基础设施。“你拥有内容的使用权”和“你有权隐瞒内容的来源”根本是两个问题。
+
+只要 AI 水印存在，去水印工具就会跟进。去水印工具越流行，越证明水印“有东西需要去除”，反过来强化了监管加码的理由。
+
+但是，开源社区用脚投票的速度，永远比监管制定规则更快。
+
+当 AI 生成内容在质量上已经无法与人类写作区分时，用技术手段强制标记 AI 输出的一切内容是否有意义？
+
+
