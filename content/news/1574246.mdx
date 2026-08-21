@@ -1,0 +1,26 @@
+---
+title: "微软确认最新Windows 11更新意外导致游戏崩溃及电脑自动重启"
+date: "2026-08-21T08:07:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1574246.htm"
+summary: "微软近日证实，上周推送的最新Windows11更新存在严重漏洞，导致部分设备在运行游戏时发生崩溃，甚至出现电脑随机重启的现象。涉事更新补丁编号为KB5121003，于8月11日发布，适用于Windows11的26200.9168和26100.9168版本。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1574246.webp"
+slug: "1574246-微软确认最新Windows-11更新意外导致游戏崩溃及电脑自动重启"
+id: "1574246"
+---
+
+据多名安装了该更新的用户反映，系统在运行游戏时会弹出“EXCEPTION_ACCESS_VIOLATION”错误并崩溃。在某些情况下，电脑还会在崩溃后自动重新启动。
+
+这一问题最初由 Reddit 社区用户曝光并引发广泛共鸣。有用户公布了事件日志和内核转储的 AI 分析报告，结果显示这些游戏崩溃实际上是系统蓝屏死机（BSOD）。分析指出，问题根源在于一个此前被 Windows 忽略的“不良句柄错误”。此次更新似乎加强了内核句柄的验证机制，导致系统在尝试关闭无效句柄时不再宽容处理，而是直接触发了错误代码为 0x93 的崩溃。
+
+微软方面已正式确认，该问题主要影响 Windows 11 的 25H2 和 24H2 版本。目前官方正在紧急调查问题的确切原因，以确认是更新本身的设计缺陷，还是与第三方软件存在不兼容。微软同时公布了已知受影响的游戏名单，包括《Arc Raiders》、《Marvel Tokon: Fighting Souls》以及《The Finals》。
+
+目前微软尚未发布官方修复补丁。部分资深用户建议，遇到该问题的玩家可以通过 DISM 命令回退 KB5121003 更新，并暂时将 Windows 更新暂停一个月以防止其自动重装。此外，彻底清理引发不良句柄错误的老旧驱动程序被认为是更为彻底的解决方法。
+
+值得注意的是，KB5121003 更新引发的问题似乎不仅限于游戏领域。据 Microsoft Learn 上的用户报告，该更新还导致 Teams 和全新版本的 Outlook 在搭载 Arm 处理器的设备上全面罢工。报告显示，在包括微软 Surface Laptop 7、惠普 OmniBook 3 以及 Surface Pro 11 在内的 Arm64 架构设备上，Teams 会在打开后直接崩溃，而新版 Outlook 则完全无法启动（经典版 Outlook 仍可正常工作）。目前微软尚未对 Arm 设备上的办公软件崩溃问题作出正式回应。
+
+了解更多：
+
+https://learn.microsoft.com/en-us/windows/release-health/status-windows-11-25H2#known-issues
+
+
