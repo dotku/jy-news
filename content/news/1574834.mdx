@@ -1,0 +1,30 @@
+---
+title: "DeepSeek Harness被曝存在高危漏洞"
+date: "2026-08-25T10:42:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1574834.htm"
+summary: "奇安信威胁情报中心披露，DeepSeekHarness（DSH）未授权远程代码执行漏洞。漏洞编号QVD‑2026‑57410，漏洞评级为极危，CVSS3.0评分高达9.8，目前该漏洞POC已经公开。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1574834.png"
+slug: "1574834-DeepSeek-Harness被曝存在高危漏洞"
+id: "1574834"
+---
+
+受影响版本为DeepSeek Harness 0.1.1‑rc.2。漏洞根源为平台对HTTP Host请求头校验存在缺陷。
+
+攻击者可伪造Host请求头绕过/api信任围栏，调用内部受限RPC方法，注册虚假的大模型提供者，驱动Agent工具执行任意系统命令。
+
+该攻击链路不需要有效的API Key，攻击成功后，攻击者可在目标服务器上以dsh服务进程权限执行命令，窃取敏感数据、植入后门、进行横向移动。
+
+漏洞利用需要满足相关条件：目标将DeepSeek Harness管理API暴露于公网，系统未对Host请求头做严格校验，同时攻击者拥有可被目标实例访问的外部服务。
+
+截至目前，暂未观测到该漏洞的在野利用痕迹，也没有证据表明相关攻击和已知威胁团伙存在关联。
+
+受影响对象为所有把DeepSeek Harness管理API暴露公网、且未配置Host头访问控制的部署实例。
+
+安全机构给出多项处置建议，首要措施是将管理API端口从公网隔离，仅允许可信内网IP访问；同时可在反向代理层配置严格Host头校验规则。
+
+此外建议运维人员持续跟进DeepSeek官方安全公告，及时升级至修复版本。
+
+同时技术文档提示，/api信任围栏需要增设独立于Host请求头的认证机制，对llm.discoverModels接口做好访问范围限制，阻断潜在SSRF风险。
+
+
