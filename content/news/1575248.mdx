@@ -1,0 +1,28 @@
+---
+title: "Google测试Chrome的Flatpak打包支持 Linux版或迎来官方渠道"
+date: "2026-08-27T18:48:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1575248.htm"
+summary: "Google正开始为Linux平台的Chrome/Chromium试验Flatpak打包支持。这一变化若最终落地，将为现有的RPM和DEB原生安装包之外提供新的官方安装选择，并有望改善Chromium系应用长期缺乏官方Flatpak支持的现状。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1575248.png"
+slug: "1575248-Google测试Chrome的Flatpak打包支持-Linux版或迎来官方渠道"
+id: "1575248"
+---
+
+目前，Linux 用户已经可以通过 Flatpak 安装 Chrome，但相关版本由 Flathub 社区维护，并非Google官方发布。Chrome 开发者 Tom Anderson 强调，这项工作暂不代表Google已承诺正式支持 Flatpak 软件包；其主要目的在于内部测试“受限的沙盒配置”，并扩展现有的 XDG Portal 支持能力。
+
+在主流浏览器中，Mozilla Firefox 目前是少数提供成熟官方 Flatpak 版本的产品。GNOME Web、KDE Falkon、Opera GX，以及采用类 Arc 设计风格的 Firefox 分支 Zen Browser 等，也可通过 Flatpak 获得。相比之下，微软 Edge、Vivaldi 等 Chromium 内核浏览器尚未推出官方维护的 Flatpak 版本。Brave 虽然提供 Flatpak 安装方式，但该公司并不推荐使用，理由是其表现暂时仍不如原生软件包。
+
+Chromium 系浏览器迟迟未能普遍采用官方 Flatpak 打包，关键障碍在于沙盒机制的兼容性。为防范恶意网站突破标签页隔离并访问用户系统，Chromium 浏览器本身就内置了一套沙盒体系，用于限制各标签页及进程能够执行的操作。
+
+而 Flatpak 自身同样采用沙盒设计，当两层沙盒嵌套运行时，往往会引发兼容性问题。为绕过这一限制，社区维护者通常会借助 Zypak。这是一种广泛见于 Flathub 上 Chromium 和 Electron 应用的兼容层，它通过拦截系统调用，使 Chromium 误认为自身原生沙盒仍处于正常启用状态，从而让应用能够在 Flatpak 环境中运行。
+
+与此同时，浏览器对新一代图像格式的支持也在推进。Mozilla 正计划为 Firefox 加入 JPEG XL 支持。该格式在有损图像、无损图形、动画展示、压缩效率及编码速度等方面具备竞争力：其图像表现优于传统 JPEG，无损图形渲染效果优于 PNG，动画能力优于 GIF，并在原始压缩效率和编码速度方面领先 AVIF。
+
+目前，JPEG XL 的浏览器支持仍较为有限，Safari 是唯一默认提供官方支持的主流浏览器。Firefox 预计将在下月发布的 Firefox 157 中加入这一格式支持。
+
+了解更多：
+
+https://chromium-review.googlesource.com/c/chromium/src/+/8274810
+
+
