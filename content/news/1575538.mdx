@@ -1,0 +1,50 @@
+---
+title: "Windows 11频繁提示“病毒防护已关闭” 微软确认是误报但暂未修复"
+date: "2026-08-30T14:02:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1575538.htm"
+summary: "近日，部分Windows11用户发现，系统会反复弹出“启用病毒防护”通知，提示电脑处于未受保护状态，并要求用户点击通知开启MicrosoftDefender防病毒软件。WindowsLatest测试发现，这些提示可能在系统启动时出现，也可能在日常使用过程中随机弹出。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1575538.jpg"
+slug: "1575538-Windows-11频繁提示-病毒防护已关闭-微软确认是误报但暂未修复"
+id: "1575538"
+---
+
+微软已经确认了这一问题，并表示，安装最新的Microsoft Defender防病毒更新后，部分设备可能会显示“Microsoft Defender防病毒已关闭”的通知，但实际上防病毒软件仍在正常运行，相关设置也显示为已启用。微软目前没有公布导致问题的具体更新版本。
+
+由于系统防护功能实际上并未关闭，用户点击通知后通常只会被带到Windows安全中心或Defender的主页，无法改变任何设置。如果用户尚未看到该提示，未来几天内仍有可能遇到；已经在通知中心看到提示的用户，也可能在微软发布修复前持续收到类似通知。
+
+用户可以选择忽略或关闭通知，但提示可能再次出现。据了解，这一问题与Defender更新有关，影响范围不仅包括Windows 11 23H2、24H2和25H2，也包括Windows 10。该通知还会绕过Windows的常规通知设置，因此关闭系统通知或启用“请勿打扰”模式，都无法阻止它出现。
+
+微软在更新后的支持文档中表示，只要设备运行Microsoft Defender防病毒软件且Defender没有被暂停，任何版本的Windows或Windows Server都有可能受到影响。Windows 7用户目前不会遇到这一问题，原因是该系统已经不再接收Defender更新。微软称，正在通过未来的Microsoft Defender防病毒更新发布解决方案，后续会提供更多信息。
+
+Windows Latest表示，Defender误报安全警告的问题最早在8月初被发现，过去几天相关报告数量明显增加，并引起微软关注。微软软件工程师Jen Gentleman大约两周前也曾确认公司正在调查此事，但截至目前仍没有正式修复方案。
+
+虽然微软称这是一个误报，但用户不应直接将其视为无关紧要的错误。恶意软件也可能通过伪造或误导性的安全警告，诱骗用户关闭Microsoft Defender或修改其他安全设置。因此，在忽略提示之前，用户应先确认Defender确实处于运行状态，并检查实时保护是否已经开启。
+
+验证方法是打开Windows安全中心，进入“病毒和威胁防护”页面。如果Defender工作正常，通常不会看到相关警告。用户还可以在“病毒和威胁防护设置”下点击“管理设置”，确认“实时保护”处于开启状态。至于要求启用OneDrive的安全提示，则属于推广性质的增值提示，可以安全忽略。
+
+用户也可以通过命令提示符检查Defender服务是否运行。打开命令提示符后输入：
+
+sc query WinDefend
+
+如果Microsoft Defender防病毒服务正在运行，结果中应显示：
+
+STATE   : 4  RUNNING
+
+不过，这条命令只能确认相关服务是否启动。若要进一步检查Defender、防病毒功能和实时保护是否全部启用，可以运行以下命令：
+
+powershell -command"Get-MpComputerStatus | Select-Object AntivirusEnabled，RealTimeProtectionEnabled，AMServiceEnabled"
+
+在受到正常保护的电脑上，结果应显示：
+
+AntivirusEnabled : True
+
+RealTimeProtectionEnabled: True
+
+AMServiceEnabled : True
+
+上述命令无需以管理员身份启动终端即可运行。如果三个项目的值均为True，就说明Windows Defender防病毒功能和实时保护均处于启用状态，即使Windows错误地发出了“启用病毒防护”通知，电脑实际上仍然受到保护。
+
+目前，Windows还存在其他已获微软确认的问题，包括Windows 11更新后鼠标光标异常，以及系统壁纸被重置等情况。
+
+
