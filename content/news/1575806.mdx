@@ -1,0 +1,26 @@
+---
+title: "Firefox 155正式发布 借助Happy Eyeballs v3与QUIC v2加快网页加载"
+date: "2026-09-01T06:08:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1575806.htm"
+summary: "Mozilla已发布Firefox155浏览器，正式公告预计于当地时间周二公布。此次版本新增功能较多，重点提升了网页连接速度，并引入可选的人工智能桌面浏览窗口。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1575806.webp"
+slug: "1575806-Firefox-155正式发布-借助Happy-Eyeballs-v3与QUIC-v2加快网页加载"
+id: "1575806"
+---
+
+Firefox 155支持Happy Eyeballs v3，可同时尝试多种连接方式，并优先采用最先成功的连接。该机制在并行比较IPv4与IPv6的基础上，还能利用现代DNS记录识别服务器支持的协议，并同时尝试HTTP/2和HTTP/3，从而寻找速度更快的连接路径。
+
+新版本还支持HTTP/3连接使用QUIC v2。当服务器通过兼容的版本协商选择QUIC v2时，Firefox将自动采用该协议。
+
+Firefox 155新增了可选的Smart Window功能。这是一种由人工智能驱动的桌面浏览窗口，在获得用户授权后，可以访问已打开的标签页和浏览历史。目前，Smart Window仅面向美国、加拿大和法国用户提供。
+
+此外，新版本修复了一个可能导致Linux系统在长时间浏览后无法进入睡眠状态的问题。
+
+面向开发者，Firefox 155加入了多项更新，包括支持WebAssembly Compact Import Section、支持用于128位算术指令的WebAssembly Wide Arithmetic，将font-stretch的标准属性名称调整为font-width，改善WebRTC互操作性，并支持progress() CSS函数。
+
+Firefox 155的发布版本现已可从ftp.mozilla.org下载：
+
+https://ftp.mozilla.org/pub/firefox/releases/155.0/
+
+
