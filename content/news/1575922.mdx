@@ -1,0 +1,36 @@
+---
+title: "DeepSeek-V4首款多模态模型权重开放“睁眼”后追上Opus-4.8"
+date: "2026-09-01T16:48:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1575922.htm"
+summary: "在连续强化了推理、代码和Agent能力之后，DeepSeek终于为V4补上了视觉输入。8月31日上午，DeepSeek在HuggingFace开放了DeepSeek-V4-Flash-Vision-Exp模型权重，开发者可以直接下载模型权重并自行部署。而官方仓库除了模型文件，还包括视觉编码器和Aligner等组件的参考推理实现，并覆盖DFlashAttention、MoE、Hyper-Connec"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1575922.jpg"
+slug: "1575922-DeepSeek-V4首款多模态模型权重开放-睁眼-后追上Opus-4-8"
+id: "1575922"
+---
+
+就在10天前，DeepSeek正式对外公布V4-Flash-Vision-Exp模型，规模约3050亿参数。从名字里的“Exp”不难看出，这是V4系列首款实验性多模态模型，其建立在V4-Flash架构之上，通过加入视觉模块并继续训练，使模型获得处理图片的能力。
+
+在纯文本任务上，官方称V4-Flash-Vision-Exp与V4-Flash整体保持相近水平，主要区别是新模型能够识别照片内容、读取截图中的文字、分析图表，也可以把图片作为Agent工作流程的一部分，而不再只能依赖文字描述。
+
+DeepSeek展示的案例包括根据要求制作PPT、读取和修改网页，以及生成带动态效果的前端页面。
+
+这类任务的共同点并不是传统意义上的识图，而是模型需要先理解视觉内容，再结合代码、推理和工具调用完成后续操作。从DeepSeek公布的基准测试来看，加入视觉能力后，V4在部分多模态Agent任务上已经接近其选择对比的Anthropic多模态大模型Claude Opus 4.8。
+
+具体方面，在ApexBench测试中，V4-Flash-Vision-Exp的Pass@1得分为36.5，低于Opus-4.8的39.4。Chartography分别为64.3和65.0，差距较小。在Agents' Last Exam中，DeepSeek取得27.3，高于Opus-4.8的25.7。而ZeroBench的Pass@5成绩则为35.0，也高于Opus-4.8的34.0。
+
+在四项多模态测试数据中，有两项超越了Opus-4.8
+
+值得注意的是，新加入的视觉模块并没有明显牺牲V4-Flash原有的文本Agent能力。
+
+例如Terminal Bench 2.1中，Vision版本取得83.9分，此前V4-Flash-0731为82.7；DeepSWE从54.4升至59.3，超过官方列出的Opus-4.8的58.0。不过NL2Repo只有57.7，明显低于Opus-4.8的69.7，CyberGym则由此前的76.7下降到75.3。因此，DeepSeek将其纯文本能力概括为与V4-Flash“持平”。
+
+另一方面，视觉能力本身也有边界，它并不是一个可以无限读取高清细节的视觉系统。
+
+根据DeepSeek API文档，模型支持JPEG、PNG、GIF和WebP图片，可以接收单张或多张图片。但图片进入模型前会根据尺寸进行缩放，较大的图片最终会被压缩到总像素量约相当于800×800的水平，每张图片最多占用384个Token。
+
+而之所以选择这种做法，是为了控制了视觉输入带来的计算成本。不过，在特别依赖细小文字、局部纹理或者原始分辨率的任务上，图片缩放也会成为限制。
+
+但无论如何，DeepSeek终究是把V4的眼睛给补上了。
+
+
