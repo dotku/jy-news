@@ -1,0 +1,174 @@
+---
+title: "Gemini 3.8 Flash上线：性能接近Opus 5 价格不变但任务更贵"
+date: "2026-09-03T12:21:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1576198.htm"
+summary: "Gemini3.8Flash，来得比想象中还快。8月13日，Gemini3.7Flash刚刚上线；9月2日，Gemini3.8Flash已经接棒。过去6周，Google已经连续更新了三次Flash。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1576198.png"
+slug: "1576198-Gemini-3-8-Flash上线-性能接近Opus-5-价格不变但任务更贵"
+id: "1576198"
+---
+
+就在前一天，Anthropic刚发布了“全球最先进的”Fable 5.1和Mythos 5.1；OpenAI也已经开始为下一代模型Astra预热，官方称其将“很快”上线。新一轮前沿模型大战正在开打，Google要是再不拿出点“大牌”，留给Gemini 3的型号已经不多了。
+
+只看Benchmark，Gemini 3.8 Flash在部分任务上已接近Opus 5。
+
+在长程软件工程测试DeepSWE v1.1中，Gemini 3.8 Flash拿到73.7%，距离Opus 5的74.0%只差0.3个百分点；Terminal-Bench 2.1上，它甚至以89.4%超过了Opus 5的89.1%。
+
+Google并没有顺手给它涨价。Gemini 3.8 Flash的API输入价格仍然是0.75美元/百万Token，输出3.75美元/百万Token，和上一代3.7 Flash完全一样。
+
+但这一次，便宜并不像看上去那么简单。
+
+Google自己也提醒，3.8 Flash会比上一代“work harder”——它会进行更多推理、调用更多工具，也消耗更多Token。Artificial Analysis的首轮测试里，3.8 Flash的单任务成本反而比3.7 Flash上涨了约40%。
+
+也就是说，虽然Token没涨价，但完成一件事变得更贵了。
+
+Google啊，在性能上向顶级模型学习就够了，不要连这种事情也学Anthropic啊……
+
+01
+
+Flash碰上了旗舰模型
+
+从Google公布的Benchmark来看，Gemini 3.8 Flash这次最明显的提升仍然集中在Coding和Agent能力。
+
+和3.7 Flash相比，它在长程软件工程测试DeepSWE v1.1上的成绩从65.3%提高到73.7%，一下涨了8.4个百分点，距离Opus 5的74.0%只差0.3个百分点。
+
+Terminal-Bench 2.1也是类似的情况，在这个命令行Agent实战测试里，3.7 Flash此前已经拿到85.8%，而3.8 Flash进一步提高到89.4%，略微超过Opus 5的89.1%。
+
+另外，面向金融分析任务的Vals Finance Agent v2中，3.8 Flash拿到61.4%，高于Opus 5的58.6%；Harvey的法律Agent测试中，3.8 Flash为10.0%，Opus 5为6.7%；衡量多学科专家级推理能力的HLE-Verified上，两者则分别为54.9%和54.4%。
+
+Google因此把3.8 Flash定位成目前“最智能的Flash主力模型”，重点面向长程软件工程、自治Agent和复杂企业工作流。
+
+至少在一部分Coding和Agent任务里，Gemini 3.8 Flash已经跑到了Opus 5身边。
+
+不过，暂时还没能实现完全赶超。
+
+在更难、更强调通用Agent能力的Terminal-Bench 4.0上，3.8 Flash只有19.1%，而Opus 5达到了51.8%；GDPVal-AA v2知识工作测试中，3.8 Flash为1545 Elo，Opus 5则达到1824；测试电脑操作能力的OSWorld 2.0上，两者分别为59.0%和75.4%。
+
+独立评测给出的结果也更接近这种判断：Artificial Analysis跑完了Gemini 3.8 Flash的low、medium和high三档推理强度，其中high档在Artificial Analysis Intelligence Index上拿到59分，而Opus 5 max目前是63分。
+
+顺便一提，昨天刚发布的Fable 5.1 max已经达到了66分，当前榜单前七个席位都被Anthropic模型的不同推理档位占据。
+
+所以，准确地说，Gemini 3.8 Flash只能算是一款开始在部分旗舰任务上越级竞争的Flash模型。
+
+速度上，它保持了“Flash”的优势。在Artificial Analysis通过Google API进行的测试中，3.8 Flash high的输出速度达到304.6 Token/秒，在其比较组195个模型中排名第一。
+
+核心产品规格方面，3.8 Flash和上一代完全一样。它依然拥有约100万Token上下文窗口和65，536 Token最大输出，支持的主要工具能力也保持不变。Google的模型卡直接说明，3.8 Flash建立在3.7 Flash之上，是一次继续迭代，而非底层模型换代。
+
+和Gemini 3.8 Flash一起升级的，还有Gemini 3.8 Flash Cyber。
+
+新的3.8 Flash Cyber在CyberGym漏洞发现测试中超过上一代3.5 Flash Cyber；在Google覆盖20种编程语言的内部真实漏洞测试中，成功率超过70%；在CWE-Bench自动漏洞修补测试中则达到了47.2%，超过GPT 5.6 Sol。
+
+在“安全模型”上，Google和Anthropic的做法不太一样。Fable 5.1和Mythos 5.1本质上是同一个底层模型，只是通过不同的网络安全和生物安全限制区分开放范围；Google则从3.5 Flash开始单独做了一条Cyber支线，在Flash基础上针对漏洞发现、验证和修补进行专项微调，同时为Cyber版本采用更宽松的网络安全限制。
+
+有意思的是，这种专项训练开始反过来影响主模型。
+
+Google称，3.8 Flash和3.8 Flash Cyber共享同一个基础智能核心，而这一代在Coding和Reasoning上的提升，部分就来自网络安全这一高难度领域的训练。
+
+02
+
+模型价格正在从Token价格转向任务成本
+
+如果只看API价目表，Gemini 3.8 Flash几乎是一次免费的性能升级。
+
+它的输入价格依然是0.75美元/百万Token，输出3.75美元/百万Token，缓存读取0.075美元/百万Token，和3.7 Flash完全一样。性能涨了，Token单价一分钱没涨。
+
+但真正跑起来，账单可不是这么算的。
+
+Artificial Analysis的测试中，Gemini 3.8 Flash high完成一个Intelligence Index任务的平均成本达到0.58美元，而上一代3.7 Flash只有约0.40美元。
+
+也就是说，同样的Token价格，单任务成本上涨了四成。
+
+原因很简单：3.8 Flash变得更能“想”了，也更能花Token了。
+
+Artificial Analysis发现，3.8 Flash high每个任务平均生成约4.8万个输出Token，比3.7 Flash增加了30%；在Agent测试中，它还会进行更多次交互。最终，虽然Token没有变贵，但为了完成同一套测试，需要购买的Token更多了。
+
+值得注意的是，这并不是Google一家碰到的问题，Anthropic刚用Fable 5.1展示了一个更极端的案例。
+
+Fable 5.1这次没有调整普通输入和输出价格，依然是10美元和50美元/百万Token，但Anthropic把缓存读取价格从1美元直接降到了0.25美元，降幅达到75%。
+
+对于Agent来说，这是一次相当实在的降价。因为Agent在长时间工作时需要不断读取此前已经进入上下文的代码、文档和历史对话，缓存读取往往会占据大量输入Token。Anthropic估算，仅这一项调整，就可以让典型工作负载成本降低约25%，高度Agent化的任务最高降低约45%。
+
+结果Artificial Analysis一跑，事情又被翻了个面。
+
+Fable 5.1 max虽然以66分登顶了Artificial Analysis智能指数，但它完成一次Intelligence Index任务平均要花3.76美元，上一代Fable 5 max只有3.14美元。
+
+缓存读取便宜了75%，Fable 5.1的单任务成本反而贵了20%。
+
+问题还是出在Token消耗，但Fable 5.1不是“太能想”，是“特能唠”。
+
+Artificial Analysis发现，Fable 5.1 max生成的输出Token大约是Fable 5的1.7倍。缓存降价已经为每个任务省下约1.40美元，如果没有这次75%的缓存折扣，它的单任务成本甚至会达到约5.16美元。
+
+于是就出现了一个很反常的结果：Google没有涨Token价格，Anthropic甚至大幅降低了缓存价格，但模型做任务就是变贵了。
+
+现在的前沿模型正在越来越多地用计算量换成功率：更长的思考、更多的输出、更频繁的工具调用、更长的Agent执行链，都可以把Benchmark再往上推一点，但这些动作最后都会进入账单。
+
+过去比较模型价格，一张API价格表基本就够了，0.75美元还是10美元/百万Token，是一个非常直观的数字。但到了Agent时代，这个指标正在变得不那么可靠。
+
+毕竟，Token只是模型公司的计价单位——任务才是用户真正付钱购买的东西。
+
+某种意义上，模型的价格竞争正在从“一个Token多少钱”，慢慢变成“把一件事做完多少钱”。
+
+但也并不是模型用了更多Token就一定不好，关键还是要看性价比，看多花掉的这些Token，换来的任务成功率有多少。
+
+Gemini 3.8 Flash其实也说明了这种变化的另一面：虽然high档单任务成本涨到0.58美元，但它以59分的智能指数，仍然处在Artificial Analysis的Intelligence vs. Cost per Task帕累托前沿，被评为目前达到这一智能水平最便宜的模型。
+
+03
+
+Google在用做软件的节奏做模型
+
+Google更新Flash模型的速度，实在有些太快。
+
+7月21日，Google发布Gemini 3.6 Flash；23天后的8月13日，3.7 Flash上线；又过了20天，3.8 Flash已经接棒。
+
+43天，三个版本。
+
+有网友调侃：AI Benchmark现在的保质期，已经和超市里的三明治差不多了。
+
+虽然比喻有点抽象，但道理是这个道理。模型迭代快到这个程度，今天刚刷新的榜单，可能几周后就会失去参考价值。
+
+而Google之所以能更新得这么频繁，一个重要原因是，这几次并不是传统意义上的模型换代。
+
+3.7 Flash建立在3.6 Flash之上，主要是在原有基础上继续做算法和能力优化；到了3.8，Google直接明牌，3.8 Flash就是基于3.7 Flash继续迭代。这一次Google甚至连架构、训练数据、软硬件等信息都直接让开发者参考上一代模型卡。
+
+也就是说，Google一直在同一条Flash主线上不断打补丁、加能力、调推理，再把新版本推给用户。
+
+以前，一个新的大模型版本往往意味着一次明显的代际跃迁：GPT-4到GPT-5，Gemini 2到Gemini 3。模型公司训练一个新的底座，再围绕它发布一整套产品。
+
+但现在，大模型越来越像软件了。
+
+模型上线之后，开发者开始使用，真实任务暴露问题；模型公司再根据反馈调整算法、后训练和推理策略，强化Coding、Agent或者某些专项能力，然后几周后直接推一个新版本。
+
+前面提到的Cyber，也是这种迭代方式的一部分。
+
+最早的3.5 Flash Cyber先在网络安全这个高难度领域进行专项训练，强化漏洞发现、验证和修补；到了3.8，一部分在Cyber训练中获得的Coding和Reasoning能力，又被带回通用Flash模型。
+
+专项模型不再只是从通用模型上分出去的一条支线，也可以反过来成为下一版通用模型的训练场。
+
+于是，大模型的版本迭代开始形成一种越来越接近软件开发的循环：
+
+模型上线、真实使用、收集反馈、专项强化，然后发布下一版。
+
+某种意义上，Google的模型发布正在从“换代”，变成“更新”。
+
+对一家靠搜索、浏览器、云服务和广告系统长大的公司来说，Google最熟悉的就是让产品长期运行在真实用户面前，在真实流量里不断测试、更新和优化。
+
+现在，Google正在尝试把这种工程方式搬到模型上。
+
+甚至就连最近Google DeepMind的人事调整，也能和这条路线联系起来。8月5日，Koray Kavukcuoglu升任Google DeepMind高级副总裁。过去一年多，他实际上已经负责Gemini模型开发；这次调整则进一步把前沿AI研究、Gemini App和开发者团队也纳入了他的职责范围。
+
+模型、开发者反馈和产品，被放进了一条更短的组织链路里。
+
+理想的情况下，模型不再需要等研究团队完成一次“大版本”，再经过漫长的产品化过程才交到用户手里；研究、模型、开发者和产品之间的反馈，可以直接推动下一次迭代。
+
+对Gemini Flash来说，3.6、3.7、3.8或许已经不太能看作一次次独立的新品发布，更像同一个产品不断滚动的版本号。
+
+由于更新得太过频繁（且一直拿不出Pro和Gemini 4），甚至被网友评论：要不然直接把模型名也改成Flash吧。
+
+最后，虽然模型更新了，性能也确实有所提升，但Flash 3.8这个发布时间，多少还是带点不利。
+
+网友的吐槽非常直接：所以你们偏偏选择在Fable 5.1和Astra之间发布？到底用了什么小丑逻辑做出这个决定？
+
+怎么说呢，Flash跑得很快，抢头条这件事未必。
+
+

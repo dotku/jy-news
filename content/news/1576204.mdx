@@ -1,0 +1,34 @@
+---
+title: "高通公布新一代Adreno GPU：矩阵核心强化AI算力、更高频率更低功耗"
+date: "2026-09-03T12:22:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1576204.htm"
+summary: "高通公布了下一代骁龙顶级移动平台所搭载的新一代AdrenoGPU的部分技术细节。新GPU在延续三切片架构的基础上，进一步提升了运行频率，并首次引入片上高性能缓存、MatrixCores专用AI计算单元及AdrenoNeuralFusion融合架构，旨在从架构层面优化持续图形性能与功耗效率。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1576204.png"
+slug: "1576204-高通公布新一代Adreno-GPU-矩阵核心强化AI算力-更高频率更低功耗"
+id: "1576204"
+---
+
+新一代Adreno GPU继续采用三切片架构设计，每个切片的运行频率较上一代提升250MHz，由1.2GHz提高至1.45GHz。高通表示，这一代GPU在架构层面进行了较大幅度的调整，重点改善持续图形性能和功耗效率，完整性能数据将在后续公布。
+
+为了减少GPU对系统内存的频繁访问，新平台配备了18MB Adreno High Performance Memory（HPM）。
+
+这是一块位于芯片内部、专为图形处理服务的高速存储空间，可作为可配置的图形工作区使用。
+
+在渲染过程中，Adreno HPM可保存Render Target、深度与颜色缓冲区、此前渲染阶段产生的纹理及其他中间数据。
+
+开发者可根据不同图形负载灵活调用片上存储，从而减少数据反复前往系统DDR内存所带来的延迟与功耗。高通公布的数据显示，该设计可带来约12%的功耗表现改善。
+
+新一代Adreno GPU首次引入面向AI运算的Qualcomm Matrix Cores。这类专用计算单元可直接在GPU图形管线内部运行AI模型，使矩阵加速能力覆盖CPU、NPU和GPU等主要计算单元，同时减少神经网络任务在不同处理单元之间的迁移开销。
+
+基于Matrix Cores，高通进一步推出Adreno Neural Fusion技术，将AI运算更直接地融入图形渲染流程。
+
+该技术主要面向神经渲染、AI超分辨率和帧生成等场景，利用GPU内部的AI计算能力提升画质与渲染效率，在维持较高图形性能的同时降低功耗、增强持续运行能力。
+
+其中，AI超分辨率将成为Adreno Neural Fusion首批落地的重点能力之一。
+
+高通表示，该方案已获得Unity和Unreal Engine等主流游戏引擎的支持，开发者可直接集成部署，首批支持该技术的游戏预计将在今年实现商业化落地。
+
+目前，新一代Adreno GPU的具体型号、完整运行频率、图形性能提升幅度及Neural Fusion支持的首批游戏名单仍有待进一步公布。
+
+
