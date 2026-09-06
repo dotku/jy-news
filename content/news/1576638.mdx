@@ -1,0 +1,36 @@
+---
+title: "国外Modder成功让RX 9070 XT运行DLSS 5"
+date: "2026-09-06T16:33:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1576638.htm"
+summary: "最近，我们已经在RTX40系、30系甚至20系等老款GPU上成功启用了DLSS5。尽管目前这项功能仍仅限于RTX50系列，但英伟达承诺稍后会将NR（神经渲染）功能引入RTX40系列。有意思的是，国外已有大神成功将在AMDRadeonRX9070XT显卡上开启DLSS5。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1576638.jpg"
+slug: "1576638-国外Modder成功让RX-9070-XT运行DLSS-5"
+id: "1576638"
+---
+
+由于DLSS 5神经渲染目前的实时神经渲染模型依赖于FP8浮点运算，因此它完全可以在最新一代的GPU上运行。这就引出了一个问题：是否有可能在原生支持FP8的AMD RDNA 5 GPU上启用DLSS 5 NR?答案似乎是肯定的。
+
+油管主播Ancient Gameplays上传了一段视频，他演示了如何在《赛博朋克2077》等游戏中，在他的Radeon RX 9070 XT显卡上启用DLSS 5 NR。
+
+操作过程非常简单：
+
+首先需要将“dlssnr_on_amd_setup.exe”文件放入binx64文件夹，例如在《赛博朋克2077》等游戏中。
+
+下一步是获取“nvngx_dlssnr.dl”文件并将其放入同一文件夹。
+
+运行“dlssnr_on_amd_setup.exe”文件后，你需要按照一些基本说明进行操作。然后，可以运行游戏并启用FSR（FSR 3或FSR 4）。
+
+按下End键退出叠加层后，您需要再次运行该可执行文件，并选择“更新”（U）或“移除”（R）来启用或禁用游戏中的DLSS 5 NR。
+
+在未启用DLSS 5 NR的情况下，《赛博朋克2077》在RX 9070 XT显卡上可以达到80帧以上，但启用NR后，帧数骤降至11-12帧。
+
+由此可见，由于缺乏优化，DLSS 5确实会大幅降低性能。不过，该MOD的作者此后发布了多个版本，包括Alpha v0.2.7，该版本提升了12%的性能，使《赛博朋克2077》在1080p分辨率下能够达到30帧。
+
+作者还指出，使用相同方法，DLSS 5也适用于《给他爱5：加强版》。
+
+DLSS 5关闭
+
+DLSS 5开启
+
+
