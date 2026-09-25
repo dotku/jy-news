@@ -1,0 +1,36 @@
+---
+title: "高通为骁龙X2的GPU扩展Linux内核支持 Adreno X2-85驱动补丁已提交"
+date: "2026-09-25T13:13:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1579542.htm"
+summary: "高通近日进一步推进SnapdragonX2系列处理器的Linux开源支持，为代号“Mahua”的低端SnapdragonX2平台提交了GPU支持补丁。这意味着高通正在把此前针对SnapdragonX2Elite建立的GPU驱动支持扩展到更多X2系列芯片，为未来搭载这些处理器的Linux笔记本电脑提供更加完整的图形加速能力。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1579542.webp"
+slug: "1579542-高通为骁龙X2的GPU扩展Linux内核支持-Adreno-X2-85驱动补丁已提交"
+id: "1579542"
+---
+
+此次提交的补丁针对的是Mahua平台上的Adreno X2-85 GPU。Mahua是高通Snapdragon X2系列中定位低于X2 Elite、面向10核和12核配置的SoC代号，而此前X2 Elite的代号为Glymur。两者均采用高通新一代Adreno Gen 8图形架构。
+
+高通此次提交的Linux内核补丁规模并不大。开发人员指出，与Glymur相比，Mahua版本的GPU主要区别在于拥有更少的计算切片以及规模更小的内部存储，因此并不需要为其重新编写一套完整的图形驱动框架。此次GPU支持所增加的内核图形驱动代码只有几十行，主要用于处理Mahua与Glymur之间的硬件差异。
+
+这意味着高通此前已经为Snapdragon X2 Elite建立的Linux GPU支持基础，可以比较容易地扩展到低端X2产品。对于Linux生态而言，这种硬件之间高度共用驱动代码的设计也有利于降低后续维护成本。
+
+此次提交的补丁目前已经进入Linux内核邮件列表的代码审查阶段，并不意味着相关支持已经正式进入稳定版Linux内核。按照Linux内核开发流程，补丁还需要经过开发人员审核、修改和合并等步骤，之后才能成为正式主线内核的一部分。
+
+高通此前已经开始为Snapdragon X2系列建立完整的Linux软件支持。9月23日，高通公布了Snapdragon X2系列Linux早期开发者预览版，表示公司从2025年Snapdragon Summit之后就开始推进X2系列的上游Linux支持，最初从SoC底层支持开始，随后逐步扩展到参考硬件平台。
+
+目前高通的目标并不仅仅是让Linux能够在Snapdragon X2上启动，而是将更多硬件功能逐步提交到Linux主线代码中，使未来搭载Snapdragon X2的笔记本电脑能够更加容易地运行、测试和调试Linux。
+
+在图形部分，高通此前已经为Snapdragon X2 Elite的Adreno X2-85建立了Linux内核支持。与此同时，Mesa图形栈也已经开始支持这一代Adreno Gen 8 GPU。Mesa中的Freedreno Gallium3D驱动负责OpenGL支持，而Turnip则负责Vulkan图形API。
+
+今年早些时候，Adreno Gen 8的Vulkan支持已经进入Mesa 26.0，并覆盖Snapdragon X2 Elite的Glymur以及其他采用这一代GPU的高通平台。这意味着Snapdragon X2已经逐渐具备从Linux内核、Mesa到Vulkan驱动的完整开源图形软件基础。
+
+Mahua此次获得内核层面的GPU支持后，下一步仍需要Mesa等用户空间组件进一步完善对应硬件的支持，才能真正形成完整的Linux图形加速环境。因此，目前还不能简单理解为所有采用Mahua的Linux笔记本已经可以获得成熟的GPU性能。
+
+高通近年来明显加快了对Linux和开源驱动的投入。对于基于Arm架构的Windows笔记本而言，Snapdragon X系列已经成为高通进入PC市场的重要产品线，而随着Linux用户和开发者对Arm笔记本的关注不断增加，能否提供完善的主线Linux支持也逐渐成为平台竞争力的一部分。
+
+与过去依赖厂商自行维护的大量下游补丁相比，将硬件支持逐步提交到Linux主线，可以让不同Linux发行版更容易获得相关功能，同时也减少厂商长期维护专用驱动的负担。对于消费者而言，这也意味着未来购买搭载Snapdragon X2处理器的电脑后，运行Linux所面临的硬件兼容性问题有望进一步减少。
+
+目前Mahua的Adreno X2-85 GPU支持仍处于内核代码审查阶段，但此次补丁的规模非常小，也说明高通已经为Snapdragon X2不同定位的芯片建立了较为统一的GPU软件架构。随着这些代码陆续进入Linux内核和Mesa，未来包括低端Snapdragon X2在内的整个产品线都有望获得更加完整的开源图形支持。
+
+
