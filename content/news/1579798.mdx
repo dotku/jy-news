@@ -1,0 +1,90 @@
+---
+title: "实测Opus 5.5：一句提示词造出100个网页，还会做动画谱曲"
+date: "2026-09-27T20:34:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1579798.htm"
+summary: "Opus5.5发布后，网友都抢着试用。一刷就是好几个作品，从网页、动画到游戏等等。这些都比benchmark的数值直观，有的还能自己上手试试。一位名为MiaAILab的创作者直接让Opus5.5「做100个HTML文件」，附带三条要求：好看、设计不要重复、充分发挥创意。做出来的成品十分惊人。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1579798.jpg"
+slug: "1579798-实测Opus-5-5-一句提示词造出100个网页-还会做动画谱曲"
+id: "1579798"
+---
+
+https://x.com/MiaAI_lab/status/2102490829306634560
+
+还真别说，每个点开都像模像样的。同一个模型对不同交互形式和视觉风格，有非常多元化的处理。
+
+视频链接：https://mp.weixin.qq.com/s/dVLbNHkM32K5g1cJWJs1hw
+
+这个案例里，Opus 5.5 从开放要求出发，自己决定做哪些作品，并且写出页面结构、CSS 和交互代码。从创意构思、任务拆解到成品制作，Opus 5.5 展现了很强的自主性。
+
+给模型一个开放的总目标，它来自己规划步骤，并把任务完整交出来。
+
+这正好是 Anthropic 这次强烈推荐的用法。
+
+一次交代整件事，真的能做完？
+
+Anthropic 在 Opus 5.5 使用指南开头就给出建议：一次交代完整任务，说清楚什么算“做完”，以及遇到什么情况需要停下来问用户，然后让模型自己工作。
+
+指南链接：https://claude.dev/blog/getting-the-most-out-of-opus-5-5/
+
+指南举的例子是迁移支付接口。
+
+交代任务之外，最重要的就是写明完成标准：所有接口都使用新客户端，旧客户端被删除，测试通过。只有碰到无法解释的测试失败时，模型才需要停下来询问。这样的要求给了模型自行推进的空间，也给最终交付留下了可核对的标准。
+
+其实这个建议在 Opus5 发布时就提过。这次 Anthropic 特意强调的是，Opus 5.5 更能在长时间、多步骤的任务中持续推进。
+
+官方发布材料提到，一位早期测试者让它审查并修复约 20 万行代码，不到三小时完成；同一任务中，Opus 5 花了 20 多个小时。另一项内部测试要求模型把 HAProxy 从 C 改写成 Rust，Opus 5.5 用了 9.5 小时，改写结果通过了几乎全部原项目的回归测试。
+
+不过，工作做了很久，也未必做出了用户最急着要的东西。
+
+科技媒体 Every 在实测中，给了 Opus 5.5 十分钟，为一场客户培训写按分钟安排的日程表。它读完需求，花了将近五分钟思考，又制作训练数据、核对表格、编写学员材料。但时间到了，最需要的日程表却没有交出来。
+
+实测报告：https://every.to/vibe-check/vibe-check-opus-5-5-is-pulling-our-codex-converts-back-to-claude/
+
+Every 的另一次应用开发测试也很说明问题。任务页面看起来很美观，自动检查也显示通过，但测试者实际操作时，核心页面还是报错。
+
+看来想一步到位还是不现实。
+
+干掉破折号，还玩起了音乐、动画
+
+在文字表达方面，Opus 5.5 进步明显，一改此前那种典型的“Claude 腔”。
+
+有网友评价，测试完 Opus 5.5 后最大的感受是写作风格终于“修好了”。
+
+https://x.com/theojaffee/status/2102454423041818786
+
+“它写东西变得更直接、更正常，也没那么 AI 味（non-slop）了。上一次看到 Claude 写得这么干净自然，还是大约八个月前的 Opus 4.6。”
+
+左图为 Opus 5 的输出，略显啰嗦，带有明显的 AI 写作痕迹；右图为 Opus 5.5 对同一内容的输出，更加简洁自然。
+
+据 Claude 官方账号发布的 Opus 5.5 更新说明，新版本沟通更自然，会把重要信息放前面，并更好地遵循用户给的写作规则。
+
+有网友发现，Opus 5.5 这次干掉了破折号！在上述官方给出的对比图中，左侧 Opus 5 的输出里多处使用了破折号，而右侧 Opus 5.5 对同样内容的写作，完全没有出现破折号。
+
+https://x.com/theo/status/2102474289949868254?s=20
+
+在 PDF 表格解析方面，LlamaIndex CEO Jerry Liu 用自家的 ParseBench 进行测试，Opus 5.5 得分 93.9%，比 Opus 5 提升了 7 个百分点以上，超过了 Fable、Gemini、Astra 等模型，但在图表、格式、布局理解上还是有短板。
+
+https://x.com/jerryjliu0/status/2102529024841154977
+
+Claude Opus 5.5 已经不只是“会写代码”，还能用代码直接创作出兼具艺术感与流畅度的动画。
+
+X 博主 Kevin Ngo 让 Opus 5.5 用 JavaScript 逐帧绘制出了下面这段动画：
+
+视频链接：https://mp.weixin.qq.com/s/dVLbNHkM32K5g1cJWJs1hw
+
+还有网友也用 Opus 5.5 做出了类似的动画：
+
+视频链接：https://mp.weixin.qq.com/s/dVLbNHkM32K5g1cJWJs1hw
+
+https://x.com/devteamdrew/status/2102436464323661880
+
+Claude 现在还能用纯 JavaScript 写出真正能听的电子音乐。
+
+有网友只给了 Opus 5.5 一句提示词“make some bass music with javascript”（用 JavaScript 做点贝斯音乐），结果 Claude 一次性就写出了完整的 JS 代码，生成了一段听起来相当不错的 bass 音乐。
+
+视频链接：https://mp.weixin.qq.com/s/dVLbNHkM32K5g1cJWJs1hw
+
+https://x.com/aj_dev_smith/status/2102504509637587339?s=20
+
+
