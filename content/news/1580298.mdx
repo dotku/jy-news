@@ -1,0 +1,32 @@
+---
+title: "微软WSL容器正式推出 Windows进一步成为Linux容器运行平台"
+date: "2026-10-01T14:19:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1580298.htm"
+summary: "微软已将WSLContainers从公开预览版转为正式可用版本。用户运行“wsl--update”即可获得相关功能，包括命令行工具wslc.exe和WSLContainersAPI。虽然该正式版在GitHub上的版本号为WSL3.0.1，但这并不代表微软推出了WSL3；微软此前已否认存在这一新版本。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1580298.jpg"
+slug: "1580298-微软WSL容器正式推出-Windows进一步成为Linux容器运行平台"
+id: "1580298"
+---
+
+此前，Windows开发者若要运行Linux容器，通常需要安装Docker Desktop，或在WSL Linux发行版中手动配置Docker Engine。WSL Containers则将容器工作流程直接整合进WSL。wslc.exe可用于从Windows构建、运行、管理和部署Linux容器，另提供container.exe作为别名，熟悉Docker的开发者也能使用类似命令。配套API可供原生Windows应用通过代码创建和控制Linux容器，并支持C#和C++/WinRT调用、标准输入输出、文件挂载、网络及GPU访问。
+
+这里的“原生”并不意味着容器运行在Windows内核上，容器实际运行于WSL虚拟机中的Linux内核。微软重新设计了容器会话的管理方式。常规WSL应用通过拥有较高权限的Windows服务wslservice.exe创建虚拟机；WSL Containers则由该服务创建名为wslcsession.exe的子进程，由它代表用户创建容器、挂载目录和绑定网络端口。微软称，每个会话由独立进程承载，能加强隔离；会话操作所需权限也低于wslservice.exe，有助于提升安全性。
+
+每个会话都有独立的虚拟硬盘，保存在用户应用数据目录下。容器可通过卷挂载使用Windows文件夹，微软借助virtiofs将目录共享给虚拟机，并称其速度约为传统WSL发行版访问C盘所用Plan 9方案的两倍。需要原生Linux文件系统或限制存储容量的容器，则可以使用虚拟硬盘卷。
+
+正式版新增容器重启、文件复制、网络连接与断开、更多网络驱动选项、容器健康检查，以及在创建和运行容器时挂载目录等命令。网络方面还引入名为Consommé的架构。Linux虚拟机的网络流量会以以太网帧形式进入virtio队列，再由以用户身份运行的Windows进程处理DNS查询、TCP和UDP流量及端口映射。微软表示，这种方式与VPN和防火墙的兼容性更好，针对WSL用户长期遇到的网络问题作出改进。此前测试中，Windows无需额外配置网络，即可通过localhost访问容器内运行的Flask服务。
+
+微软也为企业使用加入管理和安全能力。IT管理员可通过Microsoft Intune启用或关闭WSL Containers，并限制容器镜像只能从获准的注册表拉取。Microsoft Defender for Endpoint现有的WSL集成也扩展到容器，可显示容器内部的进程、文件和网络活动，并将其关联到Windows主机。微软表示，这些能力配合Intune和Defender，能为企业环境提供所需的安全控制。
+
+开发工具方面，微软宣布VS Code Dev Containers扩展可将wslc用作容器驱动，VS Code Containers扩展和Aspire也支持该功能。微软WSL产品经理克雷格·洛文表示，用户只需在设置中将wslc选为可执行程序。不过，有开发者反馈，即使更换为正式版扩展，Dev Containers仍会提示找不到docker命令，说明目前的编辑器集成仍可能需要排查和调整。
+
+开发者最期待的Compose支持仍在开发中。Compose可将前端、后端API、数据库和缓存等多个容器写入同一份compose.yaml配置文件，再通过一条命令启动整套服务。微软称，Compose是wslc目前呼声最高的功能，并希望未来让“wsl compose up”直接运行现有配置文件，无需修改。此前测试时，因为缺少Compose，开发者只能逐个启动多容器项目中的服务。
+
+一些高级场景目前仍有缺口。微软工程师提到，开发者可尝试使用自己维护的社区项目wslc-remote，在WSL发行版内部构建和推送镜像；微软希望未来原生支持，但仍需处理不少特殊情况。另有用户表示，缺少“--privileged”参数支持，导致其不得不改回Docker来运行kind和k3d Kubernetes集群。微软称相关功能即将推出，代码已进入主分支，预计很快会进入预览阶段。因此，正式可用并不意味着wslc已具备成熟容器平台的所有功能。
+
+WSL Containers还支持Windows 10和Windows Server。微软WSL产品经理称，只要当前系统支持WSL，就能运行容器；Windows Latest此前也在Windows 10上测试过wslc，成功构建并运行Flask仪表盘。微软方面确认，Windows Server也支持在生产环境中使用该功能。
+
+报道将这一变化与微软过去对Linux的态度作对照。微软前首席执行官史蒂夫·鲍尔默曾将Linux称作“癌症”，如今微软却持续完善WSL、将其开源，并改进Windows与Linux之间的文件访问和网络能力。微软称，Linux如今不再只是开发环境，也能承载AI和云原生工作负载；文章还提到，Google正在为其新AI工具提供原生Windows 11和WSL支持，Canonical则表示，Ubuntu在Windows 11上的增长速度已超过原生Linux电脑。尽管如此，作者认为，Compose和部分高级功能尚未补齐前，多数开发者不会立刻放弃Docker Desktop；若未来能直接运行未修改的Compose配置，才可能让更多人考虑卸载Docker Desktop。
+
+
