@@ -1,0 +1,64 @@
+---
+title: "微软称Copilot是“工作操作系统” 但Windows 11版Copilot本质仍是Chromium应用"
+date: "2026-10-02T18:37:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1580482.htm"
+summary: "微软CEO萨提亚·纳德拉近日再次将Copilot称为“面向工作的全新操作系统”，但这款微软正在大力推广的“工作OS”实际上仍然主要建立在Chromium浏览器技术之上。它虽然拥有一个规模很小的原生WinUI组件，但负责主要界面和大部分功能的核心仍然是完整的Chromium浏览器环境。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1580482.jpg"
+slug: "1580482-微软称Copilot是-工作操作系统-但Windows-11版Copilot本质仍是Chromium应用"
+id: "1580482"
+---
+
+纳德拉是在微软宣布LinkedIn CEO Ryan Roslansky将在2026年底离职的内部信中再次提出这一说法的。他表示，微软正在快速推进“将Copilot打造为全新的工作操作系统”的愿景，让它能够覆盖不同模型、不同设备形态以及不同工作任务，同时让Office完整融入Copilot，Copilot也反过来融入Office。
+
+这一说法与微软9月25日发布的新一代Copilot战略相呼应。微软已经重新设计Copilot，将其从传统的聊天机器人进一步扩展成一个集成式工作平台，并加入Home、Code和Autopilot等功能，同时将Word、Excel和PowerPoint直接整合进Copilot。微软希望用户不必在多个应用之间不断切换，而是直接通过Copilot完成从信息检索、文档编辑到应用开发和自动化任务的一系列工作。
+
+其中，Home负责提供Chat和Cowork等入口；Office则把Word、Excel和PowerPoint放进Copilot环境；Code允许用户通过自然语言描述需求，创建应用、仪表板和工作流程；Autopilot则是一种可以长期运行的AI智能体，能够在用户没有持续发出指令的情况下执行任务、跟进对话以及处理周期性工作。微软还计划推出Today功能，将邮件、日历、Teams对话、会议和任务等信息集中到一个主动式工作中心。
+
+从产品战略角度来看，微软将Copilot称作“OS”有其自己的逻辑。传统操作系统的核心作用，是提供一个统一层，让用户通过它访问应用程序、文件和各种系统服务。而微软现在希望Copilot成为企业工作场景中的类似统一入口，让用户通过自然语言直接调用Office、企业数据、AI模型、第三方工具以及自动化智能体。
+
+对最新Windows版Copilot进行分析后发现，这个“操作系统”在技术实现上与传统意义上的操作系统相去甚远。
+
+最新版本的Copilot安装包中，负责启动应用的copilotapp.exe文件大小只有约4.99MB，但它旁边却包含了一套完整的Microsoft Edge 154浏览器组件，规模约520MB。其中msedge.dll本身就有约349.6MB，同时还包括Chromium资源文件、V8 JavaScript引擎、ICU、FFmpeg以及GPU相关组件。
+
+换句话说，Copilot的主要界面并不是使用WinUI原生绘制，而是由Chromium负责渲染。Windows版Copilot打开后，实际上会加载copilot.microsoft.com；工作账户则会进入m365.cloud.microsoft/chat。其背后运行的是Chromium常见的渲染、GPU和网络服务进程。
+
+Windows Latest还发现，Copilot安装包中的copilotapp_proxy.exe与Microsoft Edge的msedge_proxy.exe拥有完全相同的文件哈希，这进一步说明微软实际上是在Copilot客户端中携带了一套Edge浏览器运行环境。
+
+因此，从软件架构角度来看，最新Copilot更接近一个经过Windows包装的Chromium应用，而不是传统意义上的Windows原生应用。
+
+不过，将它简单称为“一个网站”也并不完全准确。微软仍然提供了一个原生WinUI 3组件copilotapphost.exe。这个组件采用C#和.NET 10开发，并使用Windows App SDK以及WinUI XAML技术。
+
+只是这个原生组件负责的内容非常有限，主要包括语音唤醒、“Hey Copilot”功能、语音输入界面、Vision权限确认、屏幕共享以及浮动输入框等Windows特有功能。Copilot的主窗口和绝大多数用户界面仍由Chromium负责。
+
+两个部分之间则通过Windows命名管道进行通信，用于处理快捷键、语音、聊天请求、设置、代码权限以及本地文件夹访问等功能。因此，比较准确的描述是：Copilot是一个以Chromium为核心、由一个小型WinUI原生组件辅助运行的混合应用。
+
+这并不是微软第一次让Copilot在Windows上采用Web技术。Copilot过去几年经历了多次架构调整。微软曾经使用WinUI构建原生Copilot，随后又在2026年重新转向基于Web技术的方案。此前版本主要依赖WebView2，而目前的新版本则更进一步，直接在应用中携带完整Chromium运行环境。
+
+微软自己的支持文档也明确表示，Microsoft Copilot属于依赖Edge的Web应用，其Windows版本运行在Microsoft Edge引擎之上。微软将Copilot列为使用Edge平台运行的PWA应用之一。
+
+这也产生了一个颇为讽刺的对比：微软整个2026年都在强调Windows原生体验，并投入资源改善WinUI和Windows App SDK，而与此同时，公司目前最重要的AI应用之一却选择了Chromium作为核心。
+
+微软近期推出Windows App SDK 2.5 Experimental版本时，还加入了TableView和Chart等控件，并修复了WinUI应用内存增长问题。Windows团队同时也在重写部分Windows 11系统外壳，希望减少过去大量依赖Web技术造成的性能和内存问题。
+
+但在Copilot身上，微软显然做出了不同的取舍。
+
+原因可能并不复杂。Copilot如今已经不只是Windows应用，它还需要同时运行在Web、Mac以及移动设备上。使用Chromium和Web技术，可以让微软更容易保持不同平台之间的功能一致性，并快速向所有平台推送新功能。如果采用完全原生的Windows UI，每项功能都需要针对Windows重新开发和维护。
+
+尤其是微软现在希望Copilot成为覆盖不同设备和工作场景的统一入口，跨平台能力的重要性自然进一步提高。因此，从微软的产品战略来看，牺牲一部分Windows原生架构的纯粹性，换取开发效率和跨平台一致性，很可能是有意做出的选择。
+
+不过，这也意味着“Copilot是一个工作操作系统”的说法更多属于产品战略层面的定位，而不是技术定义。
+
+传统操作系统拥有内核、硬件抽象、进程管理、内存管理、驱动体系、文件系统以及应用运行环境等基础设施，而Copilot并不承担这些职责。它实际上运行在Windows之上，通过AI作为统一入口，将原本分散的应用、文件、数据和服务连接起来。
+
+从这个角度看，微软所说的“工作OS”更接近一种新的软件交互层，而不是Windows的替代品。它的核心变化不是把Windows本身变成AI，而是让用户逐渐从直接操作Word、Excel、Teams等应用，转向通过Copilot调用这些应用和服务。
+
+微软过去还曾经探索过更加激进的Copilot操作系统概念。此前曝光的Project Aion就是一个典型例子。这一2024年前后开发的内部原型曾经试图把传统Windows桌面、开始菜单等元素大幅弱化，以Copilot作为主要启动和交互入口，并使用经过修改的Edge作为系统外壳。相关项目后来似乎没有成为正式产品。
+
+如今的Copilot显然没有走到Aion那么激进的程度，Windows 11依然是底层操作系统，传统桌面、开始菜单和Win32应用也没有消失。但微软正在逐渐把Copilot放到传统应用之上，让它成为用户进入Office和其他工作服务的统一入口。
+
+真正值得关注的并不是Copilot究竟算不算“操作系统”，而是微软正在尝试改变用户与办公软件的关系。过去用户需要知道自己应该打开哪个应用，再在应用内部执行具体操作；未来微软希望用户只需要描述目标，由Copilot决定应该调用Word、Excel、Teams、企业数据还是AI智能体来完成任务。
+
+因此，纳德拉所谓的“工作操作系统”，目前更像是微软对下一代软件交互模式的定义，而不是对Copilot技术架构的准确描述。至少在Windows 11上，Copilot目前仍然是一款运行在Windows之上的应用，而且其核心甚至主要依赖Chromium。微软真正希望建立的，则是一个位于传统应用之上的AI工作层。
+
+
