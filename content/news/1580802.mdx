@@ -1,0 +1,32 @@
+---
+title: "开源工具可移除Apple Intelligence模型 Mac用户最高可收回数十GB存储空间"
+date: "2026-10-05T19:15:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1580802.htm"
+summary: "随着苹果将AppleIntelligence进一步深度整合至macOS系统，一款名为RemoveMacAI的开源工具近日在Mac用户社区引发广泛关注。该工具专门用于关闭AppleIntelligence功能、删除已下载的本地AI模型，并阻止系统再次自动下载相关文件，从而帮助用户释放宝贵的存储空间。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1580802.jpg"
+slug: "1580802-开源工具可移除Apple-Intelligence模型-Mac用户最高可收回数十GB存储空间"
+id: "1580802"
+---
+
+根据开发者介绍，在macOS 27中，苹果已经移除了过去用于一键关闭Apple Intelligence的总开关。即便用户关闭相关AI功能，已经下载至本地的模型文件仍会保留在硬盘之中，持续占用存储空间。RemoveMacAI正是针对这一情况开发的解决方案。 该工具并不会直接修改系统核心文件，也无需关闭苹果的系统完整性保护机制（SIP）。其运作方式主要依靠安装配置文件，关闭苹果的模型资源管理服务，同时删除已经下载的AI模型。随后，工具还会将后续模型下载请求重定向到本地关闭端口，以阻止系统重新下载这些文件。
+
+对于不少存储容量有限的用户而言，这项工具具有相当吸引力。尤其是在256GB存储容量且无法升级硬盘的Mac设备上，释放数十GB空间可能带来明显改善。
+
+事实上，自macOS 27发布以来，Apple Intelligence占用空间的问题就持续受到关注。苹果官方文件显示，Apple Intelligence通常需要最多约14GB存储空间，但部分媒体和用户测试发现，系统实际显示的占用容量可能远高于这一数字。个别设备上，Apple Intelligence相关内容被记录为20GB以上，甚至超过27GB。
+
+开发者表示，RemoveMacAI不仅删除模型文件，还会阻止未来自动恢复下载，其配置文件在系统更新后通常仍能继续生效。不过，工具依赖的部分配置限制机制实际上已被苹果在macOS 26.4中标记为弃用，虽然目前在macOS 27.0.1中仍可正常使用，但未来系统版本存在失效可能。
+
+如果用户选择移除Apple Intelligence，相应AI功能也将一并消失。这包括新版Siri相关智能能力、写作工具、Genmoji、Image Playground图像生成、ChatGPT集成、智能摘要、智能回复、文本预测输入、照片清理工具、空间照片处理以及Xcode中的预测代码补全等功能。
+
+不过，开发者指出，并非所有功能都会受到影响。例如系统语音输入功能仍可继续使用。
+
+自发布以来，RemoveMacAI已迅速获得大量关注，其GitHub项目在短时间内收获数百名开发者和用户的支持，同时在Reddit和Hacker News等社区引发热烈讨论。许多用户认为，当人工智能逐渐成为操作系统默认组成部分时，用户依然应当保有选择是否安装和保留相关模型文件的权利。
+
+目前苹果尚未提供官方工具用于彻底删除Apple Intelligence模型。随着AI功能在macOS中的占比不断提高，围绕存储空间占用、用户控制权以及隐私透明度的讨论也正在持续升温。
+
+下载地址：
+
+https://github.com/omlahore/RemoveMacAI
+
+
