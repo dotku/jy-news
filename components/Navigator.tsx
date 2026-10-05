@@ -28,9 +28,9 @@ export default function Navigator({ lang }: { lang: Lang }) {
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <Link
           href={`/${lang}`}
-          className="text-lg font-bold tracking-tight text-green-700 dark:text-green-400"
+          className="whitespace-nowrap text-lg font-bold tracking-tight text-green-700 dark:text-green-400"
         >
-          JY Tech News
+          JY Tech News <span className="hidden font-semibold md:inline">杰圆科技新闻</span>
         </Link>
         <div className="flex items-center gap-1">
           {navItems.map((item) => {
@@ -53,7 +53,7 @@ export default function Navigator({ lang }: { lang: Lang }) {
           })}
           <Link
             href={switchPath}
-            className="ml-2 rounded-lg border border-zinc-200 px-2.5 py-1 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            className="ml-2 whitespace-nowrap rounded-lg border border-zinc-200 px-2.5 py-1 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
           >
             {otherLang === "en" ? "EN" : "中文"}
           </Link>

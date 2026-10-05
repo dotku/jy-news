@@ -47,7 +47,7 @@ const dict = {
   },
   en: {
     siteName: "JY Tech News",
-    siteNameCn: "",
+    siteNameCn: "杰圆科技新闻",
     siteDesc:
       "Curated global tech news, AI, startups, and industry insights",
     home: "Home",
@@ -57,7 +57,7 @@ const dict = {
     readMore: "Read more",
     views: "Views",
     likes: "Likes",
-    aboutTitle: "About JY Tech News",
+    aboutTitle: "About JY Tech News 杰圆科技新闻",
     aboutDesc:
       "JY Tech News is a tech news platform focused on delivering high-quality, timely coverage of the global technology industry",
     focusAreas: "Focus Areas",

@@ -14,10 +14,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  const title =
-    lang === "zh"
-      ? "行业之声 - JY Tech News"
-      : "Industry Voices - JY Tech News";
+  const title = lang === "zh" ? "行业之声" : "Industry Voices";
   return { title };
 }
 

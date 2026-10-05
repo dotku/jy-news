@@ -15,7 +15,7 @@ export async function generateMetadata({
   if (!isValidLang(lang)) return {};
   const t = getDictionary(lang);
   return {
-    title: `${t.aboutTitle} - ${t.siteName}`,
+    title: t.about,
     description: t.aboutDesc,
   };
 }

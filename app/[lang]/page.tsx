@@ -23,7 +23,9 @@ export default async function Home({
   if (articles.length === 0) {
     return (
       <main className="mx-auto max-w-5xl px-4 py-12">
-        <h1 className="mb-6 text-3xl font-bold">{t.siteName}</h1>
+        <h1 className="mb-6 text-3xl font-bold">
+          {t.siteName} {t.siteNameCn}
+        </h1>
         <p className="text-zinc-500">{t.noArticles}</p>
       </main>
     );

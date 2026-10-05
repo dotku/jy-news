@@ -17,14 +17,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: "JY Tech News - 杰圆科技新闻",
-    template: "%s | JY Tech News",
+    template: "%s | JY Tech News 杰圆科技新闻",
   },
   description:
     "JY Tech News（杰圆科技新闻）— 精选全球科技新闻、AI、创业与行业洞察",
   metadataBase: new URL("https://news.jytech.us"),
   openGraph: {
     type: "website",
-    siteName: "JY Tech News",
+    siteName: "JY Tech News 杰圆科技新闻",
     locale: "zh_CN",
     alternateLocale: "en_US",
   },

@@ -31,10 +31,10 @@ export async function generateMetadata({
   if (!isValidLang(lang)) return {};
   const slug = decodeURIComponent(rawSlug);
   const article = getArticleBySlug(slug, lang);
-  if (!article) return { title: "Not Found - JY Tech News" };
+  if (!article) return { title: "Not Found" };
 
   return {
-    title: `${article.title} - JY Tech News`,
+    title: article.title,
     description: article.summary,
     openGraph: {
       title: article.title,
