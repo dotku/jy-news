@@ -13,8 +13,14 @@ const INFLUENCERS = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "config/influencers.json"), "utf-8")
 );
 
+// Feeds occasionally deliver binary garbage; control chars break the YAML front matter and the build.
+function stripControl(s) {
+  return s.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F\uFFFD]/g, "");
+}
+
 function sanitize(s) {
-  return s
+  return stripControl(s)
+    .replace(/\\/g, "\\\\")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
@@ -81,7 +87,7 @@ function parseRSS(xml, influencer) {
     const originalAuthor = isRT ? creator : `@${influencer.handle}`;
 
     // Extract text content
-    const content = stripHtml(description);
+    const content = stripControl(stripHtml(description));
 
     // Extract image if any
     const imgMatch = description.match(/<img[^>]*src="([^"]*)"[^>]*>/);

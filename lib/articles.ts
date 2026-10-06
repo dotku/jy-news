@@ -32,12 +32,18 @@ export function getAllArticles(lang: Lang = "zh"): ArticleMeta[] {
 
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"));
 
-  const articles = files.map((file) => {
+  const articles = files.flatMap((file) => {
     const raw = fs.readFileSync(path.join(dir, file), "utf-8");
-    const { data } = matter(raw);
+    let data;
+    try {
+      data = matter(raw).data;
+    } catch (err) {
+      console.warn(`Skipping unparsable article ${file}:`, (err as Error).message);
+      return [];
+    }
     const fileId = file.replace(/\.mdx$/, "");
 
-    return {
+    return [{
       slug: data.slug || fileId,
       id: data.id || fileId,
       title: data.title || "",
@@ -48,7 +54,7 @@ export function getAllArticles(lang: Lang = "zh"): ArticleMeta[] {
       summary: data.summary || "",
       summaryEn: data.summary_en || "",
       image: data.image || "",
-    };
+    }];
   });
 
   return articles.sort(

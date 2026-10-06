@@ -24,11 +24,19 @@ export function getAllPosts(): Post[] {
 
   const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".mdx"));
 
-  const posts = files.map((file) => {
+  const posts = files.flatMap((file) => {
     const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
-    const { data, content } = matter(raw);
+    let parsed;
+    try {
+      parsed = matter(raw);
+    } catch (err) {
+      // One malformed post shouldn't take down the whole build.
+      console.warn(`Skipping unparsable post ${file}:`, (err as Error).message);
+      return [];
+    }
+    const { data, content } = parsed;
 
-    return {
+    return [{
       slug: data.slug || file.replace(/\.mdx$/, ""),
       title: data.title || "",
       date: data.date || "",
@@ -41,7 +49,7 @@ export function getAllPosts(): Post[] {
       link: data.link || "",
       image: data.image || "",
       content: content.trim(),
-    };
+    }];
   });
 
   return posts.sort(
