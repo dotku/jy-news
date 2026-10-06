@@ -62,6 +62,20 @@ export function getAllArticles(lang: Lang = "zh"): ArticleMeta[] {
   );
 }
 
+// Home shows a hero (3) + trending (4) + the newest LIST_PAGE_SIZE items; older items go to /[lang]/page/[n].
+// Rendering everything on one page produced a 30 MB page that Vercel refuses to deploy.
+export const HOME_LEAD_COUNT = 7;
+export const LIST_PAGE_SIZE = 30;
+
+export function getListPage(articles: ArticleMeta[], page: number) {
+  const start = HOME_LEAD_COUNT + (page - 1) * LIST_PAGE_SIZE;
+  return articles.slice(start, start + LIST_PAGE_SIZE);
+}
+
+export function getListPageCount(total: number) {
+  return Math.max(1, Math.ceil((total - HOME_LEAD_COUNT) / LIST_PAGE_SIZE));
+}
+
 export function getArticleBySlug(
   slug: string,
   lang: Lang = "zh"
