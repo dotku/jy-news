@@ -10,6 +10,8 @@ const dict = {
   zh: {
     siteName: "JY Tech News",
     siteNameCn: "杰圆科技新闻",
+    // Name shown in the nav, page heading and browser titles
+    brand: "杰圆科技新闻",
     siteDesc: "精选全球科技新闻、AI、创业与行业洞察",
     home: "首页",
     about: "关于",
@@ -18,7 +20,7 @@ const dict = {
     readMore: "阅读更多",
     views: "阅读",
     likes: "点赞",
-    aboutTitle: "关于 JY Tech News 杰圆科技新闻",
+    aboutTitle: "关于杰圆科技新闻",
     aboutDesc:
       "JY Tech News（杰圆科技新闻）是一个专注于全球科技资讯的新闻平台，致力于为读者提供高质量、及时的科技行业动态",
     focusAreas: "我们关注的领域",
@@ -48,6 +50,7 @@ const dict = {
   en: {
     siteName: "JY Tech News",
     siteNameCn: "杰圆科技新闻",
+    brand: "JY Tech News 杰圆科技新闻",
     siteDesc:
       "Curated global tech news, AI, startups, and industry insights",
     home: "Home",

@@ -19,8 +19,8 @@ export async function generateMetadata({
   return {
     // absolute: the root layout's "%s | JY Tech News 杰圆科技新闻" template would repeat the name.
     title: {
-      absolute: `${t.siteName} - ${t.siteNameCn}`,
-      template: `%s | ${t.siteName} ${t.siteNameCn}`,
+      absolute: lang === "zh" ? t.brand : `${t.siteName} - ${t.siteNameCn}`,
+      template: `%s | ${t.brand}`,
     },
     description: `${t.siteName}${t.siteNameCn ? "（" + t.siteNameCn + "）" : ""} — ${t.siteDesc}`,
   };

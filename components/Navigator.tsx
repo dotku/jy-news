@@ -30,7 +30,13 @@ export default function Navigator({ lang }: { lang: Lang }) {
           href={`/${lang}`}
           className="whitespace-nowrap text-lg font-bold tracking-tight text-green-700 dark:text-green-400"
         >
-          JY Tech News <span className="hidden font-semibold md:inline">杰圆科技新闻</span>
+          {lang === "zh" ? (
+            "杰圆科技新闻"
+          ) : (
+            <>
+              JY Tech News <span className="hidden font-semibold md:inline">杰圆科技新闻</span>
+            </>
+          )}
         </Link>
         <div className="flex items-center gap-1">
           {navItems.map((item) => {
