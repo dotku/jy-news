@@ -1,0 +1,48 @@
+---
+title: "Blender开发者讨论在6.0版移除OpenGL 但尚未定案"
+date: "2026-10-06T20:46:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1580924.htm"
+summary: "Blender开发团队正在考虑从Blender6.0开始彻底移除OpenGL支持，这意味着这款知名开源3D创作软件未来可能不再提供OpenGL图形后端，而是全面转向Vulkan等更加现代的图形API。目前这一方案尚未最终确定，但开发团队已经正式将其列入Blender6.0的内部规划。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1580924.webp"
+slug: "1580924-Blender开发者讨论在6-0版移除OpenGL-但尚未定案"
+id: "1580924"
+---
+
+根据Blender开发团队10月5日举行的Viewport与EEVEE模块会议记录，目前存在一项内部提案，希望在Blender 6.0中取消OpenGL支持。Blender 6.0目前计划于2027年11月发布，因此如果方案最终获得通过，开发者和用户还有大约一年时间进行过渡。
+
+不过，OpenGL目前仍然没有被正式确定为将在Blender 6.0中移除。开发团队目前遇到的主要障碍是“虚拟纹理”（Virtual Texturing）功能。如果无法在新的图形后端中解决这一技术问题，OpenGL可能仍需要继续保留。
+
+Blender向Vulkan的迁移实际上已经持续了多年。Blender 4.x时期，开发团队就开始逐步引入Vulkan后端，并不断完善相关功能。到了Blender 5.0，Vulkan支持已经变得相当成熟，并开始承担越来越重要的角色。
+
+Blender 5.0发布时，Vulkan已经可以作为正式的图形后端使用，但OpenGL仍然被保留。这意味着当时的策略并不是立即放弃OpenGL，而是先让Vulkan达到足够成熟的水平，然后逐步减少对旧API的依赖。
+
+目前这一过渡正在加速。Blender开发团队已经将Vulkan作为未来图形架构的重要基础，并持续解决性能、平台兼容性以及功能完整性等问题。苹果平台则已经走向另一条路线，当前Blender在macOS上主要使用Metal，而不是OpenGL。
+
+如果Blender 6.0最终取消OpenGL，那么Windows和Linux用户将成为这次变化的主要影响对象。未来运行Blender的GPU将需要具备足够完善的Vulkan支持，而过去依靠OpenGL运行Blender的老旧显卡可能无法继续使用新版本。
+
+不过，从今天的硬件环境来看，真正受到影响的主要会是非常老的电脑。Blender目前在Windows和Linux上的最低图形要求已经是OpenGL 4.3，而Vulkan支持在近年来的独立显卡和集成显卡中已经越来越普遍。
+
+Blender官方目前列出的Windows GPU要求包括NVIDIA GeForce 900系列及更新产品，以及较新的AMD和Intel GPU。与此同时，Blender的Vulkan后端已经要求GPU支持至少Vulkan 1.1核心功能，并对部分图形扩展提出了额外要求。
+
+因此，如果用户使用的是近几年生产的NVIDIA、AMD或Intel显卡，那么未来从OpenGL转向Vulkan通常不会成为严重问题。真正需要关注的是那些仍然依赖较旧OpenGL驱动、缺乏完整Vulkan支持的老平台。
+
+对于Blender开发者而言，移除OpenGL还有一个非常重要的好处，就是可以减少维护两套图形后端所带来的开发负担。
+
+OpenGL诞生于上世纪90年代，虽然经过多年发展已经非常成熟，但其设计理念与现代GPU架构之间存在越来越明显的差距。Vulkan则从一开始就是为现代GPU和多线程图形工作负载设计的低级图形API，能够让应用程序更加直接地控制GPU资源、命令提交以及同步机制。
+
+对于Blender这种复杂的3D创作软件而言，这种控制能力尤其重要。现代渲染器、视口以及实时光照等功能越来越依赖高性能GPU，而Vulkan可以更好地匹配现代GPU的工作方式。
+
+此外，Blender正在不断增强EEVEE实时渲染引擎以及视口显示能力。随着HDR、光线追踪以及更加复杂的GPU计算功能加入，继续维护一个传统OpenGL后端的成本也会越来越高。
+
+不过，开发团队并不会简单地因为Vulkan已经成熟就立即删除OpenGL。虚拟纹理就是目前仍然存在的关键问题之一。这项技术对于Blender处理超大纹理以及复杂场景非常重要，如果Vulkan版本无法完全覆盖相关功能，直接删除OpenGL可能会导致部分工作流程受到影响。
+
+因此，Blender 6.0是否最终成为“OpenGL终结版”，目前仍然没有定论。开发团队明确表示，这只是内部提案，而不是已经作出的最终决定。
+
+如果最终确定移除，那么Blender 5.5 LTS将成为OpenGL用户非常重要的一个版本。Blender 5.5属于长期支持版本，这意味着那些使用老旧硬件、无法顺利迁移到Vulkan的用户仍然可以继续使用这一版本，而不必立即升级到Blender 6.0。
+
+从Blender整体发展路线来看，这次变化其实是一次持续多年图形API迁移的最终阶段。过去用户讨论的是“Blender什么时候默认使用Vulkan”，而未来可能变成“Blender什么时候彻底不再支持OpenGL”。
+
+如果一切按照目前的内部计划推进，2027年11月发布的Blender 6.0可能成为这一历史节点。届时，Blender将基本完成从传统OpenGL时代向Vulkan时代的转换，而OpenGL则可能正式退出这款软件已经使用了数十年的核心图形架构。
+
+
