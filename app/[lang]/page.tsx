@@ -3,6 +3,8 @@ import { getAllArticles, getListPage, getListPageCount } from "@/lib/articles";
 import ArticleList, { Pager } from "@/components/ArticleList";
 import { getDictionary, isValidLang, locales, type Lang } from "@/lib/i18n";
 import TimeAgo from "@/components/TimeAgo";
+import VoicesChat, { pickVoices } from "@/components/VoicesChat";
+import { getAllPosts } from "@/lib/posts";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -68,10 +70,15 @@ export default async function Home({
               {hero.title}
             </h2>
             {hero.summary && (
-              <p className="mt-2 line-clamp-2 text-sm text-zinc-500 dark:text-zinc-400">
+              // The lead story gets a longer excerpt so the left column roughly
+              // matches the two stacked cards on the right instead of leaving a gap.
+              <p className="mt-3 line-clamp-4 text-[15px] leading-relaxed text-zinc-600 sm:line-clamp-6 dark:text-zinc-400">
                 {hero.summary}
               </p>
             )}
+            <span className="mt-3 inline-block text-sm font-medium text-green-700 group-hover:underline dark:text-green-400">
+              {lang === "zh" ? "阅读全文 →" : "Read more →"}
+            </span>
           </div>
         </Link>
 
@@ -81,10 +88,10 @@ export default async function Home({
             <Link
               key={article.slug}
               href={`/${lang}/article/${article.slug}`}
-              className="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white transition-shadow hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+              className="group flex flex-col"
             >
               {article.image && (
-                <div className="aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+                <div className="aspect-video overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
                   <img
                     src={article.image}
                     alt={article.title}
@@ -92,7 +99,7 @@ export default async function Home({
                   />
                 </div>
               )}
-              <div className="flex flex-1 flex-col p-4">
+              <div className="mt-3 flex flex-1 flex-col">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wider text-green-700 dark:text-green-400">
                     {t.categories[article.category] || article.category}
@@ -143,13 +150,18 @@ export default async function Home({
 
       {/* Latest news list */}
       {restArticles.length > 4 && (
-        <section>
-          <h2 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-            {latestLabel}
-          </h2>
-          <ArticleList articles={getListPage(articles, 1)} lang={lang as Lang} />
-          <Pager lang={lang as Lang} page={1} totalPages={getListPageCount(articles.length)} />
-        </section>
+        <div className="grid gap-8 lg:grid-cols-3">
+          <section className="lg:col-span-2">
+            <h2 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              {latestLabel}
+            </h2>
+            <ArticleList articles={getListPage(articles, 1)} lang={lang as Lang} />
+            <Pager lang={lang as Lang} page={1} totalPages={getListPageCount(articles.length)} />
+          </section>
+          <div className="lg:sticky lg:top-20 lg:self-start">
+            <VoicesChat posts={pickVoices(getAllPosts())} lang={lang as Lang} />
+          </div>
+        </div>
       )}
     </main>
   );

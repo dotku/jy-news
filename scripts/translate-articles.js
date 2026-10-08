@@ -11,7 +11,9 @@ const ZH_DIR = path.join(process.cwd(), "content/news");
 const EN_DIR = path.join(process.cwd(), "content/news-en");
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = "google/gemma-3-27b-it:free";
+// gemma-3-27b-it:free was withdrawn in 2026 (every call 404'd silently); the paid
+// successor costs ~$0.09/M input tokens.
+const MODEL = process.env.TRANSLATE_MODEL || "google/gemma-4-31b-it";
 const MAX_RETRIES = 3;
 const DELAY_MS = 10000;
 

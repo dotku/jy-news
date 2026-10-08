@@ -17,6 +17,11 @@ export interface Post {
   link: string;
   image: string;
   content: string;
+  /** Set on quotes extracted from our own news articles (scripts/extract-voices.js). */
+  sourceName: string;
+  sourceArticle: string;
+  context: string;
+  quoteEn: string;
 }
 
 export function getAllPosts(): Post[] {
@@ -49,6 +54,10 @@ export function getAllPosts(): Post[] {
       link: data.link || "",
       image: data.image || "",
       content: content.trim(),
+      sourceName: data.source_name || "",
+      sourceArticle: data.source_article || "",
+      context: data.context || "",
+      quoteEn: data.quote_en || "",
     }];
   });
 

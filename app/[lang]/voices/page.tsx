@@ -82,9 +82,8 @@ export default async function VoicesPage({
         {posts.map((post) => (
           <a
             key={post.slug}
-            href={post.link}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={post.sourceArticle ? `/zh/article/${post.sourceArticle}` : post.link}
+            {...(post.sourceArticle ? {} : { target: "_blank", rel: "noopener noreferrer" })}
             className="group block rounded-xl border border-zinc-200 bg-white p-5 transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
           >
             <div className="flex items-start gap-3">
@@ -96,7 +95,9 @@ export default async function VoicesPage({
                   <span className="font-semibold text-zinc-900 dark:text-zinc-100">
                     {post.name}
                   </span>
-                  <span className="text-sm text-zinc-400">@{post.handle}</span>
+                  <span className="text-sm text-zinc-400">
+                    {post.sourceArticle ? post.authorTitle : `@${post.handle}`}
+                  </span>
                   <TimeAgo date={post.date} lang={lang as Lang} />
                   {post.isRT && (
                     <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs text-zinc-500 dark:bg-zinc-800">

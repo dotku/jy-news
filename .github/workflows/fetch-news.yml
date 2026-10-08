@@ -31,8 +31,12 @@ jobs:
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
           R2_PUBLIC_URL: ${{ secrets.R2_PUBLIC_URL }}
 
-      - name: Fetch influencer posts
-        run: node scripts/fetch-posts.js
+      # 行业之声: leaders' direct quotes extracted from our own articles.
+      # (Replaces scripts/fetch-posts.js — its nitter.net source died in Aug 2026.)
+      - name: Extract industry voices
+        run: node scripts/extract-voices.js
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Download videos to R2
         run: |
