@@ -117,7 +117,8 @@ async function callModel(model, article) {
       await sleep(attempt * 15000);
       continue;
     }
-    if (res.status === 404 || res.status === 400) {
+    // 402 = no credits on this account: fall through to the free models.
+    if (res.status === 404 || res.status === 400 || res.status === 402) {
       const msg = (await res.text()).slice(0, 160);
       const err = new Error(`${model} ${res.status}: ${msg}`);
       err.modelGone = true;

@@ -33,7 +33,11 @@ jobs:
 
       # 行业之声: leaders' direct quotes extracted from our own articles.
       # (Replaces scripts/fetch-posts.js — its nitter.net source died in Aug 2026.)
+      # continue-on-error so a model/credit problem never blocks committing the
+      # news; the last step still fails the run so the problem gets noticed.
       - name: Extract industry voices
+        id: voices
+        continue-on-error: true
         run: node scripts/extract-voices.js
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -65,3 +69,9 @@ jobs:
             git commit -m "chore: fetch new articles $(date -u +%Y-%m-%dT%H:%M)"
             git push
           fi
+
+      - name: Fail if industry voices extraction failed
+        if: steps.voices.outcome == 'failure'
+        run: |
+          echo "::error::行业之声 extraction failed — see the 'Extract industry voices' step (OpenRouter credits/model?)"
+          exit 1
