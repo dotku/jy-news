@@ -1,0 +1,24 @@
+---
+title: "开发者让Googlebook OS在Apple Silicon Mac虚拟机中运行 但仍不适合日常使用"
+date: "2026-10-12T02:16:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1581668.htm"
+summary: "开发者SkylarTaylor-Barrick开源了名为gbos-vm的项目，可在搭载AppleSilicon芯片的Mac上通过虚拟机启动Google的GooglebookOS，并实现GPU加速和运行Chrome。该方案使用QEMU虚拟机加载Google提供的戴尔Googlebook恢复映像，不是通用Android镜像，也不是把系统原生安装到Mac上；项目与Google和戴尔均无官方关联。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1581668.jpg"
+slug: "1581668-开发者让Googlebook-OS在Apple-Silicon-Mac虚拟机中运行-但仍不适合日常使用"
+id: "1581668"
+---
+
+Google今年公布的Googlebook是面向Gemini功能的新一类笔记本平台，整合Android应用生态与ChromeOS浏览器体验，基于Android技术栈。gbos-vm项目把为Googlebook硬件制作的恢复映像改造成适配虚拟设备的版本，再在Apple Silicon上运行。由于Android图形接口使用Vulkan、苹果设备采用Metal，开发者还搭建了转换层，让虚拟机调用Mac的GPU，而不是完全依赖CPU绘制界面；Chrome也因此能够运行。
+
+安装仍需要一定开发环境和存储空间。项目要求Apple Silicon Mac，建议至少配备16GB内存，并预留约60GB空间；还需安装Xcode命令行工具、Homebrew、Java开发工具包和Android SDK等依赖。开发者称，首次安装脚本会从Google服务器下载约9GB恢复映像，并在本机完成修改与构建；项目不支持英特尔Mac。
+
+目前仍有不少限制：显示刷新率最高为60帧，部分WebGL内容可能渲染异常；音频表现不稳定，剪贴板反向复制、右键操作和长时间运行也未充分测试。蓝牙使用的是虚拟无线电，不能与真实蓝牙设备配对。虚拟机缺少Googlebook实体机上的安全硬件，系统密钥改由软件处理，修改过的供应商分区也不具备完整的验证启动保护。
+
+因此，项目作者建议将其用于开发和体验，不要当作日常主力系统，也不应在其中登录敏感账户。它目前展示的是Googlebook OS在苹果自研芯片上的实验性运行能力，而非官方支持的Mac兼容方案；虚拟机能启动、图形加速和浏览器可用，并不代表硬件功能与安全保障已达到实体Googlebook水平。
+
+了解更多：
+
+https://github.com/skylartaylor/gbos-vm
+
+
