@@ -1,0 +1,20 @@
+---
+title: "Synaptics推出Astra SR200边缘AI处理器 最高400 GOPS并集成Google Coral NPU"
+date: "2026-10-21T17:12:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1583224.htm"
+summary: "Synaptics发布AstraSR200系列多模态边缘AI处理器，并将这一类产品称为“xMCU”：在微控制器的低功耗架构中加入更强的AI计算、图像与音频处理能力，以及高容量片上封装内存。系列面向智能眼镜、可穿戴设备、智能摄像头、电池供电传感器、工业视觉和语音系统，让设备可在本地处理视觉、语音和传感器数据，减少对外接处理器及云端推理的依赖。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1583224.jpg"
+slug: "1583224-Synaptics推出Astra-SR200边缘AI处理器-最高400-GOPS并集成Google-Coral-NPU"
+id: "1583224"
+---
+
+SR200分为三款引脚兼容型号，采用Arm Cortex-M85与Cortex-M52双核组合，AI算力分别为200、300和400 GOPS。SR210的M85最高400MHz、M52最高100MHz，针对常开语音和感知；SR230分别提升至600MHz和150MHz，并加入视觉、显示及可选音频处理；SR250最高达到800MHz和200MHz，面向双视觉、双显示等更复杂的多模态应用。三款芯片可共用硬件板级设计，厂商可在不同产品档次间调整算力。
+
+芯片搭载Synaptics Torq AI引擎，并集成Google Research的第二代Coral NPU架构。Coral NPU采用开放的RISC-V设计，配套MLIR/IREE开源编译工具链，可处理CNN、Transformer等模型；它是开放的边缘AI处理器架构，并非把Google原有的Edge TPU直接装入芯片。Google公布的Coral架构设计目标可扩展至1 TOPS，但SR200系列实际标称最高为400 GOPS，也就是0.4 TOPS。
+
+内存方面，SR200将最多8MB SRAM与可扩展至数百MB的定制高带宽DRAM整合在封装内，减少外接内存芯片和高速布线需求。Synaptics称，这种内存架构运行相关工作负载的功耗约为典型系统DRAM的三分之一。芯片还配备2.5D图形处理器、图像处理管线和显示接口；工业版本提供千兆以太网、TSN及双CAN-FD接口。安全方面，平台采用硬件隔离、加密加速和安全启动设计，目标符合PSA Level 3与CC EAL4+认证要求。
+
+Synaptics与Google还推出基于SR250的Coralboard SR开发板，配备最高400 GOPS NPU、最多8MB SRAM和最高256MB定制DRAM，并支持多摄像头、显示、数字麦克风及Wi-Fi、蓝牙扩展。公司同时宣布Coralboard SL开发板已通过DigiKey全球销售；SR200芯片系列已正式发布，但官方公告未给出终端产品售价或搭载该芯片的消费设备上市时间。
+
+
