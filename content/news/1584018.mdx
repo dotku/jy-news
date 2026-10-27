@@ -1,0 +1,20 @@
+---
+title: "nxnative尝试原生转译Switch游戏 《怪物猎人：崛起》M1设备达60帧"
+date: "2026-10-27T17:52:00"
+category: "game"
+source: "https://www.cnbeta.com.tw/articles/game/1584018.htm"
+summary: "开发者seedds制作的开源项目nxnative，正尝试让NintendoSwitch游戏原生运行在苹果芯片设备上。实测中，《怪物猎人：崛起》在基础款M1MacBookAir上稳定达到60帧，无需通过传统模拟器运行。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1584018.jpg"
+slug: "1584018-nxnative尝试原生转译Switch游戏-怪物猎人-崛起-M1设备达60帧"
+id: "1584018"
+---
+
+nxnative要求用户自行提供游戏文件和prod.keys，再将内容转换成可供iPhone、iPad或Mac使用的应用。Switch与苹果芯片均采用Arm64指令集，项目会重写游戏代码，使其能够直接在苹果芯片上执行。
+
+该项目使用小型宿主替代Switch的Horizon OS，并在Metal之上重建Nintendo的NVN图形接口。着色器转换借用了Ryujinx的成果，整体思路则源自曾将《暗黑破坏神II：狱火重生》带到移动设备的d2r-mobile。
+
+YouTube创作者Andrew Tsai使用配备8GB内存、无风扇的基础款M1 MacBook Air进行测试。《圣兽之王》《勇者斗恶龙XI S：寻觅逝去的时光》和《黑暗之魂：重制版》均能运行，但《毁灭战士：永恒》无法启动。
+
+项目README目前列出约70款测试游戏，目标设备多为iPhone 15 Pro或更新机型，以及搭载M1或更新芯片的iPad；Mac应用还需额外构建。nxnative现阶段不支持在线功能和amiibo，各游戏兼容性并不一致，个别成功案例不能代表目录内所有作品都能顺利运行。
+
+
