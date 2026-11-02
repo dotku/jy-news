@@ -1,0 +1,50 @@
+---
+title: "A社/O社/谷歌/微软联合起草拒绝AI训练声明 网站只需要添加声明即可阻止"
+date: "2026-11-02T14:31:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1584678.htm"
+summary: "Google、微软、OpenAI以及Anthropic正在支持新的AI训练偏好声明，该声明允许网站通过修改robots.txt表明是否允许内容被AI公司用于训练模型。按照该草案，网站管理员只需要添加一组规则就可以向多家支持该规则的AI公司表达声明。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1584678.png"
+slug: "1584678-A社-O社-谷歌-微软联合起草拒绝AI训练声明-网站只需要添加声明即可阻止"
+id: "1584678"
+---
+
+声明内容如下：
+
+# 全站禁止规则
+
+User-Agent: __usage_ai-training
+
+Disallow:/
+
+# 允许特定目录示例
+
+User-Agent: __usage_ai-training
+
+Allow:/archive/
+
+# 不允许特定目录示例
+
+User-Agent: __usage_ai-training
+
+disallow:/archive/
+
+# 其中允许特定目录与全站禁止不冲突，即允许 /archive/ 但其他目录全部禁止
+
+在网站 robots.txt 文件中添加这段内容即可声明全站内容禁止用于训练 AI 模型，网站管理员也可以修改允许或不允许的目录，例如部分目录允许被用于 AI 训练，部分内容不允许被用于 AI 训练。
+
+各家支持时间不同：
+
+目前该方案仍然是互联网草案，不过微软已经表示该公司会从 2027 年 2 月 1 日开始遵循该声明，所以不想内容被用于 AI 训练的网站现在就可以修改文件添加相关声明。
+
+Google的计划是从 2027 年年初开始提供支持，但具体时间还有待后面准备工作完成。OpenAI 表示会在未来几个月内实施该方案，Anthropic 似乎已经开始支持该草案。
+
+禁止训练和引用内容生成回答属于不同用途：
+
+以上声明仅表达的是网站对内容用途的选择，按照草案说明，单独设置上述声明不会直接阻止爬虫访问网页，如果网站要限制特定爬虫抓取内容，还是要通过传统 robots.txt 规则进行配置。
+
+训练内容与 AI 回答引用网页也属于不同的用途，微软为自家服务额外提供 AI Grounding 控制，供网站决定内容是否允许 AI 生成回答时引用，这项控制针对具体页面且仅适用于微软服务。
+
+Google则表示，如果网站使用上述声明拒绝 AI 训练，但没有明确设置 Google-Extended，Google计划按网站拒绝 Google-Extended 规则处理。Google-Extended 涉及 Gemini 模型训练，也涉及部分 Gemini 回答的网页参考用途。
+
+
