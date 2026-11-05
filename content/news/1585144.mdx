@@ -1,0 +1,116 @@
+---
+title: "OpenAI收购神秘团队 奥特曼要在Codex里再造一个GitHub"
+date: "2026-11-05T19:33:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1585144.htm"
+summary: "OpenAI官宣收购了一家神秘初创团队——PierreComputer。奥特曼刚拍板拿下，转头就把其代码浏览、行内审查、分布式Git能力，全拼进了Codex的版图。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1585144.png"
+slug: "1585144-OpenAI收购神秘团队-奥特曼要在Codex里再造一个GitHub"
+id: "1585144"
+---
+
+几乎同一时刻，坐拥超10万码农的并行编程神器Conductor，也在今天被Meta一锅端了。
+
+创始人Charlie Holtz宣布，全员加入Meta超级智能实验室（MSL）。
+
+他们将联手前GitHub CEO Nat Friedman与首席AI官Alexandr Wang，共同打造“下一代交互界面”。
+
+AI大厂突然扎堆买工具的背后，算盘打得啪啪响——
+
+写代码只是开始，程序员从拉分支、审代码到上线交付的每一步，它们现在全都要。
+
+OpenAI收编Pierre
+
+Codex把“看、审、存”全装进自己口袋
+
+能被OpenAI一眼看中，Pierre团队的来头相当硬核。
+
+前端传奇开源框架Bootstrap的联合创始人Jacob Thornton、前Discord核心大牛Amadeus、esm.sh创建者Je Xia都在这支队伍里。
+
+Pierre团队专门跑到街头篮球场拍了一支“没办拍摄许可、只拍了一个镜头”的冷幽默短片官宣加入OpenAI
+
+别看官宣视频拍得像草台班子，OpenAI Codex负责人Tibo转发时直接把Pierre比作计算机里的“运行内存（RAM）”，放话要“重塑一切”。
+
+能让Tibo给出这么高的评价，是因为现在的Codex虽然能同时派十几个Agent写代码，最后交活却成了大麻烦。
+
+几十个Agent在后台噼里啪啦一通猛敲，几万行改动瞬间堆满屏幕，结果不仅人类程序员看不过来，而且如此海量分支也无处存放。
+
+而Pierre手里攒下的三大看家本领，正好帮Codex把“看代码、审代码、存代码”的短板一口气全补齐了。
+
+看代码（Trees）：早已内置进Codex桌面版，专门负责超大项目目录的毫秒级丝滑展开与跨分支文件定位。
+
+审代码（Diffs）：以前在GitHub审PR，哪怕只发现AI写错一个变量名，也得切回本地IDE改完重推；Pierre的Diffs直接在对比视图里塞进了“行内编辑（Edit）”模式，看哪行不顺眼，鼠标一点当场就能把代码改好。
+
+存代码（Code Storage）：专为AI Agent高并发读写设计的分布式Git仓库，早已成为Lovable、Bolt、Poke等当红应用背后的隐形基建，光独角兽Lovable一家就靠它每周新建超800万个Git仓库，Poke更是拿它每分钟刷4万次Git操作来存Agent记忆。
+
+接下来，这套技术底座会全面并入Codex；至于Pierre原本的开源项目和老客户服务，OpenAI承诺全部照旧，不会断供。
+
+AI把Git写爆
+
+战火烧进微软GitHub后院
+
+OpenAI这么急着把Pierre并入Codex，其实背后有个大尴尬——
+
+自家的Git系统，前阵子被AI给写崩了。
+
+就在官宣买下Pierre的两天前，OpenAI刚刚甩出了内部自研的全新Git后端Pando。
+
+原来，自从OpenAI全员用上Codex，工程师们每天放出一群Agent并行开分支、推代码、跑CI测试，内部庞大的单体仓库（monorepo）从去年底开始直接被冲垮。
+
+代码拉不下、推不上，合并频频报错，OpenAI内部Git系统的可靠性一度跌破了90%。
+
+被逼急了的OpenAI干脆把Git底层彻底重写了一遍。
+
+结果推送速度直接快了近5倍，每天在内部狂传近1PB数据，连总裁Greg Brockman都亲自下场晒成绩单。
+
+原本外界以为这只是OpenAI的“内部自救”，没想到仅仅过了两天，它又反手买下了Pierre。
+
+这一套组合拳下来，OpenAI等于是直接杀进了大股东微软旗下GitHub的后院。
+
+当然，盯上这块肥肉的，可也远不止OpenAI一家。
+
+推出Origin托管平台的Cursor、自研Scion版本控制的Anthropic，以及上月刚创业的前GitHub CEO Thomas Dohmke，都在向传统代码托管领地发起合围。
+
+从编辑器、审查台到Git仓库底座，AI大厂谁都不想再寄人篱下，只当一个帮人补全代码的“外挂插件”了。
+
+虽然手握1.5亿开发者的GitHub眼下依然稳坐开源大本营，但就连GitHub当年的老掌门人，都已经掉头加入这场“拆台”大军了。
+
+前GitHub掌门人出手
+
+替Meta截胡10万程序员神器
+
+就在OpenAI买下Pierre的同一晚，小扎旗下的MSL也上演了一出闪电抢人。
+
+这桩收购里最值得注意的名字，是Meta那边的接盘人Nat Friedman。
+
+这位老哥正是2018年微软75亿美元买下GitHub后的首任CEO，上一代程序员工作流就是他亲手带大的。
+
+如今他在Meta联手首席AI官Alexandr Wang，转头就把硅谷极客圈最火的“下一代Agent指挥台”装进了自己口袋。
+
+去年7月才上线的Conductor，之所以能让Linear、Vercel、Notion、Spotify等名企的10万程序员上头，靠的就是把“带Agent干活”做出了组队开黑般的爽感：
+
+多Agent隔离并发：你可以把脏活累活拆给多个Claude Code或Codex Agent，让它们在各自隔离的工作区里同时开干，互不打架。
+
+像Figma一样同屏开黑：按一下快捷键“⌘⇧C”就能把工作区甩给同事，几个人同屏围观Agent写代码、接力发指令、审完Diff顺手点个Merge。
+
+连Ilya Sutskever和YC合伙人Aaron Epstein都是它的早期支持者。
+
+细看上面那张Conductor官网的工作台截图，甚至还能在左下角团队列表里捉到Ilya的头像与名字。
+
+程序员的旧工位，正在被成套换掉
+
+如今，写代码成了最便宜的一步。敲两行提示词，十几个Agent就能同时改代码、补测试、修Bug。
+
+真正卡脖子的是写完代码之后：几万行改动怎么看、几十个分支怎么审、海量仓库往哪儿存。
+
+大厂心里比谁都清楚，光靠模型根本绑不住程序员：今天Claude顺手切Claude，明天GPT更新换GPT，换家模型也就点一下鼠标的事。
+
+可一旦代码库、审查流程和历史记录全长在它的工具里，再想搬家就难了。
+
+正如OpenAI在收购公告里说的：
+
+旧软件时代留下的每一套工作流，都要为人与Agent一起写代码的时代重新设计。
+
+代码怎么写已经不重要了，程序员坐在哪张桌子上干活，才是大厂接下来真正要抢的天下。
+
+
