@@ -62,7 +62,7 @@ export default function VoicesChat({ posts, lang }: { posts: Post[]; lang: Lang 
               {post.authorTitle && (
                 <div className="truncate text-xs text-zinc-400">{post.authorTitle}</div>
               )}
-              <div className="mt-1 rounded-2xl rounded-tl-sm bg-white px-3 py-2 text-sm leading-relaxed text-zinc-700 shadow-sm dark:bg-zinc-800 dark:text-zinc-300">
+              <div className="mt-1 rounded-2xl rounded-tl-sm bg-white px-3 py-2 text-sm leading-relaxed [overflow-wrap:anywhere] text-zinc-700 shadow-sm dark:bg-zinc-800 dark:text-zinc-300">
                 <ExpandableText
                   text={!zh && post.quoteEn ? post.quoteEn : ownText(post.content)}
                   moreLabel={zh ? "展开" : "Show more"}

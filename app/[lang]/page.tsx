@@ -44,11 +44,11 @@ export default async function Home({
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
       {/* Hero: 1 large left + 2 small right */}
-      <div className="mb-10 grid gap-6 sm:grid-cols-5">
+      <div className="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-5">
         {/* Main hero */}
         <Link
           href={`/${lang}/article/${hero.slug}`}
-          className="group sm:col-span-3"
+          className="group min-w-0 sm:col-span-3"
         >
           {hero.image && (
             <div className="aspect-[16/10] overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
@@ -83,7 +83,7 @@ export default async function Home({
         </Link>
 
         {/* 2 smaller cards */}
-        <div className="flex flex-col gap-6 sm:col-span-2">
+        <div className="flex min-w-0 flex-col gap-6 sm:col-span-2">
           {sideArticles.map((article) => (
             <Link
               key={article.slug}
@@ -121,7 +121,7 @@ export default async function Home({
           <h2 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
             {trendingLabel}
           </h2>
-          <div className="grid gap-4 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
             {restArticles.slice(0, 4).map((article, idx) => (
               <Link
                 key={article.slug}
@@ -150,15 +150,15 @@ export default async function Home({
 
       {/* Latest news list */}
       {restArticles.length > 4 && (
-        <div className="grid gap-8 lg:grid-cols-3">
-          <section className="lg:col-span-2">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <section className="min-w-0 lg:col-span-2">
             <h2 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
               {latestLabel}
             </h2>
             <ArticleList articles={getListPage(articles, 1)} lang={lang as Lang} />
             <Pager lang={lang as Lang} page={1} totalPages={getListPageCount(articles.length)} />
           </section>
-          <div className="lg:sticky lg:top-20 lg:self-start">
+          <div className="min-w-0 lg:sticky lg:top-20 lg:self-start">
             <VoicesChat posts={pickVoices(getAllPosts())} lang={lang as Lang} />
           </div>
         </div>

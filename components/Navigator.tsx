@@ -25,10 +25,10 @@ export default function Navigator({ lang }: { lang: Lang }) {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/80">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-2 px-4 py-3">
         <Link
           href={`/${lang}`}
-          className="whitespace-nowrap text-lg font-bold tracking-tight text-green-700 dark:text-green-400"
+          className="shrink-0 whitespace-nowrap text-base font-bold tracking-tight sm:text-lg text-green-700 dark:text-green-400"
         >
           {lang === "zh" ? (
             "杰圆科技新闻"
@@ -38,7 +38,7 @@ export default function Navigator({ lang }: { lang: Lang }) {
             </>
           )}
         </Link>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5 sm:gap-1">
           {navItems.map((item) => {
             const isActive =
               pathname === item.path ||
@@ -47,7 +47,7 @@ export default function Navigator({ lang }: { lang: Lang }) {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+                className={`whitespace-nowrap rounded-lg px-2 py-1.5 text-sm font-medium transition-colors sm:px-3 ${
                   isActive
                     ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
                     : "text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-100"
@@ -59,7 +59,7 @@ export default function Navigator({ lang }: { lang: Lang }) {
           })}
           <Link
             href={switchPath}
-            className="ml-2 whitespace-nowrap rounded-lg border border-zinc-200 px-2.5 py-1 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            className="ml-1 whitespace-nowrap rounded-lg border sm:ml-2 border-zinc-200 px-2.5 py-1 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
           >
             {otherLang === "en" ? "EN" : "中文"}
           </Link>

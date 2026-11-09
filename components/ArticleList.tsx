@@ -9,16 +9,16 @@ export default function ArticleList({ articles, lang }: { articles: ArticleMeta[
   return (
     <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
       {articles.map((article) => (
-        <Link key={article.slug} href={`/${lang}/article/${article.slug}`} className="group flex gap-5 py-5">
+        <Link key={article.slug} href={`/${lang}/article/${article.slug}`} className="group flex gap-3 py-5 sm:gap-5">
           <div className="flex min-w-0 flex-1 flex-col">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <span className="text-xs font-semibold uppercase tracking-wider text-green-700 dark:text-green-400">
                 {t.categories[article.category] || article.category}
               </span>
               <TimeAgo date={article.date} lang={lang} />
               <ArticleViews slug={article.slug} />
             </div>
-            <h3 className="mt-1.5 text-lg font-bold leading-snug text-zinc-900 group-hover:text-green-700 dark:text-zinc-100 dark:group-hover:text-green-400">
+            <h3 className="mt-1.5 text-base font-bold leading-snug [overflow-wrap:anywhere] sm:text-lg text-zinc-900 group-hover:text-green-700 dark:text-zinc-100 dark:group-hover:text-green-400">
               {article.title}
             </h3>
             {article.summary && (
@@ -28,7 +28,7 @@ export default function ArticleList({ articles, lang }: { articles: ArticleMeta[
 
           {article.image && (
             <div className="shrink-0">
-              <div className="h-20 w-28 overflow-hidden rounded-lg bg-zinc-100 sm:h-24 sm:w-36 dark:bg-zinc-800">
+              <div className="h-20 w-24 overflow-hidden rounded-lg bg-zinc-100 sm:h-24 sm:w-36 dark:bg-zinc-800">
                 <img
                   src={article.image}
                   alt={article.title}

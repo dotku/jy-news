@@ -53,20 +53,20 @@ export default async function VoicesPage({
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h1 className="text-2xl font-bold sm:text-3xl tracking-tight text-zinc-900 dark:text-zinc-50">
           {title}
         </h1>
         <p className="mt-2 text-zinc-500 dark:text-zinc-400">{subtitle}</p>
       </div>
 
       {/* Influencer chips */}
-      <div className="mb-8 flex flex-wrap gap-2">
+      <div className="-mx-4 mb-8 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
         {handles.map((handle) => {
           const info = influencerMap.get(handle)!;
           return (
             <div
               key={handle}
-              className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-sm dark:border-zinc-800 dark:bg-zinc-900"
+              className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-sm dark:border-zinc-800 dark:bg-zinc-900"
             >
               <span className="font-medium text-zinc-900 dark:text-zinc-100">
                 {info.name}
@@ -84,14 +84,14 @@ export default async function VoicesPage({
             key={post.slug}
             href={post.sourceArticle ? `/zh/article/${post.sourceArticle}` : post.link}
             {...(post.sourceArticle ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-            className="group block rounded-xl border border-zinc-200 bg-white p-5 transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+            className="group block rounded-xl border border-zinc-200 bg-white p-4 sm:p-5 transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
           >
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300">
                 {post.name.charAt(0)}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
                   <span className="font-semibold text-zinc-900 dark:text-zinc-100">
                     {post.name}
                   </span>
@@ -105,7 +105,7 @@ export default async function VoicesPage({
                     </span>
                   )}
                 </div>
-                <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed [overflow-wrap:anywhere] text-zinc-700 dark:text-zinc-300">
                   {post.content}
                 </p>
                 {post.image && (
@@ -113,7 +113,7 @@ export default async function VoicesPage({
                     <img
                       src={post.image}
                       alt=""
-                      className="max-h-64 object-cover"
+                      className="max-h-64 w-full max-w-full object-cover"
                     />
                   </div>
                 )}
