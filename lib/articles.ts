@@ -87,7 +87,13 @@ export function getArticleBySlug(
 
   for (const file of files) {
     const raw = fs.readFileSync(path.join(dir, file), "utf-8");
-    const { data, content } = matter(raw);
+    let parsed;
+    try {
+      parsed = matter(raw);
+    } catch {
+      continue;
+    }
+    const { data, content } = parsed;
     const fileId = file.replace(/\.mdx$/, "");
     const articleSlug = data.slug || fileId;
 

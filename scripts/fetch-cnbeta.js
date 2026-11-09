@@ -175,7 +175,7 @@ function decodeHtmlEntities(s) {
 }
 
 function sanitize(s) {
-  return decodeHtmlEntities(s).replace(/"/g, '\\"').replace(/\n/g, " ");
+  return decodeHtmlEntities(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, " ");
 }
 
 function makeSlug(id, title) {
