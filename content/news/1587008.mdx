@@ -1,0 +1,52 @@
+---
+title: "全新操作系统Impossible OS亮相：不基于Linux也不是Windows分支 计划2028年发布"
+date: "2026-11-19T10:33:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1587008.htm"
+summary: "近年来，随着Windows11不断调整系统功能和硬件要求，寻找Windows替代方案的用户越来越多。不过，现有替代系统大多以Linux发行版为主，真正尝试从零开始开发一套全新桌面操作系统的项目并不多见。近日，一个名为ImpossibleOS的开源项目引起了关注，其开发者希望打造一款既不基于Linux，也不依赖Windows代码，却能够原生运行Windows应用程序的全新操作系统。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1587008.webp"
+slug: "1587008-全新操作系统Impossible-OS亮相-不基于Linux也不是Windows分支-计划2028年发布"
+id: "1587008"
+---
+
+根据项目官方网站和GitHub仓库介绍，Impossible OS的目标是开发一套面向x86-64（AMD64）硬件的64位操作系统。与ReactOS等试图复现Windows NT架构的项目不同，Impossible OS声称自己既不是Linux发行版，也不是Windows的分支，而是从底层开始独立构建，包括UEFI引导程序、操作系统内核、桌面环境以及原生Win32 API接口。
+
+整个项目主要使用C语言和AMD64汇编语言开发。开发者表示，对于没有必要重复实现的成熟功能，则会采用已有的开源组件，以避免为了追求完全自主而增加不必要的开发成本和技术风险。
+
+最引人关注的设计是其Windows应用程序兼容能力。Impossible OS计划将Win32 API直接作为系统原生接口，而不是像Wine那样通过兼容层转换Windows程序调用，也不需要依赖虚拟机运行Windows。
+
+按照项目的设计思路，Windows应用程序可以直接调用Impossible OS提供的原生系统接口，PE32+格式的64位Windows可执行文件也将由系统直接加载和运行。开发者还计划采用熟悉的Windows目录结构，例如C:\Impossible\System32\，让用户在使用习惯上尽可能接近Windows。
+
+不过，目前这项兼容能力仍处于早期阶段。项目已经提供了一套规模有限的Win32 SDK，可以支持获取进程ID、读取系统计时信息、创建文件以及读取文件等基础操作，但完整的Win32 API体系尚未完成。因此，现阶段还不能期待Chrome、Office或其他常用Windows软件能够直接安装运行。
+
+除了Windows应用程序，Impossible OS还计划支持Linux应用程序。开发者希望通过内置兼容层，让未经修改的Linux ELF二进制程序能够在系统中运行。其实现方式是将Linux系统调用转换为Impossible OS内核能够理解的原生调用，从而避免使用WSL、容器或完整Linux虚拟机。
+
+不过，这项Linux兼容功能目前同样尚未实现，仍属于未来开发目标。
+
+在已经完成的功能方面，Impossible OS并非只有一张概念设计图。项目目前已经具备自主开发的UEFI引导程序、64位操作系统内核、多处理器核心支持、虚拟内存管理，以及FAT32文件系统和自主开发的IXFS文件系统。
+
+网络功能也已经开始实现，目前包括以太网、ARP、IPv4、ICMP、UDP和DHCP等基础协议，并提供RTL8139网卡驱动。不过，TCP、DNS以及VirtIO网络驱动等功能仍在开发计划之中。
+
+桌面环境方面，Impossible OS采用了明显受到Windows 11启发的设计。系统拥有居中的任务栏、开始菜单、窗口合成管理器以及类似Windows Acrylic的半透明视觉效果，整体界面试图让熟悉Windows的用户能够迅速上手。
+
+此外，项目还实现了部分Windows风格的注册表功能，包括HKLM和HKCU等配置分区，以及RegOpenKeyEx和RegSetValueEx等基础接口。图形绘制目前主要依靠CPU执行SSE2指令进行加速，支持透明混合、渐变、模糊处理和TrueType字体渲染，GPU硬件加速则仍处于研究阶段。
+
+从项目当前的开发进度来看，Impossible OS已经具备了一些真正操作系统所需的底层基础设施，但距离成熟桌面系统仍有非常漫长的距离。开发者也坦言，目前版本仍处于Pre-alpha阶段，远远不具备替代Windows作为日常主力系统的条件。
+
+项目官方网站甚至以自嘲的方式描述了开发难度：一个人能否与拥有数百名工程师的大型软件公司竞争？答案当然是否定的，但这并不意味着不能尝试。
+
+按照开发者公布的路线图，Impossible OS计划于2028年第三季度推出首个正式版本，目标日期为2028年8月8日。届时，如果开发进度能够按计划推进，它将成为一个相当特殊的操作系统项目：既不依赖Linux内核，也不直接建立在Windows代码之上，却希望同时兼容Windows和Linux应用程序。
+
+用户目前已经可以通过项目提供的构建说明，尝试使用QEMU或VirtualBox虚拟机编译和运行系统。
+
+当然，操作系统开发真正困难的地方，并不只是让内核成功启动，或者让桌面界面看起来像Windows。硬件驱动覆盖范围、应用程序兼容性、图形加速、系统安全、更新维护以及长期稳定性，才是决定一款操作系统能否真正投入日常使用的关键。
+
+Impossible OS目前最值得关注的地方，是它尝试从零构建一个以Win32为原生接口的独立操作系统。如果开发者最终能够实现这一目标，那么它与Linux发行版、Wine以及ReactOS等现有项目将形成明显区别。不过，在完整兼容能力得到实际验证之前，2028年的发布时间仍然只是开发目标，而不是成熟产品上市的保证。
+
+了解更多：
+
+https://github.com/rizonesoft/impossible-os
+
+https://impossibleos.co/
+
+

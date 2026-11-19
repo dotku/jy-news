@@ -1,0 +1,42 @@
+---
+title: "Google发布Gemini 4 Neon：宣称速度比Carbon快3倍 完成任务的成本降低40%"
+date: "2026-11-19T10:31:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1587006.htm"
+summary: "Google正式推出Gemini4系列的新成员Gemini4Neon。这款模型定位于复杂编程、分析推理和多步骤任务执行，试图在高水平智能与运行效率之间取得平衡。Google表示，在早期测试中，Neon的整体质量达到或超过旗舰模型Gemini4Carbon，但任务执行速度提高至3倍，完成相同任务的成本仅为Carbon的60%。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1587006.webp"
+slug: "1587006-Google发布Gemini-4-Neon-宣称速度比Carbon快3倍-完成任务的成本降低40"
+id: "1587006"
+---
+
+此前，Google已经推出Gemini 4 Carbon和面向日常任务的Gemini 4 Hydrogen。Carbon主要面向复杂、耗时较长的高难度任务，Hydrogen则强调快速响应和日常使用。此次推出的Neon填补了两者之间的定位空缺，重点服务于需要较强推理能力、但又对执行速度和成本较为敏感的工作场景。
+
+Gemini 4 Neon在Artificial Analysis Intelligence Index评测中取得61分，在开启最高等级xhigh思考模式时排名第三，仅次于部分规模更大、运行速度更慢的模型。在Vals Index评测中，它以70.9%的成绩排名第二。此外，Google还表示，Neon在多步骤指令执行、复杂约束处理以及用户中途修改任务要求时的适应能力方面表现突出。
+
+在软件开发领域，Neon尤其强调长时间运行的智能代理工作流。它能够处理跨多个文件的代码调试、重构和项目修改，并在执行过程中减少重复读取文件的情况，同时持续报告任务进度。Google希望通过这些改进，让模型不仅能够生成代码，还能在更接近真实软件开发的环境中独立完成复杂工作。
+
+在Google公布的测试结果中，Neon在Artificial Analysis Coding Agent Index上取得58.6分，Terminal-Bench 4.1得分为65.2%，FrontierCode 2.0得分为46.2%。在SWE-sweep测试中，使用mini-SWE测试框架时得分为12.8%，而在GoogleAntigravity环境下则提高到39.0%。这组差异也说明，智能代理所使用的软件框架和执行环境，可能对最终成绩产生相当大的影响。
+
+Neon还可以在Antigravity中担任协调者，将复杂任务拆分后交给多个Gemini 4 Hydrogen子代理并行执行。通过这种方式，模型能够同时处理不同的代码模块或工作环节，再整合各个子代理的结果。对于涉及多个文件、多个功能模块的开发任务，这种协作方式有望减少整体执行时间。
+
+在企业知识工作方面，Neon支持文本、图像、音频和视频等多模态输入，统一上下文窗口最高可达100万Token。用户可以将电子表格、PDF、图表、音频和视频等资料放在同一任务中，让模型综合分析并生成结构化结果。
+
+Google公布的测试数据显示，Neon在Vals Index上取得70.9%的成绩，在法律研究和税务代理测试中均排名第一。在Zapier AutomationBench自动化任务测试中，它获得56.3%的成绩；在Andon Labs的Vending-Bench 2长期商业经营模拟中，模拟收益达到16，843美元。此外，它在Chartography专业图表理解测试中的成绩为73.5%，在Agents' Last Exam v1.1测试中达到75.8%。
+
+科学和数学推理同样是Neon重点强化的能力。在Terminal-Bench Science测试中，它取得70.5%的成绩；在RiemannBench数学测试中达到84.0%；在HLE-Diamond测试中则取得71.3%。这些成绩反映出Google希望将Neon定位为不仅适合编程，也能够承担复杂科研、数学分析和技术研究任务的通用模型。
+
+网络安全是此次发布的另一项重点。Google推出了面向网络安全工作的Gemini 4 Neon专用版本，主要用于安全代码生成、漏洞发现、渗透测试验证和代码修复。在AutoBaxBench测试中，该版本在高难度项目上取得76%的成绩；在WebExploitBench v1.2测试中达到51.26%。在SEC-bench Pro漏洞发现测试中，成绩为90.5%，在CWE-bench v2代码加固测试中则达到70.7%。
+
+Google表示，Neon在网络安全能力提升的同时，仍然保留与Carbon相当的严重滥用防护能力，并进一步改进了模型对恶意提示注入的抵抗能力。网络安全专用版本将通过Fairwind计划，分阶段向符合条件的安全防御人员开放。
+
+在安全和可靠性方面，Google特别强调了Neon执行长时间、多步骤任务时的行为控制。公司称，该模型能够更好地遵循用户指令，减少虚构结果、擅自扩大任务范围以及采取不符合要求的捷径等问题。在内部测试中，Neon的部分行为指标优于此前的Carbon，但这些数据主要来自Google自己的评估体系，仍需要更多独立测试验证。
+
+价格方面，Gemini 4 Neon通过Gemini API提供的标准价格为每百万输入Token 3美元，缓存输入Token为0.15美元，每百万输出Token为15美元。相比之下，Carbon目前的推广价格为每百万输入Token 2美元、每百万输出Token 10美元，但这一优惠预计持续至11月30日。12月1日起，Carbon的标准价格将调整为每百万输入Token 4美元、每百万输出Token 20美元，届时Neon的单Token价格将比Carbon低25%。
+
+不过，单纯比较Token价格并不能完全反映实际使用成本。Google强调，Neon能够以更快的速度完成任务，并减少完成同一项工作的Token消耗，因此在实际工作负载下具有更低的单任务成本。按照Google公布的数据，在默认High思考模式下，Neon完成任务的成本比Carbon低32%；在更高的xhigh模式下，Neon仍具有成本优势，但具体幅度会受到任务类型和模型配置影响。
+
+Gemini 4 Neon目前已经开始陆续开放。开发者可以通过Google AI Studio和Gemini API的付费服务使用，企业客户可以通过Gemini for Business和Antigravity接入。消费者方面，Google AI Pro和Ultra订阅用户可以在Gemini应用中选择Neon，Pro和Ultra用户也能够在Antigravity中体验。
+
+总体来看，Neon并不是简单追求更大的模型规模或更高的单项测试成绩，而是试图解决实际使用中一个更加重要的问题：如何让具备旗舰级推理能力的模型，以更快的速度和更低的成本完成真实工作。对于需要频繁调用AI代理、处理大型代码库或执行复杂办公任务的用户而言，任务完成效率可能比单纯的模型参数和基准测试排名更具实际意义。
+
+
