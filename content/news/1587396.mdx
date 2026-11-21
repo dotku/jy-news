@@ -1,0 +1,26 @@
+---
+title: "英伟达发布显卡热修复驱动 修复SSD过度写入问题"
+date: "2026-11-21T19:19:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1587396.htm"
+summary: "英伟达发布GeForceHotfix621.35驱动程序，其基于最新的GeForceGameReady621.24WHQL驱动程序基础上。自从基于Blackwell架构的GeForceRTX50系列显卡发布后，英伟达频繁地发布Hotfix驱动程序，先后发布了13次，其中有7次是在今年。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1587396.jpg"
+slug: "1587396-英伟达发布显卡热修复驱动-修复SSD过度写入问题"
+id: "1587396"
+---
+
+英伟达会定期发布显卡驱动程序，一般是有新显卡或者新游戏发售的时候，不过偶尔会针对某款游戏或者之后发现的新漏洞发布Hotfix驱动程序，旨在解决其工程师已经发现并修复的重要问题。通常这些都是针对特定问题的小修复，不涉及任何重大问题。这次的GeForce Hotfix 621.12驱动程序主要解决了以下问题：
+
+已修复的问题，包括：
+
+后台可能会对文件 nvlog.nvlgstg 进行过度写入。[7116722]
+
+英伟达重申，GeForce Hotfix驱动程序被视为测试版本，质量保证流程比起一般的WHQL驱动程序要少得多。这次的621.12驱动程序不会有其他任何修复或者功能增强，如果并非使用对应型号显卡遇到相关问题的用户不需要下载更新，等待下一个WHQL或Game Ready版本即可。
+
+NVIDIA GeForce Hotfix 621.35驱动程序（Windows 10/11 64位），地址：点此前往>>>
+
+数天前有报道称，部分英伟达GeForce显卡驱动被曝存在严重漏洞，会在系统空闲时持续向SSD写入大量数据。与AMD Radeon显卡驱动的情况类似，这些漏洞可能会加速SSD损耗。
+
+问题指向“NVDisplay.Container.exe”进程或者“NVIDIA Display Container LS”服，疑似与一个日志文档被反复地覆盖写入有关。这些是NVIDIA控制面板和应用所必须的后台服务，负责管理控制面板、驱动设置和部分后台功能，不过并非所有用户都会受到影响。焦点文档位于“C:ProgramDataNVIDIA Corporationnvtoppsnctnvlog.nvlgstg”，该服务没有选择追加新内容，但是反复地覆盖同一文档会造成大量无谓的写入操作。
+
+
