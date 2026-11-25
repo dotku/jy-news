@@ -1,0 +1,38 @@
+---
+title: "微软工程师承认开发Windows 11原生应用曾经非常困难 不少开发者转向跨平台框架"
+date: "2026-11-25T14:30:00"
+category: "tech"
+source: "https://www.cnbeta.com.tw/articles/tech/1587920.htm"
+summary: "微软工程师罕见地承认，开发Windows11原生应用曾经非常困难，以至于不少开发者转向跨平台框架，甚至干脆放弃为Windows开发应用。在Ignite2026大会上，微软展示了新的WinAppCLI与AI代理工具，同时坦承WinUI仍存在大量缺陷和性能问题。"
+image: "https://pub-35503418be0143739c7fe7fdb8f65e97.r2.dev/images/1587920.jpg"
+slug: "1587920-微软工程师承认开发Windows-11原生应用曾经非常困难-不少开发者转向跨平台框架"
+id: "1587920"
+---
+
+微软在一场约 45 分钟的 WinUI 演示中，将 WinUI 称为 Windows 应用的“未来平台路径”。但来自 Windows 开发者平台团队的工程师 Jaylyn Barbee 与 Beth Pan 也承认，过去开发者启动一个 Windows 应用项目本身就是一大痛点。Barbee 表示，这种情况促使开发者选择其他跨平台框架，或者完全不再开发 Windows 应用。
+
+微软没有公布具体有多少开发者因此离开，但这一表态显示出公司已经意识到，开发者对 Windows 原生开发生态的信任正在流失。Windows 的应用开发技术经历了从 Win32、WPF、Silverlight、UWP 到 WinUI 的多次更替，许多开发者投入大量精力后，却看到微软转向新的技术路线。这种反复变化让 Electron、WebView2 等网页封装方案成为更稳妥的选择，也解释了为什么 Windows 11 上仍有大量网页版应用。
+
+在 Ignite 2026 的演示中，微软工程师使用一条“winapp new”命令创建了名为 Hangar 的示例应用。WinApp CLI 是 Windows App Development CLI 的缩写，自 1 月起进入公开预览，能够在终端中创建、运行、检查、测试、分析和打包 Windows 应用。由于它本质上是命令行工具，AI 编程代理也可以直接调用它完成开发流程。
+
+“winapp new”使用官方 .NET 模板，并从一开始就为应用赋予包标识，因此通知等功能可以立即使用。在没有 WinApp CLI 的情况下，打包一个 Windows 应用通常需要准备清单文件、资源文件，以及主题与发布者匹配并在本机受信任的签名证书；微软工程师承认，除了 Visual Studio 向导之外，每一步都可能相当繁琐。现在，开发者只需三条命令即可生成证书、安装证书并构建 MSIX 安装包。
+
+微软表示，Visual Studio 并不会被取代，CLI 及其 VS Code 扩展中测试的功能，包括 XAML IntelliSense，最终也会进入 Visual Studio。WinApp CLI 的适用范围也不限于 WinUI。微软文档显示，它支持 .NET、C++、Electron、Rust、Tauri 和 Flutter，因此 Electron 应用也能获得包标识和 MSIX 打包能力。11 月 9 日发布的 0.8 版本还加入了实验性 WinUI DevTools、性能分析以及 C++ 支持。
+
+现场演示还展示了 AI 代理如何修复应用性能问题。在 Hangar 应用中，机械师反馈工单页面运行缓慢。AI 代理加载了 WinApp 性能技能，运行“winapp perf”后，发现列表视图一次加载了远超屏幕显示范围的行数。工程师随后在 DevTools 的列表中留言，要求不要一次加载 1200 行数据，AI 代理读取该评论后修改了代码。
+
+微软工程师 Barbee 表示，AI 通常能够完成大约 80% 的工作，但她个人仍倾向于进行大量人工验证。在另一个演示中，机械师希望获得一个可以排序和调整列宽的表格。AI 代理通过“find UI”搜索 WinUI Gallery 示例，找到了 TableView。随后，工程师尝试使用从 WPF 记忆中得来的属性手动冻结列，但操作失败；“find API”工具扫描 Windows API 后，找到了正确的属性 FrozenEdge。微软表示，AI 代理在迁移旧应用时也会犯类似错误。
+
+微软公布的内部基准测试显示，使用 WinApp 工具后，关于 WinApp 命令的正确回答率从 37% 提升至 90%，通过应用质量检查的比例也从 68% 提升至 87%。此外，一段 PowerShell 脚本会执行“winapp ui”命令，逐项点击界面变更，并将截图和视频保存到证据文件夹；该流程可在沙盒中运行，以便开发者继续工作。Replit 的产品负责人还利用 WinUI 技能，在大约 15 分钟内将约 600 个本地 CSV 文件转换为一个带有交互式地图的销售应用。
+
+不过，微软也坦承 WinUI 仍远未成熟。Beth Pan 表示：“有很多 bug，有很多我们需要修复的问题，而且我们大概从 20 年前开始就在做这件事。”WinUI 3 于 2021 年达到 1.0 版本，这里的“20 年”可能也涵盖了其继承的 XAML 技术栈。
+
+微软的迁移指南指出，截至 Windows App SDK 2.0，WinUI 应用的启动速度更慢、内存占用更高、存储占用也大于 UWP 应用。Visual Studio 的 XAML 设计器目前不支持 WinUI 3 项目。今年 5 月，微软还承认 WinUI 3 应用的窗口缩放体验不如被其取代的 UWP 应用，并承诺在夏季修复。
+
+好消息是，部分性能问题正在改善。Beth Pan 表示，文件资源管理器启动过程中，WinUI 代码所花费的时间已减少 25%，内存分配减少了 41%。微软还在 Ignite 上指出，窗口管理 API 仍存在缺失，而 TableView、图表和 InkCanvas 控件目前仍处于实验阶段。
+
+微软正在测试热重载、XAML 预览器，以及允许开发者不使用 XAML、直接以纯 C# 编写 WinUI 应用的 Reactor。据工程师介绍，Rust 支持是 WinUI 团队收到的头号需求。WinUI 及其 XAML 编译器目前也已开放开发。
+
+微软承认多年来开发者的抱怨，值得肯定，但 AI 代理只是让构建 WinUI 应用更快，并不能自动解决性能、稳定性和生态信任问题。如果新的 WinUI 应用启动速度仍慢于旧版 UWP 应用，像 Meta 这样坚持使用网页封装方案的公司，是否会把 WhatsApp 重新做成原生 Windows 应用，仍然是未知数。
+
+
